@@ -2,7 +2,7 @@ package lk.ijse.controller;
 
 import javafx.event.ActionEvent;
 
-public class HomeRegistrationForm2Controller {
+public class CandidateFormController {
     public void btnSaveOnAction(ActionEvent actionEvent) {
     }
 

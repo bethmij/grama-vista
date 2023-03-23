@@ -15,19 +15,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="683.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.HomeRegistrationForm2Controller">
+<AnchorPane fx:id="indiroot1" prefHeight="683.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.individualFormController">
    <children>
       <ImageView fitHeight="683.0" fitWidth="931.0" layoutX="100.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.06315789371728897" green="0.06315789371728897" blue="0.06315789371728897" />
-               </color>
-            </InnerShadow>
-         </effect>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="691.0" layoutY="1.0" stroke="WHITE" strokeType="INSIDE" width="254.0">
          <fill>
@@ -337,7 +330,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField blendMode="MULTIPLY" layoutX="405.0" layoutY="148.0" prefHeight="38.0" prefWidth="386.0" promptText="Nic">
+      <TextField blendMode="MULTIPLY" layoutX="405.0" layoutY="160.0" prefHeight="38.0" prefWidth="386.0" promptText="Name">
          <effect>
             <InnerShadow>
                <color>
@@ -349,7 +342,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField blendMode="MULTIPLY" layoutX="405.0" layoutY="212.0" prefHeight="38.0" prefWidth="386.0" promptText="Name">
+      <TextField blendMode="MULTIPLY" layoutX="405.0" layoutY="222.0" prefHeight="38.0" prefWidth="386.0" promptText="NIC">
          <effect>
             <InnerShadow>
                <color>
@@ -361,7 +354,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField blendMode="MULTIPLY" layoutX="405.0" layoutY="274.0" prefHeight="38.0" prefWidth="386.0" promptText="DOB">
+      <TextField blendMode="MULTIPLY" layoutX="405.0" layoutY="284.0" prefHeight="38.0" prefWidth="386.0" promptText="DOB">
          <effect>
             <InnerShadow>
                <color>
@@ -416,7 +409,7 @@
             </LinearGradient>
          </textFill>
       </Button>
-      <Button fx:id="btn1" layoutX="629.0" layoutY="555.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
+      <Button fx:id="btn1" layoutX="629.0" layoutY="555.0" mnemonicParsing="false" onAction="#btnNextOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Next">
          <font>
             <Font size="17.0" />
          </font>
@@ -484,7 +477,7 @@
          </font>
       </Label>
       <Label layoutX="510.0" layoutY="106.0" prefHeight="32.0" prefWidth="59.0" />
-      <Text layoutX="405.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" wrappingWidth="121.33673095703125">
+      <Text layoutX="405.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -520,7 +513,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox blendMode="COLOR_BURN" layoutX="502.0" layoutY="338.0" prefWidth="150.0">
+      <ChoiceBox blendMode="COLOR_BURN" layoutX="510.0" layoutY="350.0" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>
@@ -529,7 +522,7 @@
             </InnerShadow>
          </effect>
       </ChoiceBox>
-      <Text layoutX="405.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Education Status" wrappingWidth="150.3291015625">
+      <Text layoutX="405.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marriage Status" wrappingWidth="150.3291015625">
          <font>
             <Font size="20.0" />
          </font>

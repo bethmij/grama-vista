@@ -5,48 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d341e9b4-b3d1-4480-b66a-cc3b86d294fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/AppInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CivilRegistrationFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/DashboardFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeRegistrationForm2Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeRegistrationFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/IndivialFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/IndividualRegistrationFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/MainLoginFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/Antiquity-Web-Articles-Image-Apr.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/SriLankaOldParliamentBuilding-min.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/Yahoo Image Search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/account_circle_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/badge_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/diversity_3_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/edit_document_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/group_add_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/home_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/how_to_vote_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/landscape_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/password_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/person_add_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/pngegg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/pngwing.com (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/productivity_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/IndividualRegistrationForm.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/civilRegistrationForm.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/dashboardForm.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/homeRegistrationForm.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/indivialForm.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/indivialForm2.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/loginForm.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/mainLoginForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CandidateFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/individualForm2Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/individualFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/landForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CivilRegistrationFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CivilRegistrationFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeRegistrationForm2Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/IndivialFormController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/IndividualRegistrationFormController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/IndividualRegistrationForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/individualForm2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/civilRegistrationForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/civilRegistrationForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/homeRegistrationForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/homeRegistrationForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/indivialForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/individualForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/indivialForm2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/candidateForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,12 +102,24 @@
       <workItem from="1679413050824" duration="509000" />
       <workItem from="1679561467105" duration="1952000" />
       <workItem from="1679587935435" duration="1417000" />
-      <workItem from="1679589417370" duration="1383000" />
+      <workItem from="1679589417370" duration="6252000" />
     </task>
+    <task id="LOCAL-00001" summary="grama vista 1">
+      <created>1679592345340</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1679592345340</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="grama vista 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="grama vista 1" />
   </component>
   <component name="XPathView.XPathProjectComponent">
     <history />

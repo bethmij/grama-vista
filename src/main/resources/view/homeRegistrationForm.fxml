@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -366,7 +367,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button fx:id="btn" layoutX="432.0" layoutY="530.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Back">
+      <Button fx:id="btn" layoutX="432.0" layoutY="556.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Back">
          <font>
             <Font size="17.0" />
          </font>
@@ -397,7 +398,7 @@
             </LinearGradient>
          </textFill>
       </Button>
-      <Button fx:id="btn1" layoutX="616.0" layoutY="530.0" mnemonicParsing="false" onAction="#btnNextOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Next">
+      <Button fx:id="btn1" layoutX="619.0" layoutY="556.0" mnemonicParsing="false" onAction="#btnNextOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Next">
          <font>
             <Font size="17.0" />
          </font>
@@ -487,5 +488,15 @@
             <Font size="18.0" />
          </font>
       </TextField>
+      <CheckBox layoutX="396.0" layoutY="513.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="142.0" text="Electricity" textFill="#4b2a0d">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <CheckBox layoutX="513.0" layoutY="513.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="142.0" text="Water Supply" textFill="#4b2a0d">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
    </children>
 </AnchorPane>
