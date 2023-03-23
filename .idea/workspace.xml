@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d341e9b4-b3d1-4480-b66a-cc3b86d294fa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/AppInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CivilRegistrationFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/DashboardFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeRegistrationForm2Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeRegistrationFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/IndivialFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/IndividualRegistrationFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/MainLoginFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/Antiquity-Web-Articles-Image-Apr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/SriLankaOldParliamentBuilding-min.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/Yahoo Image Search.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/account_circle_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/badge_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/diversity_3_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/edit_document_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/group_add_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/home_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/how_to_vote_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/landscape_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/password_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/person_add_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/pngegg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/pngwing.com (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/productivity_FILL0_wght400_GRAD0_opsz48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/IndividualRegistrationForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/civilRegistrationForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/dashboardForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/homeRegistrationForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/indivialForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/indivialForm2.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/loginForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/mainLoginForm.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaFXApplication" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2N39xHqKFNYUC1NngXZSbK7hL0w" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/SceneBuilder/SceneBuilder.exe" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\New folder (2)\grama-vista\src\main\resources\img" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.AppInitializer">
+    <configuration name="AppInitializer" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="AppInitializer" />
+      <module name="grama-vista" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-19.0.2.1\lib&quot; --add-modules javafx.controls,javafx.fxml --add-exports javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main" />
+      <module name="grama-vista" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d341e9b4-b3d1-4480-b66a-cc3b86d294fa" name="Changes" comment="" />
+      <created>1678882145424</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678882145424</updated>
+      <workItem from="1678882146799" duration="1150000" />
+      <workItem from="1678888856682" duration="14498000" />
+      <workItem from="1678939584974" duration="8796000" />
+      <workItem from="1679069853330" duration="1194000" />
+      <workItem from="1679299855506" duration="2469000" />
+      <workItem from="1679367877679" duration="697000" />
+      <workItem from="1679379155925" duration="919000" />
+      <workItem from="1679395689018" duration="2074000" />
+      <workItem from="1679406879908" duration="109000" />
+      <workItem from="1679413050824" duration="509000" />
+      <workItem from="1679561467105" duration="1952000" />
+      <workItem from="1679587935435" duration="1417000" />
+      <workItem from="1679589417370" duration="1383000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XPathView.XPathProjectComponent">
+    <history />
+    <find-history />
+  </component>
+</project>

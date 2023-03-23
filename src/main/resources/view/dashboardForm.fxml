@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="dashboardpane" prefHeight="683.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashboardFormController">
+   <children>
+      <ImageView fitHeight="683.0" fitWidth="931.0" layoutX="57.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Yahoo Image Search.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="683.0" layoutY="1.0" stroke="WHITE" strokeType="INSIDE" width="298.0">
+         <fill>
+            <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6947368383407593" green="0.5602495074272156" blue="0.1904093623161316" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.8736842274665833" green="0.5197881460189819" blue="0.24916179478168488" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.49873617174933527">
+                     <color>
+                        <Color red="0.9684210419654846" green="0.9460039138793945" blue="0.5200779438018799" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9473684430122375" green="0.6694737076759338" blue="0.2526315748691559" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <ImageView fitHeight="264.0" fitWidth="407.0" layoutX="6.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Antiquity-Web-Articles-Image-Apr.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="16.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grama Vista">
+         <font>
+            <Font name="Segoe Script" size="40.0" />
+         </font>
+         <fill>
+            <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6947368383407593" green="0.5602495074272156" blue="0.1904093623161316" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.4736842215061188" green="0.23523391783237457" blue="0.06491228193044662" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.49873617174933527">
+                     <color>
+                        <Color red="0.7473683953285217" green="0.5028589963912964" blue="0.16054581105709076" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.42105263471603394" green="0.27695906162261963" blue="0.060818713158369064" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <ImageView fitHeight="57.0" fitWidth="41.0" layoutX="93.0" layoutY="622.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/pngegg.png" />
+         </image>
+      </ImageView>
+      <Text fill="#612803" layoutX="134.0" layoutY="665.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Home Affairs">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <JFXButton fx:id="btnCivilReg" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="484.0" layoutY="129.0" onAction="#btnCivilRegOnAction" prefHeight="128.0" prefWidth="142.0">
+         <graphic>
+            <ImageView blendMode="OVERLAY" fitHeight="116.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/group_add_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="483.0" layoutY="338.0" prefHeight="110.0" prefWidth="142.0">
+         <graphic>
+            <ImageView blendMode="OVERLAY" fitHeight="112.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/edit_document_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="725.0" layoutY="339.0" prefHeight="110.0" prefWidth="118.0">
+         <graphic>
+            <ImageView blendMode="OVERLAY" fitHeight="110.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/how_to_vote_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="725.0" layoutY="134.0" prefHeight="110.0" prefWidth="112.0">
+         <graphic>
+            <ImageView blendMode="OVERLAY" fitHeight="109.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/diversity_3_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Text fill="#7e5a06" layoutX="497.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="    Registration">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#7e5a06" layoutX="727.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="   Management">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#7e5a06" layoutX="473.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report Management">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#7e5a06" layoutX="770.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voting">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
