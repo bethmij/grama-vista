@@ -5,21 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d341e9b4-b3d1-4480-b66a-cc3b86d294fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CandidateFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/individualForm2Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/individualFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/landForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/IndividualFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CivilRegistrationFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CivilRegistrationFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeRegistrationForm2Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/IndivialFormController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/IndividualRegistrationFormController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/IndividualRegistrationForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/individualForm2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/individualFormController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/civilRegistrationForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/civilRegistrationForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/homeRegistrationForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/homeRegistrationForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/indivialForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/individualForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/indivialForm2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/candidateForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/individualForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/individualForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/individualForm2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/individualForm2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/landForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/landForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/loginForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/loginForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +26,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaFXApplication" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -50,9 +46,12 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect" value="MySQL" />
     <property name="last_opened_file_path" value="$USER_HOME$/Documents/SceneBuilder/SceneBuilder.exe" />
   </component>
   <component name="RecentsManager">
@@ -102,7 +101,8 @@
       <workItem from="1679413050824" duration="509000" />
       <workItem from="1679561467105" duration="1952000" />
       <workItem from="1679587935435" duration="1417000" />
-      <workItem from="1679589417370" duration="6252000" />
+      <workItem from="1679589417370" duration="6494000" />
+      <workItem from="1679731585488" duration="14467000" />
     </task>
     <task id="LOCAL-00001" summary="grama vista 1">
       <created>1679592345340</created>
@@ -111,13 +111,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679592345340</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="grama vista 1">
+      <created>1679597254592</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679597254592</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="grama vista 1" />
     <option name="LAST_COMMIT_MESSAGE" value="grama vista 1" />
   </component>

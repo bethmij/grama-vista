@@ -412,7 +412,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button fx:id="btn" layoutX="452.0" layoutY="565.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Back">
+      <Button fx:id="btn" layoutX="452.0" layoutY="565.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Back">
          <font>
             <Font size="17.0" />
          </font>
@@ -443,7 +443,7 @@
             </LinearGradient>
          </textFill>
       </Button>
-      <Button fx:id="btn1" layoutX="639.0" layoutY="565.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
+      <Button fx:id="btn1" layoutX="639.0" layoutY="565.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
          <font>
             <Font size="17.0" />
          </font>

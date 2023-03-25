@@ -398,37 +398,6 @@
             </LinearGradient>
          </textFill>
       </Button>
-      <Button fx:id="btn1" layoutX="619.0" layoutY="556.0" mnemonicParsing="false" onAction="#btnNextOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Next">
-         <font>
-            <Font size="17.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.4951219512195121">
-                     <color>
-                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9973082099596233">
-                     <color>
-                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Button>
       <TextField blendMode="MULTIPLY" layoutX="395.0" layoutY="243.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
          <effect>
             <InnerShadow>
@@ -498,5 +467,36 @@
             <Font size="14.0" />
          </font>
       </CheckBox>
+      <Button fx:id="btn1" layoutX="620.0" layoutY="556.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Next">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4951219512195121">
+                     <color>
+                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9973082099596233">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Button>
    </children>
 </AnchorPane>

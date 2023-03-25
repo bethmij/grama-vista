@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="CivilRPane" prefHeight="683.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.CivilRegistrationFormController">
    <children>
-      <ImageView fitHeight="683.0" fitWidth="931.0" layoutX="156.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="683.0" fitWidth="917.0" layoutX="48.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
@@ -269,7 +269,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="civil" contentDisplay="GRAPHIC_ONLY" layoutX="638.0" layoutY="115.0" onAction="#btnCivilOnAction" prefHeight="158.0" prefWidth="190.0" text="Button">
+      <JFXButton fx:id="indiv" contentDisplay="GRAPHIC_ONLY" layoutX="638.0" layoutY="115.0" onAction="#btnIndivOnAction" prefHeight="158.0" prefWidth="190.0" text="Button">
          <graphic>
             <ImageView blendMode="OVERLAY" fitHeight="150.0" fitWidth="158.0" pickOnBounds="true" preserveRatio="true">
                <image>

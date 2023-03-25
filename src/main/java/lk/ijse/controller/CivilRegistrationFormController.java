@@ -13,30 +13,33 @@ import java.io.IOException;
 
 public class CivilRegistrationFormController {
     public AnchorPane  CivilRPane;
-    public void btnHomeOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage)CivilRPane.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/homeRegistrationForm.fxml"))));
-        stage.setTitle("Civil Registration");
-        stage.centerOnScreen();
-    }
-
-
-    @FXML
-    void btnCivilOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage)CivilRPane.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/individualForm.fxml"))));
-        stage.setTitle("Civil Registration");
-        stage.centerOnScreen();
+    public void btnHomeOnAction(ActionEvent actionEvent) {
+        openView ("homeRegistrationForm");
 
     }
 
-    public void btncandidateOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage)CivilRPane.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/candidateForm.fxml"))));
-        stage.setTitle("Civil Registration");
-        stage.centerOnScreen();
+
+
+
+    public void btncandidateOnAction(ActionEvent actionEvent) {
+        openView ("candidateForm");
     }
 
     public void btnlandOnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnIndivOnAction(ActionEvent actionEvent) throws IOException {
+        openView ("individualForm");
+    }
+
+    private void openView (String view ){
+        Stage stage = (Stage)CivilRPane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/"+view+".fxml"))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setTitle(view);
+        stage.centerOnScreen();
     }
 }
