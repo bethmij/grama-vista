@@ -26,6 +26,7 @@ public class CivilRegistrationFormController {
     }
 
     public void btnlandOnAction(ActionEvent actionEvent) {
+        openView ("landForm");
     }
 
     public void btnIndivOnAction(ActionEvent actionEvent) throws IOException {

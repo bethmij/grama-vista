@@ -17,14 +17,14 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="683.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.LandFormController">
+<AnchorPane fx:id="landRoot" prefHeight="698.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.LandFormController">
    <children>
-      <ImageView fitHeight="698.0" fitWidth="924.0" layoutX="81.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="708.0" fitWidth="948.0" layoutX="57.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="698.0" layoutY="2.0" stroke="WHITE" strokeType="INSIDE" width="254.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="715.0" layoutY="-17.0" stroke="WHITE" strokeType="INSIDE" width="254.0">
          <fill>
             <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
                <stops>
@@ -377,7 +377,7 @@
             </LinearGradient>
          </textFill>
       </Button>
-      <Button fx:id="btnNext" layoutX="638.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnNextOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
+      <Button fx:id="save" layoutX="638.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
          <font>
             <Font size="17.0" />
          </font>
@@ -533,5 +533,15 @@
             </LinearGradient>
          </textFill>
       </JFXButton>
+      <ImageView fitHeight="57.0" fitWidth="41.0" layoutX="789.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/pngegg.png" />
+         </image>
+      </ImageView>
+      <Text fill="#612803" layoutX="830.0" layoutY="670.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Home Affairs">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
