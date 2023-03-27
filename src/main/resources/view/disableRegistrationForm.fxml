@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -17,14 +16,14 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane fx:id="deadPane" prefHeight="683.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DeadPeopleFormController">
+<AnchorPane fx:id="disablePane" prefHeight="683.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DisableRegistrationFormController">
    <children>
-      <ImageView fitHeight="701.0" fitWidth="928.0" layoutX="36.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="709.0" fitWidth="929.0" layoutX="116.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="701.0" stroke="WHITE" strokeType="INSIDE" width="254.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="698.0" stroke="WHITE" strokeType="INSIDE" width="254.0">
          <fill>
             <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
                <stops>
@@ -291,17 +290,17 @@
             <Image url="@../img/group_add_FILL0_wght400_GRAD0_opsz48.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="57.0" fitWidth="41.0" layoutX="733.0" layoutY="641.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="57.0" fitWidth="41.0" layoutX="755.0" layoutY="639.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/pngegg.png" />
          </image>
       </ImageView>
-      <Text fill="#612803" layoutX="798.0" layoutY="685.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Home Affairs">
+      <Text fill="#612803" layoutX="810.0" layoutY="683.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Home Affairs">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="500.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dead Civil Registration">
+      <Text layoutX="499.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disable Civil Registration">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -332,64 +331,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Text layoutX="403.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Civil ID" wrappingWidth="121.33673095703125">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5048780487804878">
-                     <color>
-                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9919246298788693">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Text>
-      <ChoiceBox blendMode="COLOR_BURN" layoutX="498.0" layoutY="238.0" prefWidth="150.0">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.4000000059604645" green="0.3437037169933319" blue="0.3437037169933319" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </ChoiceBox>
-      <TextField blendMode="MULTIPLY" layoutX="403.0" layoutY="360.0" prefHeight="38.0" prefWidth="386.0" promptText="Age">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
-               </color>
-            </InnerShadow>
-         </effect>
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <Label layoutX="403.0" layoutY="164.0" text="ID    -">
+      <Label layoutX="427.0" layoutY="158.0" text="ID    -">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -425,8 +367,8 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="494.0" layoutY="163.0" prefHeight="32.0" prefWidth="59.0" />
-      <Text layoutX="403.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name     " wrappingWidth="121.33673095703125">
+      <Label layoutX="499.0" layoutY="157.0" prefHeight="32.0" prefWidth="59.0" />
+      <Text layoutX="427.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Civil ID" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -462,17 +404,28 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Label layoutX="494.0" layoutY="295.0" prefHeight="32.0" prefWidth="347.0" />
-      <DatePicker blendMode="COLOR_BURN" layoutX="498.0" layoutY="434.0">
+      <ChoiceBox blendMode="COLOR_BURN" layoutX="529.0" layoutY="225.0" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>
-                  <Color red="0.43157893419265747" green="0.3243502378463745" blue="0.17423002421855927" />
+                  <Color red="0.4000000059604645" green="0.3437037169933319" blue="0.3437037169933319" />
                </color>
             </InnerShadow>
          </effect>
-      </DatePicker>
-      <Text layoutX="403.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="121.33673095703125">
+      </ChoiceBox>
+      <TextField blendMode="MULTIPLY" layoutX="427.0" layoutY="349.0" prefHeight="38.0" prefWidth="386.0" promptText="Disability">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Text layoutX="427.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -508,6 +461,19 @@
             </LinearGradient>
          </fill>
       </Text>
+      <Label layoutX="518.0" layoutY="281.0" prefHeight="32.0" prefWidth="254.0" />
+      <TextField alignment="TOP_LEFT" blendMode="MULTIPLY" layoutX="427.0" layoutY="416.0" prefHeight="93.0" prefWidth="386.0" promptText="Description">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
       <Button fx:id="btn" layoutX="462.0" layoutY="575.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Back">
          <font>
             <Font size="17.0" />

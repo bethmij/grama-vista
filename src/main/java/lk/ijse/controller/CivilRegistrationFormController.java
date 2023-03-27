@@ -2,45 +2,37 @@ package lk.ijse.controller;
 
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
-import java.io.IOException;
+import lk.ijse.util.OpenView;
 
 public class CivilRegistrationFormController {
+
     public AnchorPane  CivilRPane;
-    public void btnHomeOnAction(ActionEvent actionEvent) {
-        openView ("homeRegistrationForm");
 
-    }
-
-
-
-
-    public void btncandidateOnAction(ActionEvent actionEvent) {
-        openView ("candidateForm");
-    }
+    public void btnHomeOnAction(ActionEvent actionEvent) { OpenView.openView ("homeRegistrationForm",CivilRPane);}
 
     public void btnlandOnAction(ActionEvent actionEvent) {
-        openView ("landForm");
+        OpenView.openView ("landForm",CivilRPane);
     }
 
-    public void btnIndivOnAction(ActionEvent actionEvent) throws IOException {
-        openView ("individualForm");
+    public void btnIndivOnAction(ActionEvent actionEvent)  { OpenView.openView ("individualForm",CivilRPane);}
+
+    public void btndeadOnAction(ActionEvent actionEvent) {
+        OpenView.openView ("deadPeopleForm",CivilRPane);
     }
 
-    private void openView (String view ){
-        Stage stage = (Stage)CivilRPane.getScene().getWindow();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/"+view+".fxml"))));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setTitle(view);
-        stage.centerOnScreen();
+    public void btnMaternityOnAction(ActionEvent actionEvent) {
+        OpenView.openView ("MaternityRegistForm",CivilRPane);
     }
+
+    public void btnCandidateOnAction(ActionEvent actionEvent) {
+        OpenView.openView ("candidateForm",CivilRPane);
+    }
+
+    public void btnDisableOnAction(ActionEvent actionEvent) { OpenView.openView ("disableRegistrationForm",CivilRPane); }
+
+    public void btnDivisionOnAction(ActionEvent actionEvent) { OpenView.openView ("divisionRegistrationForm",CivilRPane);}
+
+
 }

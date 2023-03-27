@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import lk.ijse.util.OpenView;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,11 +25,8 @@ public class HomeRegistrationFormController {
         actionEvent.consume();*/
     }
 
-    public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage)HomePane.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/CivilRegistrationForm.fxml"))));
-        stage.setTitle("Civil Registration");
-        stage.centerOnScreen();
+    public void btnBackOnAction(ActionEvent actionEvent) {
+        OpenView.openView("civilRegistrationForm",HomePane);
     }
 
     public void btnNextOnAction(ActionEvent actionEvent) {

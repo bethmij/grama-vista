@@ -4,14 +4,14 @@ import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.util.OpenView;
 
-public class DeadPeopleFormController {
-    public AnchorPane deadPane;
+public class MaternityRegistFormController {
+    public AnchorPane maternityPane;
 
     public void btnBackOnAction(ActionEvent actionEvent) {
-        OpenView.openView("civilRegistrationForm",deadPane);
+        OpenView.openView("civilRegistrationForm",maternityPane);
     }
 
-    public void btnSaveOnAction(ActionEvent actionEvent) {
 
+    public void btnSaveOnAction(ActionEvent actionEvent) {
     }
 }

@@ -15,8 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="683.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.CandidateFormController">
+<AnchorPane fx:id="CandidatePane" prefHeight="683.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.CandidateFormController">
    <children>
       <ImageView fitHeight="719.0" fitWidth="949.0" layoutX="50.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -493,7 +492,7 @@
             </InnerShadow>
          </effect>
       </ChoiceBox>
-      <Button fx:id="btn" layoutX="467.0" layoutY="594.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Back">
+      <Button fx:id="btn" layoutX="467.0" layoutY="594.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Back">
          <font>
             <Font size="17.0" />
          </font>
@@ -524,7 +523,7 @@
             </LinearGradient>
          </textFill>
       </Button>
-      <Button fx:id="btn1" layoutX="653.0" layoutY="594.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
+      <Button fx:id="btn1" layoutX="653.0" layoutY="594.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
          <font>
             <Font size="17.0" />
          </font>
