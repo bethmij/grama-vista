@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -35,8 +36,14 @@
                <image>
                   <Image url="@../img/home_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <JFXButton fx:id="indiv" contentDisplay="GRAPHIC_ONLY" layoutX="536.0" layoutY="50.0" onAction="#btnIndivOnAction" prefHeight="119.0" prefWidth="150.0" text="Button">
          <graphic>
@@ -46,6 +53,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <Text layoutX="320.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Residence Registration " wrappingWidth="123.462890625">
          <font>
@@ -117,6 +127,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <Text layoutX="336.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Candidate Registration " wrappingWidth="123.462890625">
          <font>
@@ -455,6 +468,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <JFXButton fx:id="maternity" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="556.0" layoutY="240.0" onAction="#btnMaternityOnAction" prefHeight="128.0" prefWidth="136.0">
          <graphic>
@@ -464,6 +480,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <Text layoutX="336.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Dead Civil Registration " wrappingWidth="123.462890625">
          <font>
@@ -504,6 +523,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <JFXButton fx:id="land21" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="766.0" layoutY="255.0" onAction="#btnlandOnAction" prefHeight="115.0" prefWidth="123.0">
          <graphic>
@@ -513,6 +535,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <Text layoutX="766.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disable Civil       Registration " wrappingWidth="150.39999999999986">
          <font>
@@ -584,6 +609,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <Text layoutX="562.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" GN Division Registration " wrappingWidth="123.462890625">
          <font>
