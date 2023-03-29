@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -14,7 +14,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane fx:id="disablePane" prefHeight="683.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DisableRegistrationFormController">
    <children>
@@ -367,7 +366,31 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="499.0" layoutY="157.0" prefHeight="32.0" prefWidth="59.0" />
+      <Label fx:id="lblId" layoutX="499.0" layoutY="157.0" prefHeight="32.0" prefWidth="79.0">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.5568627715110779" green="0.3294117748737335" blue="0.027450980618596077" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5039424876079178">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.366166353225708" blue="0.08791422843933105" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5568627715110779" green="0.3294117748737335" blue="0.027450980618596077" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font size="20.0" />
+         </font></Label>
       <Text layoutX="427.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Civil ID" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
@@ -404,16 +427,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox blendMode="COLOR_BURN" layoutX="529.0" layoutY="225.0" prefWidth="150.0">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.4000000059604645" green="0.3437037169933319" blue="0.3437037169933319" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </ChoiceBox>
-      <TextField blendMode="MULTIPLY" layoutX="427.0" layoutY="349.0" prefHeight="38.0" prefWidth="386.0" promptText="Disability">
+      <TextField fx:id="txtDisability" blendMode="MULTIPLY" layoutX="427.0" layoutY="349.0" prefHeight="38.0" prefWidth="386.0" promptText="Disability">
          <effect>
             <InnerShadow>
                <color>
@@ -461,8 +475,11 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Label layoutX="518.0" layoutY="281.0" prefHeight="32.0" prefWidth="254.0" />
-      <TextField alignment="TOP_LEFT" blendMode="MULTIPLY" layoutX="427.0" layoutY="416.0" prefHeight="93.0" prefWidth="386.0" promptText="Description">
+      <Label fx:id="lblName" layoutX="518.0" layoutY="281.0" prefHeight="32.0" prefWidth="254.0">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <TextField fx:id="txtDescription" alignment="TOP_LEFT" blendMode="MULTIPLY" layoutX="427.0" layoutY="416.0" prefHeight="93.0" prefWidth="386.0" promptText="Description">
          <effect>
             <InnerShadow>
                <color>
@@ -536,5 +553,14 @@
             </LinearGradient>
          </textFill>
       </Button>
+      <ComboBox fx:id="cmbCivil" blendMode="MULTIPLY" layoutX="505.0" layoutY="224.0" onAction="#cmbCivilOnAction" prefHeight="26.0" prefWidth="107.0">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </ComboBox>
    </children>
 </AnchorPane>

@@ -527,7 +527,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="land21" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="766.0" layoutY="255.0" onAction="#btnlandOnAction" prefHeight="115.0" prefWidth="123.0">
+      <JFXButton fx:id="Disable" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="766.0" layoutY="255.0" onAction="#btnDisableOnAction" prefHeight="115.0" prefWidth="123.0">
          <graphic>
             <ImageView fx:id="disable" blendMode="OVERLAY" fitHeight="105.0" fitWidth="104.0" onDragDetected="#btnDisableOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
