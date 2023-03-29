@@ -5,27 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d341e9b4-b3d1-4480-b66a-cc3b86d294fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/Dead.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/Land.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/Maternity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/Owner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/DeadModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/LandModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/MaternityModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/OwnerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/DeadPeopleFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/DeadPeopleFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeRegistrationFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeRegistrationFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/MaternityRegistFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/MaternityRegistFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/Residence.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/ResidenceModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/OwnershipFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/OwnershipFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/DisableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/DisableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/schema/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/MaternityRegistForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/MaternityRegistForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/deadPeopleForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/deadPeopleForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/homeRegistrationForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/homeRegistrationForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/landForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/landForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/ownershipForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/ownershipForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +120,7 @@
       <workItem from="1679935275082" duration="11756000" />
       <workItem from="1679971797307" duration="1336000" />
       <workItem from="1679987788967" duration="16955000" />
-      <workItem from="1680059135638" duration="36242000" />
+      <workItem from="1680059135638" duration="36911000" />
     </task>
     <task id="LOCAL-00001" summary="grama vista 1">
       <created>1679592345340</created>
@@ -189,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680096885014</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="grama vista 2">
+      <created>1680108368751</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1680108368751</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
