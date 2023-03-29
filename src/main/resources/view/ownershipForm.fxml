@@ -13,7 +13,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane fx:id="ownerRoot" prefHeight="560.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.OwnershipFormController">
    <children>
       <ImageView fitHeight="578.0" fitWidth="763.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
@@ -21,7 +20,7 @@
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
       </ImageView>
-      <TextField blendMode="MULTIPLY" layoutX="179.0" layoutY="252.0" prefHeight="38.0" prefWidth="386.0" promptText="Lot number">
+      <TextField fx:id="txtLotNum" blendMode="MULTIPLY" layoutX="179.0" layoutY="252.0" prefHeight="38.0" prefWidth="386.0" promptText="Lot number">
          <effect>
             <InnerShadow>
                <color>
@@ -69,11 +68,11 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox blendMode="COLOR_BURN" layoutX="298.0" layoutY="121.0" prefWidth="150.0">
+      <ChoiceBox fx:id="cbLandID" blendMode="MULTIPLY" layoutX="298.0" layoutY="121.0" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>
-                  <Color red="0.4000000059604645" green="0.3437037169933319" blue="0.3437037169933319" />
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
                </color>
             </InnerShadow>
          </effect>
@@ -176,16 +175,16 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox blendMode="COLOR_BURN" layoutX="298.0" layoutY="183.0" prefWidth="150.0">
+      <ChoiceBox fx:id="cbCivilID" blendMode="MULTIPLY" layoutX="298.0" layoutY="183.0" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>
-                  <Color red="0.4000000059604645" green="0.3437037169933319" blue="0.3437037169933319" />
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
                </color>
             </InnerShadow>
          </effect>
       </ChoiceBox>
-      <TextField blendMode="MULTIPLY" layoutX="178.0" layoutY="336.0" prefHeight="38.0" prefWidth="386.0" promptText="Land percentage">
+      <TextField fx:id="txtPercentage" blendMode="MULTIPLY" layoutX="178.0" layoutY="336.0" prefHeight="38.0" prefWidth="386.0" promptText="Land percentage">
          <effect>
             <InnerShadow>
                <color>

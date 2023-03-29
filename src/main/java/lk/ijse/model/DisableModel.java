@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class DisableModel {
     public static Integer getNextId() throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT reg_number FROM grama_vista.disable_people ORDER BY reg_number DESC LIMIT 1" );
+        ResultSet resultSet = CrudUtil.execute("SELECT id FROM grama_vista.disable_people ORDER BY id DESC LIMIT 1" );
 
         if (resultSet.next()) {
             Integer id = resultSet.getInt(1);

@@ -331,7 +331,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField blendMode="MULTIPLY" layoutX="395.0" layoutY="178.0" prefHeight="38.0" prefWidth="386.0" promptText="House Holderś Name">
+      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="395.0" layoutY="208.0" prefHeight="38.0" prefWidth="386.0" promptText="House Holderś Name">
          <effect>
             <InnerShadow>
                <color>
@@ -343,7 +343,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField blendMode="MULTIPLY" layoutX="395.0" layoutY="370.0" prefHeight="38.0" prefWidth="386.0" promptText="Family Member Count">
+      <TextField fx:id="txtCount" blendMode="MULTIPLY" layoutX="395.0" layoutY="378.0" prefHeight="38.0" prefWidth="386.0" promptText="Family Member Count">
          <effect>
             <InnerShadow>
                <color>
@@ -355,7 +355,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField blendMode="MULTIPLY" layoutX="395.0" layoutY="442.0" prefHeight="38.0" prefWidth="386.0" promptText="Count below age 18">
+      <TextField fx:id="txtChildCount" blendMode="MULTIPLY" layoutX="395.0" layoutY="442.0" prefHeight="38.0" prefWidth="386.0" promptText="Count below age 18">
          <effect>
             <InnerShadow>
                <color>
@@ -367,7 +367,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button fx:id="btn" layoutX="432.0" layoutY="556.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Back">
+      <Button fx:id="Back" layoutX="432.0" layoutY="556.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Back">
          <font>
             <Font size="17.0" />
          </font>
@@ -398,7 +398,7 @@
             </LinearGradient>
          </textFill>
       </Button>
-      <TextField blendMode="MULTIPLY" layoutX="395.0" layoutY="243.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
+      <TextField fx:id="txtAddress" blendMode="MULTIPLY" layoutX="395.0" layoutY="264.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
          <effect>
             <InnerShadow>
                <color>
@@ -410,7 +410,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Text layoutX="395.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Residence Type    " wrappingWidth="189.336669921875">
+      <Text layoutX="395.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Residence Type    " wrappingWidth="189.336669921875">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -436,16 +436,16 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <ChoiceBox blendMode="COLOR_BURN" layoutX="559.0" layoutY="305.0" prefHeight="30.0" prefWidth="218.0">
+      <ChoiceBox fx:id="cbType" blendMode="MULTIPLY" layoutX="559.0" layoutY="321.0" prefHeight="30.0" prefWidth="218.0">
          <effect>
             <InnerShadow>
                <color>
-                  <Color red="0.46315789222717285" green="0.44257310032844543" blue="0.44257310032844543" />
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
                </color>
             </InnerShadow>
          </effect>
       </ChoiceBox>
-      <TextField blendMode="MULTIPLY" layoutX="395.0" layoutY="118.0" prefHeight="38.0" prefWidth="386.0" promptText="Home ID">
+      <TextField fx:id="txtHomeID" blendMode="MULTIPLY" layoutX="395.0" layoutY="150.0" prefHeight="38.0" prefWidth="386.0" promptText="Home ID">
          <effect>
             <InnerShadow>
                <color>
@@ -457,17 +457,17 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <CheckBox layoutX="396.0" layoutY="513.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="142.0" text="Electricity" textFill="#4b2a0d">
+      <CheckBox fx:id="ckbElectricity" layoutX="396.0" layoutY="513.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="142.0" text="Electricity" textFill="#4b2a0d">
          <font>
             <Font size="14.0" />
          </font>
       </CheckBox>
-      <CheckBox layoutX="513.0" layoutY="513.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="142.0" text="Water Supply" textFill="#4b2a0d">
+      <CheckBox fx:id="ckbWater" layoutX="513.0" layoutY="513.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="142.0" text="Water Supply" textFill="#4b2a0d">
          <font>
             <Font size="14.0" />
          </font>
       </CheckBox>
-      <Button fx:id="btn1" layoutX="620.0" layoutY="556.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Next">
+      <Button fx:id="Save" layoutX="620.0" layoutY="556.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
          <font>
             <Font size="17.0" />
          </font>
@@ -498,5 +498,50 @@
             </LinearGradient>
          </textFill>
       </Button>
+      <Text layoutX="395.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Division ID" wrappingWidth="121.33673095703125">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5048780487804878">
+                     <color>
+                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9919246298788693">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <ChoiceBox fx:id="cbDivision" blendMode="MULTIPLY" layoutX="509.0" layoutY="104.0" prefWidth="150.0">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9882352948188782" green="0.8039215803146362" blue="0.364705890417099" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </ChoiceBox>
    </children>
 </AnchorPane>

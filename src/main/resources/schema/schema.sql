@@ -35,11 +35,12 @@ CREATE TABLE civil(
                       age INT(3),
                       marriage_status ENUM ('Married','Not married'),
                       relation VARCHAR(20),
-                      education_status ENUM ('Student','Employeed','Unemployeed'),
+                      education_status ENUM ('Student','Employed','Unemployed'),
                       school VARCHAR(30),
                       occupation VARCHAR(30),
                       working_address VARCHAR(1000),
                       salary DOUBLE (8,2),
+                      image longblob,
                       CONSTRAINT PRIMARY KEY (reg_number)
 );
 
@@ -52,7 +53,7 @@ CREATE TABLE multi_residence(
 
 CREATE TABLE dead_people(
                             id INT AUTO_INCREMENT,
-                            reg_number INT,
+                            reg_number INT UNIQUE,
                             age INT (3),
                             dead_date DATE,
                             CONSTRAINT PRIMARY KEY (id),
@@ -62,7 +63,7 @@ CREATE TABLE dead_people(
 
 CREATE TABLE disable_people(
                                id INT AUTO_INCREMENT,
-                               reg_number INT,
+                               reg_number INT UNIQUE,
                                disability VARCHAR(50),
                                description VARCHAR(100),
                                CONSTRAINT PRIMARY KEY (id),
@@ -71,7 +72,7 @@ CREATE TABLE disable_people(
 
 CREATE TABLE maternity_people(
                                  id INT AUTO_INCREMENT,
-                                 reg_number INT,
+                                 reg_number INT UNIQUE,
                                  date_of_pregnancy DATE,
                                  months INT,
                                  mid_wife VARCHAR(40),
@@ -126,15 +127,16 @@ CREATE TABLE candidate (
                            CHECK ( age>18 ),
                            address VARCHAR(100),
                            contact INT(10),
-                           political_party VARCHAR(20),
+                           political_party VARCHAR(50),
                            votes INT(4),
+                           image longblob,
                            CONSTRAINT PRIMARY KEY (elect_reg_num),
                            CONSTRAINT FOREIGN KEY (division_id) REFERENCES gn_division(division_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE users (
                        employee_num VARCHAR(10),
-                       division_id VARCHAR(10),
+                       division_id VARCHAR(10) UNIQUE,
                        nic VARCHAR(12),
                        name VARCHAR(30),
                        user VARCHAR(20),

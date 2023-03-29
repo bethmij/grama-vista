@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -306,7 +306,7 @@
                <stops>
                   <Stop>
                      <color>
-                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                        <Color red="0.4745098054409027" green="0.2549019753932953" blue="0.08627451211214066" />
                      </color>
                   </Stop>
                   <Stop offset="0.4951219512195121">
@@ -321,7 +321,7 @@
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                        <Color red="0.5254902243614197" green="0.2862745225429535" blue="0.09803921729326248" />
                      </color>
                   </Stop>
                </stops>
@@ -368,7 +368,7 @@
          </font>
       </Label>
       <Label layoutX="528.0" layoutY="209.0" prefHeight="32.0" prefWidth="59.0" />
-      <Text layoutX="413.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" wrappingWidth="121.33673095703125">
+      <Text layoutX="401.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" ID  -" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -404,15 +404,6 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox blendMode="COLOR_BURN" layoutX="512.0" layoutY="151.0" prefWidth="150.0">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.4000000059604645" green="0.3437037169933319" blue="0.3437037169933319" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </ChoiceBox>
       <Text layoutX="408.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Pregancy" wrappingWidth="239.7366943359375">
          <font>
             <Font size="20.0" />
@@ -449,12 +440,15 @@
             </LinearGradient>
          </fill>
       </Text>
-      <DatePicker blendMode="COLOR_BURN" layoutX="603.0" layoutY="319.0" prefHeight="26.0" prefWidth="150.0">
+      <DatePicker fx:id="dtpDate" blendMode="MULTIPLY" layoutX="603.0" layoutY="319.0" prefHeight="26.0" prefWidth="150.0">
          <effect>
-            <InnerShadow />
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color></InnerShadow>
          </effect>
       </DatePicker>
-      <TextField blendMode="MULTIPLY" layoutX="410.0" layoutY="375.0" prefHeight="38.0" prefWidth="386.0" promptText="Months">
+      <TextField fx:id="txtMonths" blendMode="MULTIPLY" layoutX="410.0" layoutY="375.0" prefHeight="38.0" prefWidth="386.0" promptText="Months">
          <effect>
             <InnerShadow>
                <color>
@@ -466,7 +460,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Label layoutX="408.0" layoutY="264.0" text="Name">
+      <Label layoutX="408.0" layoutY="264.0" prefHeight="30.0" prefWidth="92.0" text="Name  -">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -502,9 +496,15 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="510.0" layoutY="267.0" prefHeight="32.0" prefWidth="254.0" />
-      <Label layoutX="516.0" layoutY="209.0" prefHeight="32.0" prefWidth="59.0" />
-      <TextField blendMode="MULTIPLY" layoutX="410.0" layoutY="446.0" prefHeight="38.0" prefWidth="386.0" promptText="Mid Wife">
+      <Label fx:id="lblName" layoutX="504.0" layoutY="264.0" prefHeight="26.0" prefWidth="254.0" textFill="#794116">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label fx:id="lblID" layoutX="462.0" layoutY="147.0" prefHeight="32.0" prefWidth="84.0" textFill="#794116">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <TextField fx:id="txtMidWife" blendMode="MULTIPLY" layoutX="410.0" layoutY="446.0" prefHeight="38.0" prefWidth="386.0" promptText="Mid Wife">
          <effect>
             <InnerShadow>
                <color>
@@ -578,5 +578,14 @@
             </LinearGradient>
          </textFill>
       </Button>
+      <ComboBox fx:id="cmbCivil" blendMode="MULTIPLY" layoutX="504.0" layoutY="213.0" onAction="#cmbCivilOnAction" prefWidth="150.0">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </ComboBox>
    </children>
 </AnchorPane>

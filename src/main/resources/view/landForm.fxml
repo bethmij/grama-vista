@@ -16,7 +16,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane fx:id="landRoot" prefHeight="698.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.LandFormController">
    <children>
       <ImageView fitHeight="708.0" fitWidth="948.0" layoutX="57.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
@@ -322,7 +321,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField blendMode="MULTIPLY" layoutX="425.0" layoutY="219.0" prefHeight="38.0" prefWidth="386.0" promptText="Plan number">
+      <TextField fx:id="txtPlan" blendMode="MULTIPLY" layoutX="425.0" layoutY="219.0" prefHeight="38.0" prefWidth="386.0" promptText="Plan number">
          <effect>
             <InnerShadow>
                <color>
@@ -334,7 +333,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField blendMode="MULTIPLY" layoutX="425.0" layoutY="295.0" prefHeight="38.0" prefWidth="386.0" promptText="Land Area">
+      <TextField fx:id="txtArea" blendMode="MULTIPLY" layoutX="425.0" layoutY="295.0" prefHeight="38.0" prefWidth="386.0" promptText="Land Area (km2)">
          <effect>
             <InnerShadow>
                <color>
@@ -444,11 +443,11 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox blendMode="COLOR_BURN" layoutX="543.0" layoutY="369.0" prefWidth="150.0">
+      <ChoiceBox fx:id="cbLType" blendMode="MULTIPLY" layoutX="543.0" layoutY="369.0" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>
-                  <Color red="0.4000000059604645" green="0.3437037169933319" blue="0.3437037169933319" />
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
                </color>
             </InnerShadow>
          </effect>
@@ -489,7 +488,10 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="527.0" layoutY="158.0" prefHeight="32.0" prefWidth="59.0" />
+      <Label fx:id="lblID" layoutX="527.0" layoutY="158.0" prefHeight="32.0" prefWidth="59.0" textFill="#753d12">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
       <JFXButton fx:id="owner" blendMode="DARKEN" graphicTextGap="2.0" layoutX="425.0" layoutY="429.0" onAction="#btnOwnerOnAction" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text=" Ownership">
          <font>
             <Font size="20.0" />
