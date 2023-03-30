@@ -331,19 +331,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="395.0" layoutY="208.0" prefHeight="38.0" prefWidth="386.0" promptText="House Holderś Name">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
-               </color>
-            </InnerShadow>
-         </effect>
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="txtCount" blendMode="MULTIPLY" layoutX="395.0" layoutY="378.0" prefHeight="38.0" prefWidth="386.0" promptText="Family Member Count">
+      <TextField fx:id="txtCount" blendMode="MULTIPLY" layoutX="395.0" layoutY="386.0" prefHeight="38.0" prefWidth="386.0" promptText="Family Member Count">
          <effect>
             <InnerShadow>
                <color>
@@ -367,7 +355,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button fx:id="Back" layoutX="432.0" layoutY="556.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Back">
+      <Button fx:id="Back" layoutX="432.0" layoutY="564.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Back">
          <font>
             <Font size="17.0" />
          </font>
@@ -398,7 +386,7 @@
             </LinearGradient>
          </textFill>
       </Button>
-      <TextField fx:id="txtAddress" blendMode="MULTIPLY" layoutX="395.0" layoutY="264.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
+      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="397.0" layoutY="274.0" prefHeight="38.0" prefWidth="386.0" promptText="House Holder">
          <effect>
             <InnerShadow>
                <color>
@@ -410,7 +398,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Text layoutX="395.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Residence Type    " wrappingWidth="189.336669921875">
+      <Text layoutX="395.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Residence Type    " wrappingWidth="189.336669921875">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -433,10 +421,10 @@
             </LinearGradient>
          </fill>
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="cbType" blendMode="MULTIPLY" layoutX="559.0" layoutY="321.0" prefHeight="30.0" prefWidth="218.0">
+      <ChoiceBox fx:id="cbType" blendMode="MULTIPLY" layoutX="567.0" layoutY="336.0" prefHeight="30.0" prefWidth="218.0">
          <effect>
             <InnerShadow>
                <color>
@@ -445,7 +433,7 @@
             </InnerShadow>
          </effect>
       </ChoiceBox>
-      <TextField fx:id="txtHomeID" blendMode="MULTIPLY" layoutX="395.0" layoutY="150.0" prefHeight="38.0" prefWidth="386.0" promptText="Home ID">
+      <TextField fx:id="txtHomeID" blendMode="MULTIPLY" layoutX="397.0" layoutY="158.0" prefHeight="38.0" prefWidth="386.0" promptText="Home ID">
          <effect>
             <InnerShadow>
                <color>
@@ -467,7 +455,7 @@
             <Font size="14.0" />
          </font>
       </CheckBox>
-      <Button fx:id="Save" layoutX="620.0" layoutY="556.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
+      <Button fx:id="Save" layoutX="620.0" layoutY="564.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
          <font>
             <Font size="17.0" />
          </font>
@@ -498,7 +486,7 @@
             </LinearGradient>
          </textFill>
       </Button>
-      <Text layoutX="395.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Division ID" wrappingWidth="121.33673095703125">
+      <Text layoutX="395.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Division ID" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -534,7 +522,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox fx:id="cbDivision" blendMode="MULTIPLY" layoutX="509.0" layoutY="104.0" prefWidth="150.0">
+      <ChoiceBox fx:id="cbDivision" blendMode="MULTIPLY" layoutX="515.0" layoutY="116.0" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>
@@ -543,5 +531,22 @@
             </InnerShadow>
          </effect>
       </ChoiceBox>
+      <Label fx:id="lblName" layoutX="482.0" layoutY="258.0" prefHeight="32.0" prefWidth="298.0" textFill="#6e3108">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAddress1" blendMode="MULTIPLY" layoutX="397.0" layoutY="218.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -331,7 +332,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="415.0" layoutY="168.0" prefHeight="38.0" prefWidth="386.0" promptText="Name">
+      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="415.0" layoutY="160.0" prefHeight="38.0" prefWidth="386.0" promptText="Name">
          <effect>
             <InnerShadow>
                <color>
@@ -343,7 +344,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtAddress" blendMode="MULTIPLY" layoutX="415.0" layoutY="294.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
+      <TextField fx:id="txtAddress" blendMode="MULTIPLY" layoutX="415.0" layoutY="314.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
          <effect>
             <InnerShadow>
                <color>
@@ -355,7 +356,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtRelation" blendMode="MULTIPLY" layoutX="415.0" layoutY="487.0" prefHeight="38.0" prefWidth="386.0" promptText="Relation to house holder">
+      <TextField fx:id="txtRelation" blendMode="MULTIPLY" layoutX="415.0" layoutY="504.0" prefHeight="38.0" prefWidth="386.0" promptText="Relation to house holder">
          <effect>
             <InnerShadow>
                <color>
@@ -438,7 +439,7 @@
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Text layoutX="415.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" wrappingWidth="121.33673095703125">
+      <Text layoutX="415.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -474,7 +475,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox fx:id="cbGender" blendMode="MULTIPLY" layoutX="533.0" layoutY="399.0" prefWidth="150.0">
+      <ChoiceBox fx:id="cbGender" blendMode="MULTIPLY" layoutX="520.0" layoutY="412.0" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>
@@ -483,7 +484,7 @@
             </InnerShadow>
          </effect>
       </ChoiceBox>
-      <Text layoutX="415.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marriage Status" wrappingWidth="150.3291015625">
+      <Text layoutX="415.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marriage Status" wrappingWidth="150.3291015625">
          <font>
             <Font size="20.0" />
          </font>
@@ -519,7 +520,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox fx:id="cbMarriage" blendMode="MULTIPLY" layoutX="577.0" layoutY="444.0" prefHeight="26.0" prefWidth="158.0">
+      <ChoiceBox fx:id="cbMarriage" blendMode="MULTIPLY" layoutX="577.0" layoutY="456.0" prefHeight="26.0" prefWidth="158.0">
          <effect>
             <InnerShadow>
                <color>
@@ -590,7 +591,7 @@
             </LinearGradient>
          </textFill>
       </Button>
-      <Text layoutX="415.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOB" wrappingWidth="121.33673095703125">
+      <Text layoutX="415.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOB" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -626,7 +627,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <DatePicker fx:id="dtpDOB" blendMode="MULTIPLY" layoutX="533.0" layoutY="348.0" prefHeight="26.0" prefWidth="150.0">
+      <DatePicker fx:id="dtpDOB" blendMode="MULTIPLY" layoutX="520.0" layoutY="368.0" prefHeight="26.0" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>
@@ -634,7 +635,7 @@
                </color></InnerShadow>
          </effect>
       </DatePicker>
-      <TextField fx:id="txtNIC" blendMode="MULTIPLY" layoutX="415.0" layoutY="232.0" prefHeight="38.0" prefWidth="386.0" promptText="NIC">
+      <TextField fx:id="txtNIC" blendMode="MULTIPLY" layoutX="415.0" layoutY="218.0" prefHeight="38.0" prefWidth="386.0" promptText="NIC">
          <effect>
             <InnerShadow>
                <color>
@@ -646,5 +647,55 @@
             <Font size="18.0" />
          </font>
       </TextField>
+      <Text layoutX="417.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Residence " wrappingWidth="121.33673095703125">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5048780487804878">
+                     <color>
+                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9919246298788693">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <ChoiceBox fx:id="cbResidence" blendMode="MULTIPLY" layoutX="522.0" layoutY="271.0" prefWidth="150.0">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </ChoiceBox>
+      <JFXButton fx:id="btnAdd" layoutX="763.0" layoutY="265.0" onAction="#btnAddOnAction" prefHeight="19.0" prefWidth="38.0" style="-fx-background-color: #f7c142;" text="+">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

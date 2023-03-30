@@ -4,11 +4,8 @@ import lombok.*;
 
 import java.time.LocalDate;
 
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
 
 public class Dead {
     private Integer ID;

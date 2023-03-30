@@ -2,15 +2,13 @@ package lk.ijse.dto;
 import lombok.*;
 import java.time.LocalDate;
 
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
 
 
 
 public class Civil1 {
+    private String id;
     private String name;
     private String nic;
     private String address;
@@ -18,4 +16,5 @@ public class Civil1 {
     private String gender;
     private String marriage;
     private String relation;
+    private String residence;
 }

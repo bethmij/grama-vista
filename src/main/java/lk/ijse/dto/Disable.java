@@ -2,11 +2,8 @@ package lk.ijse.dto;
 
 import lombok.*;
 
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
 
 public class Disable {
     private Integer ID;

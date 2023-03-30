@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import lk.ijse.dto.Civil;
 import lk.ijse.dto.Civil1;
+import lk.ijse.dto.MultiResidence;
 import lk.ijse.model.CandidateModel;
 import lk.ijse.model.CivilModel;
 import lk.ijse.model.DivisionModel;
@@ -55,9 +56,10 @@ public class individualForm2Controller implements Initializable {
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
         try {
-            boolean isSaved = CivilModel.save(new Civil(IndividualFormController.civil1.getName(), IndividualFormController.civil1.getNic(), IndividualFormController.civil1.getAddress(),
+            boolean isSaved = CivilModel.save(new Civil(IndividualFormController.civil1.getId(),IndividualFormController.civil1.getName(), IndividualFormController.civil1.getNic(), IndividualFormController.civil1.getAddress(),
                     IndividualFormController.civil1.getDob(), IndividualFormController.civil1.getGender(), IndividualFormController.civil1.getMarriage(),
-                    IndividualFormController.civil1.getRelation(),(String) cbEdu.getValue(),txtSchool.getText(),txtOccupation.getText(),txtWork.getText(),Double.valueOf(txtSalary.getText())));
+                    IndividualFormController.civil1.getRelation(),(String) cbEdu.getValue(),txtSchool.getText(),txtOccupation.getText(),txtWork.getText(),Double.valueOf(txtSalary.getText()),
+                    Integer.valueOf(txtContact1.getText()),Integer.valueOf(txtContact2.getText()),IndividualFormController.civil1.getResidence()));
 
             if (isSaved)
                 new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();

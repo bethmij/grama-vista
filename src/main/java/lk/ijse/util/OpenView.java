@@ -20,4 +20,16 @@ public class OpenView {
         stage.centerOnScreen();
     }
 
+    public static void openView (String view ){
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(OpenView.class.getResource("/view/"+view+".fxml"))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setTitle(view);
+        stage.centerOnScreen();
+        stage.show();
+    }
+
 }

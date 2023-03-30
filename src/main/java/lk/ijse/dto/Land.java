@@ -1,11 +1,8 @@
 package lk.ijse.dto;
 import lombok.*;
 
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
 
 public class Land {
     private String land_id;

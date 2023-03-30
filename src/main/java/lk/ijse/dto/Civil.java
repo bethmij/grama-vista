@@ -4,13 +4,11 @@ import lombok.*;
 
 import java.time.LocalDate;
 
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
 
 public class Civil {
+    private String id;
     private String name;
     private String nic;
     private String address;
@@ -23,6 +21,9 @@ public class Civil {
     private String occupation;
     private String working_address;
     private Double salary;
+    private Integer contact1;
+    private Integer contact2;
+    private String residence;
 
 
 }

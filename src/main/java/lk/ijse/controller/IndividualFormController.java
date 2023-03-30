@@ -13,6 +13,7 @@ import lk.ijse.dto.Civil;
 import lk.ijse.dto.Civil1;
 import lk.ijse.model.CivilModel;
 import lk.ijse.model.DivisionModel;
+import lk.ijse.model.ResidenceModel;
 import lk.ijse.util.OpenView;
 
 import java.io.IOException;
@@ -35,6 +36,7 @@ public class IndividualFormController implements Initializable {
     public Button btnNext;
     public DatePicker dtpDOB;
     public TextField txtNIC;
+    public ChoiceBox cbResidence;
     private Integer reg_id;
     public static Civil1 civil1 = null;
 
@@ -44,6 +46,7 @@ public class IndividualFormController implements Initializable {
         generateNextId();
         loadGender();
         loadMarriage();
+        loadResidenceID();
         if ((!(civil1 == null))) {
             try {
                 setIndivController();
@@ -54,6 +57,19 @@ public class IndividualFormController implements Initializable {
 
     }
 
+    private void loadResidenceID() {
+        try {
+            List<String> id = ResidenceModel.loadResidenceID();
+            ObservableList<String> dataList = FXCollections.observableArrayList();
+
+            for (String ids : id) {
+                dataList.add(ids);
+            }
+            cbResidence.setItems(dataList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     private void generateNextId() {
@@ -89,8 +105,11 @@ public class IndividualFormController implements Initializable {
 
         OpenView.openView("individualForm2", indiroot1);
 
-        civil1 = new Civil1(txtName.getText(),txtNIC.getText(),txtAddress.getText(),
-                dtpDOB.getValue(),(String) cbGender.getValue(),(String) cbMarriage.getValue(),txtRelation.getText());
+        String id =  lblCivil.getText();
+        String[] strings = id.split("C00");
+
+        civil1 = new Civil1(strings[1],txtName.getText(),txtNIC.getText(),txtAddress.getText(),
+                dtpDOB.getValue(),(String) cbGender.getValue(),(String) cbMarriage.getValue(),txtRelation.getText(),(String)cbResidence.getValue());
 
 
     }
@@ -104,6 +123,10 @@ public class IndividualFormController implements Initializable {
         cbGender.setValue(civil1.getGender());
         cbMarriage.setValue(civil1.getMarriage());
         txtRelation.setText(civil1.getRelation());
+        cbResidence.setValue(civil1.getResidence());
     }
 
+    public void btnAddOnAction(ActionEvent actionEvent) {
+        OpenView.openView("addResidenceForm");
+    }
 }

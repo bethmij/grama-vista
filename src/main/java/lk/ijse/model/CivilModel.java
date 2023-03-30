@@ -1,6 +1,7 @@
 package lk.ijse.model;
 
 import lk.ijse.dto.Civil;
+import lk.ijse.dto.MultiResidence;
 import lk.ijse.util.CrudUtil;
 
 import java.io.InputStream;
@@ -25,7 +26,8 @@ public class CivilModel {
 
 
 
-    public static boolean save(Civil civil) throws SQLException {
+    public static boolean save(Civil civil ) throws SQLException {
+
         String sql = "INSERT INTO grama_vista.civil (nic, name, address, gender, dob, marriage_status, relation, education_status, school, occupation, working_address, salary) " +
                 "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -34,6 +36,8 @@ public class CivilModel {
                 civil.getEdu_status(),civil.getSchool(),civil.getOccupation(),civil.getWorking_address(),civil.getSalary());
 
         return isSaved;
+
+
     }
 
     public static boolean upload(String id, InputStream in) throws SQLException {

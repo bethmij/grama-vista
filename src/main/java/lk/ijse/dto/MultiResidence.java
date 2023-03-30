@@ -6,5 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 
-public class Owner {
+public class MultiResidence {
+    private String civil_id;
+    private String residence_id;
 }

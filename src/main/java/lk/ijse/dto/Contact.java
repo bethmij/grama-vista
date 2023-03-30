@@ -2,11 +2,8 @@ package lk.ijse.dto;
 
 import lombok.*;
 
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
 
 public class Contact {
     private String civil_id;

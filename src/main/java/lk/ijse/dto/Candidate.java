@@ -4,11 +4,9 @@ import lombok.*;
 
 import java.security.SecureRandom;
 
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
+
 
 public class Candidate {
     private String election_id;

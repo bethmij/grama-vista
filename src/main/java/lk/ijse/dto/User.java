@@ -5,11 +5,8 @@ import lombok.*;
 import java.time.LocalDate;
 import java.util.Date;
 
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
 
 public class User {
 
