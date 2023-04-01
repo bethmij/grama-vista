@@ -7,6 +7,6 @@ import lombok.Data;
 @AllArgsConstructor
 
 public class LandType {
-    private String land_id;
+    private Integer land_id;
     private String land_type;
 }

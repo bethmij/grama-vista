@@ -59,11 +59,11 @@ public class LandModel {
             }
             return false;
         } catch (SQLException er) {
-            assert con != null;
+            System.out.println(er);
             con.rollback();
             return false;
         } finally {
-            assert con != null;
+
             con.setAutoCommit(true);
         }
 

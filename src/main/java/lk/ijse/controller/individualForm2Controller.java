@@ -64,7 +64,7 @@ public class individualForm2Controller implements Initializable {
         contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact1.getText())));
         contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact2.getText())));
 
-        AddResidenceFormController.residenceList.add(new MultiResidence(IndividualFormController.civil1.getId(), IndividualFormController.civil1.getResidence()));
+        AddResidenceFormController.residenceList.add(new MultiResidence( IndividualFormController.civil1.getResidence(),IndividualFormController.civil1.getId()));
 
         boolean isSaved = CivilResidenceModel.save( civil,contactList,AddResidenceFormController.residenceList);
 

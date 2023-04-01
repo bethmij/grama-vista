@@ -44,7 +44,7 @@ public class AddResidenceFormController implements Initializable {
 
         String[] strings = txtCivil.getText().split("C00");
 
-        residenceList.add(new MultiResidence(strings[1],(String) cbResidence.getValue()));
+        residenceList.add(new MultiResidence((String) cbResidence.getValue(),strings[1]));
         if(residenceList!=null)
             new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
     }

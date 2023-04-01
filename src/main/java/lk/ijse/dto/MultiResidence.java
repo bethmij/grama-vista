@@ -7,6 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 
 public class MultiResidence {
-    private String civil_id;
     private String residence_id;
+    private String civil_id;
+
 }

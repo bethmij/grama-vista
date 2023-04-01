@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dto.Candidate;
 import lk.ijse.dto.Land;
+import lk.ijse.dto.LandType;
 import lk.ijse.model.CandidateModel;
 import lk.ijse.model.CivilModel;
 import lk.ijse.model.DivisionModel;
@@ -58,6 +59,9 @@ public class LandFormController implements Initializable {
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
+
+        String[] type_id = lblID.getText().split("L00");
+        AddLandTypeFormController.landTypeList.add(new LandType(Integer.valueOf(String.valueOf(type_id)), (String) cbLType.getValue()));
 
         try {
             boolean isSaved = LandModel.save(new Land(

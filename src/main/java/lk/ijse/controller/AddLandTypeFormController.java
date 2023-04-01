@@ -36,7 +36,9 @@ public class AddLandTypeFormController implements Initializable {
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
 
-        landTypeList.add(new LandType(txtLand.getText(), (String) cbType.getValue()));
+        String[] type_id = txtLand.getText().split("L00");
+
+        landTypeList.add(new LandType(Integer.valueOf(type_id[1]), (String) cbType.getValue()));
         if(landTypeList!=null)
             new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
     }

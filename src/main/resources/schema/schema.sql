@@ -47,7 +47,7 @@ CREATE TABLE civil(
 CREATE TABLE multi_residence(
                                 home_id VARCHAR(10),
                                 reg_number INT,
-                                CONSTRAINT FOREIGN KEY (home_id) REFERENCES residence(division_id) ON UPDATE CASCADE ON DELETE CASCADE,
+                                CONSTRAINT FOREIGN KEY (home_id) REFERENCES residence(home_id) ON UPDATE CASCADE ON DELETE CASCADE,
                                 CONSTRAINT FOREIGN KEY (reg_number) REFERENCES civil(reg_number) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
