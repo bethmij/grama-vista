@@ -36,9 +36,7 @@ public class DivisionModel {
          String sql = "INSERT INTO grama_vista.gn_division (division_id, name, div_secretariat, admin_officer,land_area) " +
                             "VALUES(?, ?, ?, ?,?)";
 
-         boolean isSaved = CrudUtil.execute(sql, division.getDivision_id(), division.getName(), division.getDiv_Secretariat(), division.getAdmin_officer(), division.getLand_area());
-
-         return isSaved;
+         return CrudUtil.execute(sql, division.getDivision_id(), division.getName(), division.getDiv_Secretariat(), division.getAdmin_officer(), division.getLand_area());
 
     }
 

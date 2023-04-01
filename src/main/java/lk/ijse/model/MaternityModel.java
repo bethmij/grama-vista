@@ -18,8 +18,10 @@ public class MaternityModel {
     }
 
     public static boolean save(Maternity maternity) throws SQLException {
+
         boolean isSaved = CrudUtil.execute("INSERT INTO grama_vista.maternity_people (id, reg_number, date_of_pregnancy, months, mid_wife) VALUES (?,?,?,?,?)",
                 maternity.getID(),maternity.getCivil_ID(),maternity.getDate(),maternity.getMonths(),maternity.getMid_wife());
+
         return isSaved;
     }
 }

@@ -21,9 +21,6 @@ public class Civil {
     private String occupation;
     private String working_address;
     private Double salary;
-    private Integer contact1;
-    private Integer contact2;
-    private String residence;
 
 
 }

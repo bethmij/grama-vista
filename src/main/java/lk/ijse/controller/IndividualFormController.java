@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dto.Civil;
 import lk.ijse.dto.Civil1;
+import lk.ijse.dto.MultiResidence;
 import lk.ijse.model.CivilModel;
 import lk.ijse.model.DivisionModel;
 import lk.ijse.model.ResidenceModel;
@@ -19,6 +20,7 @@ import lk.ijse.util.OpenView;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -39,6 +41,7 @@ public class IndividualFormController implements Initializable {
     public ChoiceBox cbResidence;
     private Integer reg_id;
     public static Civil1 civil1 = null;
+    public static List<MultiResidence> residenceList;
 
 
     @Override
@@ -127,6 +130,9 @@ public class IndividualFormController implements Initializable {
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) {
+
         OpenView.openView("addResidenceForm");
+
+
     }
 }

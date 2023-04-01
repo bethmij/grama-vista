@@ -64,5 +64,11 @@ public class CivilModel {
         }
         return null;
     }
+
+    public static boolean delete(String civil_id) throws SQLException {
+
+        return CrudUtil.execute("DELETE FROM grama_vista.dead_people WHERE reg_number=?",civil_id);
+
+    }
 }
 

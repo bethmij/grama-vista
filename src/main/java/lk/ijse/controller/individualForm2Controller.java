@@ -18,15 +18,16 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import lk.ijse.dto.Civil;
 import lk.ijse.dto.Civil1;
+import lk.ijse.dto.Contact;
 import lk.ijse.dto.MultiResidence;
-import lk.ijse.model.CandidateModel;
-import lk.ijse.model.CivilModel;
-import lk.ijse.model.DivisionModel;
+import lk.ijse.model.*;
 import lk.ijse.util.OpenView;
 
 import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class individualForm2Controller implements Initializable {
@@ -54,21 +55,24 @@ public class individualForm2Controller implements Initializable {
     }
 
 
-    public void btnSaveOnAction(ActionEvent actionEvent) {
-        try {
-            boolean isSaved = CivilModel.save(new Civil(IndividualFormController.civil1.getId(),IndividualFormController.civil1.getName(), IndividualFormController.civil1.getNic(), IndividualFormController.civil1.getAddress(),
-                    IndividualFormController.civil1.getDob(), IndividualFormController.civil1.getGender(), IndividualFormController.civil1.getMarriage(),
-                    IndividualFormController.civil1.getRelation(),(String) cbEdu.getValue(),txtSchool.getText(),txtOccupation.getText(),txtWork.getText(),Double.valueOf(txtSalary.getText()),
-                    Integer.valueOf(txtContact1.getText()),Integer.valueOf(txtContact2.getText()),IndividualFormController.civil1.getResidence()));
+    public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
+        Civil civil =new Civil(IndividualFormController.civil1.getId(),IndividualFormController.civil1.getName(), IndividualFormController.civil1.getNic(), IndividualFormController.civil1.getAddress(),
+                IndividualFormController.civil1.getDob(), IndividualFormController.civil1.getGender(), IndividualFormController.civil1.getMarriage(),
+                IndividualFormController.civil1.getRelation(),(String) cbEdu.getValue(),txtSchool.getText(),txtOccupation.getText(),txtWork.getText(),Double.valueOf(txtSalary.getText()));
 
-            if (isSaved)
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-            else
-                new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+        List<Contact> contactList = new ArrayList<>();
+        contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact1.getText())));
+        contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact2.getText())));
 
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
+        AddResidenceFormController.residenceList.add(new MultiResidence(IndividualFormController.civil1.getId(), IndividualFormController.civil1.getResidence()));
+
+        boolean isSaved = CivilResidenceModel.save( civil,contactList,AddResidenceFormController.residenceList);
+
+        if (isSaved)
+            new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
+        else
+            new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) throws SQLException {

@@ -11,13 +11,14 @@ import lk.ijse.model.ResidenceModel;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class AddResidenceFormController implements Initializable {
     public TextField txtCivil;
     public ChoiceBox cbResidence;
-    public static List<MultiResidence> residenceList;
+    public static List<MultiResidence> residenceList = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -41,7 +42,9 @@ public class AddResidenceFormController implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent)  {
 
         String[] strings = txtCivil.getText().split("C00");
+
         residenceList.add(new MultiResidence(strings[1],(String) cbResidence.getValue()));
+        System.out.println(residenceList);
     }
 
 

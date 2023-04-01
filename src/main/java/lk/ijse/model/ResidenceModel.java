@@ -1,6 +1,8 @@
 package lk.ijse.model;
 
 import lk.ijse.dto.Candidate;
+import lk.ijse.dto.Contact;
+import lk.ijse.dto.MultiResidence;
 import lk.ijse.dto.Residence;
 import lk.ijse.util.CrudUtil;
 
@@ -22,6 +24,8 @@ public class ResidenceModel {
 
         return isSaved;
     }
+
+
 
     public static List<String> loadResidenceID() throws SQLException {
         ResultSet resultSet = CrudUtil.execute("SELECT home_id FROM grama_vista.residence ");

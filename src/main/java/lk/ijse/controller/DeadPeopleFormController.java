@@ -6,6 +6,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.dto.Candidate;
+import lk.ijse.dto.Dead;
+import lk.ijse.model.CandidateModel;
 import lk.ijse.model.CivilModel;
 import lk.ijse.model.DeadModel;
 import lk.ijse.model.MaternityModel;
@@ -13,6 +16,7 @@ import lk.ijse.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -59,6 +63,21 @@ public class DeadPeopleFormController implements Initializable {
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
+
+        String id =  (String) cmbCivil.getValue();
+        String[] strings = id.split("C00");
+
+        try {
+            boolean isSaved = DeadModel.save(new Dead(strings[1],lblName.getText(), Integer.valueOf(txtAge.getText()), dtpDate.getValue()));
+
+            if (isSaved)
+                new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
+            else
+                new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
 
     }
 

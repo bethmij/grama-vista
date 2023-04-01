@@ -8,7 +8,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 
 public class Dead {
-    private Integer ID;
     private String civil_ID;
     private String name;
     private Integer age;

@@ -459,7 +459,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <DatePicker fx:id="dtpDate" blendMode="MULTIPLY" layoutX="498.0" layoutY="434.0">
+      <DatePicker fx:id="dtpDate" blendMode="MULTIPLY" layoutX="516.0" layoutY="435.0">
          <effect>
             <InnerShadow>
                <color>
@@ -468,7 +468,7 @@
             </InnerShadow>
          </effect>
       </DatePicker>
-      <Text layoutX="403.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="121.33673095703125">
+      <Text layoutX="403.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Death Date" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>

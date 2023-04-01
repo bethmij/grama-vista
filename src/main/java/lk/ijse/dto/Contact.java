@@ -7,7 +7,5 @@ import lombok.*;
 
 public class Contact {
     private String civil_id;
-    private String contact;
-    private Integer contact1;
-    private Integer contact2;
+    private Integer contact;
 }

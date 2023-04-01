@@ -26,7 +26,7 @@ public class CandidateModel {
     }
 
     public static boolean upload (String id,InputStream in ) throws SQLException {
-        boolean isUploaded = CrudUtil.execute("UPDATE grama_vista.candidate SET image=? WHERE elect_reg_num=?",in,id);
-        return isUploaded;
+
+        return CrudUtil.execute("UPDATE grama_vista.candidate SET image=? WHERE elect_reg_num=?",in,id);
     }
 }
