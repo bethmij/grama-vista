@@ -43,6 +43,7 @@ public class individualForm2Controller implements Initializable {
     public Label lblContact;
     public Label lblContact1;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadGender();
@@ -56,17 +57,24 @@ public class individualForm2Controller implements Initializable {
 
 
     public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
+        Double salary;
+        if (!txtSalary.getText().isEmpty()) salary = Double.valueOf(txtSalary.getText());
+        else salary = 0.0;
+
         Civil civil =new Civil(IndividualFormController.civil1.getId(),IndividualFormController.civil1.getName(), IndividualFormController.civil1.getNic(), IndividualFormController.civil1.getAddress(),
                 IndividualFormController.civil1.getDob(), IndividualFormController.civil1.getGender(), IndividualFormController.civil1.getMarriage(),
-                IndividualFormController.civil1.getRelation(),(String) cbEdu.getValue(),txtSchool.getText(),txtOccupation.getText(),txtWork.getText(),Double.valueOf(txtSalary.getText()));
+                IndividualFormController.civil1.getRelation(),(String) cbEdu.getValue(),txtSchool.getText(),txtOccupation.getText(),txtWork.getText(),salary);
 
         List<Contact> contactList = new ArrayList<>();
-        contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact1.getText())));
-        contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact2.getText())));
+
+        if (!txtContact1.getText().isEmpty()) contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact1.getText())));
+        if (!txtContact2.getText().isEmpty()) contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact2.getText())));
 
         AddResidenceFormController.residenceList.add(new MultiResidence( IndividualFormController.civil1.getResidence(),IndividualFormController.civil1.getId()));
 
-        boolean isSaved = CivilResidenceModel.save( civil,contactList,AddResidenceFormController.residenceList);
+        String division_id = CivilModel.getDivisionId(IndividualFormController.civil1.getResidence());
+
+        boolean isSaved = CivilResidenceModel.save( civil,contactList,AddResidenceFormController.residenceList,division_id);
 
         if (isSaved)
             new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
@@ -79,7 +87,6 @@ public class individualForm2Controller implements Initializable {
         OpenView.openView("individualForm",indiroot2);
 
     }
-
 
     public void btnImageOnAction(ActionEvent actionEvent) {
 
@@ -136,5 +143,14 @@ public class individualForm2Controller implements Initializable {
     }
 
     public void btnResetOnAction(ActionEvent actionEvent) {
+        txtSchool.clear();
+        txtSalary.clear();
+        txtWork.clear();
+        txtOccupation.clear();
+        cbEdu.setValue(null);
+        txtContact2.clear();
+        txtContact1.clear();
+        lblContact.setText("");
+        lblContact1.setText("");
     }
 }

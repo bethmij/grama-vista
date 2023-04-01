@@ -5,7 +5,7 @@ import lombok.*;
 @AllArgsConstructor
 
 public class Land {
-    private String land_id;
+    private Integer land_id;
     private String plan_num;
     private Double l_area;
 

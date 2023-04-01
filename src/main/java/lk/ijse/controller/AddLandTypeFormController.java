@@ -6,11 +6,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import lk.ijse.dto.LandType;
+import lk.ijse.dto.LandDetail;
+import lk.ijse.model.LandTypeModel;
 
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -20,11 +23,13 @@ public class AddLandTypeFormController implements Initializable {
 
     public TextField txtLand;
     public ChoiceBox cbType;
-    public static List<LandType> landTypeList = new ArrayList<>();
+    public static List<LandDetail> landDetailList = new ArrayList<>();
+    public Label lblLand;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadLandType();
+        lblLand.setText(LandFormController.land_id);
     }
 
     private void loadLandType() {
@@ -34,12 +39,13 @@ public class AddLandTypeFormController implements Initializable {
 
     }
 
-    public void btnSaveOnAction(ActionEvent actionEvent) {
+    public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
 
-        String[] type_id = txtLand.getText().split("L00");
+        String[] land_num = lblLand.getText().split("L00");
+        Integer type_id = LandTypeModel.getTypeId((String) cbType.getValue());
 
-        landTypeList.add(new LandType(Integer.valueOf(type_id[1]), (String) cbType.getValue()));
-        if(landTypeList!=null)
+        landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1])));
+        if(landDetailList !=null)
             new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
     }
 

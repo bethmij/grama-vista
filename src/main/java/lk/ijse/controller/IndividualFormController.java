@@ -42,6 +42,7 @@ public class IndividualFormController implements Initializable {
     private Integer reg_id;
     public static Civil1 civil1 = null;
     public static List<MultiResidence> residenceList;
+    public static String civil_id;
 
 
     @Override
@@ -130,12 +131,18 @@ public class IndividualFormController implements Initializable {
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) {
-
+        civil_id=lblCivil.getText();
         OpenView.openView("addResidenceForm");
-
-
     }
 
     public void btnResetOnAction(ActionEvent actionEvent) {
+        txtName.clear();
+        txtNIC.clear();
+        txtAddress.clear();
+        dtpDOB.setValue(null);
+        cbGender.setValue(null);
+        cbMarriage.setValue(null);
+        txtRelation.clear();
+        cbResidence.setValue(null);
     }
 }

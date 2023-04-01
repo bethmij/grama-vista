@@ -95,5 +95,9 @@ public class MaternityRegistFormController implements Initializable {
 
 
     public void btnResetOnAction(ActionEvent actionEvent) {
+        txtMidWife.clear();
+        lblName.setText("");
+        txtMonths.clear();
+        dtpDate.setValue(null);
     }
 }

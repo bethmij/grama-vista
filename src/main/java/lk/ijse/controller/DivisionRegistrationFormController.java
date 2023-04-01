@@ -73,5 +73,9 @@ public class DivisionRegistrationFormController implements Initializable {
 
 
     public void btnResetOnAction(ActionEvent actionEvent) {
+        txtName.clear();
+        txtSecret.clear();
+        txtLand.clear();
+        txtAdmin.clear();
     }
 }

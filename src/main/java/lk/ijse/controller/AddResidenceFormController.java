@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import lk.ijse.dto.MultiResidence;
 import lk.ijse.model.ResidenceModel;
@@ -20,10 +21,12 @@ public class AddResidenceFormController implements Initializable {
     public TextField txtCivil;
     public ChoiceBox cbResidence;
     public static List<MultiResidence> residenceList = new ArrayList<>();
+    public Label lblCivil;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadResidenceID();
+        lblCivil.setText(IndividualFormController.civil_id);
     }
 
     private void loadResidenceID() {
@@ -42,7 +45,7 @@ public class AddResidenceFormController implements Initializable {
 
     public void btnSaveOnAction(ActionEvent actionEvent)  {
 
-        String[] strings = txtCivil.getText().split("C00");
+        String[] strings = lblCivil.getText().split("C00");
 
         residenceList.add(new MultiResidence((String) cbResidence.getValue(),strings[1]));
         if(residenceList!=null)

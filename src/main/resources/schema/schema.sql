@@ -32,7 +32,6 @@ CREATE TABLE civil(
                       address VARCHAR(100),
                       gender ENUM('Male','Female','Other'),
                       dob DATE,
-                      age INT(3),
                       marriage_status ENUM ('Married','Not married'),
                       relation VARCHAR(20),
                       education_status ENUM ('Student','Employed','Unemployed'),
@@ -54,7 +53,6 @@ CREATE TABLE multi_residence(
 CREATE TABLE dead_people(
                             id INT AUTO_INCREMENT,
                             reg_number INT UNIQUE,
-                            age INT (3),
                             dead_date DATE,
                             CONSTRAINT PRIMARY KEY (id),
                             CONSTRAINT FOREIGN KEY (reg_number) REFERENCES civil(reg_number) ON UPDATE CASCADE ON DELETE CASCADE
@@ -95,8 +93,9 @@ CREATE TABLE land(
 
 CREATE TABLE co_ownership(
                              reg_number INT,
-                             land_num VARCHAR(10),
+                             land_num INT,
                              land_percentage VARCHAR(4),
+                             lot_num VARCHAR(10),
                              CONSTRAINT FOREIGN KEY (reg_number) REFERENCES civil(reg_number) ON UPDATE CASCADE ON DELETE CASCADE,
                              CONSTRAINT FOREIGN KEY (land_num) REFERENCES land(land_num) ON UPDATE CASCADE ON DELETE CASCADE
 );
@@ -109,8 +108,7 @@ CREATE TABLE land_type (
 
 CREATE TABLE land_detail (
                              type_id INT ,
-                             land_num VARCHAR(10),
-                             lot_number VARCHAR(20),
+                             land_num INT,
                              CONSTRAINT FOREIGN KEY (land_num) REFERENCES land(land_num) ON UPDATE CASCADE ON DELETE CASCADE,
                              CONSTRAINT FOREIGN KEY (type_id) REFERENCES land_type(type_id) ON UPDATE CASCADE ON DELETE CASCADE
 

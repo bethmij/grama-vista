@@ -36,7 +36,6 @@ public class CandidateFormController implements Initializable {
     public AnchorPane CandidatePane;
     public TextField txtID;
     public TextField txtAddress;
-    public TextField txtAge;
     public TextField txtName;
     public TextField txtNIC;
     public TextField txtContact;
@@ -95,7 +94,6 @@ public class CandidateFormController implements Initializable {
                     (String)cbPolitic.getValue(),
                     (String) cbGender.getValue(),
                     txtAddress.getText(),
-                    Integer.valueOf(txtAge.getText()),
                     Integer.valueOf(txtContact.getText())));
 
             if (isSaved)
@@ -115,20 +113,6 @@ public class CandidateFormController implements Initializable {
         OpenView.openView("civilRegistrationForm",CandidatePane);
     }
 
-
-    public void txtAgeOnKeyReleased(KeyEvent keyEvent) {
-        if (!txtAge.getText().matches("^[0-9]*$")) {
-            txtAge.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
-            lblAge.setText("This filed can only contain numeric values!");
-        }
-    }
-
-    public void txtAgeOnKeyTyped(KeyEvent keyEvent) {
-        if (txtAge.getText().matches("^[0-9]*$")) {
-            txtAge.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
-            lblAge.setText("");
-        }
-    }
 
     public void txtContactOnKeyReleased(KeyEvent keyEvent) {
         if (!txtContact.getText().matches("^[0-9]*$")) {
@@ -174,5 +158,11 @@ public class CandidateFormController implements Initializable {
     }
 
     public void btnResetOnAction(ActionEvent actionEvent) {
+        txtID.clear();
+        txtAddress.clear();
+        txtName.clear();
+        txtNIC.clear();
+        txtContact.clear();
+        lblContact.setText("");
     }
 }

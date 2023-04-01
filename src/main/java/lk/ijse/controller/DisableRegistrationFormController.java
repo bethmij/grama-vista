@@ -96,5 +96,8 @@ public class DisableRegistrationFormController implements Initializable {
     }
 
     public void btnResetOnAction(ActionEvent actionEvent) {
+        txtDisability.clear();
+        lblName.setText("");
+        txtDescription.clear();
     }
 }

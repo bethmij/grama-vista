@@ -8,15 +8,14 @@ import java.sql.SQLException;
 
 public class CandidateModel {
     public static boolean save(Candidate candidate) throws SQLException {
-        String sql = "INSERT INTO grama_vista.candidate ( elect_reg_num,division_id, nic, name, age,address, contact, political_party) " +
-                "VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO grama_vista.candidate ( elect_reg_num,division_id, nic, name,address, contact, political_party) " +
+                "VALUES (?,?,?,?,?,?,?)";
 
         boolean isSaved = CrudUtil.execute(sql,
                 candidate.getElection_id(),
                 candidate.getDivision_id(),
                 candidate.getNic(),
                 candidate.getName(),
-                candidate.getAge(),
                 candidate.getAddress(),
                 candidate.getContact(),
                 candidate.getPolitical_party());

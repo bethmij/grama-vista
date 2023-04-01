@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -65,7 +64,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Text layoutX="403.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Civil ID" wrappingWidth="121.33673095703125">
+      <Text layoutX="403.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Civil ID" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -101,19 +100,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <TextField fx:id="txtAge" blendMode="MULTIPLY" layoutX="403.0" layoutY="360.0" prefHeight="38.0" prefWidth="386.0" promptText="Age">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
-               </color>
-            </InnerShadow>
-         </effect>
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <Label layoutX="403.0" layoutY="164.0" text="ID    -">
+      <Label layoutX="403.0" layoutY="192.0" text="ID    -">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -149,11 +136,11 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblID" layoutX="494.0" layoutY="163.0" prefHeight="32.0" prefWidth="84.0" textFill="#5e3107">
+      <Label fx:id="lblID" layoutX="493.0" layoutY="191.0" prefHeight="32.0" prefWidth="84.0" textFill="#5e3107">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Text layoutX="403.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name   -  " wrappingWidth="121.33673095703125">
+      <Text layoutX="403.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name   -  " wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -189,11 +176,11 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Label fx:id="lblName" layoutX="494.0" layoutY="295.0" prefHeight="32.0" prefWidth="347.0" textFill="#5e3107">
+      <Label fx:id="lblName" layoutX="494.0" layoutY="325.0" prefHeight="32.0" prefWidth="347.0" textFill="#5e3107">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <DatePicker fx:id="dtpDate" blendMode="MULTIPLY" layoutX="516.0" layoutY="435.0">
+      <DatePicker fx:id="dtpDate" blendMode="MULTIPLY" layoutX="525.0" layoutY="403.0">
          <effect>
             <InnerShadow>
                <color>
@@ -202,7 +189,7 @@
             </InnerShadow>
          </effect>
       </DatePicker>
-      <Text layoutX="403.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Death Date" wrappingWidth="121.33673095703125">
+      <Text layoutX="403.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Death Date" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -272,7 +259,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ComboBox fx:id="cmbCivil" blendMode="MULTIPLY" layoutX="494.0" layoutY="238.0" onAction="#cmbCivilOnAction" prefWidth="150.0">
+      <ComboBox fx:id="cmbCivil" blendMode="MULTIPLY" layoutX="494.0" layoutY="264.0" onAction="#cmbCivilOnAction" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>

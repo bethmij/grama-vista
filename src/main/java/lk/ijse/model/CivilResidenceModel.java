@@ -12,7 +12,7 @@ import java.util.List;
 
 public class CivilResidenceModel {
 
-    public static boolean save(Civil civil , List<Contact> contact, List<MultiResidence> multiResidence) throws SQLException {
+    public static boolean save(Civil civil , List<Contact> contact, List<MultiResidence> multiResidence, String division_id) throws SQLException {
 
         Connection con = null;
         try {
@@ -39,8 +39,11 @@ public class CivilResidenceModel {
                 if (isContactSaved) {
                     boolean isResidenceSaved = MultiResidenceModel.save(multiResidence);
                     if (isResidenceSaved) {
-                        con.commit();
-                        return true;
+                        boolean isPopulationUpdate = DivisionModel.UpdatePopulation(division_id);
+                        if(isPopulationUpdate) {
+                            con.commit();
+                            return true;
+                        }
 
                     }
                 }

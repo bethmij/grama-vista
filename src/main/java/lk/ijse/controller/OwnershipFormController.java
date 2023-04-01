@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dto.Owner;
@@ -27,11 +28,12 @@ public class OwnershipFormController implements Initializable {
     public TextField txtPercentage;
     public static List<Owner> ownerList = new ArrayList<>();
     public TextField txtLand;
+    public Label lblLand;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         loadCivilId();
+        lblLand.setText(LandFormController.land_id);
     }
 
 
@@ -54,9 +56,10 @@ public class OwnershipFormController implements Initializable {
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
 
+        String[] land_num = lblLand.getText().split("L00");
         String[] civil_id = String.valueOf(cbCivilID.getValue()).split("C00");
 
-        ownerList.add(new Owner(txtLand.getText(), civil_id[1], txtLotNum.getText(), Double.valueOf(txtPercentage.getText() )));
+        ownerList.add(new Owner(Integer.valueOf(land_num[1]), civil_id[1], txtLotNum.getText(), Double.valueOf(txtPercentage.getText() )));
         if(ownerList!=null)
             new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
 

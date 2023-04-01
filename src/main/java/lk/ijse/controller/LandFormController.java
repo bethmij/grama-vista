@@ -3,29 +3,20 @@ package lk.ijse.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import lk.ijse.dto.Candidate;
 import lk.ijse.dto.Land;
-import lk.ijse.dto.LandType;
-import lk.ijse.model.CandidateModel;
-import lk.ijse.model.CivilModel;
-import lk.ijse.model.DivisionModel;
+import lk.ijse.dto.LandDetail;
 import lk.ijse.model.LandModel;
+import lk.ijse.model.LandTypeModel;
 import lk.ijse.util.OpenView;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class LandFormController implements Initializable {
@@ -34,6 +25,7 @@ public class LandFormController implements Initializable {
     public TextField txtArea;
     public ChoiceBox cbLType;
     public Label lblID;
+    public static String land_id;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,7 +35,7 @@ public class LandFormController implements Initializable {
 
     private void generateLandId() {
         try {
-            String id = LandModel.getNextLandId();
+            String id = "L00"+LandModel.getNextLandId();
             lblID.setText(id);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -58,14 +50,15 @@ public class LandFormController implements Initializable {
 
     }
 
-    public void btnSaveOnAction(ActionEvent actionEvent) {
+    public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
+        String[] land_num = lblID.getText().split("L00");
+        Integer type_id = LandTypeModel.getTypeId((String) cbLType.getValue());
 
-        String[] type_id = lblID.getText().split("L00");
-        AddLandTypeFormController.landTypeList.add(new LandType(Integer.valueOf(String.valueOf(type_id)), (String) cbLType.getValue()));
+        AddLandTypeFormController.landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1])));
 
         try {
             boolean isSaved = LandModel.save(new Land(
-                    lblID.getText(), txtPlan.getText(), Double.valueOf(txtArea.getText())), AddLandTypeFormController.landTypeList, OwnershipFormController.ownerList);
+                    Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText())), AddLandTypeFormController.landDetailList, OwnershipFormController.ownerList);
 
             if (isSaved)
                 new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
@@ -79,8 +72,8 @@ public class LandFormController implements Initializable {
     }
 
     public void btnOwnerOnAction(ActionEvent actionEvent){
+        land_id=lblID.getText();
         OpenView.openView("ownershipForm");
-
 
     }
 
@@ -88,11 +81,15 @@ public class LandFormController implements Initializable {
         OpenView.openView("civilRegistrationForm",landRoot);
     }
 
-
     public void LandTypeOnAction(ActionEvent actionEvent) {
+        land_id=lblID.getText();
         OpenView.openView("addLandTypeForm");
+
     }
 
     public void btnResetOnAction(ActionEvent actionEvent) {
+        txtPlan.clear();
+        txtArea.clear();
+        cbLType.setValue(null);
     }
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 
-public class LandType {
-    private Integer land_id;
-    private String land_type;
+public class LandDetail {
+    private Integer type_id;
+    private Integer land_num;
 }

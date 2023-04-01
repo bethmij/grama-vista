@@ -332,7 +332,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="txtID" blendMode="MULTIPLY" layoutX="417.0" layoutY="148.0" prefHeight="38.0" prefWidth="386.0" promptText="Election ID">
+      <TextField fx:id="txtID" blendMode="MULTIPLY" layoutX="417.0" layoutY="164.0" prefHeight="38.0" prefWidth="386.0" promptText="Election ID">
          <effect>
             <InnerShadow>
                <color>
@@ -344,7 +344,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtAddress" blendMode="MULTIPLY" layoutX="416.0" layoutY="404.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
+      <TextField fx:id="txtAddress" blendMode="MULTIPLY" layoutX="417.0" layoutY="377.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
          <effect>
             <InnerShadow>
                <color>
@@ -356,7 +356,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtAge" blendMode="MULTIPLY" layoutX="417.0" layoutY="311.0" onKeyReleased="#txtAgeOnKeyReleased" onKeyTyped="#txtAgeOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Age">
+      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="417.0" layoutY="222.0" prefHeight="38.0" prefWidth="386.0" promptText="Name">
          <effect>
             <InnerShadow>
                <color>
@@ -368,7 +368,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="417.0" layoutY="202.0" prefHeight="38.0" prefWidth="386.0" promptText="Name">
+      <TextField fx:id="txtNIC" blendMode="MULTIPLY" layoutX="417.0" layoutY="282.0" prefHeight="38.0" prefWidth="386.0" promptText="NIC">
          <effect>
             <InnerShadow>
                <color>
@@ -380,19 +380,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtNIC" blendMode="MULTIPLY" layoutX="417.0" layoutY="257.0" prefHeight="38.0" prefWidth="386.0" promptText="NIC">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
-               </color>
-            </InnerShadow>
-         </effect>
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="txtContact" blendMode="MULTIPLY" layoutX="417.0" layoutY="491.0" onKeyReleased="#txtContactOnKeyReleased" onKeyTyped="#txtContactOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Contact">
+      <TextField fx:id="txtContact" blendMode="MULTIPLY" layoutX="417.0" layoutY="485.0" onKeyReleased="#txtContactOnKeyReleased" onKeyTyped="#txtContactOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Contact">
          <effect>
             <InnerShadow>
                <color>
@@ -449,7 +437,7 @@
             </InnerShadow>
          </effect>
       </ChoiceBox>
-      <Text layoutX="415.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Political Party" wrappingWidth="121.33673095703125">
+      <Text layoutX="417.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Political Party" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -485,7 +473,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox fx:id="cbPolitic" blendMode="MULTIPLY" layoutX="556.0" layoutY="459.0" prefHeight="26.0" prefWidth="242.0">
+      <ChoiceBox fx:id="cbPolitic" blendMode="MULTIPLY" layoutX="556.0" layoutY="440.0" prefHeight="26.0" prefWidth="242.0">
          <effect>
             <InnerShadow>
                <color>
@@ -569,7 +557,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text layoutX="415.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" wrappingWidth="121.33673095703125">
+      <Text layoutX="417.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -605,7 +593,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox fx:id="cbGender" blendMode="MULTIPLY" layoutX="519.0" layoutY="372.0" prefWidth="150.0">
+      <ChoiceBox fx:id="cbGender" blendMode="MULTIPLY" layoutX="513.0" layoutY="338.0" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>
@@ -614,8 +602,7 @@
             </InnerShadow>
          </effect>
       </ChoiceBox>
-      <Label fx:id="lblContact" layoutX="417.0" layoutY="535.0" prefHeight="18.0" prefWidth="303.0" textFill="#ef0d20" />
-      <Label fx:id="lblAge" layoutX="417.0" layoutY="345.0" prefHeight="18.0" prefWidth="303.0" textFill="#ef0d20" />
+      <Label fx:id="lblContact" layoutX="417.0" layoutY="525.0" prefHeight="18.0" prefWidth="303.0" textFill="#ef0d20" />
       <JFXButton fx:id="image" alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" layoutX="417.0" layoutY="550.0" onAction="#btnImageOnAction" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #c16c04;" text="Image">
          <font>
             <Font size="18.0" />

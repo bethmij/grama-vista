@@ -1,7 +1,6 @@
 package lk.ijse.model;
 
 import lk.ijse.dto.Civil;
-import lk.ijse.dto.MultiResidence;
 import lk.ijse.util.CrudUtil;
 
 import java.io.InputStream;
@@ -65,10 +64,23 @@ public class CivilModel {
         return null;
     }
 
-    public static boolean delete(String civil_id) throws SQLException {
 
-        return CrudUtil.execute("DELETE FROM grama_vista.dead_people WHERE reg_number=?",civil_id);
 
+    public static String getDivisionId(String residence) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT division_id FROM grama_vista.residence WHERE home_id=?",residence);
+        if(resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
+    }
+
+    public static String getDivisionId (Integer civil_id) throws SQLException {
+        String sql = "SELECT gn_division.division_id FROM grama_vista.residence JOIN grama_vista.multi_residence ON residence.home_id = multi_residence.home_id JOIN grama_vista.gn_division ON residence.division_id = gn_division.division_id WHERE multi_residence.reg_number=?";
+        ResultSet resultSet = CrudUtil.execute(sql,civil_id);
+        if(resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
     }
 }
 

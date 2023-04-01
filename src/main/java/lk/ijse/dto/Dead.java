@@ -10,6 +10,5 @@ import java.time.LocalDate;
 public class Dead {
     private String civil_ID;
     private String name;
-    private Integer age;
     private LocalDate date;
 }

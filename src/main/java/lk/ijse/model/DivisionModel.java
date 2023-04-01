@@ -50,7 +50,18 @@ public class DivisionModel {
 
         return  id;
         }
+
+    public static boolean UpdatePopulation (String division_id) throws SQLException {
+        return CrudUtil.execute("UPDATE grama_vista.gn_division SET population=population+1 WHERE division_id=?",division_id);
+
     }
+
+    public static boolean UpdateDeadPopulation(String division_id) throws SQLException {
+        return CrudUtil.execute("UPDATE grama_vista.gn_division SET population=population-1 WHERE division_id=?",division_id);
+    }
+}
+
+
 
 
 

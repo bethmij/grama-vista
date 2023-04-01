@@ -26,7 +26,6 @@ public class DeadPeopleFormController implements Initializable {
     public DatePicker dtpDate;
     public Label lblName;
     public Label lblID;
-    public TextField txtAge;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -62,13 +61,14 @@ public class DeadPeopleFormController implements Initializable {
         OpenView.openView("civilRegistrationForm",deadPane);
     }
 
-    public void btnSaveOnAction(ActionEvent actionEvent) {
+    public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
 
         String id =  (String) cmbCivil.getValue();
-        String[] strings = id.split("C00");
+        String[] civil_id = id.split("C00");
+        String division_id = CivilModel.getDivisionId (Integer.valueOf(civil_id[1]));
 
         try {
-            boolean isSaved = DeadModel.save(new Dead(strings[1],lblName.getText(), Integer.valueOf(txtAge.getText()), dtpDate.getValue()));
+            boolean isSaved = DeadModel.save(new Dead(civil_id[1],lblName.getText(),  dtpDate.getValue()),division_id);
 
             if (isSaved)
                 new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
@@ -82,10 +82,12 @@ public class DeadPeopleFormController implements Initializable {
     }
 
     public void cmbCivilOnAction(ActionEvent actionEvent) {
+
         String id = (String) cmbCivil.getValue();
         String[] strings = id.split("C00");
 
         try {
+
             lblName.setText(CivilModel.searchById(strings[1]));
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -94,5 +96,7 @@ public class DeadPeopleFormController implements Initializable {
 
 
     public void btnResetOnAction(ActionEvent actionEvent) {
+         dtpDate.setValue(null);
+         lblName.setText("");
     }
 }

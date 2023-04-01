@@ -34,15 +34,12 @@ public class HomeRegistrationFormController implements Initializable {
     public TextField txtName;
     public TextField txtCount;
     public TextField txtChildCount;
-    public TextField txtAddress;
     public ChoiceBox cbType;
     public TextField txtHomeID;
     public CheckBox ckbElectricity;
     public CheckBox ckbWater;
     public ChoiceBox cbDivision;
     public Label lblName;
-    public ChoiceBox cbCivil;
-    public ComboBox cmbCivil;
     public TextField txtAddress1;
 
     @Override
@@ -97,5 +94,14 @@ public class HomeRegistrationFormController implements Initializable {
     }
 
     public void btnResetOnAction(ActionEvent actionEvent) {
+        txtName.clear();
+        txtCount.clear();
+        txtChildCount.clear();
+        cbType.setValue(null);
+        txtHomeID.clear();
+        cbDivision.setValue(null);
+        txtAddress1.clear();
+        ckbWater.setSelected(false);
+        ckbElectricity.setSelected(false);
     }
 }

@@ -15,18 +15,39 @@ public class DeadModel {
 
         if (resultSet.next()) {
             Integer id = resultSet.getInt(1);
-            return id + 1;
+            return (id+1);
         }
         return 1;
     }
 
 
-    public static boolean save(Dead dead) throws SQLException {
+    public static boolean save(Dead dead,String division_id) throws SQLException {
+
+        Connection con = null;
+        try {
+            con = DBConnection.getInstance().getConnection();
+            con.setAutoCommit(false);
 
 
-        boolean isDeadSaved = CrudUtil.execute("INSERT INTO grama_vista.dead_people (reg_number, age, dead_date) VALUES (?,?,?)",
-                dead.getCivil_ID(), dead.getAge(), dead.getDate());
-        return isDeadSaved;
+            boolean isDeadSaved = CrudUtil.execute("INSERT INTO grama_vista.dead_people (reg_number, dead_date) VALUES (?,?,?)",
+                    dead.getCivil_ID(),  dead.getDate());
+            if (isDeadSaved) {
+                boolean isPopulationUpdate = DivisionModel.UpdateDeadPopulation(division_id);
+                if (isPopulationUpdate) {
+                    con.commit();
+                    return true;
+                }
+            }
+
+            return false;
+        } catch (SQLException er) {
+            System.out.println(er);
+            con.rollback();
+            return false;
+        } finally {
+            con.setAutoCommit(true);
+        }
+
     }
 
 

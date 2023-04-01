@@ -135,6 +135,18 @@ public class UserRegistrationFormController implements Initializable {
     }
 
     public void btnResetOnAction(ActionEvent actionEvent) {
+        txtNIC.clear();
+        dtpDOB.setValue(null);
+        txtENum.clear();
+        txtPass.clear();
+        txtUser.clear();
+        txtName.clear();
+        dtpEmployee.setValue(null);
+        txtContact.clear();
+        txtSalary.clear();
+        cbDivision.setValue(null);
+        lblContact.setText("");
+        lblPass.setText("");
     }
 }
 
