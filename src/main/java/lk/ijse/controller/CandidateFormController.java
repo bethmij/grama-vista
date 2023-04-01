@@ -172,4 +172,7 @@ public class CandidateFormController implements Initializable {
         }
 
     }
+
+    public void btnResetOnAction(ActionEvent actionEvent) {
+    }
 }

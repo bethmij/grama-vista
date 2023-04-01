@@ -4,9 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.util.OpenView;
@@ -38,14 +38,7 @@ public class LoginFormController {
         OpenView.openView("dashboardForm",root);
     }
 
-    public void btnSignOnAction(ActionEvent actionEvent) {
-        Stage stage = (Stage)root.getScene().getWindow();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/userRegistrationForm.fxml"))));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setTitle("Dashboard");
-        stage.centerOnScreen();
+    public void btnSignOnAction(MouseEvent actionEvent) {
+       OpenView.openView("userRegistrationForm");
     }
 }

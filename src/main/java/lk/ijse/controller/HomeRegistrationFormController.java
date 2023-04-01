@@ -96,4 +96,6 @@ public class HomeRegistrationFormController implements Initializable {
         OpenView.openView("civilRegistrationForm",HomePane);
     }
 
+    public void btnResetOnAction(ActionEvent actionEvent) {
+    }
 }

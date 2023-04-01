@@ -157,6 +157,13 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.5684210658073425" green="0.36617544293403625" blue="0.016842104494571686" />
+               </color>
+            </DropShadow>
+         </effect>
       </Button>
       <PasswordField fx:id="txtPass" layoutX="453.0" layoutY="348.0" prefHeight="38.0" prefWidth="354.0" promptText="Password">
          <font>
@@ -169,42 +176,28 @@
                </color>
             </DropShadow>
          </effect></PasswordField>
-      <Text fill="#91670d" layoutX="619.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Or" wrappingWidth="41.0">
+      <Text fill="#91670d" layoutX="501.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New User?   " wrappingWidth="125.0">
          <font>
             <Font name="Yu Gothic Regular" size="20.0" />
          </font>
       </Text>
-      <Button fx:id="Sign" layoutX="563.0" layoutY="549.0" mnemonicParsing="false" onAction="#btnSignOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Sign in">
+      <Text fill="#d95d3a" layoutX="626.0" layoutY="551.0" onMouseClicked="#btnSignOnAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Register">
          <font>
-            <Font size="17.0" />
+            <Font size="20.0" />
          </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4421052634716034" green="0.2674463987350464" blue="0.022923976182937622" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5097560975609755">
-                     <color>
-                        <Color red="0.6421052813529968" green="0.39953216910362244" blue="0.035672515630722046" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9973082099596231">
-                     <color>
-                        <Color red="0.49473685026168823" green="0.3049044907093048" blue="0.020155945792794228" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.49473685026168823" green="0.3049044907093048" blue="0.020155945792794228" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Button>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.8947368264198303" green="0.36783626675605774" blue="0.36783626675605774" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <Text fill="#91670d" layoutX="706.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here." wrappingWidth="55.4000244140625">
+         <font>
+            <Font name="Yu Gothic Regular" size="20.0" />
+         </font>
+      </Text>
    </children>
    <effect>
       <Blend />

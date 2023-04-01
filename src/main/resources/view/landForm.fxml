@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -18,279 +19,12 @@
 
 <AnchorPane fx:id="landRoot" prefHeight="698.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.LandFormController">
    <children>
-      <ImageView fitHeight="708.0" fitWidth="948.0" layoutX="57.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="728.0" fitWidth="957.0" layoutX="44.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="715.0" layoutY="-17.0" stroke="WHITE" strokeType="INSIDE" width="254.0">
-         <fill>
-            <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.6947368383407593" green="0.5602495074272156" blue="0.1904093623161316" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="0.8736842274665833" green="0.5197881460189819" blue="0.24916179478168488" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.49873617174933527">
-                     <color>
-                        <Color red="0.9684210419654846" green="0.9460039138793945" blue="0.5200779438018799" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.9473684430122375" green="0.6694737076759338" blue="0.2526315748691559" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <Text layoutX="13.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grama Vista">
-         <font>
-            <Font name="Segoe Script" size="34.0" />
-         </font>
-         <fill>
-            <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.6947368383407593" green="0.5602495074272156" blue="0.1904093623161316" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="0.4736842215061188" green="0.23523391783237457" blue="0.06491228193044662" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.49873617174933527">
-                     <color>
-                        <Color red="0.7473683953285217" green="0.5028589963912964" blue="0.16054581105709076" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.42105263471603394" green="0.27695906162261963" blue="0.060818713158369064" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Text>
-      <Label layoutX="45.0" layoutY="285.0" text="Candidate Registration">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.4951219512195121">
-                     <color>
-                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9973082099596233">
-                     <color>
-                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Label>
-      <Label layoutX="42.0" layoutY="367.0" prefHeight="30.0" prefWidth="170.0" text=" Civil Management">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.4951219512195121">
-                     <color>
-                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9973082099596233">
-                     <color>
-                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Label>
-      <Label layoutX="45.0" layoutY="458.0" text="Report Management">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.4951219512195121">
-                     <color>
-                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9973082099596233">
-                     <color>
-                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Label>
-      <Label layoutX="45.0" layoutY="545.0" text="Voting">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.4951219512195121">
-                     <color>
-                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9973082099596233">
-                     <color>
-                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Label>
-      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="45.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/badge_FILL0_wght400_GRAD0_opsz48.png" />
-         </image>
-      </ImageView>
-      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="44.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/diversity_3_FILL0_wght400_GRAD0_opsz48.png" />
-         </image>
-      </ImageView>
-      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="45.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/edit_document_FILL0_wght400_GRAD0_opsz48.png" />
-         </image>
-      </ImageView>
-      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="44.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/how_to_vote_FILL0_wght400_GRAD0_opsz48.png" />
-         </image>
-      </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="46.0" layoutY="181.0" stroke="#fffefe" strokeType="INSIDE" width="254.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.9157894849777222" green="0.6712397933006287" blue="0.21707601845264435" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5195121951219511">
-                     <color>
-                        <Color red="0.9452410936355591" green="0.9578947424888611" blue="0.5782846212387085" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9892328398384926">
-                     <color>
-                        <Color red="0.9473684430122375" green="0.7029239535331726" blue="0.28070175647735596" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.9473684430122375" green="0.7029239535331726" blue="0.28070175647735596" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <Label layoutX="45.0" layoutY="189.0" prefHeight="30.0" prefWidth="170.0" text="Civil Registration">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.4951219512195121">
-                     <color>
-                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9973082099596233">
-                     <color>
-                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Label>
-      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="38.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/group_add_FILL0_wght400_GRAD0_opsz48.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="500.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Land Property Registration">
+      <Text layoutX="500.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Land Property Registration">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -345,7 +79,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button fx:id="btnBack" layoutX="452.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Back">
+      <Button fx:id="save" layoutX="641.0" layoutY="557.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
          <font>
             <Font size="17.0" />
          </font>
@@ -375,37 +109,9 @@
                </stops>
             </LinearGradient>
          </textFill>
-      </Button>
-      <Button fx:id="save" layoutX="638.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
-         <font>
-            <Font size="17.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.4951219512195121">
-                     <color>
-                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9973082099596233">
-                     <color>
-                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Text layoutX="425.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Land Type" wrappingWidth="121.33673095703125">
          <font>
@@ -492,7 +198,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <JFXButton fx:id="owner" blendMode="DARKEN" graphicTextGap="2.0" layoutX="425.0" layoutY="429.0" onAction="#btnOwnerOnAction" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text=" Ownership">
+      <JFXButton fx:id="owner" blendMode="HARD_LIGHT" graphicTextGap="2.0" layoutX="425.0" layoutY="429.0" onAction="#btnOwnerOnAction" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #c16c04;" text=" Ownership" textFill="#e7e1dd">
          <font>
             <Font size="20.0" />
          </font>
@@ -503,37 +209,9 @@
                </color>
             </InnerShadow>
          </effect>
-         <textFill>
-            <LinearGradient endX="0.8560605627117734" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.014804845222072698">
-                     <color>
-                        <Color red="0.5157894492149353" green="0.28957438468933105" blue="0.1279921978712082" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5048780487804877">
-                     <color>
-                        <Color red="0.6526315808296204" green="0.4115607440471649" blue="0.22721247375011444" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9919246298788693">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.6509804129600525" green="0.3921568691730499" blue="0.19607843458652496" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <ImageView fitHeight="57.0" fitWidth="41.0" layoutX="789.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -545,5 +223,355 @@
             <Font size="14.0" />
          </font>
       </Text>
+      <Button fx:id="addLandType" layoutX="773.0" layoutY="363.0" mnemonicParsing="false" onAction="#LandTypeOnAction" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #f7c142;" text="+">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4951219512195121">
+                     <color>
+                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9973082099596233">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="708.0" stroke="WHITE" strokeType="INSIDE" width="254.0">
+         <fill>
+            <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6947368383407593" green="0.5602495074272156" blue="0.1904093623161316" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.8736842274665833" green="0.5197881460189819" blue="0.24916179478168488" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.49873617174933527">
+                     <color>
+                        <Color red="0.9684210419654846" green="0.9460039138793945" blue="0.5200779438018799" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9473684430122375" green="0.6694737076759338" blue="0.2526315748691559" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Text layoutX="13.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grama Vista">
+         <font>
+            <Font name="Segoe Script" size="34.0" />
+         </font>
+         <fill>
+            <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6947368383407593" green="0.5602495074272156" blue="0.1904093623161316" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.4736842215061188" green="0.23523391783237457" blue="0.06491228193044662" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.49873617174933527">
+                     <color>
+                        <Color red="0.7473683953285217" green="0.5028589963912964" blue="0.16054581105709076" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.42105263471603394" green="0.27695906162261963" blue="0.060818713158369064" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <Label layoutX="43.0" layoutY="559.0" text="Logout">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4951219512195121">
+                     <color>
+                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9973082099596233">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="42.0" layoutY="292.0" prefHeight="30.0" prefWidth="170.0" text="Management">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4951219512195121">
+                     <color>
+                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9973082099596233">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="45.0" layoutY="382.0" text="Report Management">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4951219512195121">
+                     <color>
+                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9973082099596233">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="45.0" layoutY="475.0" text="Voting">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4951219512195121">
+                     <color>
+                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9973082099596233">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="45.0" layoutY="555.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/logout_FILL0_wght400_GRAD0_opsz48.png" />
+         </image>
+      </ImageView>
+      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="44.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/diversity_3_FILL0_wght400_GRAD0_opsz48.png" />
+         </image>
+      </ImageView>
+      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="45.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/edit_document_FILL0_wght400_GRAD0_opsz48.png" />
+         </image>
+      </ImageView>
+      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="44.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/how_to_vote_FILL0_wght400_GRAD0_opsz48.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="46.0" layoutY="184.0" stroke="#fffefe" strokeType="INSIDE" width="254.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9157894849777222" green="0.6712397933006287" blue="0.21707601845264435" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5195121951219511">
+                     <color>
+                        <Color red="0.9452410936355591" green="0.9578947424888611" blue="0.5782846212387085" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9892328398384926">
+                     <color>
+                        <Color red="0.9473684430122375" green="0.7029239535331726" blue="0.28070175647735596" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9473684430122375" green="0.7029239535331726" blue="0.28070175647735596" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="45.0" layoutY="192.0" prefHeight="30.0" prefWidth="170.0" text="Registration">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4951219512195121">
+                     <color>
+                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9973082099596233">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="38.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/group_add_FILL0_wght400_GRAD0_opsz48.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnReset" blendMode="HARD_LIGHT" layoutX="455.0" layoutY="556.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-border-color: #462900;" text="Reset" textFill="#462900">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btn" contentDisplay="GRAPHIC_ONLY" layoutX="286.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #ffc46d;">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4951219512195121">
+                     <color>
+                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9973082099596233">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.3490196168422699" green="0.20392157137393951" blue="0.003921568859368563" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <graphic>
+            <ImageView blendMode="SOFT_LIGHT" fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/arrow_back_ios_new_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

@@ -134,4 +134,7 @@ public class individualForm2Controller implements Initializable {
             lblContact.setText("");
         }
     }
+
+    public void btnResetOnAction(ActionEvent actionEvent) {
+    }
 }

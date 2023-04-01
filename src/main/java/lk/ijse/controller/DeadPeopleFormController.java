@@ -93,4 +93,6 @@ public class DeadPeopleFormController implements Initializable {
     }
 
 
+    public void btnResetOnAction(ActionEvent actionEvent) {
+    }
 }

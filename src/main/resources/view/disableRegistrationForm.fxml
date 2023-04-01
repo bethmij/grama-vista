@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -17,12 +18,257 @@
 
 <AnchorPane fx:id="disablePane" prefHeight="683.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DisableRegistrationFormController">
    <children>
-      <ImageView fitHeight="709.0" fitWidth="929.0" layoutX="116.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="709.0" fitWidth="948.0" layoutX="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="698.0" stroke="WHITE" strokeType="INSIDE" width="254.0">
+      <ImageView fitHeight="57.0" fitWidth="41.0" layoutX="755.0" layoutY="639.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/pngegg.png" />
+         </image>
+      </ImageView>
+      <Text fill="#612803" layoutX="810.0" layoutY="683.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Home Affairs">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="465.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disable Civil Registration">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4951219512195121">
+                     <color>
+                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9973082099596233">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Label layoutX="402.0" layoutY="158.0" text="ID    -">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5048780487804878">
+                     <color>
+                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9919246298788693">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblId" layoutX="478.0" layoutY="157.0" prefHeight="32.0" prefWidth="79.0">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.5568627715110779" green="0.3294117748737335" blue="0.027450980618596077" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5039424876079178">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.366166353225708" blue="0.08791422843933105" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5568627715110779" green="0.3294117748737335" blue="0.027450980618596077" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Text layoutX="404.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Civil ID" wrappingWidth="121.33673095703125">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5048780487804878">
+                     <color>
+                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9919246298788693">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <TextField fx:id="txtDisability" blendMode="MULTIPLY" layoutX="402.0" layoutY="345.0" prefHeight="38.0" prefWidth="386.0" promptText="Disability">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Text layoutX="402.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="121.33673095703125">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5048780487804878">
+                     <color>
+                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9919246298788693">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <Label fx:id="lblName" layoutX="518.0" layoutY="281.0" prefHeight="32.0" prefWidth="254.0">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <TextField fx:id="txtDescription" alignment="TOP_LEFT" blendMode="MULTIPLY" layoutX="402.0" layoutY="407.0" prefHeight="93.0" prefWidth="386.0" promptText="Description">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btn1" layoutX="613.0" layoutY="575.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4951219512195121">
+                     <color>
+                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9973082099596233">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ComboBox fx:id="cmbCivil" blendMode="MULTIPLY" layoutX="494.0" layoutY="223.0" onAction="#cmbCivilOnAction" prefHeight="26.0" prefWidth="107.0">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </ComboBox>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="708.0" stroke="WHITE" strokeType="INSIDE" width="254.0">
          <fill>
             <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
                <stops>
@@ -81,7 +327,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Label layoutX="45.0" layoutY="283.0" text="Candidate Registration">
+      <Label layoutX="43.0" layoutY="554.0" text="Logout">
          <font>
             <Font size="20.0" />
          </font>
@@ -112,7 +358,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="42.0" layoutY="365.0" prefHeight="30.0" prefWidth="170.0" text=" Civil Management">
+      <Label layoutX="42.0" layoutY="287.0" prefHeight="30.0" prefWidth="170.0" text="Management">
          <font>
             <Font size="20.0" />
          </font>
@@ -143,7 +389,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="45.0" layoutY="456.0" text="Report Management">
+      <Label layoutX="45.0" layoutY="377.0" text="Report Management">
          <font>
             <Font size="20.0" />
          </font>
@@ -174,7 +420,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="45.0" layoutY="543.0" text="Voting">
+      <Label layoutX="45.0" layoutY="470.0" text="Voting">
          <font>
             <Font size="20.0" />
          </font>
@@ -205,22 +451,22 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="45.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="45.0" layoutY="550.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/badge_FILL0_wght400_GRAD0_opsz48.png" />
+            <Image url="@../img/logout_FILL0_wght400_GRAD0_opsz48.png" />
          </image>
       </ImageView>
-      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="44.0" layoutY="361.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="44.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/diversity_3_FILL0_wght400_GRAD0_opsz48.png" />
          </image>
       </ImageView>
-      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="45.0" layoutY="452.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="45.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/edit_document_FILL0_wght400_GRAD0_opsz48.png" />
          </image>
       </ImageView>
-      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="44.0" layoutY="539.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="44.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/how_to_vote_FILL0_wght400_GRAD0_opsz48.png" />
          </image>
@@ -253,7 +499,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Label layoutX="45.0" layoutY="187.0" prefHeight="30.0" prefWidth="170.0" text="Civil Registration">
+      <Label layoutX="45.0" layoutY="187.0" prefHeight="30.0" prefWidth="170.0" text="Registration">
          <font>
             <Font size="20.0" />
          </font>
@@ -289,209 +535,15 @@
             <Image url="@../img/group_add_FILL0_wght400_GRAD0_opsz48.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="57.0" fitWidth="41.0" layoutX="755.0" layoutY="639.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/pngegg.png" />
-         </image>
-      </ImageView>
-      <Text fill="#612803" layoutX="810.0" layoutY="683.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Home Affairs">
+      <Button fx:id="btnReset" blendMode="HARD_LIGHT" layoutX="437.0" layoutY="574.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-border-color: #462900;" text="Reset" textFill="#462900">
          <font>
-            <Font size="14.0" />
+            <Font size="17.0" />
          </font>
-      </Text>
-      <Text layoutX="499.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disable Civil Registration">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.4951219512195121">
-                     <color>
-                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9973082099596233">
-                     <color>
-                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Label layoutX="427.0" layoutY="158.0" text="ID    -">
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5048780487804878">
-                     <color>
-                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9919246298788693">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblId" layoutX="499.0" layoutY="157.0" prefHeight="32.0" prefWidth="79.0">
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.5568627715110779" green="0.3294117748737335" blue="0.027450980618596077" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5039424876079178">
-                     <color>
-                        <Color red="0.5789473652839661" green="0.366166353225708" blue="0.08791422843933105" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.5568627715110779" green="0.3294117748737335" blue="0.027450980618596077" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-         <font>
-            <Font size="20.0" />
-         </font></Label>
-      <Text layoutX="427.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Civil ID" wrappingWidth="121.33673095703125">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5048780487804878">
-                     <color>
-                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9919246298788693">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Text>
-      <TextField fx:id="txtDisability" blendMode="MULTIPLY" layoutX="427.0" layoutY="349.0" prefHeight="38.0" prefWidth="386.0" promptText="Disability">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
-               </color>
-            </InnerShadow>
-         </effect>
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <Text layoutX="427.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="121.33673095703125">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5048780487804878">
-                     <color>
-                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9919246298788693">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Text>
-      <Label fx:id="lblName" layoutX="518.0" layoutY="281.0" prefHeight="32.0" prefWidth="254.0">
-         <font>
-            <Font size="20.0" />
-         </font></Label>
-      <TextField fx:id="txtDescription" alignment="TOP_LEFT" blendMode="MULTIPLY" layoutX="427.0" layoutY="416.0" prefHeight="93.0" prefWidth="386.0" promptText="Description">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
-               </color>
-            </InnerShadow>
-         </effect>
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <Button fx:id="btn" layoutX="462.0" layoutY="575.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Back">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btn" contentDisplay="GRAPHIC_ONLY" layoutX="286.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #ffc46d;">
          <font>
             <Font size="17.0" />
          </font>
@@ -515,52 +567,22 @@
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                        <Color red="0.3490196168422699" green="0.20392157137393951" blue="0.003921568859368563" />
                      </color>
                   </Stop>
                </stops>
             </LinearGradient>
          </textFill>
+         <graphic>
+            <ImageView blendMode="SOFT_LIGHT" fitHeight="24.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/arrow_back_ios_new_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Button fx:id="btn1" layoutX="649.0" layoutY="575.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
-         <font>
-            <Font size="17.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.4951219512195121">
-                     <color>
-                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9973082099596233">
-                     <color>
-                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Button>
-      <ComboBox fx:id="cmbCivil" blendMode="MULTIPLY" layoutX="505.0" layoutY="224.0" onAction="#cmbCivilOnAction" prefHeight="26.0" prefWidth="107.0">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </ComboBox>
    </children>
 </AnchorPane>

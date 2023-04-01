@@ -1,10 +1,14 @@
 package lk.ijse.model;
 
+import lk.ijse.db.DBConnection;
+import lk.ijse.dto.Land;
+import lk.ijse.dto.LandType;
+import lk.ijse.dto.Owner;
 import lk.ijse.util.CrudUtil;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class LandModel {
@@ -29,14 +33,39 @@ public class LandModel {
         return "L001";
     }
 
-    public static List<String> loadLandId() throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT land_num FROM grama_vista.land ");
-        List<String> id = new ArrayList<>();
 
-        while (resultSet.next()){
-            id.add(resultSet.getString(1));
+    public static boolean save(Land land, List<LandType> landTypeList, List<Owner> ownerList) throws SQLException {
+
+        Connection con = null;
+        try {
+            con = DBConnection.getInstance().getConnection();
+            con.setAutoCommit(false);
+
+            boolean isLandSaved = CrudUtil.execute("INSERT INTO grama_vista.land (land_num, plan_num, land_area) VALUES (?,?,?)",
+                    land.getLand_id(), land.getPlan_num(), land.getL_area());
+            if (isLandSaved) {
+
+                boolean isTypeSaved = LandTypeModel.save(landTypeList);
+                if (isTypeSaved) {
+                    boolean isOwnerSaved = OwnerModel.save(ownerList);
+                    if (isOwnerSaved) {
+                        boolean isDetailSaved = LandTypeModel.saveDetail(landTypeList);
+                        if (isDetailSaved) {
+                            con.commit();
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        } catch (SQLException er) {
+            assert con != null;
+            con.rollback();
+            return false;
+        } finally {
+            assert con != null;
+            con.setAutoCommit(true);
         }
 
-        return  id;
     }
 }

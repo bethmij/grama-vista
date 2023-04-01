@@ -8,11 +8,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.dto.Owner;
 import lk.ijse.model.CivilModel;
 import lk.ijse.model.LandModel;
+import lk.ijse.model.OwnerModel;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -22,27 +25,16 @@ public class OwnershipFormController implements Initializable {
     public ChoiceBox cbLandID;
     public ChoiceBox cbCivilID;
     public TextField txtPercentage;
+    public static List<Owner> ownerList = new ArrayList<>();
+    public TextField txtLand;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        loadLandId();
+
         loadCivilId();
     }
 
-    private void loadLandId() {
-        List<String> id = null;
-        try {
-            id = LandModel.loadLandId();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        ObservableList<String> dataList = FXCollections.observableArrayList();
 
-        for (String ids : id) {
-            dataList.add(ids);
-        }
-        cbLandID.setItems(dataList);
-    }
 
     private void loadCivilId() {
         List<String> id = null;
@@ -61,6 +53,13 @@ public class OwnershipFormController implements Initializable {
 
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
+
+        String[] civil_id = String.valueOf(cbCivilID.getValue()).split("C00");
+
+        ownerList.add(new Owner(txtLand.getText(), civil_id[1], txtLotNum.getText(), Double.valueOf(txtPercentage.getText() )));
+        if(ownerList!=null)
+            new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
+
     }
 
 

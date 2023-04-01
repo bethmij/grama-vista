@@ -72,6 +72,6 @@ public class DivisionRegistrationFormController implements Initializable {
     }
 
 
-
-
+    public void btnResetOnAction(ActionEvent actionEvent) {
+    }
 }

@@ -94,4 +94,6 @@ public class MaternityRegistFormController implements Initializable {
     }
 
 
+    public void btnResetOnAction(ActionEvent actionEvent) {
+    }
 }

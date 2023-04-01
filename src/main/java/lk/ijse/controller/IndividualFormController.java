@@ -135,4 +135,7 @@ public class IndividualFormController implements Initializable {
 
 
     }
+
+    public void btnResetOnAction(ActionEvent actionEvent) {
+    }
 }

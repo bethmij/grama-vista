@@ -13,6 +13,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.dto.Candidate;
+import lk.ijse.dto.Land;
+import lk.ijse.model.CandidateModel;
 import lk.ijse.model.CivilModel;
 import lk.ijse.model.DivisionModel;
 import lk.ijse.model.LandModel;
@@ -56,18 +59,25 @@ public class LandFormController implements Initializable {
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
 
+        try {
+            boolean isSaved = LandModel.save(new Land(
+                    lblID.getText(), txtPlan.getText(), Double.valueOf(txtArea.getText())), AddLandTypeFormController.landTypeList, OwnershipFormController.ownerList);
+
+            if (isSaved)
+                new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
+            else
+                new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
     }
 
     public void btnOwnerOnAction(ActionEvent actionEvent){
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(OpenView.class.getResource("/view/ownershipForm.fxml"))));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setTitle("Ownership Form");
-        stage.centerOnScreen();
-        stage.show();
+        OpenView.openView("ownershipForm");
+
+
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) {
@@ -75,5 +85,10 @@ public class LandFormController implements Initializable {
     }
 
 
+    public void LandTypeOnAction(ActionEvent actionEvent) {
+        OpenView.openView("addLandTypeForm");
+    }
 
+    public void btnResetOnAction(ActionEvent actionEvent) {
+    }
 }

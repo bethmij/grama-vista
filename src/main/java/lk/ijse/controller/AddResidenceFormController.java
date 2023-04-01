@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import lk.ijse.dto.MultiResidence;
@@ -44,7 +45,8 @@ public class AddResidenceFormController implements Initializable {
         String[] strings = txtCivil.getText().split("C00");
 
         residenceList.add(new MultiResidence(strings[1],(String) cbResidence.getValue()));
-        System.out.println(residenceList);
+        if(residenceList!=null)
+            new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
     }
 
 

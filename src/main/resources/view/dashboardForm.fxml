@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -99,6 +100,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="483.0" layoutY="338.0" prefHeight="110.0" prefWidth="142.0">
          <graphic>
@@ -108,6 +112,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <JFXButton blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="725.0" layoutY="339.0" prefHeight="110.0" prefWidth="118.0">
          <graphic>
@@ -117,6 +124,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="725.0" layoutY="134.0" prefHeight="110.0" prefWidth="112.0">
          <graphic>
@@ -126,6 +136,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <Text fill="#7e5a06" layoutX="497.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="    Registration">
          <font>

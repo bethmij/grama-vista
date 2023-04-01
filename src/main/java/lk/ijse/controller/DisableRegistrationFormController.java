@@ -94,4 +94,7 @@ public class DisableRegistrationFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
+
+    public void btnResetOnAction(ActionEvent actionEvent) {
+    }
 }

@@ -133,6 +133,9 @@ public class UserRegistrationFormController implements Initializable {
             lblPass.setText("");
         }
     }
+
+    public void btnResetOnAction(ActionEvent actionEvent) {
+    }
 }
 
 
