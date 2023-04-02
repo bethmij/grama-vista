@@ -1,7 +1,11 @@
 package lk.ijse.model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import lk.ijse.db.DBConnection;
 import lk.ijse.dto.Division;
+import lk.ijse.dto.DivisionDTO;
+import lk.ijse.dto.tm.DivisionTM;
 import lk.ijse.util.CrudUtil;
 
 import java.sql.*;
@@ -58,6 +62,26 @@ public class DivisionModel {
 
     public static boolean UpdateDeadPopulation(String division_id) throws SQLException {
         return CrudUtil.execute("UPDATE grama_vista.gn_division SET population=population-1 WHERE division_id=?",division_id);
+    }
+
+    public static String getName (String division_id) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT name FROM grama_vista.gn_division WHERE division_id=?",division_id);
+        if(resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return "";
+    }
+
+    public static DivisionDTO search (String division_id) throws SQLException {
+
+        ResultSet resultSet = CrudUtil.execute("SELECT * FROM grama_vista.gn_division WHERE division_id=?",division_id);
+        if(resultSet.next()){
+
+             return new DivisionDTO(resultSet.getString(1),resultSet.getString(2), resultSet.getString(3),
+                          resultSet.getString(4),resultSet.getInt(5),resultSet.getDouble(6));
+
+        }
+        return null;
     }
 }
 

@@ -1,13 +1,27 @@
 package lk.ijse.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.dto.Division;
+import lk.ijse.dto.DivisionDTO;
+import lk.ijse.dto.tm.DivisionTM;
+import lk.ijse.model.DivisionModel;
+import lk.ijse.model.ResidenceModel;
 
-public class DivisionManageFormController {
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
+import java.util.ResourceBundle;
+
+public class DivisionManageFormController implements Initializable {
     public AnchorPane tblDivPane;
     public ChoiceBox cbDivision;
     public Label lblDivision;
@@ -19,6 +33,39 @@ public class DivisionManageFormController {
     public TableColumn colPopulation;
     public TableColumn colLand;
     public TableColumn colAction;
+    public Label lblName;
+    private ObservableList<DivisionTM> obList = FXCollections.observableArrayList();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        loadDivisionID();
+        setCellValueFactory();
+    }
+
+    private void setCellValueFactory() {
+        colID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        colSecretary.setCellValueFactory(new PropertyValueFactory<>("Secretary"));
+        colAdmin.setCellValueFactory(new PropertyValueFactory<>("Admin"));
+        colPopulation.setCellValueFactory(new PropertyValueFactory<>("Population"));
+        colLand.setCellValueFactory(new PropertyValueFactory<>("Land"));
+        colAction.setCellValueFactory(new PropertyValueFactory<>("Delete"));
+
+    }
+
+    private void loadDivisionID() {
+        try {
+            List<String> id = DivisionModel.loadDivisionID();
+            ObservableList<String> dataList = FXCollections.observableArrayList();
+
+            for (String ids : id) {
+                dataList.add(ids);
+            }
+            cbDivision.setItems(dataList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void btnBackOnAction(ActionEvent actionEvent) {
     }
@@ -29,6 +76,42 @@ public class DivisionManageFormController {
     public void btnUpdateOnAction(ActionEvent actionEvent) {
     }
 
-    public void btnSaveOnAction(ActionEvent actionEvent) {
+    public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
+        DivisionDTO divisionDTO = DivisionModel.search((String) cbDivision.getValue());
+        Button btnDelete = new Button("Delete");
+        btnDelete.setCursor(Cursor.HAND);
+        setDeleteBtnOnAction(btnDelete);
+
+        DivisionTM divisionTM = new DivisionTM(divisionDTO.getDivision_id(), divisionDTO.getName(), divisionDTO.getDiv_Secretariat(),
+                divisionDTO.getAdmin_officer(), divisionDTO.getPopulation(), divisionDTO.getLand_area(), btnDelete);
+        obList.add(divisionTM);
+        tblDivision.setItems(obList);
+    }
+
+    private void setDeleteBtnOnAction(Button btnDelete) {
+        btnDelete.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to delete?", yes, no).showAndWait();
+
+            if (result.orElse(no) == yes) {
+                /*int index = tblOrderCart.getSelectionModel().getSelectedIndex();
+                obList.remove(index);
+
+                tblOrderCart.refresh();
+                calculateNetTotal();*/
+            }
+
+        });
+    }
+
+
+    public void cbDivisionOnAction(MouseEvent mouseEvent) {
+        try {
+            lblName.setText(DivisionModel.getName((String) cbDivision.getValue()));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

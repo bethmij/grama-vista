@@ -19,7 +19,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane fx:id="tblDivPane" prefHeight="714.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DivisionManageFormController">
    <children>
       <ImageView fitHeight="712.0" fitWidth="957.0" layoutX="61.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
@@ -413,7 +412,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox fx:id="cbDivision" blendMode="MULTIPLY" layoutX="621.0" layoutY="93.0" prefWidth="150.0">
+      <ChoiceBox fx:id="cbDivision" blendMode="MULTIPLY" layoutX="621.0" layoutY="93.0" onMouseClicked="#cbDivisionOnAction" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>
@@ -423,7 +422,7 @@
          </effect>
       </ChoiceBox>
       <Separator layoutX="237.0" layoutY="242.0" prefHeight="3.0" prefWidth="774.0" />
-      <Label fx:id="lblDivision" layoutX="621.0" layoutY="132.0" prefHeight="30.0" prefWidth="231.0" textFill="#753d12">
+      <Label fx:id="lblName" layoutX="621.0" layoutY="132.0" prefHeight="30.0" prefWidth="231.0" textFill="#753d12">
          <font>
             <Font size="18.0" />
          </font>
