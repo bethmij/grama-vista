@@ -2,11 +2,10 @@ package lk.ijse.controller;
 
 
 import javafx.event.ActionEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.util.OpenView;
 
-public class CivilRegistrationFormController {
+public class RegistrationFormController {
 
     public AnchorPane  CivilRPane;
 

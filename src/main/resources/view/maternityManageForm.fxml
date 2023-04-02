@@ -19,8 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane fx:id="tblDivPane" prefHeight="714.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DivisionManageFormController">
+<AnchorPane fx:id="tblDivPane" prefHeight="714.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.MaternityManageFormController">
    <children>
       <ImageView fitHeight="712.0" fitWidth="957.0" layoutX="61.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -304,7 +303,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="505.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Division Management">
+      <Text layoutX="475.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maternity Civil Management">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -377,7 +376,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text layoutX="475.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Division ID" wrappingWidth="121.33673095703125">
+      <Text layoutX="475.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reg ID" wrappingWidth="121.33673095703125">
          <font>
             <Font size="18.0" />
          </font>
@@ -413,7 +412,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox fx:id="cbDivision" blendMode="MULTIPLY" layoutX="621.0" layoutY="93.0" prefWidth="150.0">
+      <ChoiceBox fx:id="cbReg" blendMode="MULTIPLY" layoutX="596.0" layoutY="93.0" onMouseClicked="#cbRegOnAction" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>
@@ -423,56 +422,15 @@
          </effect>
       </ChoiceBox>
       <Separator layoutX="237.0" layoutY="242.0" prefHeight="3.0" prefWidth="774.0" />
-      <Label fx:id="lblDivision" layoutX="621.0" layoutY="132.0" prefHeight="30.0" prefWidth="231.0" textFill="#753d12">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Text layoutX="475.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="121.33673095703125">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5048780487804878">
-                     <color>
-                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9919246298788693">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Text>
-      <TableView fx:id="tblDivision" blendMode="MULTIPLY" layoutX="256.0" layoutY="262.0" prefHeight="378.0" prefWidth="738.0">
+      <TableView fx:id="tblDivision" blendMode="MULTIPLY" layoutX="259.0" layoutY="262.0" prefHeight="378.0" prefWidth="730.0">
         <columns>
-          <TableColumn fx:id="colID" prefWidth="87.99996948242188" text="Division ID" />
-          <TableColumn fx:id="colName" prefWidth="122.39990234375" text="Name" />
-            <TableColumn fx:id="colSecretary" minWidth="0.0" prefWidth="124.00009155273438" text="Div_Secretariat" />
-            <TableColumn fx:id="colAdmin" minWidth="0.0" prefWidth="161.5999755859375" text="Admin Officer" />
-            <TableColumn fx:id="colPopulation" prefWidth="73.59991455078125" text="Population" />
-            <TableColumn fx:id="colLand" prefWidth="75.199951171875" text="Land Area" />
-            <TableColumn fx:id="colAction" prefWidth="92.0" text="Action" />
+          <TableColumn fx:id="colReg" prefWidth="76.80001831054688" text="Reg ID " />
+          <TableColumn fx:id="colCivil" prefWidth="87.199951171875" text="Civil ID" />
+            <TableColumn fx:id="colName" minWidth="0.0" prefWidth="148.80007934570312" text="Name" />
+            <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="115.20001220703125" text="Date Of Pregrency" />
+            <TableColumn fx:id="colMonth" prefWidth="77.60003662109375" text="Months" />
+            <TableColumn fx:id="colMidWife" prefWidth="127.20001220703125" text="Mid Wife" />
+            <TableColumn fx:id="colAction" prefWidth="99.99997558593748" text="Action" />
         </columns>
       </TableView>
       <Button fx:id="GetAll" blendMode="COLOR_BURN" layoutX="899.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnGetAllOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Get All" textFill="#081501">
@@ -500,6 +458,66 @@
          </cursor>
       </Button>
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="435.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/manage_search_FILL0_wght400_GRAD0_opsz48.png" />
+         </image>
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.7052631378173828" green="0.42198246717453003" blue="0.07575048506259918" />
+               </color>
+               <input>
+                  <Glow level="0.11" />
+               </input>
+            </InnerShadow>
+         </effect>
+      </ImageView>
+      <Text layoutX="477.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Civil ID" wrappingWidth="121.33673095703125">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5048780487804878">
+                     <color>
+                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9919246298788693">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <ChoiceBox fx:id="cbCivil" blendMode="MULTIPLY" layoutX="596.0" layoutY="140.0" onMouseClicked="#cbCivilOnAction" prefWidth="150.0">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9882352948188782" green="0.8039215803146362" blue="0.364705890417099" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </ChoiceBox>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="435.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/manage_search_FILL0_wght400_GRAD0_opsz48.png" />
          </image>

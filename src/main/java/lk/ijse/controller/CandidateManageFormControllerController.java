@@ -7,18 +7,17 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
-public class DivisionManageFormController {
-    public AnchorPane tblDivPane;
+public class CandidateManageFormControllerController {
     public ChoiceBox cbDivision;
     public Label lblDivision;
     public TableView tblDivision;
-    public TableColumn colID;
+    public TableColumn colElection;
+    public TableColumn colImage;
     public TableColumn colName;
-    public TableColumn colSecretary;
-    public TableColumn colAdmin;
-    public TableColumn colPopulation;
-    public TableColumn colLand;
+    public TableColumn colNIC;
+    public TableColumn colDivision;
     public TableColumn colAction;
+    public AnchorPane tblDivPane;
 
     public void btnBackOnAction(ActionEvent actionEvent) {
     }

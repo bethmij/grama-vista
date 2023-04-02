@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="506.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.HomeManageForm2Controller">
+   <children>
+      <ImageView blendMode="MULTIPLY" fitHeight="581.0" fitWidth="781.0" layoutX="-6.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Yahoo%20Image%20Search.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tbl2" blendMode="MULTIPLY" layoutX="24.0" layoutY="31.0" prefHeight="506.0" prefWidth="721.0">
+        <columns>
+          <TableColumn fx:id="colHome" prefWidth="90.40002632141113" text="Home ID" />
+            <TableColumn fx:id="colMember" prefWidth="101.5999984741211" text="Member Count" />
+            <TableColumn fx:id="colBelow" prefWidth="90.39996337890625" text=" Count &lt; 18+" />
+          <TableColumn fx:id="colType" prefWidth="144.800048828125" text="Residence Type" />
+            <TableColumn fx:id="colElec" prefWidth="92.80001831054688" text="Electricity" />
+            <TableColumn fx:id="colWater" minWidth="0.0" prefWidth="96.80010986328125" text="Water Supply" />
+            <TableColumn fx:id="colAction1" minWidth="0.0" prefWidth="106.39990234375" text="Action" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

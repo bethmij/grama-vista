@@ -5,22 +5,25 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
-public class DivisionManageFormController {
+public class CivilManageFormController {
     public AnchorPane tblDivPane;
-    public ChoiceBox cbDivision;
-    public Label lblDivision;
-    public TableView tblDivision;
+    public ChoiceBox cbCivil;
+    public Label lblName;
+    public TableView tbl;
     public TableColumn colID;
+    public TableColumn colImage;
     public TableColumn colName;
-    public TableColumn colSecretary;
-    public TableColumn colAdmin;
-    public TableColumn colPopulation;
-    public TableColumn colLand;
+    public TableColumn colNIC;
+    public TableColumn colAddress;
     public TableColumn colAction;
 
     public void btnBackOnAction(ActionEvent actionEvent) {
+    }
+
+    public void cbCivilOnAction(MouseEvent mouseEvent) {
     }
 
     public void btnGetAllOnAction(ActionEvent actionEvent) {

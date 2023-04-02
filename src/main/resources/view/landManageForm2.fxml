@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="515.0" prefWidth="687.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.LandManageForm2Controller">
+   <children>
+      <ImageView blendMode="MULTIPLY" fitHeight="517.0" fitWidth="704.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Yahoo%20Image%20Search.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tbl2" blendMode="MULTIPLY" layoutX="37.0" layoutY="34.0" prefHeight="446.0" prefWidth="616.0">
+        <columns>
+          <TableColumn fx:id="colLAnd" prefWidth="124.79995346069336" text="Land ID" />
+            <TableColumn fx:id="colCivil" prefWidth="113.59999084472656" text="Civil ID" />
+            <TableColumn fx:id="colLot" prefWidth="134.39996337890625" text="Lot Number" />
+          <TableColumn fx:id="colPercen" prefWidth="128.0" text="Land Percentage" />
+            <TableColumn fx:id="colAction" minWidth="0.0" prefWidth="117.60003662109375" text="Action" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

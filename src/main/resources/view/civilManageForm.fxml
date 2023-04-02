@@ -19,8 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane fx:id="tblDivPane" prefHeight="714.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DivisionManageFormController">
+<AnchorPane fx:id="tblDivPane" prefHeight="714.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.CivilManageFormController">
    <children>
       <ImageView fitHeight="712.0" fitWidth="957.0" layoutX="61.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -304,7 +303,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="505.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Division Management">
+      <Text layoutX="525.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Civil Management">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -377,7 +376,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text layoutX="475.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Division ID" wrappingWidth="121.33673095703125">
+      <Text layoutX="475.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Civil ID" wrappingWidth="121.33673095703125">
          <font>
             <Font size="18.0" />
          </font>
@@ -413,7 +412,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox fx:id="cbDivision" blendMode="MULTIPLY" layoutX="621.0" layoutY="93.0" prefWidth="150.0">
+      <ChoiceBox fx:id="cbCivil" blendMode="MULTIPLY" layoutX="621.0" layoutY="93.0" onMouseClicked="#cbCivilOnAction" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>
@@ -423,7 +422,7 @@
          </effect>
       </ChoiceBox>
       <Separator layoutX="237.0" layoutY="242.0" prefHeight="3.0" prefWidth="774.0" />
-      <Label fx:id="lblDivision" layoutX="621.0" layoutY="132.0" prefHeight="30.0" prefWidth="231.0" textFill="#753d12">
+      <Label fx:id="lblName" layoutX="621.0" layoutY="132.0" prefHeight="30.0" prefWidth="231.0" textFill="#753d12">
          <font>
             <Font size="18.0" />
          </font>
@@ -464,15 +463,14 @@
             </LinearGradient>
          </fill>
       </Text>
-      <TableView fx:id="tblDivision" blendMode="MULTIPLY" layoutX="256.0" layoutY="262.0" prefHeight="378.0" prefWidth="738.0">
+      <TableView fx:id="tbl" blendMode="MULTIPLY" layoutX="256.0" layoutY="262.0" prefHeight="378.0" prefWidth="738.0">
         <columns>
-          <TableColumn fx:id="colID" prefWidth="87.99996948242188" text="Division ID" />
-          <TableColumn fx:id="colName" prefWidth="122.39990234375" text="Name" />
-            <TableColumn fx:id="colSecretary" minWidth="0.0" prefWidth="124.00009155273438" text="Div_Secretariat" />
-            <TableColumn fx:id="colAdmin" minWidth="0.0" prefWidth="161.5999755859375" text="Admin Officer" />
-            <TableColumn fx:id="colPopulation" prefWidth="73.59991455078125" text="Population" />
-            <TableColumn fx:id="colLand" prefWidth="75.199951171875" text="Land Area" />
-            <TableColumn fx:id="colAction" prefWidth="92.0" text="Action" />
+          <TableColumn fx:id="colID" prefWidth="80.80001831054688" text="Civil ID" />
+          <TableColumn fx:id="colImage" prefWidth="129.5999755859375" text="Image" />
+            <TableColumn fx:id="colName" minWidth="0.0" prefWidth="164.00009155273438" text="Name" />
+            <TableColumn fx:id="colNIC" minWidth="0.0" prefWidth="129.5999755859375" text="NIC" />
+            <TableColumn fx:id="colAddress" prefWidth="151.199951171875" text="Address" />
+            <TableColumn fx:id="colAction" prefWidth="80.800048828125" text="Action" />
         </columns>
       </TableView>
       <Button fx:id="GetAll" blendMode="COLOR_BURN" layoutX="899.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnGetAllOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Get All" textFill="#081501">

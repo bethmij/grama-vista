@@ -2,25 +2,25 @@ package lk.ijse.controller;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
-public class DivisionManageFormController {
+public class HomeManageFormController {
     public AnchorPane tblDivPane;
-    public ChoiceBox cbDivision;
-    public Label lblDivision;
+    public ChoiceBox cbHome;
     public TableView tblDivision;
     public TableColumn colID;
-    public TableColumn colName;
-    public TableColumn colSecretary;
-    public TableColumn colAdmin;
-    public TableColumn colPopulation;
-    public TableColumn colLand;
+    public TableColumn colDivision;
+    public TableColumn colAddress;
+    public TableColumn colHolder;
     public TableColumn colAction;
 
     public void btnBackOnAction(ActionEvent actionEvent) {
+    }
+
+    public void cbHomeOnAction(MouseEvent mouseEvent) {
     }
 
     public void btnGetAllOnAction(ActionEvent actionEvent) {

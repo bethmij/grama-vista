@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="506.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.UserManageForm2Controller">
+   <children>
+      <ImageView blendMode="MULTIPLY" fitHeight="581.0" fitWidth="781.0" layoutX="-6.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Yahoo%20Image%20Search.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tbl2" blendMode="MULTIPLY" layoutX="24.0" layoutY="31.0" prefHeight="506.0" prefWidth="721.0">
+        <columns>
+          <TableColumn fx:id="colEmployee" prefWidth="88.80002021789551" text="Employee ID" />
+            <TableColumn fx:id="colDOB" prefWidth="107.99999237060547" text="DOB" />
+            <TableColumn fx:id="colAge" prefWidth="74.39996337890625" text="Age" />
+          <TableColumn fx:id="colEmDate" prefWidth="145.60003662109375" text="Date of Employeement" />
+            <TableColumn fx:id="colSalary" prefWidth="93.60006713867188" text="Salary" />
+            <TableColumn fx:id="colContact" prefWidth="110.4000244140625" text="Contact" />
+            <TableColumn fx:id="colAction" prefWidth="100.00002441406252" text="Action" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

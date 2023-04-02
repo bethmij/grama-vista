@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="556.0" prefWidth="895.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.CivilManageForm2Controller">
+   <children>
+      <ImageView blendMode="MULTIPLY" fitHeight="672.0" fitWidth="929.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Yahoo%20Image%20Search.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tbl2" blendMode="MULTIPLY" layoutX="17.0" layoutY="27.0" prefHeight="614.0" prefWidth="862.0">
+        <columns>
+          <TableColumn fx:id="colCivil" prefWidth="73.60000610351562" text="Civil ID" />
+            <TableColumn fx:id="colDOB" prefWidth="105.5999755859375" text="DOB" />
+            <TableColumn fx:id="colAge" prefWidth="59.20001220703125" text="Age" />
+          <TableColumn fx:id="colMarriage" prefWidth="88.00006103515625" text="Marriage" />
+            <TableColumn fx:id="colRelation" prefWidth="104.00006103515625" text="Relation" />
+            <TableColumn fx:id="colEducation" prefWidth="84.7999267578125" text="Education" />
+            <TableColumn fx:id="colOccupation" prefWidth="129.59991455078125" text="Occupation" />
+            <TableColumn fx:id="colWork" prefWidth="113.59995117187498" text="Working Address" />
+            <TableColumn fx:id="colAction" prefWidth="99.99997558593748" text="Action" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

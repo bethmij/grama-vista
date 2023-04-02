@@ -128,7 +128,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="725.0" layoutY="134.0" prefHeight="110.0" prefWidth="112.0">
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="725.0" layoutY="134.0" onAction="#btnManageOnAction" prefHeight="110.0" prefWidth="112.0">
          <graphic>
             <ImageView blendMode="OVERLAY" fitHeight="109.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
                <image>
