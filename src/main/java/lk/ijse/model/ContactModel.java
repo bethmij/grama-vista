@@ -29,4 +29,18 @@ public class ContactModel {
         }
 
 
+    public static boolean update(List<Contact> contactList) throws SQLException {
+
+        for (Contact list : contactList) {
+            if (!update(list)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean update( Contact contact ) throws SQLException {
+
+        return CrudUtil.execute("UPDATE grama_vista.contact SET  contact_num=? WHERE reg_number=?",contact.getContact(),contact.getCivil_id());
+    }
 }

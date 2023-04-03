@@ -31,6 +31,12 @@ public class LandFormController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         loadLandType();
         generateLandId();
+        if ((!(CivilManageFormController.civil == null))) {
+            setCivilController();
+        }
+    }
+
+    private void setCivilController() {
     }
 
     private void generateLandId() {
@@ -78,7 +84,7 @@ public class LandFormController implements Initializable {
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) {
-        OpenView.openView("civilRegistrationForm",landRoot);
+        OpenView.openView("registrationForm",landRoot);
     }
 
     public void LandTypeOnAction(ActionEvent actionEvent) {

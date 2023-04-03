@@ -344,7 +344,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtAddress" blendMode="MULTIPLY" layoutX="417.0" layoutY="377.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
+      <TextField fx:id="txtAddress" blendMode="MULTIPLY" layoutX="417.0" layoutY="351.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
          <effect>
             <InnerShadow>
                <color>
@@ -380,7 +380,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtContact" blendMode="MULTIPLY" layoutX="417.0" layoutY="485.0" onKeyReleased="#txtContactOnKeyReleased" onKeyTyped="#txtContactOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Contact">
+      <TextField fx:id="txtContact" blendMode="MULTIPLY" layoutX="417.0" layoutY="467.0" onKeyReleased="#txtContactOnKeyReleased" onKeyTyped="#txtContactOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Contact">
          <effect>
             <InnerShadow>
                <color>
@@ -437,7 +437,7 @@
             </InnerShadow>
          </effect>
       </ChoiceBox>
-      <Text layoutX="417.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Political Party" wrappingWidth="121.33673095703125">
+      <Text layoutX="417.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Political Party" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -473,7 +473,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox fx:id="cbPolitic" blendMode="MULTIPLY" layoutX="556.0" layoutY="440.0" prefHeight="26.0" prefWidth="242.0">
+      <ChoiceBox fx:id="cbPolitic" blendMode="MULTIPLY" layoutX="556.0" layoutY="423.0" prefHeight="26.0" prefWidth="242.0">
          <effect>
             <InnerShadow>
                <color>
@@ -557,52 +557,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text layoutX="417.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" wrappingWidth="121.33673095703125">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5048780487804878">
-                     <color>
-                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9919246298788693">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Text>
-      <ChoiceBox fx:id="cbGender" blendMode="MULTIPLY" layoutX="513.0" layoutY="338.0" prefWidth="150.0">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9882352948188782" green="0.8039215803146362" blue="0.364705890417099" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </ChoiceBox>
-      <Label fx:id="lblContact" layoutX="417.0" layoutY="525.0" prefHeight="18.0" prefWidth="303.0" textFill="#ef0d20" />
+      <Label fx:id="lblContact" layoutX="417.0" layoutY="507.0" prefHeight="18.0" prefWidth="303.0" textFill="#ef0d20" />
       <JFXButton fx:id="image" alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" layoutX="417.0" layoutY="550.0" onAction="#btnImageOnAction" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #c16c04;" text="Image">
          <font>
             <Font size="18.0" />

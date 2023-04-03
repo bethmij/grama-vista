@@ -11,6 +11,7 @@ public class ManageFormController {
     }
 
     public void btnIndivOnAction(ActionEvent actionEvent) {
+        OpenView.openView("civilManageForm",ManagePane);
     }
 
     public void btnlandOnAction(ActionEvent actionEvent) {
@@ -23,6 +24,7 @@ public class ManageFormController {
     }
 
     public void btnCandidateOnAction(ActionEvent actionEvent) {
+        OpenView.openView("candidateManageForm",ManagePane);
     }
 
     public void btnDisableOnAction(ActionEvent actionEvent) {

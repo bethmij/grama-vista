@@ -58,7 +58,7 @@ public class DeadPeopleFormController implements Initializable {
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) {
-        OpenView.openView("civilRegistrationForm",deadPane);
+        OpenView.openView("registrationForm",deadPane);
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {

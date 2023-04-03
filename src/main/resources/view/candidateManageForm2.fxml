@@ -6,7 +6,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="506.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.CandidateManageForm2Controller">
    <children>
       <ImageView blendMode="MULTIPLY" fitHeight="581.0" fitWidth="781.0" layoutX="-6.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
@@ -17,11 +16,10 @@
       <TableView fx:id="tbl2" blendMode="MULTIPLY" layoutX="24.0" layoutY="31.0" prefHeight="506.0" prefWidth="721.0">
         <columns>
           <TableColumn fx:id="colElection" prefWidth="100.00006294250488" text="Election ID" />
-            <TableColumn fx:id="colAge" prefWidth="84.79998016357422" text="Age" />
             <TableColumn fx:id="colAddress" prefWidth="176.79998779296875" text="Address" />
-          <TableColumn fx:id="colContact" prefWidth="104.0" text="Contact" />
-            <TableColumn fx:id="colPolitic" prefWidth="158.40011596679688" text="Political Party" />
-            <TableColumn fx:id="colAction" prefWidth="99.199951171875" text="Action" />
+          <TableColumn fx:id="colContact" prefWidth="126.4000244140625" text="Contact" />
+            <TableColumn fx:id="colPolitic" prefWidth="217.60006713867188" text="Political Party" />
+            <TableColumn fx:id="colAction" prefWidth="100.7999267578125" text="Action" />
         </columns>
       </TableView>
    </children>

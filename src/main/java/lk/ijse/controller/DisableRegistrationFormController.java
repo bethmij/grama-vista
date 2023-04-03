@@ -80,7 +80,7 @@ public class DisableRegistrationFormController implements Initializable {
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) {
-        OpenView.openView("civilRegistrationForm",disablePane);
+        OpenView.openView("registrationForm",disablePane);
     }
 
 

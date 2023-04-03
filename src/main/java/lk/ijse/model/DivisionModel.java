@@ -17,7 +17,7 @@ public class DivisionModel {
     public static String getNextOrderId() throws SQLException {
 
 
-        ResultSet resultSet = CrudUtil.execute("SELECT division_id FROM grama_vista.gn_division ORDER BY division_id DESC LIMIT 1" );
+        ResultSet resultSet = CrudUtil.execute("SELECT division_id FROM grama_vista.gn_division ORDER BY division_id DESC LIMIT 1");
 
         if (resultSet.next()) {
             return splitOrderId(resultSet.getString(1));
@@ -26,7 +26,7 @@ public class DivisionModel {
     }
 
     private static String splitOrderId(String currentId) {
-        if(currentId != null) {
+        if (currentId != null) {
             String[] strings = currentId.split("GN0");
             int id = Integer.parseInt(strings[1]);
             id++;
@@ -37,53 +37,80 @@ public class DivisionModel {
 
     public static boolean save(Division division) throws SQLException {
 
-         String sql = "INSERT INTO grama_vista.gn_division (division_id, name, div_secretariat, admin_officer,land_area) " +
-                            "VALUES(?, ?, ?, ?,?)";
+        String sql = "INSERT INTO grama_vista.gn_division (division_id, name, div_secretariat, admin_officer,land_area) " +
+                "VALUES(?, ?, ?, ?,?)";
 
-         return CrudUtil.execute(sql, division.getDivision_id(), division.getName(), division.getDiv_Secretariat(), division.getAdmin_officer(), division.getLand_area());
+        return CrudUtil.execute(sql, division.getDivision_id(), division.getName(), division.getDiv_Secretariat(), division.getAdmin_officer(), division.getLand_area());
 
     }
 
-    public static List<String> loadDivisionID () throws SQLException {
+    public static List<String> loadDivisionID() throws SQLException {
         ResultSet resultSet = CrudUtil.execute("SELECT division_id FROM grama_vista.gn_division ");
         List<String> id = new ArrayList<>();
 
-        while (resultSet.next()){
+        while (resultSet.next()) {
             id.add(resultSet.getString(1));
         }
 
-        return  id;
-        }
+        return id;
+    }
 
-    public static boolean UpdatePopulation (String division_id) throws SQLException {
-        return CrudUtil.execute("UPDATE grama_vista.gn_division SET population=population+1 WHERE division_id=?",division_id);
+    public static boolean UpdatePopulation(String division_id) throws SQLException {
+        return CrudUtil.execute("UPDATE grama_vista.gn_division SET population=population+1 WHERE division_id=?", division_id);
 
     }
 
     public static boolean UpdateDeadPopulation(String division_id) throws SQLException {
-        return CrudUtil.execute("UPDATE grama_vista.gn_division SET population=population-1 WHERE division_id=?",division_id);
+        return CrudUtil.execute("UPDATE grama_vista.gn_division SET population=population-1 WHERE division_id=?", division_id);
     }
 
-    public static String getName (String division_id) throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT name FROM grama_vista.gn_division WHERE division_id=?",division_id);
-        if(resultSet.next()){
+    public static String getName(String division_id) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT name FROM grama_vista.gn_division WHERE division_id=?", division_id);
+        if (resultSet.next()) {
             return resultSet.getString(1);
         }
         return "";
     }
 
-    public static DivisionDTO search (String division_id) throws SQLException {
+    public static DivisionDTO search(String division_id) throws SQLException {
 
-        ResultSet resultSet = CrudUtil.execute("SELECT * FROM grama_vista.gn_division WHERE division_id=?",division_id);
-        if(resultSet.next()){
+        ResultSet resultSet = CrudUtil.execute("SELECT * FROM grama_vista.gn_division WHERE division_id=?", division_id);
+        if (resultSet.next()) {
 
-             return new DivisionDTO(resultSet.getString(1),resultSet.getString(2), resultSet.getString(3),
-                          resultSet.getString(4),resultSet.getInt(5),resultSet.getDouble(6));
+            return new DivisionDTO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
+                    resultSet.getString(4), resultSet.getInt(5), resultSet.getDouble(6));
 
         }
         return null;
     }
+
+    public static boolean dead(String division_id) throws SQLException {
+        return CrudUtil.execute("DELETE  FROM grama_vista.gn_division WHERE division_id=?", division_id);
+    }
+
+    public static List<DivisionDTO> searchAll() throws SQLException {
+        List<DivisionDTO> datalist = new ArrayList<>();
+        ResultSet resultSet = CrudUtil.execute("SELECT * FROM grama_vista.gn_division ");
+        while (resultSet.next()) {
+
+            datalist.add((new DivisionDTO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
+                    resultSet.getString(4), resultSet.getInt(5), resultSet.getDouble(6))));
+
+        }
+        return datalist;
+    }
+
+    public static boolean update(Division division) throws SQLException {
+
+        String sql = "UPDATE grama_vista.gn_division SET  name=?, div_secretariat=?, admin_officer=?,land_area=? " +
+                "WHERE division_id = ?";
+        return CrudUtil.execute(sql, division.getName(), division.getDiv_Secretariat(), division.getAdmin_officer(), division.getLand_area(), division.getDivision_id());
+    }
+
 }
+
+
+
 
 
 

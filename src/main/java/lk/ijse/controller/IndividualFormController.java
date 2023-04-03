@@ -59,6 +59,22 @@ public class IndividualFormController implements Initializable {
             }
         }
 
+        if ((!(CivilManageFormController.civil == null))) {
+            setCivilController();
+        }
+
+    }
+
+    private void setCivilController() {
+         txtName.setText(CivilManageFormController.civil.getName());
+         txtAddress.setText(CivilManageFormController.civil.getAddress());
+         txtRelation.setText(CivilManageFormController.civil.getRelation());
+         lblCivil.setText("C00"+CivilManageFormController.civil.getId());
+         cbGender.setValue(CivilManageFormController.civil.getGender());
+         cbMarriage.setValue(CivilManageFormController.civil.getMarriage());
+         dtpDOB.setValue(CivilManageFormController.civil.getDob());
+         txtNIC.setText(CivilManageFormController.civil.getNic());
+         cbResidence.setValue(CivilManageFormController.civil.getRelation());
     }
 
     private void loadResidenceID() {
@@ -101,7 +117,7 @@ public class IndividualFormController implements Initializable {
 
     public void btnBackOnAction(ActionEvent actionEvent) {
 
-        OpenView.openView("civilRegistrationForm", indiroot1);
+        OpenView.openView("registrationForm", indiroot1);
         civil1 = null;
     }
 

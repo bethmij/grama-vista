@@ -1,11 +1,15 @@
 package lk.ijse.model;
 
+import com.mysql.cj.jdbc.Blob;
+import lk.ijse.dto.CandidateDTO;
 import lk.ijse.dto.Civil;
+import lk.ijse.dto.CivilDTO;
 import lk.ijse.util.CrudUtil;
 
 import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,6 +85,52 @@ public class CivilModel {
             return resultSet.getString(1);
         }
         return null;
+    }
+
+    public static String getName(String reg_id) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT name FROM grama_vista.civil WHERE reg_number=?", reg_id);
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+        return "";
+    }
+
+    public static CivilDTO search(String reg_id) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT *,TIMESTAMPDIFF(year,dob,now()) AS Age FROM grama_vista.civil WHERE reg_number=?", reg_id);
+        if (resultSet.next()) {
+
+            return new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2),
+                    resultSet.getString(4), String.valueOf(resultSet.getDate(6)),resultSet.getInt(15),resultSet.getString(5),resultSet.getString(7),
+                    resultSet.getString(8),resultSet.getString(9),resultSet.getString(10),
+                    resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13));
+
+        }
+        return null;
+    }
+
+    public static List<CivilDTO> searchAll() throws SQLException {
+
+        List<CivilDTO> datalist = new ArrayList<>();
+        ResultSet resultSet = CrudUtil.execute("SELECT *,TIMESTAMPDIFF(year,dob,now()) AS Age FROM grama_vista.civil ");
+        while (resultSet.next()) {
+
+            datalist.add (new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2),
+                    resultSet.getString(4),String.valueOf(resultSet.getDate(6)),resultSet.getInt(15),resultSet.getString(5),resultSet.getString(7),
+                    resultSet.getString(8),resultSet.getString(9),resultSet.getString(10),
+                    resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13)));
+
+        }
+        return datalist;
+    }
+
+    public static boolean update(Civil civil) throws SQLException {
+        String sql = "UPDATE grama_vista.civil SET nic=?, name=?, address=?, gender=?, dob=?, marriage_status=?, relation=?," +
+                " education_status=?, school=?, occupation=?, working_address=?, salary=? WHERE reg_number=?";
+
+        return CrudUtil.execute(sql, civil.getNic(),civil.getName(),civil.getAddress(),civil.getGender(),civil.getDob(),civil.getMarriage(),civil.getRelation(),
+                civil.getEdu_status(),civil.getSchool(),civil.getOccupation(),civil.getWorking_address(),civil.getSalary(),civil.getId());
+
+
     }
 }
 

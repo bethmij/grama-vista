@@ -14,9 +14,11 @@ import lk.ijse.dto.DivisionDTO;
 import lk.ijse.dto.tm.DivisionTM;
 import lk.ijse.model.DivisionModel;
 import lk.ijse.model.ResidenceModel;
+import lk.ijse.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -35,6 +37,8 @@ public class DivisionManageFormController implements Initializable {
     public TableColumn colAction;
     public Label lblName;
     private ObservableList<DivisionTM> obList = FXCollections.observableArrayList();
+    public static Division division;
+    public static String division_id;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -68,12 +72,42 @@ public class DivisionManageFormController implements Initializable {
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) {
+        OpenView.openView("manageForm",tblDivPane);
     }
 
     public void btnGetAllOnAction(ActionEvent actionEvent) {
+
+        try {
+            List<DivisionDTO> divisionList  = DivisionModel.searchAll();
+
+            for (DivisionDTO datalist : divisionList) {
+                Button btnDelete = new Button("Delete");
+                btnDelete.setCursor(Cursor.HAND);
+                setDeleteBtnOnAction(btnDelete);
+
+                DivisionTM divisionTM = new DivisionTM(datalist.getDivision_id(), datalist.getName(), datalist.getDiv_Secretariat(),
+                        datalist.getAdmin_officer(), datalist.getPopulation(), datalist.getLand_area(), btnDelete);
+                obList.add(divisionTM);
+                tblDivision.setItems(obList);
+            }
+
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
+
+        try {
+            DivisionDTO divisionDTO = DivisionModel.search((String) cbDivision.getValue());
+            division = new Division(divisionDTO.getDivision_id(),divisionDTO.getName(),divisionDTO.getDiv_Secretariat(),
+                                        divisionDTO.getAdmin_officer(),divisionDTO.getLand_area());
+            OpenView.openView("divisionRegistrationForm");
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
@@ -96,11 +130,17 @@ public class DivisionManageFormController implements Initializable {
             Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to delete?", yes, no).showAndWait();
 
             if (result.orElse(no) == yes) {
-                /*int index = tblOrderCart.getSelectionModel().getSelectedIndex();
-                obList.remove(index);
+                try {
+                    boolean isDeleted = DivisionModel.dead((String)cbDivision.getValue());
+                    if(isDeleted) {
+                        new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
+                        obList.remove( tblDivision.getSelectionModel().getSelectedIndex());
+                        tblDivision.refresh();
+                    }
+                } catch (SQLException ex) {
+                    new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
+                }
 
-                tblOrderCart.refresh();
-                calculateNetTotal();*/
             }
 
         });
@@ -114,4 +154,6 @@ public class DivisionManageFormController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
 }

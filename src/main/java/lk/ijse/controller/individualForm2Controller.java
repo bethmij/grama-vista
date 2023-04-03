@@ -7,19 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import lk.ijse.dto.Civil;
-import lk.ijse.dto.Civil1;
-import lk.ijse.dto.Contact;
-import lk.ijse.dto.MultiResidence;
+import lk.ijse.dto.*;
 import lk.ijse.model.*;
 import lk.ijse.util.OpenView;
 
@@ -42,11 +36,26 @@ public class individualForm2Controller implements Initializable {
     public TextField txtContact1;
     public Label lblContact;
     public Label lblContact1;
+    public Button btn1;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadGender();
+        if ((!(CivilManageFormController.civil == null))) {
+            setCivilController();
+        }
+    }
+
+    private void setCivilController() {
+        txtSchool.setText(CivilManageFormController.civil.getSchool());
+        txtSalary.setText(String.valueOf(CivilManageFormController.civil.getSalary()));
+        txtWork.setText(CivilManageFormController.civil.getWorking_address());
+        txtOccupation.setText(CivilManageFormController.civil.getOccupation());
+        cbEdu.setValue(CivilManageFormController.civil.getEdu_status());
+        btn1.setText("Update");
+        //txtContact2;
+        //txtContact1;
     }
 
     private void loadGender() {
@@ -57,29 +66,70 @@ public class individualForm2Controller implements Initializable {
 
 
     public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
-        Double salary;
-        if (!txtSalary.getText().isEmpty()) salary = Double.valueOf(txtSalary.getText());
-        else salary = 0.0;
+        if (btn1.getText().equals("Save") ) {
 
-        Civil civil =new Civil(IndividualFormController.civil1.getId(),IndividualFormController.civil1.getName(), IndividualFormController.civil1.getNic(), IndividualFormController.civil1.getAddress(),
-                IndividualFormController.civil1.getDob(), IndividualFormController.civil1.getGender(), IndividualFormController.civil1.getMarriage(),
-                IndividualFormController.civil1.getRelation(),(String) cbEdu.getValue(),txtSchool.getText(),txtOccupation.getText(),txtWork.getText(),salary);
+            Double salary;
+            if (!txtSalary.getText().isEmpty()) salary = Double.valueOf(txtSalary.getText());
+            else salary = 0.0;
 
-        List<Contact> contactList = new ArrayList<>();
+            Civil civil = new Civil(IndividualFormController.civil1.getId(), IndividualFormController.civil1.getName(), IndividualFormController.civil1.getNic(), IndividualFormController.civil1.getAddress(),
+                    IndividualFormController.civil1.getDob(), IndividualFormController.civil1.getGender(), IndividualFormController.civil1.getMarriage(),
+                    IndividualFormController.civil1.getRelation(), (String) cbEdu.getValue(), txtSchool.getText(), txtOccupation.getText(), txtWork.getText(), salary);
 
-        if (!txtContact1.getText().isEmpty()) contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact1.getText())));
-        if (!txtContact2.getText().isEmpty()) contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact2.getText())));
+            List<Contact> contactList = new ArrayList<>();
 
-        AddResidenceFormController.residenceList.add(new MultiResidence( IndividualFormController.civil1.getResidence(),IndividualFormController.civil1.getId()));
+            if (!txtContact1.getText().isEmpty())
+                contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact1.getText())));
+            if (!txtContact2.getText().isEmpty())
+                contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact2.getText())));
 
-        String division_id = CivilModel.getDivisionId(IndividualFormController.civil1.getResidence());
+            AddResidenceFormController.residenceList.add(new MultiResidence(IndividualFormController.civil1.getResidence(), IndividualFormController.civil1.getId()));
 
-        boolean isSaved = CivilResidenceModel.save( civil,contactList,AddResidenceFormController.residenceList,division_id);
+            String division_id = CivilModel.getDivisionId(IndividualFormController.civil1.getResidence());
 
-        if (isSaved)
-            new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-        else
-            new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+            boolean isSaved = false;
+            try {
+                isSaved = CivilResidenceModel.save(civil, contactList, AddResidenceFormController.residenceList, division_id);
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+
+            if (isSaved)
+                new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
+            else
+                new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+        } else if (btn1.getText().equals("Update") ) {
+
+            Double salary;
+            if (!txtSalary.getText().isEmpty()) salary = Double.valueOf(txtSalary.getText());
+            else salary = 0.0;
+
+            Civil civil = new Civil(IndividualFormController.civil1.getId(), IndividualFormController.civil1.getName(), IndividualFormController.civil1.getNic(), IndividualFormController.civil1.getAddress(),
+                    IndividualFormController.civil1.getDob(), IndividualFormController.civil1.getGender(), IndividualFormController.civil1.getMarriage(),
+                    IndividualFormController.civil1.getRelation(), (String) cbEdu.getValue(), txtSchool.getText(), txtOccupation.getText(), txtWork.getText(), salary);
+
+            List<Contact> contactList = new ArrayList<>();
+
+            if (!txtContact1.getText().isEmpty())
+                contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact1.getText())));
+            if (!txtContact2.getText().isEmpty())
+                contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact2.getText())));
+
+            AddResidenceFormController.residenceList.add(new MultiResidence(IndividualFormController.civil1.getResidence(), IndividualFormController.civil1.getId()));
+
+
+            boolean isUpdated = false;
+            try {
+                isUpdated = CivilResidenceModel.update(civil, contactList, AddResidenceFormController.residenceList);
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully!").show();
+                } else
+                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+           
+        }
 
     }
 

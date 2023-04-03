@@ -14,7 +14,6 @@ public class Candidate {
     private String nic;
     private String name;
     private String political_party;
-    private String gender;
     private String address;
     private Integer contact;
 

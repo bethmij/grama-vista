@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -16,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import lk.ijse.dto.Candidate;
+import lk.ijse.dto.Division;
 import lk.ijse.model.CandidateModel;
 import lk.ijse.model.DivisionModel;
 import lk.ijse.util.OpenView;
@@ -46,12 +48,27 @@ public class CandidateFormController implements Initializable {
     public Label lblAge;
     public Label lblNIC;
     public JFXButton image;
+    public Button btn1;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadDivisionID();
-        loadGender();
         loadPolitic();
+        if ((!(CandidateManageFormController.candidate == null))) {
+            setCandidateController();
+        }
+    }
+
+    private void setCandidateController() {
+        txtID.setText(CandidateManageFormController.candidate.getElection_id());
+        txtAddress.setText(CandidateManageFormController.candidate.getAddress());
+        txtName.setText(CandidateManageFormController.candidate.getName());
+        txtNIC.setText(CandidateManageFormController.candidate.getNic());
+        txtContact.setText(String.valueOf(CandidateManageFormController.candidate.getContact()));
+        cbPolitic.setValue(CandidateManageFormController.candidate.getPolitical_party());
+        cbDivision.setValue(CandidateManageFormController.candidate.getDivision_id());
+        btn1.setText("Update");
+
     }
 
     private void loadDivisionID() {
@@ -69,48 +86,66 @@ public class CandidateFormController implements Initializable {
     }
 
     private void loadPolitic() {
-        String[] politic = new String[]{"Ahila Ilankai Thamil Congress (AITC)","Eelam People's Democratic Party (EPDP)","Jathika Jana balawegaya (JJB)",
-                "Janatha Vimukthi Peramuna (JVP)","Samagi Jana Balawegaya (SJB)","Sri Lanka Freedom Party(SLFP)","Sri Lanka Podujana Peramuna (SLPP)","United National Party (UNP)"};
+        String[] politic = new String[]{"Ahila Ilankai Thamil Congress (AITC)", "Eelam People's Democratic Party (EPDP)", "Jathika Jana balawegaya (JJB)",
+                "Janatha Vimukthi Peramuna (JVP)", "Samagi Jana Balawegaya (SJB)", "Sri Lanka Freedom Party(SLFP)", "Sri Lanka Podujana Peramuna (SLPP)", "United National Party (UNP)"};
         ObservableList<String> dataList = FXCollections.observableArrayList(politic);
         cbPolitic.setItems(dataList);
     }
 
-    private void loadGender() {
-        String[] gender = new String[]{"Male","Female","Other"};
-        ObservableList<String> dataList = FXCollections.observableArrayList(gender);
-        cbGender.setItems(dataList);
-    }
 
 
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
 
-        try {
-            boolean isSaved = CandidateModel.save(new Candidate(
-                    txtID.getText(),
-                    (String) cbDivision.getValue(),
-                    txtNIC.getText(),
-                    txtName.getText(),
-                    (String)cbPolitic.getValue(),
-                    (String) cbGender.getValue(),
-                    txtAddress.getText(),
-                    Integer.valueOf(txtContact.getText())));
+        if (btn1.getText().equals("Save") ) {
+            try {
+                boolean isSaved = CandidateModel.save(new Candidate(
+                        txtID.getText(),
+                        (String) cbDivision.getValue(),
+                        txtNIC.getText(),
+                        txtName.getText(),
+                        (String) cbPolitic.getValue(),
+                        txtAddress.getText(),
+                        Integer.valueOf(txtContact.getText())));
 
-            if (isSaved)
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-            else
-                new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                if (isSaved)
+                    new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
+                else
+                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        }else if (btn1.getText().equals("Update") ) {
+
+            try {
+                boolean isSaved = CandidateModel.update(new Candidate(
+                        txtID.getText(),
+                        (String) cbDivision.getValue(),
+                        txtNIC.getText(),
+                        txtName.getText(),
+                        (String) cbPolitic.getValue(),
+                        txtAddress.getText(),
+                        Integer.valueOf(txtContact.getText())));
+
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully!").show();
+                } else
+                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
         }
-
-
     }
 
 
+
+
+
+
+
     public void btnBackOnAction(ActionEvent actionEvent) {
-        OpenView.openView("civilRegistrationForm",CandidatePane);
+        OpenView.openView("registrationForm",CandidatePane);
     }
 
 

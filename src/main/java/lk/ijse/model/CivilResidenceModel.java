@@ -59,4 +59,34 @@ public class CivilResidenceModel {
         }
 
     }
+
+    public static boolean update(Civil civil, List<Contact> contactList, List<MultiResidence> residenceList) throws SQLException {
+        Connection con = null;
+        try {
+            con = DBConnection.getInstance().getConnection();
+            con.setAutoCommit(false);
+            boolean isCivilUpdated = CivilModel.update(civil);
+            if (isCivilUpdated ) {
+
+                boolean isContactUpdated  = ContactModel.update(contactList);
+                if (isContactUpdated ) {
+                    boolean isResidenceUpdated  = MultiResidenceModel.update(residenceList);
+                    if (isResidenceUpdated ) {
+
+                        con.commit();
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        } catch (SQLException er) {
+
+            con.rollback();
+            return false;
+        } finally {
+            con.setAutoCommit(true);
+        }
+
+    }
 }

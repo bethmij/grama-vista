@@ -61,7 +61,7 @@ public class MaternityRegistFormController implements Initializable {
 
 
     public void btnBackOnAction(ActionEvent actionEvent) {
-        OpenView.openView("civilRegistrationForm",maternityPane);
+        OpenView.openView("registrationForm",maternityPane);
     }
 
 
