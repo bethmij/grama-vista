@@ -65,28 +65,26 @@ public class CivilResidenceModel {
         try {
             con = DBConnection.getInstance().getConnection();
             con.setAutoCommit(false);
-            boolean isCivilUpdated = CivilModel.update(civil);
-            if (isCivilUpdated ) {
 
-                boolean isContactUpdated  = ContactModel.update(contactList);
-                if (isContactUpdated ) {
-                    boolean isResidenceUpdated  = MultiResidenceModel.update(residenceList);
-                    if (isResidenceUpdated ) {
-
+            boolean isCivilSaved = CivilModel.update(civil);
+            if (isCivilSaved) {
+                boolean isContactSaved = ContactModel.update(contactList);
+                if (isContactSaved) {
+                    boolean isResidenceSaved = MultiResidenceModel.save(residenceList);
+                    if (isResidenceSaved) {
                         con.commit();
                         return true;
                     }
                 }
             }
-
             return false;
         } catch (SQLException er) {
-
             con.rollback();
             return false;
         } finally {
             con.setAutoCommit(true);
         }
+
 
     }
 }

@@ -6,8 +6,9 @@ import lombok.*;
 @AllArgsConstructor
 
 public class Disable {
-    private Integer ID;
+    private String ID;
     private String civil_ID;
+    private String name;
     private String disability;
     private String description;
 

@@ -24,6 +24,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static lk.ijse.controller.CivilManageFormController.civil;
+import static lk.ijse.controller.CivilManageFormController.contactList;
+import static lk.ijse.controller.IndividualFormController.civil1;
+
 public class individualForm2Controller implements Initializable {
 
     public AnchorPane indiroot2;
@@ -42,20 +46,25 @@ public class individualForm2Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadGender();
-        if ((!(CivilManageFormController.civil == null))) {
+        if ((!(civil == null))) {
             setCivilController();
         }
     }
 
     private void setCivilController() {
-        txtSchool.setText(CivilManageFormController.civil.getSchool());
-        txtSalary.setText(String.valueOf(CivilManageFormController.civil.getSalary()));
-        txtWork.setText(CivilManageFormController.civil.getWorking_address());
-        txtOccupation.setText(CivilManageFormController.civil.getOccupation());
-        cbEdu.setValue(CivilManageFormController.civil.getEdu_status());
+        txtSchool.setText(civil.getSchool());
+        txtSalary.setText(String.valueOf(civil.getSalary()));
+        txtWork.setText(civil.getWorking_address());
+        txtOccupation.setText(civil.getOccupation());
+        cbEdu.setValue(civil.getEdu_status());
+        if(contactList.get(0)!=null) {
+            txtContact2.setText(String.valueOf(contactList.get(0).getContact()));
+        }
+        if(contactList.get(1)!=null) {
+            txtContact1.setText(String.valueOf(contactList.get(1).getContact()));
+        }
         btn1.setText("Update");
-        //txtContact2;
-        //txtContact1;
+
     }
 
     private void loadGender() {
@@ -72,20 +81,20 @@ public class individualForm2Controller implements Initializable {
             if (!txtSalary.getText().isEmpty()) salary = Double.valueOf(txtSalary.getText());
             else salary = 0.0;
 
-            Civil civil = new Civil(IndividualFormController.civil1.getId(), IndividualFormController.civil1.getName(), IndividualFormController.civil1.getNic(), IndividualFormController.civil1.getAddress(),
-                    IndividualFormController.civil1.getDob(), IndividualFormController.civil1.getGender(), IndividualFormController.civil1.getMarriage(),
-                    IndividualFormController.civil1.getRelation(), (String) cbEdu.getValue(), txtSchool.getText(), txtOccupation.getText(), txtWork.getText(), salary);
+            Civil civil = new Civil(civil1.getId(), civil1.getName(), civil1.getNic(), civil1.getAddress(),
+                    civil1.getDob(), civil1.getGender(), civil1.getMarriage(),
+                    civil1.getRelation(), (String) cbEdu.getValue(), txtSchool.getText(), txtOccupation.getText(), txtWork.getText(), salary);
 
             List<Contact> contactList = new ArrayList<>();
 
             if (!txtContact1.getText().isEmpty())
-                contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact1.getText())));
+                contactList.add(new Contact(civil1.getId(), Integer.valueOf(txtContact1.getText())));
             if (!txtContact2.getText().isEmpty())
-                contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact2.getText())));
+                contactList.add(new Contact(civil1.getId(), Integer.valueOf(txtContact2.getText())));
 
-            AddResidenceFormController.residenceList.add(new MultiResidence(IndividualFormController.civil1.getResidence(), IndividualFormController.civil1.getId()));
+            AddResidenceFormController.residenceList.add(new MultiResidence(civil1.getResidence(), civil1.getId()));
 
-            String division_id = CivilModel.getDivisionId(IndividualFormController.civil1.getResidence());
+            String division_id = CivilModel.getDivisionId(civil1.getResidence());
 
             boolean isSaved = false;
             try {
@@ -104,18 +113,18 @@ public class individualForm2Controller implements Initializable {
             if (!txtSalary.getText().isEmpty()) salary = Double.valueOf(txtSalary.getText());
             else salary = 0.0;
 
-            Civil civil = new Civil(IndividualFormController.civil1.getId(), IndividualFormController.civil1.getName(), IndividualFormController.civil1.getNic(), IndividualFormController.civil1.getAddress(),
-                    IndividualFormController.civil1.getDob(), IndividualFormController.civil1.getGender(), IndividualFormController.civil1.getMarriage(),
-                    IndividualFormController.civil1.getRelation(), (String) cbEdu.getValue(), txtSchool.getText(), txtOccupation.getText(), txtWork.getText(), salary);
+            Civil civil = new Civil(civil1.getId(), civil1.getName(), civil1.getNic(), civil1.getAddress(),
+                    civil1.getDob(), civil1.getGender(), civil1.getMarriage(),
+                    civil1.getRelation(), (String) cbEdu.getValue(), txtSchool.getText(), txtOccupation.getText(), txtWork.getText(), salary);
 
             List<Contact> contactList = new ArrayList<>();
 
             if (!txtContact1.getText().isEmpty())
-                contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact1.getText())));
+                contactList.add(new Contact(civil1.getId(), Integer.valueOf(txtContact1.getText())));
             if (!txtContact2.getText().isEmpty())
-                contactList.add(new Contact(IndividualFormController.civil1.getId(), Integer.valueOf(txtContact2.getText())));
+                contactList.add(new Contact(civil1.getId(), Integer.valueOf(txtContact2.getText())));
 
-            AddResidenceFormController.residenceList.add(new MultiResidence(IndividualFormController.civil1.getResidence(), IndividualFormController.civil1.getId()));
+            AddResidenceFormController.residenceList.add(new MultiResidence(civil1.getResidence(), civil1.getId()));
 
 
             boolean isUpdated = false;

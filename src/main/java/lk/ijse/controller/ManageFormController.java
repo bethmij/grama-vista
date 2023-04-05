@@ -8,6 +8,7 @@ public class ManageFormController {
     public AnchorPane ManagePane;
 
     public void btnHomeOnAction(ActionEvent actionEvent) {
+        OpenView.openView("homeManageForm",ManagePane);
     }
 
     public void btnIndivOnAction(ActionEvent actionEvent) {
@@ -18,6 +19,7 @@ public class ManageFormController {
     }
 
     public void btndeadOnAction(ActionEvent actionEvent) {
+        OpenView.openView("deadManageForm",ManagePane);
     }
 
     public void btnMaternityOnAction(ActionEvent actionEvent) {
@@ -28,6 +30,7 @@ public class ManageFormController {
     }
 
     public void btnDisableOnAction(ActionEvent actionEvent) {
+        OpenView.openView("disableManageForm",ManagePane);
     }
 
     public void btnDivisionOnAction(ActionEvent actionEvent) {

@@ -27,6 +27,10 @@ public class AddResidenceFormController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         loadResidenceID();
         lblCivil.setText(IndividualFormController.civil_id);
+        if ((!(CivilManageFormController.multiResidenceList.get(1) == null))) {
+            lblCivil.setText("C00"+CivilManageFormController.civil.getId());
+            cbResidence.setValue(CivilManageFormController.multiResidenceList.get(1).getResidence_id());
+        }
     }
 
     private void loadResidenceID() {

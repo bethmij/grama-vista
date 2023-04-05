@@ -1,7 +1,11 @@
 package lk.ijse.controller;
 
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import lk.ijse.model.CivilModel;
+import lk.ijse.model.DeadModel;
+
+import java.sql.SQLException;
+import java.util.Optional;
 
 public class CivilManageForm2Controller {
     public TableView tbl2;
@@ -14,4 +18,7 @@ public class CivilManageForm2Controller {
     public TableColumn colOccupation;
     public TableColumn colWork;
     public TableColumn colAction;
+
+
+
 }

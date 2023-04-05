@@ -24,6 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static lk.ijse.controller.CivilManageFormController.civil;
+import static lk.ijse.controller.CivilManageFormController.multiResidenceList;
+
 public class IndividualFormController implements Initializable {
 
 
@@ -59,22 +62,25 @@ public class IndividualFormController implements Initializable {
             }
         }
 
-        if ((!(CivilManageFormController.civil == null))) {
+        if ((!(civil == null))) {
             setCivilController();
         }
 
     }
 
     private void setCivilController() {
-         txtName.setText(CivilManageFormController.civil.getName());
-         txtAddress.setText(CivilManageFormController.civil.getAddress());
-         txtRelation.setText(CivilManageFormController.civil.getRelation());
-         lblCivil.setText("C00"+CivilManageFormController.civil.getId());
-         cbGender.setValue(CivilManageFormController.civil.getGender());
-         cbMarriage.setValue(CivilManageFormController.civil.getMarriage());
-         dtpDOB.setValue(CivilManageFormController.civil.getDob());
-         txtNIC.setText(CivilManageFormController.civil.getNic());
-         cbResidence.setValue(CivilManageFormController.civil.getRelation());
+         txtName.setText(civil.getName());
+         txtAddress.setText(civil.getAddress());
+         txtRelation.setText(civil.getRelation());
+         lblCivil.setText("C00"+ civil.getId());
+         cbGender.setValue(civil.getGender());
+         cbMarriage.setValue(civil.getMarriage());
+         dtpDOB.setValue(civil.getDob());
+         txtNIC.setText(civil.getNic());
+         if(null != multiResidenceList.get(0)) {
+             cbResidence.setValue(multiResidenceList.get(0).getResidence_id());
+         }else
+             cbResidence.setValue("");
     }
 
     private void loadResidenceID() {
@@ -135,7 +141,7 @@ public class IndividualFormController implements Initializable {
     }
 
      private void setIndivController() throws SQLException {
-        lblCivil.setText(String.valueOf((CivilModel.getNextId())));
+        lblCivil.setText(civil_id);
         txtName.setText(civil1.getName());
         txtNIC.setText(civil1.getNic());
         txtAddress.setText(civil1.getAddress());

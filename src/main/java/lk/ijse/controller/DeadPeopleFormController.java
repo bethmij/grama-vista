@@ -20,17 +20,31 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static lk.ijse.controller.DeadManageFormController.dead;
+
 public class DeadPeopleFormController implements Initializable {
     public AnchorPane deadPane;
     public ComboBox cmbCivil;
     public DatePicker dtpDate;
     public Label lblName;
     public Label lblID;
+    public Button btn1;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadCivilId();
         generateNextId();
+        if ((!(dead == null))) {
+            setDeadController();
+        }
+    }
+
+    private void setDeadController() {
+        cmbCivil.setValue(dead.getCivil_ID());
+        dtpDate.setValue(dead.getDate());
+        lblName.setText(dead.getName());
+        lblID.setText(dead.getReg_id());
+        btn1.setText("Update");
     }
 
     private void generateNextId() {
@@ -63,20 +77,40 @@ public class DeadPeopleFormController implements Initializable {
 
     public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
 
-        String id =  (String) cmbCivil.getValue();
-        String[] civil_id = id.split("C00");
-        String division_id = CivilModel.getDivisionId (Integer.valueOf(civil_id[1]));
+        if(btn1.getText().equals("Save")) {
+            String id = (String) cmbCivil.getValue();
+            String[] civil_id = id.split("C00");
+            String[] reg_id = lblID.getText().split("DD00");
+            String division_id = CivilModel.getDivisionId(Integer.valueOf(civil_id[1]));
 
-        try {
-            boolean isSaved = DeadModel.save(new Dead(civil_id[1],lblName.getText(),  dtpDate.getValue()),division_id);
+            try {
+                boolean isSaved = DeadModel.save(new Dead(reg_id[1], civil_id[1], lblName.getText(), dtpDate.getValue()), division_id);
 
-            if (isSaved)
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-            else
-                new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                if (isSaved)
+                    new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
+                else
+                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        }else if(btn1.getText().equals("Update")){
+          /*  String id = (String) cmbCivil.getValue();
+            String[] civil_id = id.split("C00");
+            String[] reg_id = lblID.getText().split("DD00");*/
+
+
+            try {
+                //boolean isUpdate = DeadModel.update(new Dead(reg_id[1], civil_id[1], lblName.getText(), dtpDate.getValue()));
+                boolean isUpdate = DeadModel.update(new Dead(lblID.getText(), (String) cmbCivil.getValue(), lblName.getText(), dtpDate.getValue()));
+                if (isUpdate)
+                    new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
+                else
+                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
         }
 
     }

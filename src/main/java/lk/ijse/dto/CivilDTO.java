@@ -16,7 +16,7 @@ public class CivilDTO {
     String name;
     String nic;
     String address;
-    String dob;
+    LocalDate dob;
     Integer age;
     String gender;
     String marriage;

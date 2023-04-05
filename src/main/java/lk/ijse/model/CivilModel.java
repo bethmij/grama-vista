@@ -1,9 +1,9 @@
 package lk.ijse.model;
 
 import com.mysql.cj.jdbc.Blob;
-import lk.ijse.dto.CandidateDTO;
-import lk.ijse.dto.Civil;
-import lk.ijse.dto.CivilDTO;
+import com.mysql.cj.protocol.a.BinaryResultsetReader;
+import lk.ijse.controller.AddResidenceFormController;
+import lk.ijse.dto.*;
 import lk.ijse.util.CrudUtil;
 
 import java.io.InputStream;
@@ -96,16 +96,32 @@ public class CivilModel {
     }
 
     public static CivilDTO search(String reg_id) throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT *,TIMESTAMPDIFF(year,dob,now()) AS Age FROM grama_vista.civil WHERE reg_number=?", reg_id);
+        ResultSet resultSet = CrudUtil.execute("SELECT *,TIMESTAMPDIFF(year,dob,now()) AS Age FROM grama_vista.civil  WHERE reg_number=?", reg_id);
         if (resultSet.next()) {
 
-            return new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2),
-                    resultSet.getString(4), String.valueOf(resultSet.getDate(6)),resultSet.getInt(15),resultSet.getString(5),resultSet.getString(7),
-                    resultSet.getString(8),resultSet.getString(9),resultSet.getString(10),
-                    resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13));
+            return new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2), resultSet.getString(4),
+                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(15),resultSet.getString(5),resultSet.getString(7), resultSet.getString(8),resultSet.getString(9),resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13));
 
         }
         return null;
+    }
+
+    public static List<MultiResidence> searchResidence (String reg_id) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT * FROM grama_vista.multi_residence WHERE reg_number=?",reg_id);
+        List<MultiResidence> residenceList = new ArrayList<>();
+        while (resultSet.next()){
+            residenceList.add(new MultiResidence(resultSet.getString(1),resultSet.getString(2)));
+        }
+        return residenceList;
+    }
+
+    public static List<Contact>  searchContact (String reg_ig) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT * FROM grama_vista.contact WHERE reg_number=?",reg_ig);
+        List<Contact> contactList = new ArrayList<>();
+        while (resultSet.next()){
+            contactList.add(new Contact(resultSet.getString(1),resultSet.getInt(2)));
+        }
+        return contactList;
     }
 
     public static List<CivilDTO> searchAll() throws SQLException {
@@ -115,7 +131,7 @@ public class CivilModel {
         while (resultSet.next()) {
 
             datalist.add (new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2),
-                    resultSet.getString(4),String.valueOf(resultSet.getDate(6)),resultSet.getInt(15),resultSet.getString(5),resultSet.getString(7),
+                    resultSet.getString(4),resultSet.getDate(6).toLocalDate(),resultSet.getInt(15),resultSet.getString(5),resultSet.getString(7),
                     resultSet.getString(8),resultSet.getString(9),resultSet.getString(10),
                     resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13)));
 
@@ -131,6 +147,10 @@ public class CivilModel {
                 civil.getEdu_status(),civil.getSchool(),civil.getOccupation(),civil.getWorking_address(),civil.getSalary(),civil.getId());
 
 
+    }
+
+    public static boolean dead(Object id) throws SQLException {
+        return CrudUtil.execute("DELETE  FROM grama_vista.civil WHERE reg_number=?", id);
     }
 }
 

@@ -9,10 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dto.Candidate;
-import lk.ijse.dto.CandidateDTO;
-import lk.ijse.dto.Civil;
-import lk.ijse.dto.CivilDTO;
+import lk.ijse.dto.*;
 import lk.ijse.dto.tm.CandidateTM;
 import lk.ijse.dto.tm.CivilTM;
 import lk.ijse.model.CandidateModel;
@@ -22,8 +19,7 @@ import lk.ijse.util.OpenView;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class CivilManageFormController implements Initializable {
     public AnchorPane tblDivPane;
@@ -38,6 +34,8 @@ public class CivilManageFormController implements Initializable {
     public ComboBox cmbID;
     private ObservableList<CivilTM> obList = FXCollections.observableArrayList();
     public static Civil civil;
+    public static List<Contact> contactList = new ArrayList<>();
+    public static List<MultiResidence> multiResidenceList =new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -99,8 +97,12 @@ public class CivilManageFormController implements Initializable {
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
             CivilDTO civilDTO = CivilModel.search((String) cmbID.getValue());
-            civil= new Civil(civilDTO.getID(), civilDTO.getName(),civilDTO.getNic(),civilDTO.getAddress(),LocalDate.parse(civilDTO.getDob()),civilDTO.getGender(),
-                            civilDTO.getMarriage(),civilDTO.getRelation(),civilDTO.getEducation(),civilDTO.getSchool(),civilDTO.getOccupation(),civilDTO.getWork(),civilDTO.getSalary());
+            civil= new Civil(civilDTO.getID(), civilDTO.getName(), civilDTO.getNic(), civilDTO.getAddress(),
+                    (civilDTO.getDob()), civilDTO.getGender(), civilDTO.getMarriage(),civilDTO.getRelation(),
+                    civilDTO.getEducation(),civilDTO.getSchool(),civilDTO.getOccupation(),civilDTO.getWork(),civilDTO.getSalary());
+
+            contactList = CivilModel.searchContact((String) cmbID.getValue());
+            multiResidenceList = CivilModel.searchResidence((String) cmbID.getValue());
             OpenView.openView("individualForm");
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -117,8 +119,6 @@ public class CivilManageFormController implements Initializable {
         Button btnView = new Button("View more");
         btnView.setCursor(Cursor.HAND);
         setViewBtnOnAction(btnView);
-
-
 
         CivilTM civilTM = new CivilTM(civilDTO.getID(),civilDTO.getImage(),civilDTO.getName(),
                             civilDTO.getNic(),civilDTO.getAddress(),btnView);
@@ -142,5 +142,30 @@ public class CivilManageFormController implements Initializable {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+    private void setDeleteBtnOnAction(Button btnDelete) {
+        btnDelete.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to delete?", yes, no).showAndWait();
+
+            if (result.orElse(no) == yes) {
+                try {
+                    boolean isDeleted = CivilModel.dead(cmbID.getValue());
+
+                    if(isDeleted) {
+                        new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
+                        obList.remove( tbl.getSelectionModel().getSelectedIndex());
+                        tbl.refresh();
+                    }
+                } catch (SQLException ex) {
+                    new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
+                }
+
+            }
+
+        });
     }
 }

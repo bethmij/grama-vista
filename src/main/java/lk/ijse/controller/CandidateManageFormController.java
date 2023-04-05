@@ -14,6 +14,7 @@ import lk.ijse.dto.Candidate;
 import lk.ijse.dto.CandidateDTO;
 import lk.ijse.dto.Division;
 import lk.ijse.dto.DivisionDTO;
+import lk.ijse.dto.tm.Candidate2TM;
 import lk.ijse.dto.tm.CandidateTM;
 import lk.ijse.dto.tm.DivisionTM;
 import lk.ijse.model.CandidateModel;
@@ -40,6 +41,8 @@ public class CandidateManageFormController implements Initializable {
     public ComboBox cmbID;
     private ObservableList<CandidateTM> obList = FXCollections.observableArrayList();
     public static Candidate candidate;
+    public static Candidate2TM candidate2TM;
+    public static CandidateTM candidateTM;
     
 
     @Override
@@ -88,7 +91,7 @@ public class CandidateManageFormController implements Initializable {
                 btnView.setCursor(Cursor.HAND);
                 setViewBtnOnAction(btnView);
 
-                CandidateTM candidateTM = new CandidateTM(datalist.getElection(), datalist.getImage(), datalist.getName(),
+                candidateTM = new CandidateTM(datalist.getElection(), datalist.getImage(), datalist.getName(),
                         datalist.getNIC(), datalist.getDivision(), btnView);
                 obList.add(candidateTM);
                 tblDivision.setItems(obList);
@@ -123,20 +126,24 @@ public class CandidateManageFormController implements Initializable {
         btnView.setCursor(Cursor.HAND);
         setViewBtnOnAction(btnView);
 
+        Button btnDelete = new Button("Delete");
+        btnDelete.setCursor(Cursor.HAND);
+        setDeleteBtnOnAction(btnDelete);
 
 
-        CandidateTM candidateTM = new CandidateTM(candidateDTO.getElection(), candidateDTO.getImage(), candidateDTO.getName(),
+
+        candidateTM = new CandidateTM(candidateDTO.getElection(), candidateDTO.getImage(), candidateDTO.getName(),
                                                  candidateDTO.getNIC(), candidateDTO.getDivision(), btnView);
+
+        candidate2TM = new Candidate2TM(candidateDTO.getElection(),candidateDTO.getAddress(),candidateDTO.getContact(),candidateDTO.getPolitic(),btnDelete);
         obList.add(candidateTM);
         tblDivision.setItems(obList);
     }
 
     private void setViewBtnOnAction(Button btnView) {
-        /*btnView.setOnAction((e) -> {
-           OpenView.openView("candidateManageForm2");
-
-           new CandidateManageForm2Controller().setTbl2(candidateDTO);
-        });*/
+        btnView.setOnAction((e) -> {
+           OpenView.openView("candidateViewForm");
+        });
     }
 
 
@@ -146,5 +153,28 @@ public class CandidateManageFormController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setDeleteBtnOnAction(Button btnDelete) {
+        btnDelete.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to delete?", yes, no).showAndWait();
+
+            if (result.orElse(no) == yes) {
+                try {
+                    boolean isDeleted = DivisionModel.dead((String) cmbID.getValue());
+                    if(isDeleted) {
+                        new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
+
+                    }
+                } catch (SQLException ex) {
+                    new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
+                }
+
+            }
+
+        });
     }
 }

@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import static lk.ijse.controller.CandidateManageFormController.candidate2TM;
+
 public class CandidateManageForm2Controller implements Initializable {
     public TableView tbl2;
     public TableColumn colElection;
@@ -34,6 +36,8 @@ public class CandidateManageForm2Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setCellValueFactory();
+        obList.add(candidate2TM);
+        tbl2.setItems(obList);
 
 
     }
@@ -47,7 +51,7 @@ public class CandidateManageForm2Controller implements Initializable {
 
     }
 
-    public void setTbl2(CandidateDTO candidateDTO){
+   /* public void setTbl2(CandidateDTO candidateDTO){
         setTable(candidateDTO);
     }
 
@@ -55,12 +59,6 @@ public class CandidateManageForm2Controller implements Initializable {
     public  void setTable(CandidateDTO candidateDTO){
 
 
-        Button btnDelete = new Button("Delete");
-        btnDelete.setCursor(Cursor.HAND);
-        setDeleteBtnOnAction( btnDelete, candidateDTO);
-
-        Candidate2TM candidate2TM = new Candidate2TM(candidateDTO.getElection(), candidateDTO.getAddress(), candidateDTO.getContact(),
-                candidateDTO.getPolitic(), btnDelete);
         obList.add(candidate2TM);
         tbl2.setItems(obList);
     }
@@ -87,7 +85,7 @@ public class CandidateManageForm2Controller implements Initializable {
             }
 
         });
-    }
+    }*/
 
 
 
