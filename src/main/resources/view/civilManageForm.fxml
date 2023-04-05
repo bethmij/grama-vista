@@ -457,11 +457,11 @@
       <TableView fx:id="tbl" blendMode="MULTIPLY" layoutX="256.0" layoutY="262.0" prefHeight="378.0" prefWidth="738.0">
         <columns>
           <TableColumn fx:id="colID" prefWidth="80.80001831054688" text="Civil ID" />
-          <TableColumn fx:id="colImage" prefWidth="129.5999755859375" text="Image" />
             <TableColumn fx:id="colName" minWidth="0.0" prefWidth="164.00009155273438" text="Name" />
             <TableColumn fx:id="colNIC" minWidth="0.0" prefWidth="129.5999755859375" text="NIC" />
-            <TableColumn fx:id="colAddress" prefWidth="151.199951171875" text="Address" />
-            <TableColumn fx:id="colAction" prefWidth="80.800048828125" text="Action" />
+            <TableColumn fx:id="colAddress" prefWidth="180.79998779296875" text="Address" />
+            <TableColumn fx:id="colRelation" prefWidth="92.0" text="Relation" />
+            <TableColumn fx:id="colAction" prefWidth="89.5999755859375" text="Action" />
         </columns>
       </TableView>
       <Button fx:id="GetAll" blendMode="COLOR_BURN" layoutX="899.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnGetAllOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Get All" textFill="#081501">

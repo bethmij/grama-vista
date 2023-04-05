@@ -43,6 +43,7 @@ public class CandidateManageFormController implements Initializable {
     public static Candidate candidate;
     public static Candidate2TM candidate2TM;
     public static CandidateTM candidateTM;
+    public static CandidateDTO candidateDetail;
     
 
     @Override
@@ -54,7 +55,6 @@ public class CandidateManageFormController implements Initializable {
 
     private void setCellValueFactory() {
         colElection.setCellValueFactory(new PropertyValueFactory<>("Election"));
-        colImage.setCellValueFactory(new PropertyValueFactory<>("Image"));
         colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
         colNIC.setCellValueFactory(new PropertyValueFactory<>("NIC"));
         colDivision.setCellValueFactory(new PropertyValueFactory<>("Division"));
@@ -91,8 +91,10 @@ public class CandidateManageFormController implements Initializable {
                 btnView.setCursor(Cursor.HAND);
                 setViewBtnOnAction(btnView);
 
-                candidateTM = new CandidateTM(datalist.getElection(), datalist.getImage(), datalist.getName(),
+                candidateTM = new CandidateTM(datalist.getElection(),datalist.getName(),
                         datalist.getNIC(), datalist.getDivision(), btnView);
+                candidateDetail = new CandidateDTO(datalist.getElection(),datalist.getImage(),datalist.getName(),datalist.getNIC(),
+                        datalist.getDivision(),datalist.getAddress(),datalist.getContact(),datalist.getPolitic());
                 obList.add(candidateTM);
                 tblDivision.setItems(obList);
             }
@@ -132,10 +134,13 @@ public class CandidateManageFormController implements Initializable {
 
 
 
-        candidateTM = new CandidateTM(candidateDTO.getElection(), candidateDTO.getImage(), candidateDTO.getName(),
+        candidateTM = new CandidateTM(candidateDTO.getElection(), candidateDTO.getName(),
                                                  candidateDTO.getNIC(), candidateDTO.getDivision(), btnView);
 
-        candidate2TM = new Candidate2TM(candidateDTO.getElection(),candidateDTO.getAddress(),candidateDTO.getContact(),candidateDTO.getPolitic(),btnDelete);
+
+
+        candidateDetail = new CandidateDTO(candidateDTO.getElection(),candidateDTO.getImage(),candidateDTO.getName(),candidateDTO.getNIC(),
+                candidateDTO.getDivision(),candidateDTO.getAddress(),candidateDTO.getContact(),candidateDTO.getPolitic());
         obList.add(candidateTM);
         tblDivision.setItems(obList);
     }

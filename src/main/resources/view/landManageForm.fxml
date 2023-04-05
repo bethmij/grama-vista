@@ -412,7 +412,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox fx:id="cbLand" blendMode="MULTIPLY" layoutX="598.0" layoutY="109.0" onMouseClicked="#cbLandOnAction" prefWidth="150.0">
+      <ChoiceBox fx:id="cbLand" blendMode="MULTIPLY" layoutX="598.0" layoutY="109.0" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>
@@ -424,13 +424,12 @@
       <Separator layoutX="237.0" layoutY="242.0" prefHeight="3.0" prefWidth="774.0" />
       <TableView fx:id="tblDivision" blendMode="MULTIPLY" layoutX="256.0" layoutY="262.0" prefHeight="378.0" prefWidth="738.0">
         <columns>
-          <TableColumn fx:id="colID" prefWidth="87.99996948242188" text="Land ID" />
-          <TableColumn fx:id="colPlan" prefWidth="114.39996337890625" text="Plan Number" />
-            <TableColumn fx:id="colArea" minWidth="0.0" prefWidth="103.19998168945312" text="Land Area(km2)" />
-            <TableColumn fx:id="colGov" minWidth="0.0" prefWidth="145.60003662109375" text="Gov/ Non Gov" />
-            <TableColumn fx:id="colCultivate" prefWidth="123.99993896484375" text="Cultivated/ Not" />
-            <TableColumn fx:id="colOwner" prefWidth="79.199951171875" text="OwnerShip" />
-            <TableColumn fx:id="colAction" text="Action" />
+          <TableColumn fx:id="colID" prefWidth="104.79998779296875" text="Land ID" />
+          <TableColumn fx:id="colPlan" prefWidth="116.79998779296875" text="Plan Number" />
+            <TableColumn fx:id="colArea" minWidth="0.0" prefWidth="109.59994506835938" text="Land Area(km2)" />
+            <TableColumn fx:id="colGov" minWidth="0.0" prefWidth="156.79998779296875" text="Gov/ Non Gov" />
+            <TableColumn fx:id="colCultivate" prefWidth="150.39996337890625" text="Cultivated/ Not" />
+            <TableColumn fx:id="colAction" prefWidth="99.20004882812498" text="Action" />
         </columns>
       </TableView>
       <Button fx:id="GetAll" blendMode="COLOR_BURN" layoutX="899.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnGetAllOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Get All" textFill="#081501">

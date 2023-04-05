@@ -11,8 +11,10 @@ import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.dto.Maternity;
 import lk.ijse.dto.User;
 import lk.ijse.model.DivisionModel;
+import lk.ijse.model.MaternityModel;
 import lk.ijse.model.UserModel;
 import lk.ijse.util.OpenView;
 
@@ -23,6 +25,9 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static lk.ijse.controller.MaternityManageFormController.maternity;
+import static lk.ijse.controller.UserManageFormController.user;
 
 public class UserRegistrationFormController implements Initializable {
     public AnchorPane userPane;
@@ -44,6 +49,23 @@ public class UserRegistrationFormController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadDivisionID();
+        if ((!(user == null))) {
+            setUserController();
+        }
+    }
+
+    private void setUserController() {
+        txtNIC.setText(user.getNic());
+        dtpDOB.setValue(user.getDate());
+        txtENum.setText(user.getEmployee_num());
+        txtPass.setText(user.getPassword());
+        txtUser.setText(user.getUser());
+        txtName.setText(user.getName());
+        dtpEmployee.setValue(user.getEmployee_date());
+        txtContact.setText(String.valueOf(user.getContact()));
+        txtSalary.setText(String.valueOf(user.getSalary()));
+        btnSave.setText("Update");
+        cbDivision.setValue(user.getDivision_id());
     }
 
     private void loadDivisionID() {
@@ -63,30 +85,40 @@ public class UserRegistrationFormController implements Initializable {
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
 
+        if(btnSave.getText().equals("Save")) {
+            try {
+                boolean isSaved = UserModel.save(new User((String) cbDivision.getValue(), txtENum.getText(), txtNIC.getText(), txtName.getText(),
+                                txtUser.getText(), txtPass.getText(), dtpDOB.getValue(), dtpEmployee.getValue(), Double.valueOf(txtSalary.getText()), Integer.valueOf(txtContact.getText())
+                        )
+                );
 
-        try {
-            boolean isSaved = UserModel.save(new User(
-                    (String) cbDivision.getValue(),
-                    txtENum.getText(),
-                    txtNIC.getText(),
-                    txtName.getText(),
-                    txtUser.getText(),
-                    txtPass.getText(),
-                    dtpDOB.getValue(),
-                    dtpEmployee.getValue(),
-                    Double.valueOf(txtSalary.getText()),
-                    Integer.valueOf(txtContact.getText())
-                    )
-            );
-
-            if (isSaved)
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfuly !").show();
-            else
-                new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                if (isSaved)
+                    new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfuly !").show();
+                else
+                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
 
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+
+        } else if(btnSave.getText().equals("Update")){
+
+            try {
+                boolean isUpdated = UserModel.update(new User((String) cbDivision.getValue(), txtENum.getText(), txtNIC.getText(), txtName.getText(),
+                                txtUser.getText(), txtPass.getText(), dtpDOB.getValue(), dtpEmployee.getValue(), Double.valueOf(txtSalary.getText()), Integer.valueOf(txtContact.getText())
+                        )
+                );
+
+                if (isUpdated)
+                    new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfuly !").show();
+                else
+                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+
+
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
         }
 
 

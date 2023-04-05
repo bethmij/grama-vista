@@ -5,43 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d341e9b4-b3d1-4480-b66a-cc3b86d294fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CandidateViewFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/DeadDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/DisableDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/MaternityDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/ResidenceDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/tm/DeadTM.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/tm/DisableTM.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/tm/MaternityTM.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/tm/Residence2TM.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/tm/ResidenceTM.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/candidateViewForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CivilViewFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/tm/LandTM.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/tm/UserTM.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/civilViewForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/AddResidenceFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/AddResidenceFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CandidateManageForm2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CandidateManageForm2Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/AddLandTypeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/AddLandTypeFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CandidateManageFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CandidateManageFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CivilManageForm2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CivilManageForm2Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CandidateViewFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CandidateViewFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CivilManageFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CivilManageFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/DeadManageFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/DeadManageFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/DeadPeopleFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/DeadPeopleFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/DisableManageFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/DisableManageFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/DisableRegistrationFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/DisableRegistrationFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeManageFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeManageFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeRegistrationFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeRegistrationFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/IndividualFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/IndividualFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandManageFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandManageFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/ManageFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/ManageFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/individualForm2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/individualForm2Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/CivilDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/CivilDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/Dead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/Dead.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/Disable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/Disable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/CivilModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/CivilModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/CivilResidenceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/CivilResidenceModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/DeadModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/DeadModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/DisableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/DisableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/ResidenceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/ResidenceModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/deadManageForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/deadManageForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/disableManageForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/disableManageForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/homeManageForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/homeManageForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/MaternityManageFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/MaternityManageFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/MaternityRegistFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/MaternityRegistFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/OwnershipFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/OwnershipFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/UserManageFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/UserManageFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/UserRegistrationFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/UserRegistrationFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/LandDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/LandDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/Maternity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/Maternity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/tm/CandidateTM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/tm/CandidateTM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/tm/CivilTM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/tm/CivilTM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/CandidateModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/CandidateModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/LandModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/LandModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/LandTypeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/LandTypeModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/MaternityModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/MaternityModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/OwnerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/OwnerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/UserModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/MaternityRegistForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/MaternityRegistForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/candidateManageForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/candidateManageForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/candidateViewForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/candidateViewForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/civilManageForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/civilManageForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/landManageForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/landManageForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/manageForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/manageForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/maternityManageForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/maternityManageForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/userManageForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/userManageForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +89,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect" value="MySQL" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/view" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -175,6 +174,7 @@
       <workItem from="1680522002041" duration="19044000" />
       <workItem from="1680587383108" duration="29733000" />
       <workItem from="1680637136551" duration="636000" />
+      <workItem from="1680661875792" duration="28387000" />
     </task>
     <task id="LOCAL-00001" summary="grama vista 1">
       <created>1679592345340</created>
@@ -295,7 +295,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680548366918</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="grama vista 4">
+      <created>1680661944747</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1680661944747</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

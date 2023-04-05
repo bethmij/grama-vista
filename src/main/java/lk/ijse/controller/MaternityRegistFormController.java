@@ -6,9 +6,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.dto.Dead;
 import lk.ijse.dto.Disable;
 import lk.ijse.dto.Maternity;
 import lk.ijse.model.CivilModel;
+import lk.ijse.model.DeadModel;
 import lk.ijse.model.DisableModel;
 import lk.ijse.model.MaternityModel;
 import lk.ijse.util.OpenView;
@@ -18,6 +20,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static lk.ijse.controller.DeadManageFormController.dead;
+import static lk.ijse.controller.MaternityManageFormController.maternity;
+
 public class MaternityRegistFormController implements Initializable {
     public AnchorPane maternityPane;
     public ComboBox cmbCivil;
@@ -26,11 +31,24 @@ public class MaternityRegistFormController implements Initializable {
     public Label lblName;
     public TextField txtMonths;
     public DatePicker dtpDate;
+    public Button btnSave;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadCivilId();
         generateNextId();
+        if ((!(maternity == null))) {
+            setMaternityController();
+        }
+    }
+
+    private void setMaternityController() {
+        cmbCivil.setValue("C00"+maternity.getCivil_ID());
+        txtMidWife.setText(maternity.getMid_wife());
+        lblID.setText("M00"+maternity.getID());
+        lblName.setText(maternity.getName());
+        dtpDate.setValue(maternity.getDate());
+        btnSave.setText("Update");
     }
 
     private void loadCivilId() {
@@ -66,19 +84,34 @@ public class MaternityRegistFormController implements Initializable {
 
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
-        String[] id = lblID.getText().split("M00");
-        String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
+        if(btnSave.getText().equals("Save")) {
+            String[] id = lblID.getText().split("M00");
+            String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
 
-        try {
-            boolean isSaved = MaternityModel.save(new Maternity(
-                    Integer.valueOf(id[1]), civil_id[1], dtpDate.getValue(), Integer.valueOf(txtMonths.getText()),txtMidWife.getText()));
+            try {
+                boolean isSaved = MaternityModel.save(new Maternity(id[1], civil_id[1], lblName.getText(), dtpDate.getValue(), txtMidWife.getText()));
 
-            if (isSaved)
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-            else
-                new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                if (isSaved)
+                    new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
+                else
+                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        }else if(btnSave.getText().equals("Update")){
+            String[] id = lblID.getText().split("M00");
+            String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
+
+            try {
+                boolean isUpdated = MaternityModel.update(new Maternity(id[1], civil_id[1], lblName.getText(), dtpDate.getValue(), txtMidWife.getText()));
+
+                if (isUpdated)
+                    new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
+                else
+                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
         }
     }
 

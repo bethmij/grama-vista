@@ -16,6 +16,7 @@ public class ManageFormController {
     }
 
     public void btnlandOnAction(ActionEvent actionEvent) {
+        OpenView.openView("landManageForm",ManagePane);
     }
 
     public void btndeadOnAction(ActionEvent actionEvent) {
@@ -23,6 +24,7 @@ public class ManageFormController {
     }
 
     public void btnMaternityOnAction(ActionEvent actionEvent) {
+        OpenView.openView("maternityManageForm",ManagePane );
     }
 
     public void btnCandidateOnAction(ActionEvent actionEvent) {
@@ -35,5 +37,9 @@ public class ManageFormController {
 
     public void btnDivisionOnAction(ActionEvent actionEvent) {
         OpenView.openView("divisionManageForm",ManagePane);
+    }
+
+    public void btnUserOnAction(ActionEvent actionEvent) {
+        OpenView.openView("userManageForm",ManagePane);
     }
 }

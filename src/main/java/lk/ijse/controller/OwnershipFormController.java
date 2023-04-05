@@ -13,6 +13,7 @@ import lk.ijse.dto.Owner;
 import lk.ijse.model.CivilModel;
 import lk.ijse.model.LandModel;
 import lk.ijse.model.OwnerModel;
+import lk.ijse.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -20,21 +21,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static lk.ijse.controller.LandFormController.index;
+import static lk.ijse.controller.LandManageFormController.*;
+
 public class OwnershipFormController implements Initializable {
     public AnchorPane ownerRoot;
     public TextField txtLotNum;
-    public ChoiceBox cbLandID;
     public ChoiceBox cbCivilID;
     public TextField txtPercentage;
-    public static List<Owner> ownerList = new ArrayList<>();
-    public TextField txtLand;
+    public static List<Owner> ownerLists = new ArrayList<>();
     public Label lblLand;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadCivilId();
         lblLand.setText(LandFormController.land_id);
+        setOwnerController();
     }
+
+
+    public void setOwnerController() {
+
+        lblLand.setText(String.valueOf(ownerList.get(index).getLand_id()));
+        cbCivilID.setValue(ownerList.get(index).getCivil_id());
+        txtPercentage.setText(String.valueOf(ownerList.get(index).getPercentage()));
+        txtLotNum.setText(ownerList.get(index).getLot_num());
+    }
+
 
 
 
@@ -59,12 +72,11 @@ public class OwnershipFormController implements Initializable {
         String[] land_num = lblLand.getText().split("L00");
         String[] civil_id = String.valueOf(cbCivilID.getValue()).split("C00");
 
-        ownerList.add(new Owner(Integer.valueOf(land_num[1]), civil_id[1], txtLotNum.getText(), Double.valueOf(txtPercentage.getText() )));
-        if(ownerList!=null)
+        ownerLists.add(new Owner(Integer.valueOf(land_num[1]), civil_id[1], txtLotNum.getText(), Double.valueOf(txtPercentage.getText() )));
+        if(ownerLists!=null)
             new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
 
     }
-
 
 
 }

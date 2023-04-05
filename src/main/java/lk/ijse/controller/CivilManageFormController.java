@@ -26,12 +26,12 @@ public class CivilManageFormController implements Initializable {
     public Label lblName;
     public TableView tbl;
     public TableColumn colID;
-    public TableColumn colImage;
     public TableColumn colName;
     public TableColumn colNIC;
     public TableColumn colAddress;
     public TableColumn colAction;
     public ComboBox cmbID;
+    public TableColumn colRelation;
     private ObservableList<CivilTM> obList = FXCollections.observableArrayList();
     public static Civil civil;
     public static List<Contact> contactList = new ArrayList<>();
@@ -45,10 +45,10 @@ public class CivilManageFormController implements Initializable {
 
     private void setCellValueFactory() {
         colID.setCellValueFactory(new PropertyValueFactory<>("ID"));
-        colImage.setCellValueFactory(new PropertyValueFactory<>("Image"));
         colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
         colNIC.setCellValueFactory(new PropertyValueFactory<>("NIC"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
+        colRelation.setCellValueFactory(new PropertyValueFactory<>("Relation"));
         colAction.setCellValueFactory(new PropertyValueFactory<>("btn"));
 
     }
@@ -83,8 +83,8 @@ public class CivilManageFormController implements Initializable {
                 btnView.setCursor(Cursor.HAND);
                 setViewBtnOnAction(btnView);
 
-                CivilTM civilTM = new CivilTM(datalist.getID(),datalist.getImage(),datalist.getName(),
-                        datalist.getNic(),datalist.getAddress(),btnView);
+                CivilTM civilTM = new CivilTM(datalist.getID(),datalist.getName(),
+                        datalist.getNic(),datalist.getAddress(), datalist.getRelation(), btnView);
                 obList.add(civilTM);
                 tbl.setItems(obList);
             }
@@ -120,8 +120,8 @@ public class CivilManageFormController implements Initializable {
         btnView.setCursor(Cursor.HAND);
         setViewBtnOnAction(btnView);
 
-        CivilTM civilTM = new CivilTM(civilDTO.getID(),civilDTO.getImage(),civilDTO.getName(),
-                            civilDTO.getNic(),civilDTO.getAddress(),btnView);
+        CivilTM civilTM = new CivilTM(civilDTO.getID(),civilDTO.getName(),
+                            civilDTO.getNic(),civilDTO.getAddress(),civilDTO.getRelation(),btnView);
         obList.add(civilTM);
         tbl.setItems(obList);
     }

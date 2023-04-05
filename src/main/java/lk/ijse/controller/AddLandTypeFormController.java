@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static lk.ijse.controller.LandManageFormController.land;
+import static lk.ijse.controller.LandManageFormController.landDetails;
+
 public class AddLandTypeFormController implements Initializable {
 
 
@@ -30,6 +33,11 @@ public class AddLandTypeFormController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         loadLandType();
         lblLand.setText(LandFormController.land_id);
+
+        if(null != landDetails.get(1)) {
+            cbType.setValue(landDetails.get(1).getLand_type());
+        }else
+            cbType.setValue("");
     }
 
     private void loadLandType() {
@@ -44,7 +52,7 @@ public class AddLandTypeFormController implements Initializable {
         String[] land_num = lblLand.getText().split("L00");
         Integer type_id = LandTypeModel.getTypeId((String) cbType.getValue());
 
-        landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1])));
+        landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1]),(String)cbType.getValue() ));
         if(landDetailList !=null)
             new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
     }

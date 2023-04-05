@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dto.Land;
 import lk.ijse.dto.LandDetail;
@@ -19,6 +16,10 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import static lk.ijse.controller.CivilManageFormController.multiResidenceList;
+import static lk.ijse.controller.LandManageFormController.*;
+import static lk.ijse.controller.MaternityManageFormController.maternity;
+
 public class LandFormController implements Initializable {
     public AnchorPane landRoot;
     public TextField txtPlan;
@@ -26,17 +27,26 @@ public class LandFormController implements Initializable {
     public ChoiceBox cbLType;
     public Label lblID;
     public static String land_id;
+    public Button save;
+    public static Integer index;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadLandType();
         generateLandId();
-        if ((!(CivilManageFormController.civil == null))) {
-            setCivilController();
+        if ((!(land == null))) {
+            setLandController();
         }
     }
 
-    private void setCivilController() {
+    private void setLandController() {
+        txtPlan.setText(land.getPlan_num());
+        txtArea.setText(String.valueOf(land.getL_area()));
+        lblID.setText(String.valueOf(land.getLand_id()));
+        save.setText("Update");
+
+
+
     }
 
     private void generateLandId() {
@@ -57,30 +67,53 @@ public class LandFormController implements Initializable {
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
-        String[] land_num = lblID.getText().split("L00");
-        Integer type_id = LandTypeModel.getTypeId((String) cbLType.getValue());
+        if(save.getText().equals("Save")) {
+            String[] land_num = lblID.getText().split("L00");
+            Integer type_id = LandTypeModel.getTypeId((String) cbLType.getValue());
 
-        AddLandTypeFormController.landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1])));
+            AddLandTypeFormController.landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1]), (String) cbLType.getValue()));
 
-        try {
-            boolean isSaved = LandModel.save(new Land(
-                    Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText())), AddLandTypeFormController.landDetailList, OwnershipFormController.ownerList);
+            try {
+                boolean isSaved = LandModel.save(new Land(
+                        Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText())), AddLandTypeFormController.landDetailList, OwnershipFormController.ownerLists);
 
-            if (isSaved)
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-            else
-                new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                if (isSaved)
+                    new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
+                else
+                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        }else if(save.getText().equals("Update")){
+            String[] land_num = lblID.getText().split("L00");
+            Integer type_id = LandTypeModel.getTypeId((String) cbLType.getValue());
+
+            AddLandTypeFormController.landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1]), (String) cbLType.getValue()));
+
+            try {
+                boolean isSaved = LandModel.update(new Land(
+                        Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText())), AddLandTypeFormController.landDetailList, OwnershipFormController.ownerLists);
+
+                if (isSaved)
+                    new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
+                else
+                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
         }
 
     }
 
     public void btnOwnerOnAction(ActionEvent actionEvent){
         land_id=lblID.getText();
-        OpenView.openView("ownershipForm");
 
+        for(int i=0; i<ownerList.size(); i++){
+            index=i;
+            OpenView.openView("ownershipForm");
+        }
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) {

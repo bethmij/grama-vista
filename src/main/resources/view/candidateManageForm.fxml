@@ -456,12 +456,11 @@
       </Text>
       <TableView fx:id="tblDivision" blendMode="MULTIPLY" layoutX="263.0" layoutY="261.0" prefHeight="378.0" prefWidth="731.0">
         <columns>
-          <TableColumn fx:id="colElection" prefWidth="95.19998168945312" text="Election ID" />
-          <TableColumn fx:id="colImage" prefWidth="137.60003662109375" text="Image" />
-            <TableColumn fx:id="colName" minWidth="0.0" prefWidth="164.80001831054688" text="Name" />
-            <TableColumn fx:id="colNIC" minWidth="0.0" prefWidth="148.79998779296875" text="NIC" />
-            <TableColumn fx:id="colDivision" prefWidth="92.79998779296875" text="Division ID" />
-            <TableColumn fx:id="colAction" prefWidth="96.800048828125" text="Action" />
+          <TableColumn fx:id="colElection" prefWidth="107.20004272460938" text="Election ID" />
+            <TableColumn fx:id="colName" minWidth="0.0" prefWidth="219.99996948242188" text="Name" />
+            <TableColumn fx:id="colNIC" minWidth="0.0" prefWidth="178.39996337890625" text="NIC" />
+            <TableColumn fx:id="colDivision" prefWidth="121.60003662109375" text="Division ID" />
+            <TableColumn fx:id="colAction" prefWidth="105.5999755859375" text="Action" />
         </columns>
       </TableView>
       <Button fx:id="GetAll" blendMode="COLOR_BURN" layoutX="899.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnGetAllOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Get All" textFill="#081501">

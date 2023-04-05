@@ -8,9 +8,9 @@ import java.time.LocalDate;
 @AllArgsConstructor
 
 public class Maternity {
-    private Integer ID;
+    private String ID;
     private String civil_ID;
+    private String name;
     private LocalDate date;
-    private Integer months;
     private String mid_wife;
 }

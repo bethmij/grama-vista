@@ -68,7 +68,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Label layoutX="408.0" layoutY="210.0" text="Civil ID    ">
+      <Label layoutX="410.0" layoutY="223.0" text="Civil ID    ">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -105,7 +105,7 @@
          </font>
       </Label>
       <Label layoutX="528.0" layoutY="209.0" prefHeight="32.0" prefWidth="59.0" />
-      <Text layoutX="401.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" ID  -" wrappingWidth="121.33673095703125">
+      <Text layoutX="410.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" ID  -" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -141,7 +141,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="408.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Pregancy" wrappingWidth="239.7366943359375">
+      <Text layoutX="414.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Pregancy" wrappingWidth="239.7366943359375">
          <font>
             <Font size="20.0" />
          </font>
@@ -177,7 +177,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <DatePicker fx:id="dtpDate" blendMode="MULTIPLY" layoutX="603.0" layoutY="319.0" prefHeight="26.0" prefWidth="150.0">
+      <DatePicker fx:id="dtpDate" blendMode="MULTIPLY" layoutX="603.0" layoutY="360.0" prefHeight="26.0" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>
@@ -185,19 +185,7 @@
                </color></InnerShadow>
          </effect>
       </DatePicker>
-      <TextField fx:id="txtMonths" blendMode="MULTIPLY" layoutX="410.0" layoutY="375.0" prefHeight="38.0" prefWidth="386.0" promptText="Months">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
-               </color>
-            </InnerShadow>
-         </effect>
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <Label layoutX="408.0" layoutY="264.0" prefHeight="30.0" prefWidth="92.0" text="Name  -">
+      <Label layoutX="414.0" layoutY="287.0" prefHeight="30.0" prefWidth="92.0" text="Name  -">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -233,15 +221,15 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblName" layoutX="504.0" layoutY="264.0" prefHeight="26.0" prefWidth="254.0" textFill="#794116">
+      <Label fx:id="lblName" layoutX="503.0" layoutY="287.0" prefHeight="26.0" prefWidth="254.0" textFill="#794116">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label fx:id="lblID" layoutX="462.0" layoutY="147.0" prefHeight="32.0" prefWidth="84.0" textFill="#794116">
+      <Label fx:id="lblID" layoutX="506.0" layoutY="153.0" prefHeight="32.0" prefWidth="84.0" textFill="#794116">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <TextField fx:id="txtMidWife" blendMode="MULTIPLY" layoutX="410.0" layoutY="446.0" prefHeight="38.0" prefWidth="386.0" promptText="Mid Wife">
+      <TextField fx:id="txtMidWife" blendMode="MULTIPLY" layoutX="410.0" layoutY="430.0" prefHeight="38.0" prefWidth="386.0" promptText="Mid Wife">
          <effect>
             <InnerShadow>
                <color>
@@ -284,7 +272,7 @@
             </LinearGradient>
          </textFill>
       </Button>
-      <ComboBox fx:id="cmbCivil" blendMode="MULTIPLY" layoutX="504.0" layoutY="213.0" onAction="#cmbCivilOnAction" prefWidth="150.0">
+      <ComboBox fx:id="cmbCivil" blendMode="MULTIPLY" layoutX="506.0" layoutY="225.0" onAction="#cmbCivilOnAction" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>

@@ -9,4 +9,5 @@ import lombok.Data;
 public class LandDetail {
     private Integer type_id;
     private Integer land_num;
+    private String land_type;
 }

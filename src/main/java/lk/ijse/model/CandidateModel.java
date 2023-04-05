@@ -83,4 +83,8 @@ public class CandidateModel {
         }
         return "";
     }
+
+    public static boolean delete(String id) throws SQLException {
+        return CrudUtil.execute("DELETE  FROM grama_vista.candidate WHERE elect_reg_num=?", id);
+    }
 }

@@ -15,7 +15,6 @@ import java.sql.Blob;
 public class CandidateTM {
 
     public String Election;
-    public Blob Image;
     public String Name;
     public String NIC;
     public String Division;
