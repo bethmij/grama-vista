@@ -26,14 +26,14 @@ public class DeadModel {
 
 
     public static boolean save(Dead dead,String division_id) throws SQLException {
-
+        System.out.println(dead);
+        System.out.println(division_id);
         Connection con = null;
         try {
             con = DBConnection.getInstance().getConnection();
             con.setAutoCommit(false);
 
-
-            boolean isDeadSaved = CrudUtil.execute("INSERT INTO grama_vista.dead_people (reg_number, dead_date) VALUES (?,?,?)",
+            boolean isDeadSaved = CrudUtil.execute("INSERT INTO grama_vista.dead_people (reg_number, dead_date) VALUES (?,?)",
                     dead.getCivil_ID(),  dead.getDate());
             if (isDeadSaved) {
                 boolean isPopulationUpdate = DivisionModel.UpdateDeadPopulation(division_id);

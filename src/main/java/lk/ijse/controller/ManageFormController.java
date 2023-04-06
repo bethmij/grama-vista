@@ -1,6 +1,8 @@
 package lk.ijse.controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.util.OpenView;
 
@@ -41,5 +43,30 @@ public class ManageFormController {
 
     public void btnUserOnAction(ActionEvent actionEvent) {
         OpenView.openView("userManageForm",ManagePane);
+    }
+
+    @FXML
+    void lblLogOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblManageOnAction(MouseEvent event) {
+        OpenView.openView("manageForm",ManagePane);
+    }
+
+    @FXML
+    void lblRegOnAction(MouseEvent event) {
+        OpenView.openView("registrationForm",ManagePane);
+    }
+
+    @FXML
+    void lblReportOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblVoteOnAction(MouseEvent event) {
+
     }
 }

@@ -128,7 +128,7 @@ public class IndividualFormController implements Initializable {
     }
 
     public void btnNextOnAction(ActionEvent actionEvent) {
-
+        civil_id=lblCivil.getText();
         OpenView.openView("individualForm2", indiroot1);
 
         String id =  lblCivil.getText();

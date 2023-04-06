@@ -16,6 +16,7 @@ public class CivilResidenceModel {
 
         Connection con = null;
         try {
+            System.out.println(1);
             con = DBConnection.getInstance().getConnection();
             con.setAutoCommit(false);
 
@@ -34,13 +35,16 @@ public class CivilResidenceModel {
 
             boolean isCivilSaved = CivilModel.save(civil);
             if (isCivilSaved) {
-
+                System.out.println(2);
                 boolean isContactSaved = ContactModel.save(contact);
                 if (isContactSaved) {
+                    System.out.println(3);
                     boolean isResidenceSaved = MultiResidenceModel.save(multiResidence);
                     if (isResidenceSaved) {
+                        System.out.println(4);
                         boolean isPopulationUpdate = DivisionModel.UpdatePopulation(division_id);
                         if(isPopulationUpdate) {
+                            System.out.println(5);
                             con.commit();
                             return true;
                         }
@@ -51,7 +55,7 @@ public class CivilResidenceModel {
 
             return false;
         } catch (SQLException er) {
-
+            System.out.println(er);
             con.rollback();
             return false;
         } finally {

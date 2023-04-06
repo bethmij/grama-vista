@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="ManagePane" prefHeight="697.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ManageFormController">
+<AnchorPane fx:id="ManagePane" prefHeight="697.0" prefWidth="960.0" stylesheets="@css/Icon.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ManageFormController">
    <children>
       <ImageView fitHeight="737.0" fitWidth="964.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -30,9 +30,9 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <JFXButton fx:id="btnHome" contentDisplay="GRAPHIC_ONLY" layoutX="318.0" layoutY="37.0" onAction="#btnHomeOnAction" prefHeight="128.0" prefWidth="123.0">
+      <JFXButton fx:id="btnHome" contentDisplay="GRAPHIC_ONLY" layoutX="318.0" layoutY="37.0" onAction="#btnHomeOnAction" prefHeight="128.0" prefWidth="123.0" styleClass="image-icon">
          <graphic>
-            <ImageView blendMode="OVERLAY" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView blendMode="OVERLAY" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                <image>
                   <Image url="@../img/home_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
@@ -45,7 +45,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="indiv" contentDisplay="GRAPHIC_ONLY" layoutX="536.0" layoutY="50.0" onAction="#btnIndivOnAction" prefHeight="119.0" prefWidth="150.0" text="Button">
+      <JFXButton fx:id="indiv" contentDisplay="GRAPHIC_ONLY" layoutX="536.0" layoutY="50.0" onAction="#btnIndivOnAction" prefHeight="119.0" prefWidth="150.0" styleClass="image-icon" text="Button">
          <graphic>
             <ImageView blendMode="OVERLAY" fitHeight="113.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -119,7 +119,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <JFXButton fx:id="land" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="742.0" layoutY="28.0" onAction="#btnlandOnAction" prefHeight="146.0" prefWidth="134.0">
+      <JFXButton fx:id="land" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="742.0" layoutY="28.0" onAction="#btnlandOnAction" prefHeight="146.0" prefWidth="134.0" styleClass="image-icon">
          <graphic>
             <ImageView blendMode="OVERLAY" fitHeight="127.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -193,7 +193,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <JFXButton fx:id="dead" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="334.0" layoutY="240.0" onAction="#btndeadOnAction" prefHeight="128.0" prefWidth="123.0">
+      <JFXButton fx:id="dead" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="334.0" layoutY="240.0" onAction="#btndeadOnAction" prefHeight="128.0" prefWidth="123.0" styleClass="image-icon">
          <graphic>
             <ImageView blendMode="OVERLAY" fitHeight="111.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -205,7 +205,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="maternity" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="556.0" layoutY="240.0" onAction="#btnMaternityOnAction" prefHeight="128.0" prefWidth="136.0">
+      <JFXButton fx:id="maternity" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="556.0" layoutY="240.0" onAction="#btnMaternityOnAction" prefHeight="128.0" prefWidth="136.0" styleClass="image-icon">
          <graphic>
             <ImageView blendMode="OVERLAY" fitHeight="112.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -248,7 +248,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <JFXButton fx:id="candidate" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="332.0" layoutY="452.0" onAction="#btnCandidateOnAction" prefHeight="128.0" prefWidth="127.0" text="Button">
+      <JFXButton fx:id="candidate" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="332.0" layoutY="452.0" onAction="#btnCandidateOnAction" prefHeight="128.0" prefWidth="127.0" styleClass="image-icon" text="Button">
          <graphic>
             <ImageView blendMode="OVERLAY" fitHeight="109.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -260,7 +260,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="Disable" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="766.0" layoutY="255.0" onAction="#btnDisableOnAction" prefHeight="115.0" prefWidth="123.0">
+      <JFXButton fx:id="Disable" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="766.0" layoutY="255.0" onAction="#btnDisableOnAction" prefHeight="115.0" prefWidth="123.0" styleClass="image-icon">
          <graphic>
             <ImageView fx:id="disable" blendMode="OVERLAY" fitHeight="105.0" fitWidth="104.0" onDragDetected="#btnDisableOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -334,7 +334,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <JFXButton fx:id="land221" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="560.0" layoutY="458.0" onAction="#btnDivisionOnAction" prefHeight="115.0" prefWidth="127.0" text="Button">
+      <JFXButton fx:id="land221" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="560.0" layoutY="458.0" onAction="#btnDivisionOnAction" prefHeight="115.0" prefWidth="127.0" styleClass="image-icon" text="Button">
          <graphic>
             <ImageView fx:id="Division" blendMode="OVERLAY" fitHeight="98.0" fitWidth="104.0" onDragDetected="#btnDivisionOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -464,7 +464,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Label layoutX="43.0" layoutY="559.0" text="Logout">
+      <Label layoutX="43.0" layoutY="559.0" onMouseClicked="#lblLogOnAction" styleClass="text-field-" text="Logout">
          <font>
             <Font size="20.0" />
          </font>
@@ -494,8 +494,11 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label layoutX="42.0" layoutY="292.0" prefHeight="30.0" prefWidth="170.0" text="Management">
+      <Label layoutX="42.0" layoutY="292.0" onMouseClicked="#lblManageOnAction" prefHeight="30.0" prefWidth="170.0" styleClass="text-field-" text="Management">
          <font>
             <Font size="20.0" />
          </font>
@@ -525,8 +528,11 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label layoutX="45.0" layoutY="382.0" text="Report Management">
+      <Label layoutX="45.0" layoutY="382.0" onMouseClicked="#lblReportOnAction" styleClass="text-field-" text="Report Management">
          <font>
             <Font size="20.0" />
          </font>
@@ -556,8 +562,11 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label layoutX="45.0" layoutY="475.0" text="Voting">
+      <Label layoutX="45.0" layoutY="475.0" onMouseClicked="#lblVoteOnAction" styleClass="text-field-" text="Voting">
          <font>
             <Font size="20.0" />
          </font>
@@ -587,6 +596,9 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
       <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="45.0" layoutY="555.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -608,7 +620,7 @@
             <Image url="@../img/how_to_vote_FILL0_wght400_GRAD0_opsz48.png" />
          </image>
       </ImageView>
-      <Label layoutX="45.0" layoutY="192.0" prefHeight="30.0" prefWidth="170.0" text="Registration">
+      <Label layoutX="45.0" layoutY="192.0" onMouseClicked="#lblRegOnAction" prefHeight="30.0" prefWidth="170.0" styleClass="text-field-" text="Registration">
          <font>
             <Font size="20.0" />
          </font>
@@ -638,13 +650,16 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
       <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="38.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/group_add_FILL0_wght400_GRAD0_opsz48.png" />
          </image>
       </ImageView>
-      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="778.0" layoutY="460.0" onAction="#btnUserOnAction">
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="778.0" layoutY="460.0" onAction="#btnUserOnAction" styleClass="image-icon">
          <graphic>
             <ImageView blendMode="OVERLAY" fitHeight="104.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
                <image>

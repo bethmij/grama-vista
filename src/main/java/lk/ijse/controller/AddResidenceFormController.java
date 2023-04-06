@@ -17,8 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static lk.ijse.controller.CivilManageFormController.civil;
+
 public class AddResidenceFormController implements Initializable {
-    public TextField txtCivil;
     public ChoiceBox cbResidence;
     public static List<MultiResidence> residenceList = new ArrayList<>();
     public Label lblCivil;
@@ -27,9 +28,11 @@ public class AddResidenceFormController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         loadResidenceID();
         lblCivil.setText(IndividualFormController.civil_id);
-        if ((!(CivilManageFormController.multiResidenceList.get(1) == null))) {
-            lblCivil.setText("C00"+CivilManageFormController.civil.getId());
-            cbResidence.setValue(CivilManageFormController.multiResidenceList.get(1).getResidence_id());
+        if ((!(civil == null))) {
+            if ((!(CivilManageFormController.multiResidenceList.get(1) == null))) {
+                lblCivil.setText("C00" + CivilManageFormController.civil.getId());
+                cbResidence.setValue(CivilManageFormController.multiResidenceList.get(1).getResidence_id());
+            }
         }
     }
 

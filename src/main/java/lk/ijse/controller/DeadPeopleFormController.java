@@ -3,8 +3,10 @@ package lk.ijse.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dto.Candidate;
 import lk.ijse.dto.Dead;
@@ -95,11 +97,6 @@ public class DeadPeopleFormController implements Initializable {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
         }else if(btn1.getText().equals("Update")){
-          /*  String id = (String) cmbCivil.getValue();
-            String[] civil_id = id.split("C00");
-            String[] reg_id = lblID.getText().split("DD00");*/
-
-
             try {
                 //boolean isUpdate = DeadModel.update(new Dead(reg_id[1], civil_id[1], lblName.getText(), dtpDate.getValue()));
                 boolean isUpdate = DeadModel.update(new Dead(lblID.getText(), (String) cmbCivil.getValue(), lblName.getText(), dtpDate.getValue()));
@@ -132,5 +129,30 @@ public class DeadPeopleFormController implements Initializable {
     public void btnResetOnAction(ActionEvent actionEvent) {
          dtpDate.setValue(null);
          lblName.setText("");
+    }
+
+    @FXML
+    void lblLogOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblManageOnAction(MouseEvent event) {
+        OpenView.openView("manageForm",deadPane);
+    }
+
+    @FXML
+    void lblRegOnAction(MouseEvent event) {
+        OpenView.openView("registrationForm",deadPane);
+    }
+
+    @FXML
+    void lblReportOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblVoteOnAction(MouseEvent event) {
+
     }
 }

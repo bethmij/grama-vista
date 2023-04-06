@@ -3,6 +3,7 @@ package lk.ijse.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
@@ -143,6 +144,31 @@ public class DisableManageFormController implements Initializable {
             }
 
         });
+    }
+
+    @FXML
+    void lblLogoutOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblMAnageOnAction(MouseEvent event) {
+        OpenView.openView("manageForm",tblDivPane);
+    }
+
+    @FXML
+    void lblRegOnAction(MouseEvent event) {
+        OpenView.openView("registrationForm",tblDivPane);
+    }
+
+    @FXML
+    void lblReportOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblVoteOnAction(MouseEvent event) {
+
     }
 
 }

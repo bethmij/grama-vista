@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="dashboardpane" prefHeight="683.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashboardFormController">
+<AnchorPane fx:id="dashboardpane" prefHeight="683.0" prefWidth="942.0" stylesheets="@css/Icon.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashboardFormController">
    <children>
       <ImageView fitHeight="683.0" fitWidth="931.0" layoutX="57.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -92,9 +92,9 @@
          <font>
             <Font size="14.0" />
          </font></Text>
-      <JFXButton fx:id="btnCivilReg" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="484.0" layoutY="129.0" onAction="#btnCivilRegOnAction" prefHeight="128.0" prefWidth="142.0">
+      <JFXButton fx:id="btnCivilReg" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="484.0" layoutY="129.0" onAction="#btnCivilRegOnAction" prefHeight="128.0" prefWidth="142.0" styleClass="image-icon">
          <graphic>
-            <ImageView blendMode="OVERLAY" fitHeight="116.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView blendMode="OVERLAY" fitHeight="95.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                <image>
                   <Image url="@../img/group_add_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
@@ -104,7 +104,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="483.0" layoutY="338.0" prefHeight="110.0" prefWidth="142.0">
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="483.0" layoutY="338.0" prefHeight="110.0" prefWidth="142.0" styleClass="image-icon">
          <graphic>
             <ImageView blendMode="OVERLAY" fitHeight="112.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -116,9 +116,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="725.0" layoutY="339.0" prefHeight="110.0" prefWidth="118.0">
+      <JFXButton blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="725.0" layoutY="339.0" prefHeight="110.0" prefWidth="118.0" styleClass="image-icon">
          <graphic>
-            <ImageView blendMode="OVERLAY" fitHeight="110.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView blendMode="OVERLAY" fitHeight="110.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                <image>
                   <Image url="@../img/how_to_vote_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
@@ -128,9 +128,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="725.0" layoutY="134.0" onAction="#btnManageOnAction" prefHeight="110.0" prefWidth="112.0">
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="725.0" layoutY="134.0" onAction="#btnManageOnAction" prefHeight="110.0" prefWidth="112.0" styleClass="image-icon">
          <graphic>
-            <ImageView blendMode="OVERLAY" fitHeight="109.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView blendMode="OVERLAY" fitHeight="109.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                <image>
                   <Image url="@../img/diversity_3_FILL0_wght400_GRAD0_opsz48.png" />
                </image>

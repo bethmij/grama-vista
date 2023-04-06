@@ -8,19 +8,17 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="579.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.CivilViewFormController">
+<AnchorPane prefHeight="625.0" prefWidth="826.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.HomeViewFormController">
    <children>
-      <ImageView fitHeight="712.0" fitWidth="953.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="658.0" fitWidth="858.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
       </ImageView>
-      <Text layoutX="186.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age                        -" wrappingWidth="193.33673095703125">
+      <Text layoutX="155.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Child count            -        " wrappingWidth="260.5367431640624">
          <font>
             <Font size="20.0" />
          </font>
@@ -56,7 +54,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="186.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact  1              -" wrappingWidth="203.73675537109375">
+      <Text layoutX="155.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Member count       -" wrappingWidth="203.73675537109375">
          <font>
             <Font size="20.0" />
          </font>
@@ -92,7 +90,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="186.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address                 -" wrappingWidth="203.73675537109375">
+      <Text layoutX="155.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address                 -" wrappingWidth="203.73675537109375">
          <font>
             <Font size="20.0" />
          </font>
@@ -128,7 +126,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="185.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOB                       -" wrappingWidth="193.33673095703125">
+      <Text layoutX="155.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="House holder         -" wrappingWidth="193.3367309570312">
          <font>
             <Font size="20.0" />
          </font>
@@ -164,7 +162,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="186.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIC                        -  " wrappingWidth="203.73675537109375">
+      <Text layoutX="412.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="gjgh" wrappingWidth="203.73675537109375">
          <font>
             <Font size="20.0" />
          </font>
@@ -200,72 +198,38 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Label fx:id="lblNic" layoutX="389.0" layoutY="178.0" prefHeight="30.0" prefWidth="518.0" textFill="#663c1c">
+      <Label fx:id="lblAddress" alignment="TOP_LEFT" layoutX="389.0" layoutY="224.0" prefHeight="56.0" prefWidth="442.0" text="ewr" textFill="#663c1c">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblAddress" alignment="TOP_LEFT" layoutX="389.0" layoutY="224.0" prefHeight="56.0" prefWidth="442.0" textFill="#663c1c">
+      <Label fx:id="lblContact" layoutX="389.0" layoutY="323.0" prefHeight="30.0" prefWidth="177.0" text="erwe" textFill="#663c1c">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblContact" layoutX="389.0" layoutY="323.0" prefHeight="30.0" prefWidth="177.0" textFill="#663c1c">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblAge" layoutX="389.0" layoutY="373.0" prefHeight="30.0" prefWidth="518.0" textFill="#663c1c">
+      <Label fx:id="lblAge" layoutX="389.0" layoutY="373.0" prefHeight="30.0" prefWidth="370.0" text="erw" textFill="#663c1c">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
       <ImageView fx:id="img" fitHeight="147.0" fitWidth="158.0" layoutX="602.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="120.0" layoutY="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="949.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.5199999809265137" green="0.2953599989414215" blue="0.020800000056624413" opacity="0.28118541836738586" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="1.0" green="0.5860000252723694" blue="0.07999999821186066" opacity="0.3659878373146057" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.4951219512195121">
-                     <color>
-                        <Color red="0.8739492893218994" green="0.8842105269432068" blue="0.5763742923736572" opacity="0.18000000715255737" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="0.8444444537162781" blue="0.5333333611488342" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <Label fx:id="lblCivil" layoutX="389.0" layoutY="62.0" prefHeight="30.0" prefWidth="518.0" textFill="#663c1c">
+      <Label fx:id="lblCivil" layoutX="389.0" layoutY="62.0" prefHeight="30.0" prefWidth="518.0" text="gdfh" textFill="#663c1c">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Circle fx:id="circle" fill="#1f93ff00" layoutX="84.0" layoutY="100.0" radius="70.0" stroke="#b7723b" strokeType="INSIDE" />
-      <Label fx:id="lblName" layoutX="389.0" layoutY="108.0" prefHeight="30.0" prefWidth="518.0" textFill="#663c1c">
+      <Label fx:id="lblName" layoutX="389.0" layoutY="108.0" prefHeight="30.0" prefWidth="518.0" text="fgdfg" textFill="#663c1c">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXButton layoutX="781.0" layoutY="665.0" onAction="#btnDeleteOnAction" prefHeight="38.0" prefWidth="108.0" style="-fx-background-color: #f7c142;" text="Delete" textFill="WHITE">
+      <JFXButton layoutX="648.0" layoutY="597.0" onAction="#btnDeleteOnAction" prefHeight="38.0" prefWidth="108.0" style="-fx-background-color: #f7c142;" text="Delete" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <Text layoutX="186.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Civil ID                  -" wrappingWidth="193.33673095703125">
+      <Text layoutX="155.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home ID               -" wrappingWidth="193.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -301,7 +265,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="186.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name                    -  " wrappingWidth="193.33673095703125">
+      <Text layoutX="155.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Division ID            -  " wrappingWidth="238.13671875">
          <font>
             <Font size="20.0" />
          </font>
@@ -337,12 +301,12 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Label fx:id="lblDOB" layoutX="389.0" layoutY="279.0" prefHeight="30.0" prefWidth="518.0" textFill="#663c1c">
+      <Label fx:id="lblDOB" layoutX="389.0" layoutY="282.0" prefHeight="30.0" prefWidth="396.0" text="werwe" textFill="#663c1c">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Text layoutX="185.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marriage                -" wrappingWidth="193.33673095703125">
+      <Text layoutX="155.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Residence Type      -" wrappingWidth="193.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -378,7 +342,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="186.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Education Status    -" wrappingWidth="193.33673095703125">
+      <Text layoutX="155.0" layoutY="525.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Electricity               -" wrappingWidth="193.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -414,99 +378,17 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text fx:id="Work_Place" layoutX="185.0" layoutY="597.0" strokeType="OUTSIDE" strokeWidth="0.0" text="School                    -" wrappingWidth="193.33673095703125">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5048780487804878">
-                     <color>
-                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9919246298788693">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Text>
-      <Text layoutX="185.0" layoutY="545.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Occupation             -" wrappingWidth="193.33673095703125">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5048780487804878">
-                     <color>
-                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9919246298788693">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Text>
-      <Label fx:id="lblMarriage" layoutX="389.0" layoutY="422.0" prefHeight="30.0" prefWidth="518.0" textFill="#663c1c">
+      <Label fx:id="lblMarriage" layoutX="389.0" layoutY="422.0" prefHeight="30.0" prefWidth="369.0" text="erwe" textFill="#663c1c">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblEdu" layoutX="389.0" layoutY="473.0" prefHeight="30.0" prefWidth="518.0" textFill="#663c1c">
+      <Label fx:id="lblEdu" layoutX="374.0" layoutY="473.0" prefHeight="30.0" prefWidth="361.0" text="erwer" textFill="#663c1c">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblOccupation" layoutX="389.0" layoutY="521.0" prefHeight="30.0" prefWidth="518.0" textFill="#663c1c">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblSchool" layoutX="389.0" layoutY="574.0" prefHeight="20.0" prefWidth="518.0" textFill="#663c1c">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Text layoutX="602.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact  2    -" wrappingWidth="126.93682861328125">
+      <Text layoutX="155.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Electricity               -" wrappingWidth="193.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -542,48 +424,12 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Label fx:id="lblContact2" layoutX="746.0" layoutY="326.0" prefHeight="30.0" prefWidth="178.0" textFill="#663c1c">
+      <Label fx:id="lblEdu1" layoutX="359.0" layoutY="518.0" prefHeight="30.0" prefWidth="396.0" text="erwer" textFill="#663c1c">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Text layoutX="185.0" layoutY="642.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Work_Place            - " wrappingWidth="193.33673095703125">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5048780487804878">
-                     <color>
-                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9919246298788693">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Text>
-      <Label fx:id="lblWork" layoutX="390.0" layoutY="620.0" prefHeight="20.0" prefWidth="518.0" textFill="#663c1c">
+      <Label fx:id="lblEdu2" layoutX="351.0" layoutY="563.0" prefHeight="30.0" prefWidth="442.0" text="erwer" textFill="#663c1c">
          <font>
             <Font size="20.0" />
          </font>

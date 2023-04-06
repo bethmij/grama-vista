@@ -2,6 +2,8 @@ package lk.ijse.controller;
 
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.util.OpenView;
 
@@ -33,5 +35,30 @@ public class RegistrationFormController {
 
     public void btnDivisionOnAction(ActionEvent actionEvent) { OpenView.openView ("divisionRegistrationForm",CivilRPane);}
 
+
+    @FXML
+    void lblLogOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblManageOnAction(MouseEvent event) {
+        OpenView.openView("manageForm",CivilRPane);
+    }
+
+    @FXML
+    void lblRegOnAction(MouseEvent event) {
+        OpenView.openView("registrationForm",CivilRPane);
+    }
+
+    @FXML
+    void lblReportOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblVoteOnAction(MouseEvent event) {
+
+    }
 
 }

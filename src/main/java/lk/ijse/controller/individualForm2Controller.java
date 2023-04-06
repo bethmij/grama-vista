@@ -1,5 +1,6 @@
 package lk.ijse.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,9 +25,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static lk.ijse.controller.AddResidenceFormController.residenceList;
 import static lk.ijse.controller.CivilManageFormController.civil;
 import static lk.ijse.controller.CivilManageFormController.contactList;
 import static lk.ijse.controller.IndividualFormController.civil1;
+import static lk.ijse.controller.IndividualFormController.civil_id;
 
 public class individualForm2Controller implements Initializable {
 
@@ -41,6 +44,7 @@ public class individualForm2Controller implements Initializable {
     public Label lblContact;
     public Label lblContact1;
     public Button btn1;
+    public JFXButton image;
 
 
     @Override
@@ -81,9 +85,11 @@ public class individualForm2Controller implements Initializable {
             if (!txtSalary.getText().isEmpty()) salary = Double.valueOf(txtSalary.getText());
             else salary = 0.0;
 
-            Civil civil = new Civil(civil1.getId(), civil1.getName(), civil1.getNic(), civil1.getAddress(),
-                    civil1.getDob(), civil1.getGender(), civil1.getMarriage(),
-                    civil1.getRelation(), (String) cbEdu.getValue(), txtSchool.getText(), txtOccupation.getText(), txtWork.getText(), salary);
+
+
+            Civil civil = new Civil(civil1.getId(), civil1.getName(), civil1.getNic(), civil1.getAddress(), civil1.getDob(),
+                    civil1.getGender(), civil1.getMarriage(), civil1.getRelation(), (String) cbEdu.getValue(), txtSchool.getText(),
+                    txtOccupation.getText(), txtWork.getText(), salary);
 
             List<Contact> contactList = new ArrayList<>();
 
@@ -92,13 +98,13 @@ public class individualForm2Controller implements Initializable {
             if (!txtContact2.getText().isEmpty())
                 contactList.add(new Contact(civil1.getId(), Integer.valueOf(txtContact2.getText())));
 
-            AddResidenceFormController.residenceList.add(new MultiResidence(civil1.getResidence(), civil1.getId()));
+            residenceList.add(new MultiResidence(civil1.getResidence(), civil1.getId()));
 
             String division_id = CivilModel.getDivisionId(civil1.getResidence());
 
             boolean isSaved = false;
             try {
-                isSaved = CivilResidenceModel.save(civil, contactList, AddResidenceFormController.residenceList, division_id);
+                isSaved = CivilResidenceModel.save(civil, contactList, residenceList, division_id);
             } catch (SQLException e) {
                 System.out.println(e);
             }
@@ -113,9 +119,10 @@ public class individualForm2Controller implements Initializable {
             if (!txtSalary.getText().isEmpty()) salary = Double.valueOf(txtSalary.getText());
             else salary = 0.0;
 
-            Civil civil = new Civil(civil1.getId(), civil1.getName(), civil1.getNic(), civil1.getAddress(),
-                    civil1.getDob(), civil1.getGender(), civil1.getMarriage(),
-                    civil1.getRelation(), (String) cbEdu.getValue(), txtSchool.getText(), txtOccupation.getText(), txtWork.getText(), salary);
+
+            Civil civil = new Civil(civil1.getId(), civil1.getName(), civil1.getNic(), civil1.getAddress(), civil1.getDob(),
+                    civil1.getGender(), civil1.getMarriage(), civil1.getRelation(), (String) cbEdu.getValue(),
+                    txtSchool.getText(), txtOccupation.getText(), txtWork.getText(), salary);
 
             List<Contact> contactList = new ArrayList<>();
 
@@ -124,12 +131,12 @@ public class individualForm2Controller implements Initializable {
             if (!txtContact2.getText().isEmpty())
                 contactList.add(new Contact(civil1.getId(), Integer.valueOf(txtContact2.getText())));
 
-            AddResidenceFormController.residenceList.add(new MultiResidence(civil1.getResidence(), civil1.getId()));
+            residenceList.add(new MultiResidence(civil1.getResidence(), civil1.getId()));
 
 
             boolean isUpdated = false;
             try {
-                isUpdated = CivilResidenceModel.update(civil, contactList, AddResidenceFormController.residenceList);
+                isUpdated = CivilResidenceModel.update(civil, contactList, residenceList);
             } catch (SQLException e) {
                 System.out.println(e);
             }
@@ -149,28 +156,30 @@ public class individualForm2Controller implements Initializable {
 
     public void btnImageOnAction(ActionEvent actionEvent) {
 
-        Window window = ((Node) (actionEvent.getSource())).getScene().getWindow();
-        FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showOpenDialog(window);
-        actionEvent.consume();
-        InputStream in = null;
-        try {
-            in = new FileInputStream(file);
-        } catch (FileNotFoundException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
+            Window window = ((Node) (actionEvent.getSource())).getScene().getWindow();
+            FileChooser fileChooser = new FileChooser();
+            File file = fileChooser.showOpenDialog(window);
+            actionEvent.consume();
+            InputStream in = null;
+            try {
+                in = new FileInputStream(file);
+            } catch (FileNotFoundException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
 
-        try {
-            boolean isUploaded = CivilModel.upload(String.valueOf((CivilModel.getNextId()-1)),in);
+            try {
+                String[] strings = civil_id.split("C00");
+                boolean isUploaded = CivilModel.upload(strings[1], in);
 
-            if (isUploaded)
-                new Alert(Alert.AlertType.CONFIRMATION, "Image Uploaded Successfully !").show();
-            else
-                new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                if (isUploaded)
+                    new Alert(Alert.AlertType.CONFIRMATION, "Image Uploaded Successfully !").show();
+                else
+                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+
     }
 
     public void txtContact1OnKeyReleased(KeyEvent keyEvent) {

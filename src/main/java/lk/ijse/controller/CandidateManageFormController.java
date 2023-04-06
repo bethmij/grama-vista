@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dto.Candidate;
 import lk.ijse.dto.CandidateDTO;
@@ -23,6 +24,7 @@ import lk.ijse.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -41,10 +43,9 @@ public class CandidateManageFormController implements Initializable {
     public ComboBox cmbID;
     private ObservableList<CandidateTM> obList = FXCollections.observableArrayList();
     public static Candidate candidate;
-    public static Candidate2TM candidate2TM;
     public static CandidateTM candidateTM;
     public static CandidateDTO candidateDetail;
-    
+    public static Integer index=0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -93,8 +94,7 @@ public class CandidateManageFormController implements Initializable {
 
                 candidateTM = new CandidateTM(datalist.getElection(),datalist.getName(),
                         datalist.getNIC(), datalist.getDivision(), btnView);
-                candidateDetail = new CandidateDTO(datalist.getElection(),datalist.getImage(),datalist.getName(),datalist.getNIC(),
-                        datalist.getDivision(),datalist.getAddress(),datalist.getContact(),datalist.getPolitic());
+
                 obList.add(candidateTM);
                 tblDivision.setItems(obList);
             }
@@ -103,6 +103,7 @@ public class CandidateManageFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
+
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
@@ -122,34 +123,37 @@ public class CandidateManageFormController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        /*ImageView imageView = new ImageView();
-        imageView.setImage((Image) candidateDTO.getImage());*/
         Button btnView = new Button("View more");
         btnView.setCursor(Cursor.HAND);
         setViewBtnOnAction(btnView);
-
-        Button btnDelete = new Button("Delete");
-        btnDelete.setCursor(Cursor.HAND);
-        setDeleteBtnOnAction(btnDelete);
-
-
 
         candidateTM = new CandidateTM(candidateDTO.getElection(), candidateDTO.getName(),
                                                  candidateDTO.getNIC(), candidateDTO.getDivision(), btnView);
 
 
 
-        candidateDetail = new CandidateDTO(candidateDTO.getElection(),candidateDTO.getImage(),candidateDTO.getName(),candidateDTO.getNIC(),
-                candidateDTO.getDivision(),candidateDTO.getAddress(),candidateDTO.getContact(),candidateDTO.getPolitic());
+
         obList.add(candidateTM);
         tblDivision.setItems(obList);
     }
 
+
     private void setViewBtnOnAction(Button btnView) {
         btnView.setOnAction((e) -> {
-           OpenView.openView("candidateViewForm");
+
+            try {
+                CandidateDTO candidateDTO = CandidateModel.search((String) colElection.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
+                candidateDetail = new CandidateDTO(candidateDTO.getElection(),candidateDTO.getImage(),candidateDTO.getName(),candidateDTO.getNIC(),
+                        candidateDTO.getDivision(),candidateDTO.getAddress(),candidateDTO.getContact(),candidateDTO.getPolitic());
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            OpenView.openView("candidateViewForm");
+
+
         });
     }
+
 
 
     public void cmbIDOnAction(ActionEvent actionEvent) {
@@ -160,26 +164,22 @@ public class CandidateManageFormController implements Initializable {
         }
     }
 
-    private void setDeleteBtnOnAction(Button btnDelete) {
-        btnDelete.setOnAction((e) -> {
-            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
-            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-            Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to delete?", yes, no).showAndWait();
 
-            if (result.orElse(no) == yes) {
-                try {
-                    boolean isDeleted = DivisionModel.dead((String) cmbID.getValue());
-                    if(isDeleted) {
-                        new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
+    public void lblLogOnAction(MouseEvent mouseEvent) {
+    }
 
-                    }
-                } catch (SQLException ex) {
-                    new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
-                }
+    public void lblManageOnAction(MouseEvent mouseEvent) {
+        OpenView.openView("manageForm",tblDivPane);
+    }
 
-            }
+    public void lblReportOnAction(MouseEvent mouseEvent) {
+    }
 
-        });
+    public void lblVoteOnAction(MouseEvent mouseEvent) {
+    }
+
+    public void lblRegOnAction(MouseEvent mouseEvent) {
+        OpenView.openView("registrationForm",tblDivPane);
     }
 }

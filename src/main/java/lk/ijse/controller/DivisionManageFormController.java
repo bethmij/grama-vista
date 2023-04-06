@@ -3,6 +3,7 @@ package lk.ijse.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
@@ -123,6 +124,7 @@ public class DivisionManageFormController implements Initializable {
     }
 
     private void setDeleteBtnOnAction(Button btnDelete) {
+
         btnDelete.setOnAction((e) -> {
             ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
             ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -140,7 +142,6 @@ public class DivisionManageFormController implements Initializable {
                 } catch (SQLException ex) {
                     new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
                 }
-
             }
 
         });
@@ -156,4 +157,28 @@ public class DivisionManageFormController implements Initializable {
     }
 
 
+    @FXML
+    void lblManageOnAction(MouseEvent event) {
+        OpenView.openView("manageForm",tblDivPane);
+    }
+
+    @FXML
+    void lblRegLogOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblRegOnAction(MouseEvent event) {
+        OpenView.openView("registrationForm",tblDivPane);
+    }
+
+    @FXML
+    void lblReportOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblVoteOnAction(MouseEvent event) {
+
+    }
 }

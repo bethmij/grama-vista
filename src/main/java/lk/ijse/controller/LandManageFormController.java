@@ -156,7 +156,7 @@ public class LandManageFormController implements Initializable {
 
     private void setViewBtnOnAction(Button btnView) {
         btnView.setOnAction((e) -> {
-            OpenView.openView("candidateViewForm");
+            OpenView.openView("landManageForm2");
         });
     }
 

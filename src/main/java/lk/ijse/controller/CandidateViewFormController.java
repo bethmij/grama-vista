@@ -58,21 +58,22 @@ public class CandidateViewFormController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        try {
-            InputStream is = candidateDetail.getImage().getBinaryStream();
-            Image image = new Image(is);
-            circle.setFill(new ImagePattern(image));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            try {
+                InputStream is = candidateDetail.getImage().getBinaryStream();
+                Image image = new Image(is);
+                circle.setFill(new ImagePattern(image));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-        lblAddress.setText(candidateDetail.getAddress());
-        lblContact.setText(String.valueOf(candidateDetail.getContact()));
-        lblDivision.setText(candidateDetail.getDivision());
-        lblElection.setText(candidateDetail.getElection());
-        lblName.setText(candidateDetail.getName());
-        lblNic.setText(candidateDetail.getNIC());
-        lblPolitic.setText(candidateDetail.getPolitic());
+            lblAddress.setText(candidateDetail.getAddress());
+            lblContact.setText(String.valueOf(candidateDetail.getContact()));
+            lblDivision.setText(candidateDetail.getDivision());
+            lblElection.setText(candidateDetail.getElection());
+            lblName.setText(candidateDetail.getName());
+            lblNic.setText(candidateDetail.getNIC());
+            lblPolitic.setText(candidateDetail.getPolitic());
+
 
     }
 

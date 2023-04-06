@@ -3,10 +3,12 @@ package lk.ijse.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dto.Civil;
 import lk.ijse.dto.CivilDTO;
@@ -148,5 +150,28 @@ public class DeadManageFormController implements Initializable {
         cbDead.setItems(dataList);
     }
 
+    @FXML
+    void lblRegOnAction(MouseEvent event) {
 
+    }
+
+    @FXML
+    void lblReportOnAction(MouseEvent event) {
+        OpenView.openView("registrationForm",tblDivPane);
+    }
+
+    @FXML
+    void lblVoteOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblLogoutOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblManageOnAction(MouseEvent event) {
+        OpenView.openView("manageForm",tblDivPane);
+    }
 }

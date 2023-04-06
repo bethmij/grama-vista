@@ -1,11 +1,13 @@
 package lk.ijse.controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dto.Division;
 import lk.ijse.model.DivisionModel;
@@ -107,4 +109,6 @@ public class DivisionRegistrationFormController implements Initializable {
         txtLand.clear();
         txtAdmin.clear();
     }
+
+
 }

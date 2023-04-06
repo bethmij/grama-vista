@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="disablePane" prefHeight="683.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DisableRegistrationFormController">
+<AnchorPane fx:id="disablePane" prefHeight="683.0" prefWidth="942.0" stylesheets="@css/Text.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DisableRegistrationFormController">
    <children>
       <ImageView fitHeight="709.0" fitWidth="948.0" layoutX="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -327,7 +327,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Label layoutX="43.0" layoutY="554.0" text="Logout">
+      <Label layoutX="43.0" layoutY="554.0" onMouseClicked="#lblLogOnAction" styleClass="image-icon" text="Logout">
          <font>
             <Font size="20.0" />
          </font>
@@ -357,8 +357,11 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label layoutX="42.0" layoutY="287.0" prefHeight="30.0" prefWidth="170.0" text="Management">
+      <Label layoutX="42.0" layoutY="287.0" onMouseClicked="#lblManageOnAction" prefHeight="30.0" prefWidth="170.0" styleClass="image-icon" text="Management">
          <font>
             <Font size="20.0" />
          </font>
@@ -388,8 +391,11 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label layoutX="45.0" layoutY="377.0" text="Report Management">
+      <Label layoutX="45.0" layoutY="377.0" onMouseClicked="#lblReportOnAction" styleClass="image-icon" text="Report Management">
          <font>
             <Font size="20.0" />
          </font>
@@ -419,8 +425,11 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label layoutX="45.0" layoutY="470.0" text="Voting">
+      <Label layoutX="45.0" layoutY="470.0" onMouseClicked="#lblVoteOnAction" styleClass="image-icon" text="Voting">
          <font>
             <Font size="20.0" />
          </font>
@@ -450,6 +459,9 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
       <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="45.0" layoutY="550.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -499,7 +511,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Label layoutX="45.0" layoutY="187.0" prefHeight="30.0" prefWidth="170.0" text="Registration">
+      <Label layoutX="45.0" layoutY="187.0" onMouseClicked="#lblRegOnAction" prefHeight="30.0" prefWidth="170.0" styleClass="image-icon" text="Registration">
          <font>
             <Font size="20.0" />
          </font>
@@ -529,6 +541,9 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
       <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="38.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
          <image>

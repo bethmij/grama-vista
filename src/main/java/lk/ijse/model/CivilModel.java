@@ -100,7 +100,8 @@ public class CivilModel {
         if (resultSet.next()) {
 
             return new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2), resultSet.getString(4),
-                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(15),resultSet.getString(5),resultSet.getString(7), resultSet.getString(8),resultSet.getString(9),resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13));
+                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(15),resultSet.getString(5),resultSet.getString(7), resultSet.getString(8),
+                    resultSet.getString(9),resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13));
 
         }
         return null;
@@ -127,15 +128,14 @@ public class CivilModel {
     public static List<CivilDTO> searchAll() throws SQLException {
 
         List<CivilDTO> datalist = new ArrayList<>();
-        ResultSet resultSet = CrudUtil.execute("SELECT *,TIMESTAMPDIFF(year,dob,now()) AS Age FROM grama_vista.civil ");
+        ResultSet resultSet = CrudUtil.execute("SELECT *,TIMESTAMPDIFF(year,dob,now()) AS Age FROM grama_vista.civil");
         while (resultSet.next()) {
 
-            datalist.add (new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2),
-                    resultSet.getString(4),resultSet.getDate(6).toLocalDate(),resultSet.getInt(15),resultSet.getString(5),resultSet.getString(7),
-                    resultSet.getString(8),resultSet.getString(9),resultSet.getString(10),
-                    resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13)));
+            datalist.add (new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2), resultSet.getString(4),
+                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(15), resultSet.getString(5), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9),resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13)));
 
         }
+        System.out.println(datalist);
         return datalist;
     }
 
@@ -152,5 +152,7 @@ public class CivilModel {
     public static boolean dead(Object id) throws SQLException {
         return CrudUtil.execute("DELETE  FROM grama_vista.civil WHERE reg_number=?", id);
     }
+
+
 }
 
