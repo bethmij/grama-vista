@@ -2,9 +2,14 @@ package lk.ijse.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.util.OpenView;
+
+import java.util.Optional;
 
 public class ManageFormController {
     public AnchorPane ManagePane;
@@ -48,6 +53,14 @@ public class ManageFormController {
     @FXML
     void lblLogOnAction(MouseEvent event) {
 
+        ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+        ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
+
+        if (result.orElse(no) == yes) {
+            OpenView.openView("loginForm",ManagePane);
+        }
     }
 
     @FXML

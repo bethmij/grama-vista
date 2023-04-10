@@ -167,6 +167,15 @@ public class CandidateManageFormController implements Initializable {
 
 
     public void lblLogOnAction(MouseEvent mouseEvent) {
+
+        ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+        ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
+
+        if (result.orElse(no) == yes) {
+            OpenView.openView("loginForm",tblDivPane);
+        }
     }
 
     public void lblManageOnAction(MouseEvent mouseEvent) {

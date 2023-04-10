@@ -17,14 +17,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="CandidatePane" prefHeight="683.0" prefWidth="942.0" stylesheets="@css/Text.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.CandidateFormController">
+<AnchorPane fx:id="CandidatePane" prefHeight="714.0" prefWidth="1005.0" stylesheets="@css/Text.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.CandidateFormController">
    <children>
-      <ImageView fitHeight="719.0" fitWidth="949.0" layoutX="50.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="712.0" fitWidth="957.0" layoutX="61.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="708.0" stroke="WHITE" strokeType="INSIDE" width="254.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="714.0" stroke="WHITE" strokeType="INSIDE" width="239.0">
          <fill>
             <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
                <stops>
@@ -52,7 +52,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Text layoutX="13.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grama Vista">
+      <Text layoutX="3.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grama Vista" wrappingWidth="232.10858154296875">
          <font>
             <Font name="Segoe Script" size="34.0" />
          </font>
@@ -239,7 +239,7 @@
             <Image url="@../img/how_to_vote_FILL0_wght400_GRAD0_opsz48.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="46.0" layoutY="184.0" stroke="#fffefe" strokeType="INSIDE" width="254.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="46.0" layoutY="184.0" stroke="#fffefe" strokeType="INSIDE" width="239.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -316,7 +316,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="489.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Candidate Registration">
+      <Text layoutX="489.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Candidate Registration">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -497,7 +497,7 @@
             </InnerShadow>
          </effect>
       </ChoiceBox>
-      <Button fx:id="btn" contentDisplay="GRAPHIC_ONLY" layoutX="276.0" layoutY="30.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #ffc46d;">
+      <Button fx:id="btn" contentDisplay="GRAPHIC_ONLY" layoutX="251.0" layoutY="29.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #ffc46d;">
          <font>
             <Font size="17.0" />
          </font>
@@ -573,7 +573,7 @@
          </cursor>
       </Button>
       <Label fx:id="lblContact" layoutX="417.0" layoutY="507.0" prefHeight="18.0" prefWidth="303.0" textFill="#ef0d20" />
-      <JFXButton fx:id="image" alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" layoutX="417.0" layoutY="550.0" onAction="#btnImageOnAction" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #c16c04;" text="Image">
+      <JFXButton fx:id="image" alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" layoutX="416.0" layoutY="539.0" onAction="#btnImageOnAction" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #c16c04;" text="Image">
          <font>
             <Font size="18.0" />
          </font>

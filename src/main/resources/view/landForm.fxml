@@ -17,9 +17,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="landRoot" prefHeight="698.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.LandFormController">
+<AnchorPane fx:id="landRoot" prefHeight="714.0" prefWidth="1005.0" stylesheets="@css/Icon.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.LandFormController">
    <children>
-      <ImageView fitHeight="728.0" fitWidth="957.0" layoutX="44.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="712.0" fitWidth="957.0" layoutX="61.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
@@ -213,12 +213,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <ImageView fitHeight="57.0" fitWidth="41.0" layoutX="789.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="57.0" fitWidth="41.0" layoutX="791.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/pngegg.png" />
          </image>
       </ImageView>
-      <Text fill="#612803" layoutX="830.0" layoutY="670.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Home Affairs">
+      <Text fill="#612803" layoutX="839.0" layoutY="679.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Home Affairs">
          <font>
             <Font size="14.0" />
          </font>
@@ -257,7 +257,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="708.0" stroke="WHITE" strokeType="INSIDE" width="254.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="714.0" stroke="WHITE" strokeType="INSIDE" width="239.0">
          <fill>
             <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
                <stops>
@@ -285,7 +285,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Text layoutX="13.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grama Vista">
+      <Text layoutX="6.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grama Vista">
          <font>
             <Font name="Segoe Script" size="34.0" />
          </font>
@@ -316,7 +316,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Label layoutX="43.0" layoutY="559.0" text="Logout">
+      <Label layoutX="43.0" layoutY="559.0" onMouseClicked="#lblLogOnAction" styleClass="text-field-" text="Logout">
          <font>
             <Font size="20.0" />
          </font>
@@ -346,8 +346,11 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label layoutX="42.0" layoutY="292.0" prefHeight="30.0" prefWidth="170.0" text="Management">
+      <Label layoutX="42.0" layoutY="292.0" onMouseClicked="#lblManageOnAction" prefHeight="30.0" prefWidth="170.0" styleClass="text-field-" text="Management">
          <font>
             <Font size="20.0" />
          </font>
@@ -377,8 +380,11 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label layoutX="45.0" layoutY="382.0" text="Report Management">
+      <Label layoutX="45.0" layoutY="382.0" onMouseClicked="#lblReportOnAction" styleClass="text-field-" text="Report Management">
          <font>
             <Font size="20.0" />
          </font>
@@ -408,8 +414,11 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
-      <Label layoutX="45.0" layoutY="475.0" text="Voting">
+      <Label layoutX="45.0" layoutY="475.0" onMouseClicked="#lblVoteOnAction" styleClass="text-field-" text="Voting">
          <font>
             <Font size="20.0" />
          </font>
@@ -439,6 +448,9 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
       <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="45.0" layoutY="555.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -460,7 +472,7 @@
             <Image url="@../img/how_to_vote_FILL0_wght400_GRAD0_opsz48.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="46.0" layoutY="184.0" stroke="#fffefe" strokeType="INSIDE" width="254.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="46.0" layoutY="184.0" stroke="#fffefe" strokeType="INSIDE" width="239.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -488,7 +500,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Label layoutX="45.0" layoutY="192.0" prefHeight="30.0" prefWidth="170.0" text="Registration">
+      <Label layoutX="45.0" layoutY="192.0" onMouseClicked="#lblRegOnAction" prefHeight="30.0" prefWidth="170.0" styleClass="text-field-" text="Registration">
          <font>
             <Font size="20.0" />
          </font>
@@ -518,6 +530,9 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
       <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="38.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
          <image>

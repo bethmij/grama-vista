@@ -10,6 +10,15 @@
 
 }
 .text-field-:hover{
-    -fx-effect: dropshadow(gaussian, #e89856, 5, 0.3, 0.0, 0.0);
+    -fx-effect: dropshadow(gaussian, #e89856, 3, 0.3, 0.0, 0.0);
 
 }
+
+.image-icon2{
+
+}
+.image-icon2:hover{
+    -fx-effect: dropshadow(gaussian, #000000, 8, 0.3, 0.0, 0.0);
+
+}
+

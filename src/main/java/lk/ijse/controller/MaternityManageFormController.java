@@ -3,6 +3,7 @@ package lk.ijse.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
@@ -150,5 +151,36 @@ public class MaternityManageFormController implements Initializable {
         });
     }
 
+    @FXML
+    void lblLogOnAction(MouseEvent event) {
 
+        ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+        ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
+
+        if (result.orElse(no) == yes) {
+            OpenView.openView("loginForm",tblDivPane);
+        }
+    }
+
+    @FXML
+    void lblManageOnAction(MouseEvent event) {
+        OpenView.openView("manageForm",tblDivPane);
+    }
+
+    @FXML
+    void lblRegOnAction(MouseEvent event) {
+        OpenView.openView("registrationForm",tblDivPane);
+    }
+
+    @FXML
+    void lblReportOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblVoteOnAction(MouseEvent event) {
+
+    }
 }

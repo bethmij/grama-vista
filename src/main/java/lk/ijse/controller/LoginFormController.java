@@ -22,7 +22,7 @@ public class LoginFormController {
     private AnchorPane root;
     public void btnOnAction(ActionEvent actionEvent)  {
 
-        if (txtUser.getText().equals("Bethmi") && txtPass.getText().equals("1234")){
+       /* if (txtUser.getText().equals("Bethmi") && txtPass.getText().equals("1234")){
             Stage stage = (Stage)root.getScene().getWindow();
             try {
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/dashboardForm.fxml"))));
@@ -34,9 +34,9 @@ public class LoginFormController {
         }else if (txtUser.getText().equals("") || txtPass.getText().equals(""))
             new Alert(Alert.AlertType.ERROR,"Please enter your Username and Password ").show();
         else
-            new Alert(Alert.AlertType.ERROR,"Incorrect Username or Password").show();
+            new Alert(Alert.AlertType.ERROR,"Incorrect Username or Password").show();*/
 
-        //OpenView.openView("dashboardForm",root);
+        OpenView.openView("dashboardForm",root);
     }
 
     public void btnSignOnAction(MouseEvent actionEvent) {

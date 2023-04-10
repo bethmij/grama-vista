@@ -16,9 +16,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" prefHeight="676.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.LoginFormController">
+<AnchorPane fx:id="root" prefHeight="714.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.LoginFormController">
    <children>
-      <ImageView fitHeight="741.0" fitWidth="944.0" layoutX="16.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="712.0" fitWidth="957.0" layoutX="61.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Yahoo Image Search.png" />
          </image>
@@ -26,7 +26,7 @@
             <Rectangle2D />
          </viewport>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="683.0" layoutX="1.0" layoutY="-2.0" stroke="WHITE" strokeType="INSIDE" width="291.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="712.0" layoutY="2.0" stroke="WHITE" strokeType="INSIDE" width="285.0">
          <fill>
             <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
                <stops>
@@ -90,12 +90,12 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ImageView fitHeight="57.0" fitWidth="41.0" layoutX="88.0" layoutY="614.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="57.0" fitWidth="41.0" layoutX="776.0" layoutY="637.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/pngegg.png" />
          </image>
       </ImageView>
-      <Text fill="#612803" layoutX="129.0" layoutY="657.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Home Affairs">
+      <Text fill="#612803" layoutX="827.0" layoutY="681.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Home Affairs">
          <font>
             <Font size="14.0" />
          </font></Text>

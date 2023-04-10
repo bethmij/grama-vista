@@ -3,8 +3,10 @@ package lk.ijse.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dto.Dead;
 import lk.ijse.dto.Disable;
@@ -18,6 +20,7 @@ import lk.ijse.util.OpenView;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static lk.ijse.controller.DeadManageFormController.dead;
@@ -132,5 +135,38 @@ public class MaternityRegistFormController implements Initializable {
         lblName.setText("");
         txtMonths.clear();
         dtpDate.setValue(null);
+    }
+
+    @FXML
+    void lblLogOnAction(MouseEvent event) {
+
+        ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+        ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
+
+        if (result.orElse(no) == yes) {
+            OpenView.openView("loginForm",maternityPane);
+        }
+    }
+
+    @FXML
+    void lblManageOnAction(MouseEvent event) {
+        OpenView.openView("manageForm",maternityPane);
+    }
+
+    @FXML
+    void lblRegOnAction(MouseEvent event) {
+        OpenView.openView("registrationForm",maternityPane);
+    }
+
+    @FXML
+    void lblReportOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblVoteOnAction(MouseEvent event) {
+
     }
 }

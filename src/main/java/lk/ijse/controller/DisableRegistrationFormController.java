@@ -20,6 +20,7 @@ import lk.ijse.util.OpenView;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static java.lang.Integer.valueOf;
@@ -136,6 +137,14 @@ public class DisableRegistrationFormController implements Initializable {
     @FXML
     void lblLogOnAction(MouseEvent event) {
 
+        ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+        ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
+
+        if (result.orElse(no) == yes) {
+            OpenView.openView("loginForm",disablePane);
+        }
     }
 
     @FXML

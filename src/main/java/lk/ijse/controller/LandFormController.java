@@ -3,8 +3,10 @@ package lk.ijse.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dto.Land;
 import lk.ijse.dto.LandDetail;
@@ -14,6 +16,7 @@ import lk.ijse.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static lk.ijse.controller.CivilManageFormController.multiResidenceList;
@@ -130,5 +133,38 @@ public class LandFormController implements Initializable {
         txtPlan.clear();
         txtArea.clear();
         cbLType.setValue(null);
+    }
+
+    @FXML
+    void lblLogOnAction(MouseEvent event) {
+
+        ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+        ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
+
+        if (result.orElse(no) == yes) {
+            OpenView.openView("loginForm",landRoot);
+        }
+    }
+
+    @FXML
+    void lblManageOnAction(MouseEvent event) {
+        OpenView.openView("manageForm",landRoot);
+    }
+
+    @FXML
+    void lblRegOnAction(MouseEvent event) {
+        OpenView.openView("registrationForm",landRoot);
+    }
+
+    @FXML
+    void lblReportOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblVoteOnAction(MouseEvent event) {
+
     }
 }

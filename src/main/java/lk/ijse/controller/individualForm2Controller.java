@@ -4,12 +4,14 @@ import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -23,6 +25,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static lk.ijse.controller.AddResidenceFormController.residenceList;
@@ -221,4 +224,38 @@ public class individualForm2Controller implements Initializable {
         lblContact.setText("");
         lblContact1.setText("");
     }
+
+    @FXML
+    void lblLogOnAction(MouseEvent event) {
+
+        ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+        ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
+
+        if (result.orElse(no) == yes) {
+            OpenView.openView("loginForm",indiroot2);
+        }
+    }
+
+    @FXML
+    void lblManageOnAction(MouseEvent event) {
+        OpenView.openView("manageForm",indiroot2);
+    }
+
+    @FXML
+    void lblRegOnAction(MouseEvent event) {
+        OpenView.openView("registrationForm",indiroot2);
+    }
+
+    @FXML
+    void lblReportOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
+    void lblVoteOnAction(MouseEvent event) {
+
+    }
+
 }

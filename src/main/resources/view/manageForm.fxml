@@ -13,23 +13,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="ManagePane" prefHeight="697.0" prefWidth="960.0" stylesheets="@css/Icon.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ManageFormController">
+<AnchorPane fx:id="ManagePane" prefHeight="714.0" prefWidth="1005.0" stylesheets="@css/Icon.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ManageFormController">
    <children>
-      <ImageView fitHeight="737.0" fitWidth="964.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="712.0" fitWidth="957.0" layoutX="61.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="57.0" fitWidth="41.0" layoutX="721.0" layoutY="647.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="57.0" fitWidth="41.0" layoutX="778.0" layoutY="646.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/pngegg.png" />
          </image>
       </ImageView>
-      <Text fill="#612803" layoutX="778.0" layoutY="690.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Home Affairs">
+      <Text fill="#612803" layoutX="838.0" layoutY="690.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Home Affairs">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="252.0" layoutY="15.0" prefHeight="26.0" prefWidth="0.0" ripplerFill="#fffbe5" />
       <JFXButton fx:id="btnHome" contentDisplay="GRAPHIC_ONLY" layoutX="318.0" layoutY="37.0" onAction="#btnHomeOnAction" prefHeight="128.0" prefWidth="123.0" styleClass="image-icon">
          <graphic>
             <ImageView blendMode="OVERLAY" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
@@ -45,7 +46,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="indiv" contentDisplay="GRAPHIC_ONLY" layoutX="536.0" layoutY="50.0" onAction="#btnIndivOnAction" prefHeight="119.0" prefWidth="150.0" styleClass="image-icon" text="Button">
+      <JFXButton fx:id="indiv" contentDisplay="GRAPHIC_ONLY" layoutX="556.0" layoutY="52.0" onAction="#btnIndivOnAction" prefHeight="119.0" prefWidth="150.0" styleClass="image-icon" text="Button">
          <graphic>
             <ImageView blendMode="OVERLAY" fitHeight="113.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -88,7 +89,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="562.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Individual  Management " wrappingWidth="123.20000000000005">
+      <Text layoutX="582.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Individual  Management " wrappingWidth="123.20000000000005">
          <font>
             <Font size="20.0" />
          </font>
@@ -119,7 +120,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <JFXButton fx:id="land" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="742.0" layoutY="28.0" onAction="#btnlandOnAction" prefHeight="146.0" prefWidth="134.0" styleClass="image-icon">
+      <JFXButton fx:id="land" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="792.0" layoutY="28.0" onAction="#btnlandOnAction" prefHeight="146.0" prefWidth="134.0" styleClass="image-icon2">
          <graphic>
             <ImageView blendMode="OVERLAY" fitHeight="127.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -162,7 +163,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="754.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="      Land Management  " wrappingWidth="123.462890625">
+      <Text layoutX="802.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="      Land Management  " wrappingWidth="123.462890625">
          <font>
             <Font size="20.0" />
          </font>
@@ -193,7 +194,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <JFXButton fx:id="dead" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="334.0" layoutY="240.0" onAction="#btndeadOnAction" prefHeight="128.0" prefWidth="123.0" styleClass="image-icon">
+      <JFXButton fx:id="dead" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="334.0" layoutY="240.0" onAction="#btndeadOnAction" prefHeight="128.0" prefWidth="123.0" styleClass="image-icon2">
          <graphic>
             <ImageView blendMode="OVERLAY" fitHeight="111.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -205,7 +206,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="maternity" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="556.0" layoutY="240.0" onAction="#btnMaternityOnAction" prefHeight="128.0" prefWidth="136.0" styleClass="image-icon">
+      <JFXButton fx:id="maternity" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="576.0" layoutY="240.0" onAction="#btnMaternityOnAction" prefHeight="128.0" prefWidth="136.0" styleClass="image-icon2">
          <graphic>
             <ImageView blendMode="OVERLAY" fitHeight="112.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -248,19 +249,19 @@
             </LinearGradient>
          </fill>
       </Text>
-      <JFXButton fx:id="candidate" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="332.0" layoutY="452.0" onAction="#btnCandidateOnAction" prefHeight="128.0" prefWidth="127.0" styleClass="image-icon" text="Button">
+      <JFXButton fx:id="candidate" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="332.0" layoutY="452.0" onAction="#btnCandidateOnAction" prefHeight="128.0" prefWidth="127.0" styleClass="image-icon2" text="Button">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
          <graphic>
-            <ImageView blendMode="OVERLAY" fitHeight="109.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView blendMode="OVERLAY" fitHeight="109.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon2">
                <image>
                   <Image url="@../img/badge_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
             </ImageView>
          </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
       </JFXButton>
-      <JFXButton fx:id="Disable" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="766.0" layoutY="255.0" onAction="#btnDisableOnAction" prefHeight="115.0" prefWidth="123.0" styleClass="image-icon">
+      <JFXButton fx:id="Disable" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="802.0" layoutY="249.0" onAction="#btnDisableOnAction" prefHeight="115.0" prefWidth="123.0" styleClass="image-icon2">
          <graphic>
             <ImageView fx:id="disable" blendMode="OVERLAY" fitHeight="105.0" fitWidth="104.0" onDragDetected="#btnDisableOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -272,7 +273,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Text layoutX="778.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disable Civil       Management  " wrappingWidth="150.39999999999986">
+      <Text layoutX="810.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disable Civil       Management  " wrappingWidth="150.39999999999986">
          <font>
             <Font size="20.0" />
          </font>
@@ -303,7 +304,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="570.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maternity Civil      Management  " wrappingWidth="170.40000000000003">
+      <Text layoutX="576.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maternity Civil      Management  " wrappingWidth="170.40000000000003">
          <font>
             <Font size="20.0" />
          </font>
@@ -334,7 +335,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <JFXButton fx:id="land221" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="560.0" layoutY="458.0" onAction="#btnDivisionOnAction" prefHeight="115.0" prefWidth="127.0" styleClass="image-icon" text="Button">
+      <JFXButton fx:id="land221" blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="580.0" layoutY="458.0" onAction="#btnDivisionOnAction" prefHeight="115.0" prefWidth="127.0" styleClass="image-icon2" text="Button">
          <graphic>
             <ImageView fx:id="Division" blendMode="OVERLAY" fitHeight="98.0" fitWidth="104.0" onDragDetected="#btnDivisionOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -346,7 +347,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Text layoutX="570.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" GN Division Management  " wrappingWidth="123.462890625">
+      <Text layoutX="582.0" layoutY="594.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" GN Division Management  " wrappingWidth="123.462890625">
          <font>
             <Font size="20.0" />
          </font>
@@ -377,7 +378,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="714.0" stroke="WHITE" strokeType="INSIDE" width="252.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="714.0" stroke="WHITE" strokeType="INSIDE" width="239.0">
          <fill>
             <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
                <stops>
@@ -405,7 +406,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="46.0" layoutY="284.0" stroke="#fffefe" strokeType="INSIDE" width="252.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="46.0" layoutY="284.0" stroke="#fffefe" strokeType="INSIDE" width="239.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -433,7 +434,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Text layoutX="8.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grama Vista" wrappingWidth="238.99999999999994">
+      <Text layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grama Vista" wrappingWidth="238.99999999999994">
          <font>
             <Font name="Segoe Script" size="34.0" />
          </font>
@@ -659,7 +660,7 @@
             <Image url="@../img/group_add_FILL0_wght400_GRAD0_opsz48.png" />
          </image>
       </ImageView>
-      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="778.0" layoutY="460.0" onAction="#btnUserOnAction" styleClass="image-icon">
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="819.0" layoutY="460.0" onAction="#btnUserOnAction" styleClass="image-icon">
          <graphic>
             <ImageView blendMode="OVERLAY" fitHeight="104.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -671,7 +672,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Text layoutX="784.0" layoutY="590.0" strokeType="OUTSIDE" strokeWidth="0.0" text="       User Management  " wrappingWidth="123.462890625">
+      <Text layoutX="817.0" layoutY="593.0" strokeType="OUTSIDE" strokeWidth="0.0" text="       User Management  " wrappingWidth="123.462890625">
          <font>
             <Font size="20.0" />
          </font>
