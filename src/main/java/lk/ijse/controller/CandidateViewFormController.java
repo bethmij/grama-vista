@@ -17,6 +17,8 @@ import lombok.SneakyThrows;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -59,14 +61,28 @@ public class CandidateViewFormController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
             try {
-                InputStream is = candidateDetail.getImage().getBinaryStream();
+
+                //InputStream is = candidateDetail.getImage().getBinaryStream();
+                //InputStream is = new FileInputStream("D:\\grama-vista\\src\\main\\resources\\img\\no-profile-pic-icon-11.jpg");
+                InputStream is = null;
+                if(candidateDetail.getImage()==null){
+                   is = new FileInputStream("D:\\grama-vista\\src\\main\\resources\\img\\no-profile-pic-icon-11.jpg");
+                }else{
+                    is = candidateDetail.getImage().getBinaryStream();
+                }
+                //Image image = new Image(is);
                 Image image = new Image(is);
+
+               // circle.setFill(new ImagePattern(image));
                 circle.setFill(new ImagePattern(image));
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
 
-            lblAddress.setText(candidateDetail.getAddress());
+        lblAddress.setText(candidateDetail.getAddress());
             lblContact.setText(String.valueOf(candidateDetail.getContact()));
             lblDivision.setText(candidateDetail.getDivision());
             lblElection.setText(candidateDetail.getElection());

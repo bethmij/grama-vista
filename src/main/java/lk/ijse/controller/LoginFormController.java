@@ -10,9 +10,19 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.dto.Dead;
 import lk.ijse.util.OpenView;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginFormController {
 
@@ -41,5 +51,19 @@ public class LoginFormController {
 
     public void btnSignOnAction(MouseEvent actionEvent) {
        OpenView.openView("userRegistrationForm");
+    }
+
+
+
+    public void btn1OnAction(ActionEvent actionEvent) throws JRException {
+        Map<String,Object> para = new HashMap<>();
+        para.put("name","cfsfds");
+        para.put("age",34);
+        para.put("color","black");
+
+        JRBeanCollectionDataSource jr = new JRBeanCollectionDataSource(Arrays.asList(new Dead("ad","dfs","edftwe", LocalDate.now())));
+        JasperReport compileReport = (JasperReport) JRLoader.loadObject(this.getClass().getResource("/report/report.jasper"));
+        JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport,para,jr);
+        JasperViewer.viewReport(jasperPrint,false);
     }
 }

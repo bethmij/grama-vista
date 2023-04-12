@@ -64,12 +64,12 @@ public class individualForm2Controller implements Initializable {
         txtWork.setText(civil.getWorking_address());
         txtOccupation.setText(civil.getOccupation());
         cbEdu.setValue(civil.getEdu_status());
-        if(contactList.get(0)!=null) {
+        if(contactList.get(0)!=null)
             txtContact2.setText(String.valueOf(contactList.get(0).getContact()));
-        }
-        if(contactList.get(1)!=null) {
+
+        if(contactList.size()==2)
             txtContact1.setText(String.valueOf(contactList.get(1).getContact()));
-        }
+
         btn1.setText("Update");
 
     }

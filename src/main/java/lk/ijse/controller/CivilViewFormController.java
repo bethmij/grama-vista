@@ -13,7 +13,12 @@ import javafx.scene.shape.Circle;
 import lk.ijse.dto.Contact;
 import lk.ijse.model.CandidateModel;
 
+import javax.imageio.ImageIO;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -42,10 +47,27 @@ public class CivilViewFormController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            InputStream is = civil2.getImage().getBinaryStream();
+            InputStream is = null;
+            if(civil2.getImage()==null) {
+                /*InputStream is = civil2.getImage().getBinaryStream();
+                Image image = new Image(is);
+                circle.setFill(new ImagePattern(image));*/
+
+
+                    is = new FileInputStream("D:\\grama-vista\\src\\main\\resources\\img\\no-profile-pic-icon-11.jpg");
+
+                }else{
+                    is = civil2.getImage().getBinaryStream();
+
+                }
             Image image = new Image(is);
             circle.setFill(new ImagePattern(image));
+
+
+
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 

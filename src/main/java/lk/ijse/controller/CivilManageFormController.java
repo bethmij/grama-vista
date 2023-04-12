@@ -149,7 +149,8 @@ public class CivilManageFormController implements Initializable {
                 Integer contact1 = null, contact2 = null;
                 if(contactLists.get(0)!=null)
                     contact1=contactLists.get(0).getContact();
-                if(contactLists.get(1)!=null)
+
+                if(contactLists.size()==2)
                     contact2=contactLists.get(1).getContact();
 
                 civil2 = new Civil2(civilDTOs.getID(),civilDTOs.getName(),civilDTOs.getImage(),civilDTOs.getNic(),civilDTOs.getAge(),civilDTOs.getAddress(),civilDTOs.getDob(),
