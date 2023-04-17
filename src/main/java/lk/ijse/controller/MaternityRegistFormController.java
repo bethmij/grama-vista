@@ -35,6 +35,7 @@ public class MaternityRegistFormController implements Initializable {
     public TextField txtMonths;
     public DatePicker dtpDate;
     public Button btnSave;
+    public TextField txtMonth;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,7 +51,6 @@ public class MaternityRegistFormController implements Initializable {
         txtMidWife.setText(maternity.getMid_wife());
         lblID.setText("M00"+maternity.getID());
         lblName.setText(maternity.getName());
-        dtpDate.setValue(maternity.getDate());
         btnSave.setText("Update");
     }
 
@@ -92,7 +92,7 @@ public class MaternityRegistFormController implements Initializable {
             String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
 
             try {
-                boolean isSaved = MaternityModel.save(new Maternity(id[1], civil_id[1], lblName.getText(), dtpDate.getValue(), txtMidWife.getText()));
+                boolean isSaved = MaternityModel.save(new Maternity(id[1], civil_id[1], lblName.getText(),Integer.valueOf(txtMonths.getText()), txtMidWife.getText()));
 
                 if (isSaved)
                     new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
@@ -106,7 +106,7 @@ public class MaternityRegistFormController implements Initializable {
             String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
 
             try {
-                boolean isUpdated = MaternityModel.update(new Maternity(id[1], civil_id[1], lblName.getText(), dtpDate.getValue(), txtMidWife.getText()));
+                boolean isUpdated = MaternityModel.update(new Maternity(id[1], civil_id[1], lblName.getText(), Integer.valueOf(txtMonths.getText()),txtMidWife.getText()));
 
                 if (isUpdated)
                     new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
@@ -162,7 +162,7 @@ public class MaternityRegistFormController implements Initializable {
 
     @FXML
     void lblReportOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",maternityPane);
     }
 
     @FXML

@@ -196,7 +196,7 @@ public class IndividualFormController implements Initializable {
 
     @FXML
     void lblReportOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",indiroot1);
     }
 
     @FXML

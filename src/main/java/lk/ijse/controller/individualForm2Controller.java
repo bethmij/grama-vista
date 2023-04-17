@@ -250,7 +250,7 @@ public class individualForm2Controller implements Initializable {
 
     @FXML
     void lblReportOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",indiroot2);
     }
 
     @FXML

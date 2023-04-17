@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="349.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PregReportFormController">
+   <children>
+      <ImageView fitHeight="350.0" fitWidth="490.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Yahoo%20Image%20Search.png" />
+         </image>
+      </ImageView>
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="14.0" layoutY="25.0" prefHeight="26.0" prefWidth="10.0" ripplerFill="#fff7c75e" />
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="55.0" layoutY="50.0" onAction="#btnPregOnAction" ripplerFill="#fff7c928">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/pregnant_woman_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+               <effect>
+                  <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
+                     <color>
+                        <Color red="0.9882352948188782" green="0.7960784435272217" blue="0.21176470816135406" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="251.0" layoutY="50.0" onAction="#btnFeedOnAction" ripplerFill="#f2ecc780">
+         <graphic>
+            <ImageView fitHeight="143.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/breastfeeding_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+               <effect>
+                  <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
+                     <color>
+                        <Color red="0.9882352948188782" green="0.7960784435272217" blue="0.21176470816135406" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Text layoutX="97.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pregnent Mothers" wrappingWidth="123.462890625">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4951219512195121">
+                     <color>
+                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9973082099596233">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <Text layoutX="283.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Breastfeeding Mothers" wrappingWidth="123.462890625">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4951219512195121">
+                     <color>
+                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9973082099596233">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+   </children>
+</AnchorPane>

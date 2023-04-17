@@ -1,15 +1,11 @@
 package lk.ijse.model;
 
-import com.mysql.cj.jdbc.Blob;
-import com.mysql.cj.protocol.a.BinaryResultsetReader;
-import lk.ijse.controller.AddResidenceFormController;
 import lk.ijse.dto.*;
 import lk.ijse.util.CrudUtil;
 
 import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -151,6 +147,20 @@ public class CivilModel {
 
     public static boolean dead(Object id) throws SQLException {
         return CrudUtil.execute("DELETE  FROM grama_vista.civil WHERE reg_number=?", id);
+    }
+
+
+    public static List<CivilDTO> getCivil(String home_id) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT DISTINCT c.* , TIMESTAMPDIFF(year,c.dob,now()) AS Age FROM grama_vista.civil c JOIN grama_vista.multi_residence m on c.reg_number = m.reg_number WHERE m.home_id=?",home_id);
+        List<CivilDTO> datalist = new ArrayList<>();
+        while (resultSet.next()) {
+
+            datalist.add( new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2), resultSet.getString(4),
+                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(15),resultSet.getString(5),resultSet.getString(7), resultSet.getString(8),
+                    resultSet.getString(9),resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13)));
+
+        }
+        return datalist;
     }
 
 

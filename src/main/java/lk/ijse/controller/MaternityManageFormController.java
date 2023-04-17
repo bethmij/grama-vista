@@ -65,7 +65,6 @@ public class MaternityManageFormController implements Initializable {
         colReg.setCellValueFactory(new PropertyValueFactory<>("Reg"));
         colCivil.setCellValueFactory(new PropertyValueFactory<>("Civil"));
         colName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
         colMonth.setCellValueFactory(new PropertyValueFactory<>("Month"));
         colMidWife.setCellValueFactory(new PropertyValueFactory<>("MidWife"));
         colAction.setCellValueFactory(new PropertyValueFactory<>("btn"));
@@ -85,7 +84,7 @@ public class MaternityManageFormController implements Initializable {
                 btnDelete.setCursor(Cursor.HAND);
                 setDeleteBtnOnAction(btnDelete);
 
-                MaternityTM maternityTM = new MaternityTM(datalist.getReg(), datalist.getCivil(), datalist.getName(), datalist.getDate(),
+                MaternityTM maternityTM = new MaternityTM(datalist.getReg(), datalist.getCivil(), datalist.getName(),
                         datalist.getMonth(),datalist.getMidWife(),btnDelete);
                 obList.add(maternityTM);
                 tblDivision.setItems(obList);
@@ -99,7 +98,7 @@ public class MaternityManageFormController implements Initializable {
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
             MaternityDTO maternityDTO = MaternityModel.search((String)cbReg.getValue());
-            maternity= new Maternity(maternityDTO.getReg(), maternityDTO.getCivil(), maternityDTO.getName(), maternityDTO.getDate(), maternityDTO.getMidWife());
+            maternity= new Maternity(maternityDTO.getReg(), maternityDTO.getCivil(), maternityDTO.getName(),maternityDTO.getMonth(), maternityDTO.getMidWife());
 
             OpenView.openView("MaternityRegistForm");
         } catch (SQLException e) {
@@ -120,7 +119,7 @@ public class MaternityManageFormController implements Initializable {
         btnDelete.setCursor(Cursor.HAND);
         setDeleteBtnOnAction(btnDelete);
 
-        MaternityTM maternityTM = new MaternityTM(maternityDTO.getReg(), maternityDTO.getCivil(), maternityDTO.getName(), maternityDTO.getDate(),
+        MaternityTM maternityTM = new MaternityTM(maternityDTO.getReg(), maternityDTO.getCivil(), maternityDTO.getName(),
                                         maternityDTO.getMonth(),maternityDTO.getMidWife(),btnDelete);
         obList.add(maternityTM);
         tblDivision.setItems(obList);
@@ -176,7 +175,7 @@ public class MaternityManageFormController implements Initializable {
 
     @FXML
     void lblReportOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",tblDivPane);
     }
 
     @FXML

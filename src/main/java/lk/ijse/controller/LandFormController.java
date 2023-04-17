@@ -160,7 +160,7 @@ public class LandFormController implements Initializable {
 
     @FXML
     void lblReportOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",landRoot);
     }
 
     @FXML

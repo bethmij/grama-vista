@@ -66,7 +66,7 @@ public class RegistrationFormController {
 
     @FXML
     void lblReportOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",CivilRPane);
     }
 
     @FXML

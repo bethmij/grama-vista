@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.db.DBConnection;
 import lk.ijse.dto.Dead;
 import lk.ijse.util.OpenView;
 import net.sf.jasperreports.engine.*;
@@ -18,6 +19,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,14 +58,13 @@ public class LoginFormController {
 
 
     public void btn1OnAction(ActionEvent actionEvent) throws JRException {
-        Map<String,Object> para = new HashMap<>();
-        para.put("name","cfsfds");
-        para.put("age",34);
-        para.put("color","black");
+        try {
+            JasperReport compileReport = (JasperReport) JRLoader.loadObject(this.getClass().getResource("/report/PregReport.jasper"));
+            JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport,null, DBConnection.getInstance().getConnection());
+            JasperViewer.viewReport(jasperPrint,false);
+        } catch (JRException | SQLException e ) {
+            e.printStackTrace();
+        }
 
-        JRBeanCollectionDataSource jr = new JRBeanCollectionDataSource(Arrays.asList(new Dead("ad","dfs","edftwe", LocalDate.now())));
-        JasperReport compileReport = (JasperReport) JRLoader.loadObject(this.getClass().getResource("/report/report.jasper"));
-        JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport,para,jr);
-        JasperViewer.viewReport(jasperPrint,false);
     }
 }

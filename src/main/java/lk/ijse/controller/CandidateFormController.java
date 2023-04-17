@@ -230,7 +230,7 @@ public class CandidateFormController implements Initializable {
 
     @FXML
     void lblReportOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",CandidatePane);
     }
 
     @FXML

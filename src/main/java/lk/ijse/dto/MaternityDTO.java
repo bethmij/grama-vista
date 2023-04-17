@@ -12,7 +12,6 @@ public class MaternityDTO {
     String reg;
     String civil;
     String name;
-    LocalDate date;
     Integer month;
     String midWife;
 }

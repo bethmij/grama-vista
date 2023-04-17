@@ -171,7 +171,7 @@ public class HomeRegistrationFormController implements Initializable {
 
     @FXML
     void lblReportOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",HomePane);
     }
 
     @FXML

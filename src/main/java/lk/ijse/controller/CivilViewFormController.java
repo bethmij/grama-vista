@@ -49,11 +49,6 @@ public class CivilViewFormController implements Initializable {
         try {
             InputStream is = null;
             if(civil2.getImage()==null) {
-                /*InputStream is = civil2.getImage().getBinaryStream();
-                Image image = new Image(is);
-                circle.setFill(new ImagePattern(image));*/
-
-
                     is = new FileInputStream("D:\\grama-vista\\src\\main\\resources\\img\\no-profile-pic-icon-11.jpg");
 
                 }else{

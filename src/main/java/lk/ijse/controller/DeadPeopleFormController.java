@@ -158,7 +158,7 @@ public class DeadPeopleFormController implements Initializable {
 
     @FXML
     void lblReportOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",deadPane);
     }
 
     @FXML

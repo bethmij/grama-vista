@@ -159,7 +159,7 @@ public class DisableRegistrationFormController implements Initializable {
 
     @FXML
     void lblReportOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",disablePane);
     }
 
     @FXML

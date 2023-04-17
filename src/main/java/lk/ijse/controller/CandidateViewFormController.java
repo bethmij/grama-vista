@@ -61,19 +61,15 @@ public class CandidateViewFormController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
             try {
-
-                //InputStream is = candidateDetail.getImage().getBinaryStream();
-                //InputStream is = new FileInputStream("D:\\grama-vista\\src\\main\\resources\\img\\no-profile-pic-icon-11.jpg");
                 InputStream is = null;
-                if(candidateDetail.getImage()==null){
-                   is = new FileInputStream("D:\\grama-vista\\src\\main\\resources\\img\\no-profile-pic-icon-11.jpg");
+                if(candidateDetail.getImage()==null) {
+                    is = new FileInputStream("D:\\grama-vista\\src\\main\\resources\\img\\no-profile-pic-icon-11.jpg");
+
                 }else{
                     is = candidateDetail.getImage().getBinaryStream();
-                }
-                //Image image = new Image(is);
-                Image image = new Image(is);
 
-               // circle.setFill(new ImagePattern(image));
+                }
+                Image image = new Image(is);
                 circle.setFill(new ImagePattern(image));
 
             } catch (FileNotFoundException e) {

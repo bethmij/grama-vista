@@ -75,7 +75,7 @@ public class ManageFormController {
 
     @FXML
     void lblReportOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",ManagePane);
     }
 
     @FXML

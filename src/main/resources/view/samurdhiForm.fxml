@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="tblDivPane" prefHeight="714.0" prefWidth="1005.0" stylesheets="@css/Text.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DisableManageFormController">
+<AnchorPane fx:id="tblDivPane" prefHeight="714.0" prefWidth="1005.0" stylesheets="@css/Icon.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.SamurdhiFormController">
    <children>
       <ImageView fitHeight="712.0" fitWidth="957.0" layoutX="61.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -55,7 +51,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="46.0" layoutY="284.0" stroke="#fffefe" strokeType="INSIDE" width="239.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="46.0" layoutY="374.0" stroke="#fffefe" strokeType="INSIDE" width="239.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -114,7 +110,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Label layoutX="43.0" layoutY="559.0" onMouseClicked="#lblLogoutOnAction" styleClass="image-icon" text="Logout">
+      <Label layoutX="43.0" layoutY="559.0" onMouseClicked="#lblLogOnAction" text="Logout">
          <font>
             <Font size="20.0" />
          </font>
@@ -144,11 +140,8 @@
                </stops>
             </LinearGradient>
          </textFill>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
       </Label>
-      <Label layoutX="42.0" layoutY="292.0" onMouseClicked="#lblMAnageOnAction" prefHeight="30.0" prefWidth="170.0" styleClass="image-icon" text="Management">
+      <Label layoutX="42.0" layoutY="292.0" onMouseClicked="#lblManageOnAction" prefHeight="30.0" prefWidth="170.0" text="Management">
          <font>
             <Font size="20.0" />
          </font>
@@ -178,11 +171,8 @@
                </stops>
             </LinearGradient>
          </textFill>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
       </Label>
-      <Label layoutX="45.0" layoutY="382.0" onMouseClicked="#lblReportOnAction" styleClass="image-icon" text="Report Management">
+      <Label layoutX="45.0" layoutY="382.0" onMouseClicked="#lblReportOnAction" text="Report Management">
          <font>
             <Font size="20.0" />
          </font>
@@ -212,11 +202,8 @@
                </stops>
             </LinearGradient>
          </textFill>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
       </Label>
-      <Label layoutX="45.0" layoutY="475.0" onMouseClicked="#lblVoteOnAction" styleClass="image-icon" text="Voting">
+      <Label layoutX="45.0" layoutY="475.0" onMouseClicked="#lblVoteOnAction" text="Voting">
          <font>
             <Font size="20.0" />
          </font>
@@ -246,9 +233,6 @@
                </stops>
             </LinearGradient>
          </textFill>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
       </Label>
       <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="45.0" layoutY="555.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -270,7 +254,7 @@
             <Image url="@../img/how_to_vote_FILL0_wght400_GRAD0_opsz48.png" />
          </image>
       </ImageView>
-      <Label layoutX="45.0" layoutY="192.0" onMouseClicked="#lblRegOnAction" prefHeight="30.0" prefWidth="170.0" styleClass="image-icon" text="Registration">
+      <Label layoutX="45.0" layoutY="192.0" onMouseClicked="#lblRegOnAction" prefHeight="30.0" prefWidth="170.0" text="Registration">
          <font>
             <Font size="20.0" />
          </font>
@@ -300,9 +284,6 @@
                </stops>
             </LinearGradient>
          </textFill>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
       </Label>
       <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="38.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -319,7 +300,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="483.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disable Civil Management">
+      <Text layoutX="488.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Samurdhi Allowance">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -392,63 +373,18 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text layoutX="475.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reg ID" wrappingWidth="121.33673095703125">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5048780487804878">
-                     <color>
-                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9919246298788693">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Text>
-      <ChoiceBox fx:id="cbReg" blendMode="MULTIPLY" layoutX="607.0" layoutY="110.0" prefWidth="150.0">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9882352948188782" green="0.8039215803146362" blue="0.364705890417099" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </ChoiceBox>
-      <Separator layoutX="237.0" layoutY="242.0" prefHeight="3.0" prefWidth="774.0" />
-      <TableView fx:id="tblDivision" blendMode="MULTIPLY" layoutX="256.0" layoutY="262.0" prefHeight="378.0" prefWidth="738.0">
+      <Separator layoutX="237.0" layoutY="173.0" prefHeight="3.0" prefWidth="774.0" />
+      <TableView fx:id="tblDivision" blendMode="MULTIPLY" layoutX="259.0" layoutY="202.0" prefHeight="438.0" prefWidth="730.0">
         <columns>
-          <TableColumn fx:id="colID" prefWidth="87.99996948242188" text="Reg ID" />
-          <TableColumn fx:id="colCivil" prefWidth="88.0" text="Civil ID" />
-            <TableColumn fx:id="colName" minWidth="0.0" prefWidth="146.39993286132812" text="Name" />
-            <TableColumn fx:id="colDisable" minWidth="0.0" prefWidth="122.4000244140625" text="Disability" />
-            <TableColumn fx:id="colDesc" prefWidth="210.4000244140625" text="Description" />
-            <TableColumn fx:id="colAction" prefWidth="84.7999267578125" text="Action" />
+          <TableColumn fx:id="colHome" prefWidth="87.199951171875" text="Home ID" />
+            <TableColumn fx:id="colCivil" minWidth="0.0" prefWidth="86.4000244140625" text="Civil ID" />
+            <TableColumn fx:id="colHouse" minWidth="0.0" prefWidth="188.00003051757812" text="House Holder" />
+            <TableColumn fx:id="colNIC" prefWidth="120.0" text="NIC" />
+            <TableColumn fx:id="colAddress" prefWidth="148.7999267578125" text="Address" />
+            <TableColumn fx:id="colMember" prefWidth="100.800048828125" text="Member Count" />
         </columns>
       </TableView>
-      <Button fx:id="GetAll" blendMode="COLOR_BURN" layoutX="899.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnGetAllOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Get All" textFill="#081501">
+      <Button fx:id="GetAll" blendMode="COLOR_BURN" layoutX="781.0" layoutY="103.0" mnemonicParsing="false" onAction="#btnReportOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Report" textFill="#081501">
          <font>
             <Font size="14.0" />
          </font>
@@ -456,7 +392,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="Update" blendMode="COLOR_BURN" layoutX="790.0" layoutY="187.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Update" textFill="#081501">
+      <Button fx:id="Update" blendMode="COLOR_BURN" layoutX="674.0" layoutY="103.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Update" textFill="#081501">
          <font>
             <Font size="14.0" />
          </font>
@@ -464,7 +400,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="Search" blendMode="COLOR_BURN" layoutX="682.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Search" textFill="#081501">
+      <Button fx:id="Search" blendMode="COLOR_BURN" layoutX="571.0" layoutY="103.0" mnemonicParsing="false" onAction="#btnUploadOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Upload" textFill="#081501">
          <font>
             <Font size="14.0" />
          </font>
@@ -472,21 +408,18 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="435.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="101.0" fitWidth="127.0" layoutX="256.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/manage_search_FILL0_wght400_GRAD0_opsz48.png" />
+            <Image url="@../img/35-14-removebg.png" />
          </image>
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.7052631378173828" green="0.42198246717453003" blue="0.07575048506259918" />
-               </color>
-               <input>
-                  <Glow level="0.11" />
-               </input>
-            </InnerShadow>
-         </effect>
       </ImageView>
-      <JFXButton fx:id="btnReport" layoutX="320.0" layoutY="660.0" onAction="#btnReportOnAction" text="Report" />
+      <Button fx:id="GetAll1" blendMode="COLOR_BURN" layoutX="887.0" layoutY="103.0" mnemonicParsing="false" onAction="#btnRefreshOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Refresh" textFill="#081501">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

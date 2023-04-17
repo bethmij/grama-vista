@@ -426,11 +426,10 @@
         <columns>
           <TableColumn fx:id="colReg" prefWidth="76.80001831054688" text="Reg ID " />
           <TableColumn fx:id="colCivil" prefWidth="87.199951171875" text="Civil ID" />
-            <TableColumn fx:id="colName" minWidth="0.0" prefWidth="148.80007934570312" text="Name" />
-            <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="115.20001220703125" text="Date Of Pregrency" />
-            <TableColumn fx:id="colMonth" prefWidth="77.60003662109375" text="Months" />
-            <TableColumn fx:id="colMidWife" prefWidth="127.20001220703125" text="Mid Wife" />
-            <TableColumn fx:id="colAction" prefWidth="99.99997558593748" text="Action" />
+            <TableColumn fx:id="colName" minWidth="0.0" prefWidth="170.39999389648438" text="Name" />
+            <TableColumn fx:id="colMonth" prefWidth="108.0" text="Months" />
+            <TableColumn fx:id="colMidWife" prefWidth="177.5999755859375" text="Mid Wife" />
+            <TableColumn fx:id="colAction" prefWidth="111.199951171875" text="Action" />
         </columns>
       </TableView>
       <Button fx:id="GetAll" blendMode="COLOR_BURN" layoutX="899.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnGetAllOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Get All" textFill="#081501">

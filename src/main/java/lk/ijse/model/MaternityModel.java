@@ -7,6 +7,7 @@ import lk.ijse.util.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +24,8 @@ public class MaternityModel {
 
     public static boolean save(Maternity maternity) throws SQLException {
 
-        boolean isSaved = CrudUtil.execute("INSERT INTO grama_vista.maternity_people (id, reg_number, date_of_pregnancy, mid_wife) VALUES (?,?,?,?)",
-                maternity.getID(),maternity.getCivil_ID(),maternity.getDate(),maternity.getMid_wife());
+        boolean isSaved = CrudUtil.execute("INSERT INTO grama_vista.maternity_people (id, reg_number, mid_wife, register_date) VALUES (?,?,?,?)",
+                maternity.getID(),maternity.getCivil_ID(),maternity.getMid_wife(), LocalDate.now());
 
         return isSaved;
     }
@@ -41,11 +42,11 @@ public class MaternityModel {
     }
 
     public static MaternityDTO search(String id) throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT m.*,TIMESTAMPDIFF(month ,m.date_of_pregnancy,now()) AS Age, c.name FROM grama_vista.maternity_people m JOIN grama_vista.civil c on c.reg_number = m.reg_number WHERE m.id=?", id);
+        ResultSet resultSet = CrudUtil.execute("SELECT m.*,((TIMESTAMPDIFF(month ,m.register_date,now()))+m.months) AS months, c.name FROM grama_vista.maternity_people m JOIN grama_vista.civil c on c.reg_number = m.reg_number WHERE m.id=?", id);
         if (resultSet.next()) {
 
-            return new MaternityDTO(resultSet.getString(1), resultSet.getString(2),resultSet.getString(7),resultSet.getDate(3).toLocalDate(),
-                    resultSet.getInt(6), resultSet.getString(5));
+            return new MaternityDTO(resultSet.getString(1), resultSet.getString(2),resultSet.getString(7),
+                    resultSet.getInt(6), resultSet.getString(3));
 
         }
         return null;
@@ -57,11 +58,11 @@ public class MaternityModel {
 
     public static List<MaternityDTO> searchAll() throws SQLException {
         List<MaternityDTO> datalist = new ArrayList<>();
-        ResultSet resultSet = CrudUtil.execute("SELECT m.*,TIMESTAMPDIFF(month ,m.date_of_pregnancy,now()) AS Age, c.name FROM grama_vista.maternity_people m JOIN grama_vista.civil c on c.reg_number = m.reg_number");
+        ResultSet resultSet = CrudUtil.execute("SELECT m.*,((TIMESTAMPDIFF(month ,m.register_date,now()))+m.months) AS months, c.name FROM grama_vista.maternity_people m JOIN grama_vista.civil c on c.reg_number = m.reg_number");
         while (resultSet.next()) {
 
-            datalist.add (new MaternityDTO(resultSet.getString(1), resultSet.getString(2),resultSet.getString(7),resultSet.getDate(3).toLocalDate(),
-                    resultSet.getInt(6), resultSet.getString(5)));
+            datalist.add (new MaternityDTO(resultSet.getString(1), resultSet.getString(2),resultSet.getString(7),
+                    resultSet.getInt(6), resultSet.getString(3)));
 
         }
         return datalist;
@@ -69,8 +70,8 @@ public class MaternityModel {
 
     public static boolean update(Maternity maternity) throws SQLException {
 
-        return CrudUtil.execute("UPDATE grama_vista.maternity_people SET  reg_number=?, date_of_pregnancy=?,  mid_wife=?  WHERE id=?",
-                maternity.getCivil_ID(),maternity.getDate(),maternity.getMid_wife(),maternity.getID());
+        return CrudUtil.execute("UPDATE grama_vista.maternity_people SET  reg_number=?,  mid_wife=?  WHERE id=?",
+                maternity.getCivil_ID(),maternity.getMid_wife(),maternity.getID());
 
     }
 }

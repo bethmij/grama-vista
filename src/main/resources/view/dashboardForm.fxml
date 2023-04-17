@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -93,48 +94,76 @@
             <Font size="14.0" />
          </font></Text>
       <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="297.0" layoutY="26.0" prefHeight="26.0" prefWidth="14.0" ripplerFill="#fffbe5" />
-      <JFXButton fx:id="btnCivilReg" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="480.0" layoutY="105.0" onAction="#btnCivilRegOnAction" prefHeight="128.0" prefWidth="142.0" styleClass="image-icon">
+      <JFXButton fx:id="btnCivilReg" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="480.0" layoutY="105.0" onAction="#btnCivilRegOnAction" prefHeight="128.0" prefWidth="142.0" ripplerFill="#f7f6f100" styleClass="image-icon">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
          <graphic>
-            <ImageView blendMode="OVERLAY" fitHeight="132.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+            <ImageView fitHeight="132.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                <image>
                   <Image url="@../img/group_add_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
+               <effect>
+                  <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
+                     <color>
+                        <Color red="1.0" green="0.8705882430076599" blue="0.43921568989753723" />
+                     </color>
+                  </InnerShadow>
+               </effect>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="481.0" layoutY="316.0" prefHeight="110.0" prefWidth="142.0" styleClass="image-icon">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="481.0" layoutY="316.0" onAction="#btnReportOnAction" prefHeight="110.0" prefWidth="142.0" ripplerFill="#f5f4f000" styleClass="image-icon">
          <graphic>
-            <ImageView blendMode="OVERLAY" fitHeight="136.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="136.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/edit_document_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
+               <effect>
+                  <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
+                     <color>
+                        <Color red="0.9882352948188782" green="0.7960784435272217" blue="0.21176470816135406" />
+                     </color>
+                  </InnerShadow>
+               </effect>
             </ImageView>
          </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton blendMode="OVERLAY" contentDisplay="GRAPHIC_ONLY" layoutX="722.0" layoutY="312.0" prefHeight="110.0" prefWidth="118.0" styleClass="image-icon2">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="722.0" layoutY="312.0" prefHeight="110.0" prefWidth="118.0" styleClass="image-icon">
          <graphic>
-            <ImageView blendMode="OVERLAY" fitHeight="137.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+            <ImageView fitHeight="137.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                <image>
                   <Image url="@../img/how_to_vote_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
+               <effect>
+                  <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
+                     <color>
+                        <Color red="0.9882352948188782" green="0.7960784435272217" blue="0.21176470816135406" />
+                     </color>
+                  </InnerShadow>
+               </effect>
             </ImageView>
          </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="727.0" layoutY="107.0" onAction="#btnManageOnAction" prefHeight="110.0" prefWidth="112.0" styleClass="image-icon">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="727.0" layoutY="107.0" onAction="#btnManageOnAction" prefHeight="110.0" prefWidth="112.0" ripplerFill="#faf8ed00" styleClass="image-icon">
          <graphic>
-            <ImageView blendMode="OVERLAY" fitHeight="127.0" fitWidth="129.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+            <ImageView fitHeight="127.0" fitWidth="129.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                <image>
                   <Image url="@../img/diversity_3_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
+               <effect>
+                  <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
+                     <color>
+                        <Color red="1.0" green="0.8705882430076599" blue="0.43921568989753723" />
+                     </color>
+                  </InnerShadow>
+               </effect>
             </ImageView>
          </graphic>
          <cursor>

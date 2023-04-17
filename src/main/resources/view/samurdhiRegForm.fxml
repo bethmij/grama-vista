@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.SamurdhiRegFormController">
+   <children>
+      <ImageView fitHeight="563.0" fitWidth="750.0" layoutX="-21.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Yahoo%20Image%20Search.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnSave" layoutX="277.0" layoutY="460.0" onAction="#btnSaveOnAction" prefHeight="37.0" prefWidth="170.0" style="-fx-background-color: #f7c142;" text="Save">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label fx:id="lblLand" layoutX="169.0" layoutY="79.0" prefHeight="30.0" prefWidth="81.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.495121951219512">
+                     <color>
+                        <Color red="0.49473685026168823" green="0.262149453163147" blue="0.08428850024938583" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <TextField fx:id="txtHome" blendMode="MULTIPLY" layoutX="169.0" layoutY="39.0" prefHeight="38.0" prefWidth="386.0" promptText="Home ID">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtNIC" blendMode="MULTIPLY" layoutX="169.0" layoutY="235.0" prefHeight="38.0" prefWidth="386.0" promptText="NIC">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtHouse" blendMode="MULTIPLY" layoutX="169.0" layoutY="168.0" prefHeight="38.0" prefWidth="386.0" promptText="House Holder">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtCivil" blendMode="MULTIPLY" layoutX="169.0" layoutY="103.0" prefHeight="38.0" prefWidth="386.0" promptText="Civil ID">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtMember" blendMode="MULTIPLY" layoutX="169.0" layoutY="368.0" prefHeight="38.0" prefWidth="386.0" promptText="Member Count">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtAddress" blendMode="MULTIPLY" layoutX="169.0" layoutY="300.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

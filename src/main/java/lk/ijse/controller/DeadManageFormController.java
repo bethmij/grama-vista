@@ -152,7 +152,7 @@ public class DeadManageFormController implements Initializable {
 
     @FXML
     void lblRegOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",tblDivPane);
     }
 
     @FXML

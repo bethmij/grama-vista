@@ -156,7 +156,7 @@ public class UserManageFormController implements Initializable {
 
     @FXML
     void lblReportOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",tblDivPane);
     }
 
     @FXML

@@ -147,7 +147,7 @@ public class CivilManageFormController implements Initializable {
                 List<MultiResidence> multiResidenceLists = CivilModel.searchResidence((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
 
                 Integer contact1 = null, contact2 = null;
-                if(contactLists.get(0)!=null)
+                if(contactLists.size()==1)
                     contact1=contactLists.get(0).getContact();
 
                 if(contactLists.size()==2)
@@ -198,11 +198,13 @@ public class CivilManageFormController implements Initializable {
 
     @FXML
     void lblReportOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",tblDivPane);
     }
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
 
     }
+
+
 }

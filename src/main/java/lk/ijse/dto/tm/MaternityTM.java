@@ -15,7 +15,6 @@ public class MaternityTM {
     String Reg;
     String Civil;
     String Name;
-    LocalDate Date;
     Integer Month;
     String MidWife;
     Button btn;

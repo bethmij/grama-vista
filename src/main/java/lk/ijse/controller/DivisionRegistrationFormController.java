@@ -133,7 +133,7 @@ public class DivisionRegistrationFormController implements Initializable {
 
     @FXML
     void lblReportOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",divisionPane);
     }
 
     @FXML

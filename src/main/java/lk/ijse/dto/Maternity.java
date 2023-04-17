@@ -11,6 +11,6 @@ public class Maternity {
     private String ID;
     private String civil_ID;
     private String name;
-    private LocalDate date;
+    private Integer months;
     private String mid_wife;
 }

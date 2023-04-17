@@ -1,6 +1,5 @@
 package lk.ijse.dto;
 
-import javafx.scene.control.Button;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -8,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 
 public class DisableDTO {
-    String iD;
+    String id;
     String civil;
     String name;
     String disable;

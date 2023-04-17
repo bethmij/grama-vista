@@ -10,21 +10,22 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dto.Dead;
-import lk.ijse.dto.DeadDTO;
 import lk.ijse.dto.Disable;
 import lk.ijse.dto.DisableDTO;
-import lk.ijse.dto.tm.DeadTM;
 import lk.ijse.dto.tm.DisableTM;
-import lk.ijse.model.DeadModel;
 import lk.ijse.model.DisableModel;
 import lk.ijse.util.OpenView;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class DisableManageFormController implements Initializable {
     public AnchorPane tblDivPane;
@@ -83,7 +84,7 @@ public class DisableManageFormController implements Initializable {
                 btnDelete.setCursor(Cursor.HAND);
                 setDeleteBtnOnAction(btnDelete);
 
-                DisableTM disableTM = new DisableTM(datalist.getID(), datalist.getCivil(), datalist.getName(), datalist.getDisable(), datalist.getDesc(), btnDelete);
+                DisableTM disableTM = new DisableTM(datalist.getId(), datalist.getCivil(), datalist.getName(), datalist.getDisable(), datalist.getDesc(), btnDelete);
                 obList.add(disableTM);
                 tblDivision.setItems(obList);
             }
@@ -96,7 +97,7 @@ public class DisableManageFormController implements Initializable {
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
             DisableDTO disableDTO = DisableModel.search((String) cbReg.getValue());
-            disable= new Disable(disableDTO.getID(),disableDTO.getCivil(), disableDTO.getName(), disableDTO.getDisable(), disableDTO.getDesc());
+            disable= new Disable(disableDTO.getId(),disableDTO.getCivil(), disableDTO.getName(), disableDTO.getDisable(), disableDTO.getDesc());
 
             OpenView.openView("disableRegistrationForm");
         } catch (SQLException e) {
@@ -116,7 +117,7 @@ public class DisableManageFormController implements Initializable {
         btnDelete.setCursor(Cursor.HAND);
         setDeleteBtnOnAction(btnDelete);
 
-        DisableTM disableTM = new DisableTM(disableDTO.getID(), disableDTO.getCivil(), disableDTO.getName(), disableDTO.getDisable(), disableDTO.getDesc(), btnDelete);
+        DisableTM disableTM = new DisableTM(disableDTO.getId(), disableDTO.getCivil(), disableDTO.getName(), disableDTO.getDisable(), disableDTO.getDesc(), btnDelete);
         obList.add(disableTM);
         tblDivision.setItems(obList);
     }
@@ -171,7 +172,7 @@ public class DisableManageFormController implements Initializable {
 
     @FXML
     void lblReportOnAction(MouseEvent event) {
-
+        OpenView.openView("reportForm",tblDivPane);
     }
 
     @FXML
@@ -179,4 +180,25 @@ public class DisableManageFormController implements Initializable {
 
     }
 
+    public void btnReportOnAction(ActionEvent actionEvent) {
+
+        List<DisableDTO> disableDTOList = new ArrayList<>();
+        for (int i = 0; i < tblDivision.getItems().size(); i++) {
+            DisableTM disableTM = obList.get(i);
+
+            DisableDTO dto = new DisableDTO(
+                    disableTM.getId(), disableTM.getCivil(), disableTM.getName(), disableTM.getDisable(), disableTM.getDesc());
+            disableDTOList.add(dto);
+        }
+
+        try {
+            JRBeanCollectionDataSource jr = new JRBeanCollectionDataSource(disableDTOList);
+            JasperReport compileReport = (JasperReport) JRLoader.loadObject(this.getClass().getResource("/report/report.jasper"));
+            JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport,null,jr);
+            JasperViewer.viewReport(jasperPrint,false);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

@@ -183,6 +183,7 @@ public class CandidateManageFormController implements Initializable {
     }
 
     public void lblReportOnAction(MouseEvent mouseEvent) {
+        OpenView.openView("reportForm",tblDivPane);
     }
 
     public void lblVoteOnAction(MouseEvent mouseEvent) {
