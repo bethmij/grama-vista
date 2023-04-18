@@ -112,10 +112,13 @@ public class LandFormController implements Initializable {
 
     public void btnOwnerOnAction(ActionEvent actionEvent){
         land_id=lblID.getText();
+        OpenView.openView("ownershipForm");
 
-        for(int i=0; i<ownerList.size(); i++){
-            index=i;
-            OpenView.openView("ownershipForm");
+        if(ownerList!=null) {
+            for (int i = 0; i < ownerList.size(); i++) {
+                index = i;
+                OpenView.openView("ownershipForm");
+            }
         }
     }
 
@@ -165,6 +168,6 @@ public class LandFormController implements Initializable {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
-
+        OpenView.openView("aboutUsForm",landRoot);
     }
 }

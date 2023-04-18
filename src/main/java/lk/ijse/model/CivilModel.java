@@ -6,8 +6,11 @@ import lk.ijse.util.CrudUtil;
 import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CivilModel {
 
@@ -27,12 +30,12 @@ public class CivilModel {
 
     public static boolean save(Civil civil ) throws SQLException {
 
-        String sql = "INSERT INTO grama_vista.civil (nic, name, address, gender, dob, marriage_status, relation, education_status, school, occupation, working_address, salary) " +
-                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO grama_vista.civil (nic, name, address, gender, dob, marriage_status, relation, education_status, school, occupation, working_address, salary,email,register_date) " +
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         boolean isSaved = CrudUtil.execute(sql,
                 civil.getNic(),civil.getName(),civil.getAddress(),civil.getGender(),civil.getDob(),civil.getMarriage(),civil.getRelation(),
-                civil.getEdu_status(),civil.getSchool(),civil.getOccupation(),civil.getWorking_address(),civil.getSalary());
+                civil.getEdu_status(),civil.getSchool(),civil.getOccupation(),civil.getWorking_address(),civil.getSalary(),civil.getEmail(), LocalDate.now());
 
         return isSaved;
 
@@ -96,8 +99,8 @@ public class CivilModel {
         if (resultSet.next()) {
 
             return new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2), resultSet.getString(4),
-                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(15),resultSet.getString(5),resultSet.getString(7), resultSet.getString(8),
-                    resultSet.getString(9),resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13));
+                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(17),resultSet.getString(5),resultSet.getString(7), resultSet.getString(8),
+                    resultSet.getString(9),resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13),resultSet.getString(15));
 
         }
         return null;
@@ -128,19 +131,19 @@ public class CivilModel {
         while (resultSet.next()) {
 
             datalist.add (new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2), resultSet.getString(4),
-                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(15), resultSet.getString(5), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9),resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13)));
+                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(17), resultSet.getString(5), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9),
+                    resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13),resultSet.getString(15)));
 
         }
-        System.out.println(datalist);
         return datalist;
     }
 
     public static boolean update(Civil civil) throws SQLException {
         String sql = "UPDATE grama_vista.civil SET nic=?, name=?, address=?, gender=?, dob=?, marriage_status=?, relation=?," +
-                " education_status=?, school=?, occupation=?, working_address=?, salary=? WHERE reg_number=?";
+                " education_status=?, school=?, occupation=?, working_address=?, salary=?, email=? WHERE reg_number=?";
 
         return CrudUtil.execute(sql, civil.getNic(),civil.getName(),civil.getAddress(),civil.getGender(),civil.getDob(),civil.getMarriage(),civil.getRelation(),
-                civil.getEdu_status(),civil.getSchool(),civil.getOccupation(),civil.getWorking_address(),civil.getSalary(),civil.getId());
+                civil.getEdu_status(),civil.getSchool(),civil.getOccupation(),civil.getWorking_address(),civil.getSalary(),civil.getEmail(),civil.getId());
 
 
     }
@@ -156,13 +159,45 @@ public class CivilModel {
         while (resultSet.next()) {
 
             datalist.add( new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2), resultSet.getString(4),
-                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(15),resultSet.getString(5),resultSet.getString(7), resultSet.getString(8),
-                    resultSet.getString(9),resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13)));
+                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(17),resultSet.getString(5),resultSet.getString(7), resultSet.getString(8),
+                    resultSet.getString(9),resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13),resultSet.getString(15)));
 
         }
         return datalist;
     }
 
 
+    public static Map<Integer,Integer> getDateDiff() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT reg_number,TIMESTAMPDIFF(day,register_date,now()) AS date FROM grama_vista.civil ");
+        Map<Integer,Integer> datalist = new HashMap<>();
+        while (resultSet.next()) {
+            datalist.put(resultSet.getInt(1),resultSet.getInt(2));
+        }
+        return datalist;
+    }
+
+    public static String getEmail(Integer id) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT email FROM grama_vista.civil WHERE reg_number=?",id);
+        if(resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
+    }
+
+    public static Integer getMale() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT COUNT(reg_number) FROM grama_vista.civil WHERE gender='Male'");
+        if(resultSet.next()){
+            return resultSet.getInt(1);
+        }
+        return null;
+    }
+
+    public static Integer getFemale() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT COUNT(reg_number) FROM grama_vista.civil WHERE gender='Female'");
+        if(resultSet.next()){
+            return resultSet.getInt(1);
+        }
+        return null;
+    }
 }
 

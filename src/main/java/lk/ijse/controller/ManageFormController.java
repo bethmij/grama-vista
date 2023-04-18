@@ -80,6 +80,6 @@ public class ManageFormController {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
-
+        OpenView.openView("aboutUsForm",ManagePane);
     }
 }

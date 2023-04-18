@@ -34,10 +34,10 @@ public class AddLandTypeFormController implements Initializable {
         loadLandType();
         lblLand.setText(LandFormController.land_id);
 
-        if(null != landDetails.get(1)) {
+        /*if(landDetails.size()==2) {
             cbType.setValue(landDetails.get(1).getLand_type());
         }else
-            cbType.setValue("");
+            cbType.setValue("");*/
     }
 
     private void loadLandType() {

@@ -176,6 +176,6 @@ public class HomeRegistrationFormController implements Initializable {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
-
+        OpenView.openView("aboutUsForm",HomePane);
     }
 }

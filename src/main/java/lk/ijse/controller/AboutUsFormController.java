@@ -1,0 +1,157 @@
+package lk.ijse.controller;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import lk.ijse.model.CivilModel;
+import lk.ijse.model.DivisionModel;
+import lk.ijse.model.LandModel;
+import lk.ijse.model.ResidenceModel;
+import lk.ijse.util.OpenView;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import java.io.File;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Properties;
+import java.util.ResourceBundle;
+
+public class AboutUsFormController implements Initializable {
+    public AnchorPane tblDivPane;
+    public Label lblPopulation;
+    public Label lblMale;
+    public Label lblFemale;
+    public Label lblHome;
+    public Label lblLand;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            lblPopulation.setText(String.valueOf(DivisionModel.getPopulation()));
+            lblMale.setText(String.valueOf(CivilModel.getMale()));
+            lblFemale.setText(String.valueOf(CivilModel.getFemale()));
+            lblHome.setText(String.valueOf(ResidenceModel.getCount()));
+            lblLand.setText(String.valueOf(LandModel.getCount()));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void lblLogoutOnAction(MouseEvent mouseEvent) {
+        ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+        ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
+
+        if (result.orElse(no) == yes) {
+            OpenView.openView("loginForm",tblDivPane);
+        }
+    }
+
+    public void lblManageOnAction(MouseEvent mouseEvent) {
+        OpenView.openView("manageForm",tblDivPane);
+    }
+
+    public void lblReportOnAction(MouseEvent mouseEvent) {
+        OpenView.openView("reportForm",tblDivPane);
+    }
+
+    public void lblVoteOnAction(MouseEvent mouseEvent) {
+        OpenView.openView("aboutUsForm",tblDivPane);
+    }
+
+    public void lblRegOnAction(MouseEvent mouseEvent) {
+        OpenView.openView("registrationForm",tblDivPane);
+    }
+
+    public void btnRenewOnAction(ActionEvent actionEvent) {
+        try {
+            Map<Integer, Integer> dateDiff = CivilModel.getDateDiff();
+
+            for (Map.Entry m : dateDiff.entrySet()) {
+                Integer date = (Integer) m.getValue();
+                if (date >= 351) {
+                    Integer id = (Integer) m.getKey();
+                    String email  = CivilModel.getEmail(id);
+                    String name = CivilModel.getName(String.valueOf(id));
+
+                    System.out.println("preparing to send message ...");
+                    String message = "Civil ID  - C00"+m.getKey()+"\nName   - "+name;
+                    String subject = "Grama Vista : civil data renewal";
+                    String to = email;
+                    String from = "gramavista@gmail.com";
+                    sendAttach(message,subject,to,from);
+                }
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void sendAttach(String message, String subject, String to, String from) {
+
+        String host="smtp.gmail.com";
+        Properties properties = System.getProperties();
+        System.out.println("PROPERTIES "+properties);
+
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port","465");
+        properties.put("mail.smtp.ssl.enable","true");
+        properties.put("mail.smtp.auth","true");
+
+        Session session=Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("gramavista@gmail.com", "tcnclclmcnpcxpvj");
+            }});
+
+        session.setDebug(true);
+
+        MimeMessage m = new MimeMessage(session);
+
+        try {
+            m.setFrom(from);
+            m.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            m.setSubject(subject);
+            String path="C:\\Users\\bethm\\Downloads\\REQUEST LETTER  .pdf";
+
+            MimeMultipart mimeMultipart = new MimeMultipart();
+            MimeBodyPart textMime = new MimeBodyPart();
+            MimeBodyPart fileMime = new MimeBodyPart();
+
+            try {
+                textMime.setText(message);
+
+                File file=new File(path);
+                fileMime.attachFile(file);
+
+                mimeMultipart.addBodyPart(textMime);
+                mimeMultipart.addBodyPart(fileMime);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            m.setContent(mimeMultipart);
+            Transport.send(m);
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Sent success...................");
+
+    }
+
+
+}

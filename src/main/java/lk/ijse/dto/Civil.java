@@ -21,6 +21,7 @@ public class Civil {
     private String occupation;
     private String working_address;
     private Double salary;
+    private String email;
 
 
 }

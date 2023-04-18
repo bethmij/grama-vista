@@ -12,43 +12,66 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.db.DBConnection;
 import lk.ijse.dto.Dead;
+import lk.ijse.dto.UserDTO;
+import lk.ijse.model.CivilModel;
+import lk.ijse.model.UserModel;
 import lk.ijse.util.OpenView;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class LoginFormController {
 
     public PasswordField txtPass;
     public TextField txtUser;
+    public static String user = null;
     @FXML
     private AnchorPane root;
-    public void btnOnAction(ActionEvent actionEvent)  {
+    public void btnOnAction(ActionEvent actionEvent) {
+        List<UserDTO> userDTO = null;
+        try {
+            userDTO = UserModel.searchAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-       /* if (txtUser.getText().equals("Bethmi") && txtPass.getText().equals("1234")){
-            Stage stage = (Stage)root.getScene().getWindow();
-            try {
-                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/dashboardForm.fxml"))));
-            } catch (IOException e) {
-                e.printStackTrace();
+        boolean isTrue = false;
+        for (int i = 0; i < userDTO.size(); i++) {
+            if (txtUser.getText().equals(userDTO.get(i).getUser()) && txtPass.getText().equals(userDTO.get(i).getPassword())) {
+                isTrue =true;
             }
-            stage.setTitle("Dashboard");
-            stage.centerOnScreen();
-        }else if (txtUser.getText().equals("") || txtPass.getText().equals(""))
-            new Alert(Alert.AlertType.ERROR,"Please enter your Username and Password ").show();
-        else
-            new Alert(Alert.AlertType.ERROR,"Incorrect Username or Password").show();*/
+        }
 
-        OpenView.openView("dashboardForm",root);
+        if (isTrue) {
+            OpenView.openView("dashboardForm", root);
+
+        } else if (txtUser.getText().equals("") || txtPass.getText().equals("")) {
+            txtUser.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            txtPass.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            new animatefx.animation.Shake(txtUser).play();
+            new animatefx.animation.Shake(txtPass).play();
+            new Alert(Alert.AlertType.ERROR, "Please enter your Username and Password ").show();
+        }else {
+            txtUser.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            txtPass.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            new animatefx.animation.Shake(txtUser).play();
+            new animatefx.animation.Shake(txtPass).play();
+            new Alert(Alert.AlertType.ERROR, "Incorrect Username or Password").show();
+        }
+
+         //OpenView.openView("dashboardForm",root);
     }
 
     public void btnSignOnAction(MouseEvent actionEvent) {
@@ -56,15 +79,8 @@ public class LoginFormController {
     }
 
 
-
-    public void btn1OnAction(ActionEvent actionEvent) throws JRException {
-        try {
-            JasperReport compileReport = (JasperReport) JRLoader.loadObject(this.getClass().getResource("/report/PregReport.jasper"));
-            JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport,null, DBConnection.getInstance().getConnection());
-            JasperViewer.viewReport(jasperPrint,false);
-        } catch (JRException | SQLException e ) {
-            e.printStackTrace();
-        }
-
+    public void btnForgotOnAction(MouseEvent mouseEvent) {
+        user=txtUser.getText();
+        OpenView.openView("passwordForm");
     }
 }

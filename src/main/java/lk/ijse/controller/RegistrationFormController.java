@@ -71,7 +71,7 @@ public class RegistrationFormController {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
-
+        OpenView.openView("aboutUsForm",CivilRPane);
     }
 
 }

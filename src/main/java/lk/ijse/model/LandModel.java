@@ -114,4 +114,16 @@ public class LandModel {
             con.setAutoCommit(true);
         }
     }
+
+    public static Integer getCount() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT COUNT(land_num) FROM grama_vista.land ");
+        if(resultSet.next()){
+            return resultSet.getInt(1);
+        }
+        return null;
+    }
+
+    public static boolean delete(String id) throws SQLException {
+        return CrudUtil.execute("DELETE FROM grama_vista.land WHERE land_num=?",id);
+    }
 }

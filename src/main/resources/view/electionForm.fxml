@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -203,7 +204,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="45.0" layoutY="475.0" onMouseClicked="#lblVoteOnAction" text="Voting">
+      <Label layoutX="45.0" layoutY="475.0" onMouseClicked="#lblVoteOnAction" text="About Us">
          <font>
             <Font size="20.0" />
          </font>
@@ -247,11 +248,6 @@
       <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="45.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/edit_document_FILL0_wght400_GRAD0_opsz48.png" />
-         </image>
-      </ImageView>
-      <ImageView blendMode="OVERLAY" fitHeight="38.0" fitWidth="44.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/how_to_vote_FILL0_wght400_GRAD0_opsz48.png" />
          </image>
       </ImageView>
       <Label layoutX="45.0" layoutY="192.0" onMouseClicked="#lblRegOnAction" prefHeight="30.0" prefWidth="170.0" text="Registration">
@@ -412,6 +408,18 @@
          <image>
             <Image url="@../img/35-14-removebg.png" />
          </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="2.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+         <image>
+            <Image url="@../img/information-about-us-icon-16.png" />
+         </image>
+         <effect>
+            <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
+               <color>
+                  <Color red="0.8947368264198303" green="0.6826510429382324" blue="0.2584795355796814" />
+               </color>
+            </InnerShadow>
+         </effect>
       </ImageView>
    </children>
 </AnchorPane>

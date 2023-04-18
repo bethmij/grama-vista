@@ -155,17 +155,18 @@ public class CandidateFormController implements Initializable {
         if (!txtContact.getText().matches("^[0-9]*$")) {
             txtContact.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
             lblContact.setText("This filed can only contain numeric values!");
-        } else if (txtContact.getText().length() > 10) {
+        } else if (!(txtContact.getText().length() == 10)) {
             txtContact.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
             lblContact.setText("Not a valid contact number!");
         }
     }
 
+
     public void txtContactOnKeyTyped(KeyEvent keyEvent) {
         if (txtContact.getText().matches("^[0-9]*$")) {
             txtContact.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
             lblContact.setText("");
-        } else if (txtContact.getText().length() <= 10) {
+        } else if (txtContact.getText().length() == 10) {
             txtContact.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
             lblContact.setText("");
         }
@@ -235,6 +236,6 @@ public class CandidateFormController implements Initializable {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
-
+        OpenView.openView("aboutUsForm",CandidatePane);
     }
 }

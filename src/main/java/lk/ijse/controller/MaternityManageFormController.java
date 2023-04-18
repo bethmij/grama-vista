@@ -180,6 +180,6 @@ public class MaternityManageFormController implements Initializable {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
-
+        OpenView.openView("aboutUsForm",tblDivPane);
     }
 }

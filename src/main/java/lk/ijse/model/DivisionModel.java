@@ -107,6 +107,14 @@ public class DivisionModel {
         return CrudUtil.execute(sql, division.getName(), division.getDiv_Secretariat(), division.getAdmin_officer(), division.getLand_area(), division.getDivision_id());
     }
 
+    public static Integer getPopulation() throws SQLException {
+        String division_id = "GN01";
+        ResultSet resultSet =  CrudUtil.execute("SELECT population FROM grama_vista.gn_division WHERE division_id=?",division_id);
+        if(resultSet.next()){
+            return resultSet.getInt(1);
+        }
+        return null;
+    }
 }
 
 

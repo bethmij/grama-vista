@@ -133,8 +133,7 @@ public class UserRegistrationFormController implements Initializable {
         if (!txtContact.getText().matches("^[0-9]*$")) {
             txtContact.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
             lblContact.setText("This filed can only contain numeric values!");
-           // new animatefx.animation.Shake(txtContact).play();
-        } else if (txtContact.getText().length() > 10) {
+        } else if (!(txtContact.getText().length() == 10)) {
             txtContact.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
             lblContact.setText("Not a valid contact number!");
         }
@@ -145,22 +144,22 @@ public class UserRegistrationFormController implements Initializable {
          if (txtContact.getText().matches("^[0-9]*$")) {
             txtContact.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
             lblContact.setText("");
-        } else if (txtContact.getText().length() <= 10) {
+        } else if (txtContact.getText().length() == 10) {
             txtContact.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
             lblContact.setText("");
         }
     }
 
     public void txtPassOnKeyReleased(KeyEvent keyEvent) {
-        if (txtPass.getText().length() <= 4) {
+        if (!txtPass.getText().matches("^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$")) {
             txtPass.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
-            lblPass.setText("Password Can't be less than 4 characters!");
+            lblPass.setText("Should contain minimum eight characters with special character!");
         }
     }
 
 
     public void txtPassOnKeyTyped(KeyEvent keyEvent) {
-        if (txtPass.getText().length() > 4) {
+        if (txtPass.getText().matches("^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$")) {
             txtPass.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
             lblPass.setText("");
         }

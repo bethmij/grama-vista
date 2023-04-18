@@ -92,7 +92,7 @@ public class individualForm2Controller implements Initializable {
 
             Civil civil = new Civil(civil1.getId(), civil1.getName(), civil1.getNic(), civil1.getAddress(), civil1.getDob(),
                     civil1.getGender(), civil1.getMarriage(), civil1.getRelation(), (String) cbEdu.getValue(), txtSchool.getText(),
-                    txtOccupation.getText(), txtWork.getText(), salary);
+                    txtOccupation.getText(), txtWork.getText(), salary,civil1.getEmail());
 
             List<Contact> contactList = new ArrayList<>();
 
@@ -125,7 +125,7 @@ public class individualForm2Controller implements Initializable {
 
             Civil civil = new Civil(civil1.getId(), civil1.getName(), civil1.getNic(), civil1.getAddress(), civil1.getDob(),
                     civil1.getGender(), civil1.getMarriage(), civil1.getRelation(), (String) cbEdu.getValue(),
-                    txtSchool.getText(), txtOccupation.getText(), txtWork.getText(), salary);
+                    txtSchool.getText(), txtOccupation.getText(), txtWork.getText(), salary,civil1.getEmail());
 
             List<Contact> contactList = new ArrayList<>();
 
@@ -188,7 +188,10 @@ public class individualForm2Controller implements Initializable {
     public void txtContact1OnKeyReleased(KeyEvent keyEvent) {
         if (!txtContact1.getText().matches("^[0-9]*$")) {
             txtContact1.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
-            lblContact.setText("This filed can only contain numeric values!");
+            lblContact1.setText("This filed can only contain numeric values!");
+        }else if (!(txtContact1.getText().length() == 10)) {
+            txtContact1.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblContact1.setText("Not a valid contact number!");
         }
     }
 
@@ -196,19 +199,28 @@ public class individualForm2Controller implements Initializable {
         if (!txtContact2.getText().matches("^[0-9]*$")) {
             txtContact2.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
             lblContact.setText("This filed can only contain numeric values!");
+        }else if (!(txtContact2.getText().length() == 10)) {
+            txtContact2.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblContact.setText("Not a valid contact number!");
         }
     }
 
     public void txtContact1OnKeyTyped(KeyEvent keyEvent) {
         if (txtContact1.getText().matches("^[0-9]*$")) {
             txtContact1.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
-            lblContact.setText("");
+            lblContact1.setText("");
+        } else if (txtContact1.getText().length() > 10) {
+            txtContact1.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblContact1.setText("");
         }
     }
 
     public void txtContactOnKeyTyped(KeyEvent keyEvent) {
         if (txtContact2.getText().matches("^[0-9]*$")) {
             txtContact2.setStyle("-fx-border-color: null; -fx-font-size: 16px;");
+            lblContact.setText("");
+        } else if (txtContact2.getText().length() > 10) {
+            txtContact2.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
             lblContact.setText("");
         }
     }
@@ -255,7 +267,8 @@ public class individualForm2Controller implements Initializable {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
-
+        OpenView.openView("aboutUsForm",indiroot2);
     }
 
 }
+

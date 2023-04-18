@@ -106,7 +106,8 @@ public class CivilManageFormController implements Initializable {
             CivilDTO civilDTO = CivilModel.search((String) cmbID.getValue());
             civil= new Civil(civilDTO.getID(), civilDTO.getName(), civilDTO.getNic(), civilDTO.getAddress(),
                     (civilDTO.getDob()), civilDTO.getGender(), civilDTO.getMarriage(),civilDTO.getRelation(),
-                    civilDTO.getEducation(),civilDTO.getSchool(),civilDTO.getOccupation(),civilDTO.getWork(),civilDTO.getSalary());
+                    civilDTO.getEducation(),civilDTO.getSchool(),civilDTO.getOccupation(),
+                    civilDTO.getWork(),civilDTO.getSalary(),civilDTO.getEmail());
 
             contactList = CivilModel.searchContact((String) cmbID.getValue());
             multiResidenceList = CivilModel.searchResidence((String) cmbID.getValue());
@@ -203,7 +204,7 @@ public class CivilManageFormController implements Initializable {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
-
+        OpenView.openView("aboutUsForm",tblDivPane);
     }
 
 

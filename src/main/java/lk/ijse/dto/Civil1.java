@@ -17,4 +17,5 @@ public class Civil1 {
     private String marriage;
     private String relation;
     private String residence;
+    private String email;
 }

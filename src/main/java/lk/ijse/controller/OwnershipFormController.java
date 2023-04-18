@@ -36,17 +36,19 @@ public class OwnershipFormController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         loadCivilId();
         lblLand.setText(LandFormController.land_id);
-        setOwnerController();
+       /* if(ownerList!=null) {
+            setOwnerController();
+        }*/
     }
 
 
-    public void setOwnerController() {
+    /*public void setOwnerController() {
 
         lblLand.setText(String.valueOf(ownerList.get(index).getLand_id()));
         cbCivilID.setValue(ownerList.get(index).getCivil_id());
         txtPercentage.setText(String.valueOf(ownerList.get(index).getPercentage()));
         txtLotNum.setText(ownerList.get(index).getLot_num());
-    }
+    }*/
 
 
 

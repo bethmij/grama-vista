@@ -32,7 +32,6 @@ public class MaternityRegistFormController implements Initializable {
     public TextField txtMidWife;
     public Label lblID;
     public Label lblName;
-    public TextField txtMonths;
     public DatePicker dtpDate;
     public Button btnSave;
     public TextField txtMonth;
@@ -92,7 +91,12 @@ public class MaternityRegistFormController implements Initializable {
             String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
 
             try {
-                boolean isSaved = MaternityModel.save(new Maternity(id[1], civil_id[1], lblName.getText(),Integer.valueOf(txtMonths.getText()), txtMidWife.getText()));
+                boolean isSaved = MaternityModel.save(new Maternity(
+                        id[1],
+                        civil_id[1],
+                        lblName.getText(),
+                        Integer.valueOf(txtMonth.getText()),
+                        txtMidWife.getText()));
 
                 if (isSaved)
                     new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
@@ -106,7 +110,7 @@ public class MaternityRegistFormController implements Initializable {
             String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
 
             try {
-                boolean isUpdated = MaternityModel.update(new Maternity(id[1], civil_id[1], lblName.getText(), Integer.valueOf(txtMonths.getText()),txtMidWife.getText()));
+                boolean isUpdated = MaternityModel.update(new Maternity(id[1], civil_id[1], lblName.getText(), Integer.valueOf(txtMonth.getText()),txtMidWife.getText()));
 
                 if (isUpdated)
                     new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
@@ -133,7 +137,7 @@ public class MaternityRegistFormController implements Initializable {
     public void btnResetOnAction(ActionEvent actionEvent) {
         txtMidWife.clear();
         lblName.setText("");
-        txtMonths.clear();
+        txtMonth.clear();
         dtpDate.setValue(null);
     }
 
@@ -167,6 +171,6 @@ public class MaternityRegistFormController implements Initializable {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
-
+        OpenView.openView("aboutUsForm",maternityPane);
     }
 }

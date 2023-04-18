@@ -23,4 +23,8 @@ public class DashboardFormController {
     public void btnReportOnAction(ActionEvent actionEvent) {
         OpenView.openView("reportForm",dashboardpane);
     }
+
+    public void btnAboutOnAction(ActionEvent actionEvent) {
+        OpenView.openView("aboutUsForm",dashboardpane);
+    }
 }

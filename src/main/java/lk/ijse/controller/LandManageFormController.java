@@ -13,10 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.dto.*;
 import lk.ijse.dto.tm.LandTM;
 import lk.ijse.dto.tm.MaternityTM;
-import lk.ijse.model.LandModel;
-import lk.ijse.model.LandTypeModel;
-import lk.ijse.model.MaternityModel;
-import lk.ijse.model.OwnerModel;
+import lk.ijse.model.*;
 import lk.ijse.util.OpenView;
 
 import java.net.URL;
@@ -81,9 +78,9 @@ public class LandManageFormController implements Initializable {
             List<Owner> ownerLists = OwnerModel.searchAllOwner();
 
             for (Land datalist : landList) {
-                Button btnView = new Button("View more");
-                btnView.setCursor(Cursor.HAND);
-                setViewBtnOnAction(btnView);
+                Button btnDelete = new Button("Delete");
+                btnDelete.setCursor(Cursor.HAND);
+                setDeleteBtnOnAction(btnDelete);
 
                 String gov = null;
                 String cultivate = null;
@@ -100,7 +97,7 @@ public class LandManageFormController implements Initializable {
                         cultivate = "Uncultivated";
                 }
 
-                LandTM landTM = new LandTM(String.valueOf(datalist.getLand_id()),datalist.getPlan_num(), datalist.getL_area(),gov,cultivate,btnView);
+                LandTM landTM = new LandTM(String.valueOf(datalist.getLand_id()),datalist.getPlan_num(), datalist.getL_area(),gov,cultivate,btnDelete);
                 obList.add(landTM);
                 tblDivision.setItems(obList);
             }
@@ -134,9 +131,9 @@ public class LandManageFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
-        Button btnView = new Button("View more");
-        btnView.setCursor(Cursor.HAND);
-        setViewBtnOnAction(btnView);
+        Button btnDelete = new Button("Delete");
+        btnDelete.setCursor(Cursor.HAND);
+        setDeleteBtnOnAction(btnDelete);
 
         String gov = null;
         String cultivate = null;
@@ -152,7 +149,7 @@ public class LandManageFormController implements Initializable {
 
         }
 
-        LandTM landTM = new LandTM(String.valueOf(land.getLand_id()),land.getPlan_num(), land.getL_area(),gov,cultivate,btnView);
+        LandTM landTM = new LandTM(String.valueOf(land.getLand_id()),land.getPlan_num(), land.getL_area(),gov,cultivate,btnDelete);
         obList.add(landTM);
         tblDivision.setItems(obList);
     }
@@ -160,6 +157,31 @@ public class LandManageFormController implements Initializable {
     private void setViewBtnOnAction(Button btnView) {
         btnView.setOnAction((e) -> {
             OpenView.openView("landManageForm2");
+        });
+    }
+
+    private void setDeleteBtnOnAction(Button btnDelete) {
+        btnDelete.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to delete?", yes, no).showAndWait();
+
+            if (result.orElse(no) == yes) {
+                try {
+                    boolean isDeleted = LandModel.delete(String.valueOf(cbLand.getValue()));
+
+                    if(isDeleted) {
+                        new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
+                        obList.remove( tblDivision.getSelectionModel().getSelectedIndex());
+                        tblDivision.refresh();
+                    }
+                } catch (SQLException ex) {
+                    new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
+                }
+
+            }
+
         });
     }
 
@@ -193,7 +215,7 @@ public class LandManageFormController implements Initializable {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
-
+        OpenView.openView("aboutUsForm",tblDivPane);
     }
 
 }

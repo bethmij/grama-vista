@@ -164,6 +164,6 @@ public class DisableRegistrationFormController implements Initializable {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
-
+        OpenView.openView("aboutUsForm",disablePane);
     }
 }

@@ -39,8 +39,8 @@ public class UserModel {
         if (resultSet.next()) {
 
             return new UserDTO(resultSet.getString(1),resultSet.getString(2),resultSet.getString(4),resultSet.getString(3),
-                    resultSet.getString(5),resultSet.getString(6),resultSet.getDate(7).toLocalDate(),resultSet.getInt(11),
-                    resultSet.getDate(8).toLocalDate(),resultSet.getDouble(9), resultSet.getInt(10));
+                    resultSet.getString(5),resultSet.getString(6),resultSet.getDate(7).toLocalDate(),resultSet.getInt(12),
+                    resultSet.getDate(8).toLocalDate(),resultSet.getDouble(9), resultSet.getInt(10),resultSet.getString(11));
 
         }
         return null;
@@ -52,8 +52,8 @@ public class UserModel {
         while (resultSet.next()) {
 
             datalist.add (new UserDTO(resultSet.getString(1),resultSet.getString(2),resultSet.getString(4),resultSet.getString(3),
-                    resultSet.getString(5),resultSet.getString(6),resultSet.getDate(7).toLocalDate(),resultSet.getInt(11),
-                    resultSet.getDate(8).toLocalDate(),resultSet.getDouble(9), resultSet.getInt(10)));
+                    resultSet.getString(5),resultSet.getString(6),resultSet.getDate(7).toLocalDate(),resultSet.getInt(12),
+                    resultSet.getDate(8).toLocalDate(),resultSet.getDouble(9), resultSet.getInt(10),resultSet.getString(11)));
 
         }
         return datalist;
@@ -65,5 +65,17 @@ public class UserModel {
         return CrudUtil.execute(sql,  user.getDivision_id(), user.getNic(), user.getName(),
                 user.getUser(), user.getPassword(), user.getDate(), user.getEmployee_date(), user.getSalary(), user.getContact(),user.getEmployee_num());
 
+    }
+
+    public static UserDTO searchbyUser(String user) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT *,TIMESTAMPDIFF(year ,dob,now()) AS Age FROM grama_vista.users  WHERE user =?", user);
+        if (resultSet.next()) {
+
+            return new UserDTO(resultSet.getString(1),resultSet.getString(2),resultSet.getString(4),resultSet.getString(3),
+                    resultSet.getString(5),resultSet.getString(6),resultSet.getDate(7).toLocalDate(),resultSet.getInt(12),
+                    resultSet.getDate(8).toLocalDate(),resultSet.getDouble(9), resultSet.getInt(10),resultSet.getString(11));
+
+        }
+        return null;
     }
 }

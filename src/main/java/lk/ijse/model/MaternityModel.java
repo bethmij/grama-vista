@@ -46,7 +46,7 @@ public class MaternityModel {
         if (resultSet.next()) {
 
             return new MaternityDTO(resultSet.getString(1), resultSet.getString(2),resultSet.getString(7),
-                    resultSet.getInt(6), resultSet.getString(3));
+                    resultSet.getInt(5), resultSet.getString(3));
 
         }
         return null;

@@ -26,4 +26,5 @@ public class CivilDTO {
     String occupation;
     String work;
     Double salary;
+    String email;
 }

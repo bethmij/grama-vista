@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -45,6 +46,8 @@ public class IndividualFormController implements Initializable {
     public DatePicker dtpDOB;
     public TextField txtNIC;
     public ChoiceBox cbResidence;
+    public TextField txtEmail;
+    public Label lblEmal;
     private Integer reg_id;
     public static Civil1 civil1 = null;
     public static List<MultiResidence> residenceList;
@@ -80,6 +83,7 @@ public class IndividualFormController implements Initializable {
          cbMarriage.setValue(civil.getMarriage());
          dtpDOB.setValue(civil.getDob());
          txtNIC.setText(civil.getNic());
+         txtEmail.setText(civil.getEmail());
          if(null != multiResidenceList.get(0)) {
              cbResidence.setValue(multiResidenceList.get(0).getResidence_id());
          }else
@@ -138,7 +142,8 @@ public class IndividualFormController implements Initializable {
         String[] strings = id.split("C00");
 
         civil1 = new Civil1(strings[1],txtName.getText(),txtNIC.getText(),txtAddress.getText(),
-                dtpDOB.getValue(),(String) cbGender.getValue(),(String) cbMarriage.getValue(),txtRelation.getText(),(String)cbResidence.getValue());
+                dtpDOB.getValue(),(String) cbGender.getValue(),(String) cbMarriage.getValue(),
+                txtRelation.getText(),(String)cbResidence.getValue(),txtEmail.getText());
 
 
     }
@@ -153,6 +158,7 @@ public class IndividualFormController implements Initializable {
         cbMarriage.setValue(civil1.getMarriage());
         txtRelation.setText(civil1.getRelation());
         cbResidence.setValue(civil1.getResidence());
+        txtEmail.setText(civil1.getEmail());
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) {
@@ -169,6 +175,8 @@ public class IndividualFormController implements Initializable {
         cbMarriage.setValue(null);
         txtRelation.clear();
         cbResidence.setValue(null);
+        txtEmail.clear();
+        lblEmal.setText("");
     }
 
     @FXML
@@ -201,6 +209,28 @@ public class IndividualFormController implements Initializable {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
+        OpenView.openView("aboutUsForm",indiroot1);
+    }
 
+    public void txtEmailOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtEmail.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+            txtEmail.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblEmal.setText("Invalid Email Format!");
+        }
+        if(txtEmail.getText().equals("")){
+            txtEmail.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblEmal.setText("");
+        }
+    }
+
+    public void txtEmailKeyTyped(KeyEvent keyEvent) {
+        if (txtEmail.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+            txtEmail.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblEmal.setText("");
+        }
+        if(txtEmail.getText().equals("")){
+            txtEmail.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblEmal.setText("");
+        }
     }
 }

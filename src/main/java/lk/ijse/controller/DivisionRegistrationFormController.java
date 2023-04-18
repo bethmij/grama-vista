@@ -138,6 +138,6 @@ public class DivisionRegistrationFormController implements Initializable {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
-
+        OpenView.openView("aboutUsForm",divisionPane);
     }
 }

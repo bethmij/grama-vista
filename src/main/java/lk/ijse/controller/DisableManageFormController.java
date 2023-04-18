@@ -177,7 +177,7 @@ public class DisableManageFormController implements Initializable {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
-
+        OpenView.openView("aboutUsForm",tblDivPane);
     }
 
     public void btnReportOnAction(ActionEvent actionEvent) {

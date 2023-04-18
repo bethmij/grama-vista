@@ -71,4 +71,12 @@ public class ResidenceModel {
     public static boolean delete(String id) throws SQLException {
         return CrudUtil.execute("DELETE  FROM grama_vista.residence WHERE home_id=?", id);
     }
+
+    public static Integer getCount() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT COUNT(home_id) FROM grama_vista.residence ");
+        if(resultSet.next()){
+            return resultSet.getInt(1);
+        }
+        return null;
+    }
 }

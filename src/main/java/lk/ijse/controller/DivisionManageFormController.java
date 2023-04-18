@@ -187,6 +187,6 @@ public class DivisionManageFormController implements Initializable {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
-
+        OpenView.openView("aboutUsForm",tblDivPane);
     }
 }

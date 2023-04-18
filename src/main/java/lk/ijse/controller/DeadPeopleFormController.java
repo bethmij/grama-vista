@@ -163,6 +163,6 @@ public class DeadPeopleFormController implements Initializable {
 
     @FXML
     void lblVoteOnAction(MouseEvent event) {
-
+        OpenView.openView("aboutUsForm",deadPane);
     }
 }

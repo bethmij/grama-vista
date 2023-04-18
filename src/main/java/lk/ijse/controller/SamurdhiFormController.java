@@ -76,6 +76,7 @@ public class SamurdhiFormController implements Initializable {
     }
 
     public void lblVoteOnAction(MouseEvent mouseEvent) {
+        OpenView.openView("aboutUsForm",tblDivPane);
     }
 
     public void lblRegOnAction(MouseEvent mouseEvent) {

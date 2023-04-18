@@ -22,4 +22,5 @@ public class UserDTO {
     LocalDate emDate;
     Double salary;
     Integer contact;
+    String email;
 }

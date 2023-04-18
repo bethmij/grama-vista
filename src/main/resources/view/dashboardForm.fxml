@@ -132,16 +132,16 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="722.0" layoutY="312.0" prefHeight="110.0" prefWidth="118.0" styleClass="image-icon">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="729.0" layoutY="328.0" onAction="#btnAboutOnAction" prefHeight="110.0" prefWidth="118.0" ripplerFill="#ffefd474" styleClass="image-icon">
          <graphic>
-            <ImageView fitHeight="137.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+            <ImageView fitHeight="115.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                <image>
-                  <Image url="@../img/how_to_vote_FILL0_wght400_GRAD0_opsz48.png" />
+                  <Image url="@../img/information-about-us-icon-16.png" />
                </image>
                <effect>
                   <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
                      <color>
-                        <Color red="0.9882352948188782" green="0.7960784435272217" blue="0.21176470816135406" />
+                        <Color red="1.0" green="0.8324074149131775" blue="0.3296296298503876" />
                      </color>
                   </InnerShadow>
                </effect>
@@ -185,7 +185,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fill="#7e5a06" layoutX="770.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voting">
+      <Text fill="#7e5a06" layoutX="753.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About Us">
          <font>
             <Font size="20.0" />
          </font>
