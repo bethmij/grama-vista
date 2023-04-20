@@ -27,4 +27,9 @@ public class DashboardFormController {
     public void btnAboutOnAction(ActionEvent actionEvent) {
         OpenView.openView("aboutUsForm",dashboardpane);
     }
+
+    public void btnVoteOnAction(ActionEvent actionEvent) {
+        OpenView.openView("voteDashboadForm",dashboardpane);
+
+    }
 }

@@ -199,5 +199,24 @@ public class CivilModel {
         }
         return null;
     }
+
+    public static List<String> loadElectCivilId() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT reg_number , TIMESTAMPDIFF(year,dob,now()) AS age FROM grama_vista.civil HAVING age>=18");
+        List<String> id = new ArrayList<>();
+
+        while (resultSet.next()){
+            id.add(resultSet.getString(1));
+        }
+
+        return  id;
+    }
+
+    public static Integer getCount() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT COUNT(reg_number) FROM grama_vista.civil WHERE TIMESTAMPDIFF(year,dob,now()) >=18");
+        if(resultSet.next()){
+            return resultSet.getInt(1);
+        }
+        return null;
+    }
 }
 
