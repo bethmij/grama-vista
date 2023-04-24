@@ -140,7 +140,7 @@ public class DeadManageFormController implements Initializable {
         try {
             id = DeadModel.loadDeadId();
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
         ObservableList<String> dataList = FXCollections.observableArrayList();
 

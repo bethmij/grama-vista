@@ -141,7 +141,7 @@ public class individualForm2Controller implements Initializable {
             try {
                 isUpdated = CivilResidenceModel.update(civil, contactList, residenceList);
             } catch (SQLException e) {
-                System.out.println(e);
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
                 if (isUpdated) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully!").show();

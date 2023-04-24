@@ -57,8 +57,7 @@ public class LandFormController implements Initializable {
             String id = "L00"+LandModel.getNextLandId();
             lblID.setText(id);
         } catch (SQLException e) {
-            e.printStackTrace();
-            new Alert(Alert.AlertType.ERROR, "SQL Error!").show();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 

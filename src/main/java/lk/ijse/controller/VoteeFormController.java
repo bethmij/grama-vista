@@ -57,7 +57,7 @@ public class VoteeFormController implements Initializable {
             JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport,null, DBConnection.getInstance().getConnection());
             JasperViewer.viewReport(jasperPrint,false);
         } catch (JRException | SQLException e ) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 

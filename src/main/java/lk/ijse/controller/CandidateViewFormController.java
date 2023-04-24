@@ -72,11 +72,10 @@ public class CandidateViewFormController implements Initializable {
                 Image image = new Image(is);
                 circle.setFill(new ImagePattern(image));
 
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
-                e.printStackTrace();
+            } catch (FileNotFoundException | SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
+
 
         lblAddress.setText(candidateDetail.getAddress());
             lblContact.setText(String.valueOf(candidateDetail.getContact()));

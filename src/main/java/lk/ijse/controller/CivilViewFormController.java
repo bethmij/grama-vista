@@ -61,9 +61,9 @@ public class CivilViewFormController implements Initializable {
 
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();;
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
         lblNic.setText(civil2.getNic());

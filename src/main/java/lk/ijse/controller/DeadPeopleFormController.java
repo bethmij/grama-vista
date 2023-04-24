@@ -54,7 +54,7 @@ public class DeadPeopleFormController implements Initializable {
         try {
             lblID.setText("DD00"+ DeadModel.getNextId());
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
@@ -64,7 +64,7 @@ public class DeadPeopleFormController implements Initializable {
         try {
             id = CivilModel.loadCivilId();
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
         ObservableList<String> dataList = FXCollections.observableArrayList();
 

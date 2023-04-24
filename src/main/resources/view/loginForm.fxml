@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -27,6 +29,8 @@
             <Rectangle2D />
          </viewport>
       </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="OVERLAY" fill="#69655e" height="267.0" layoutX="410.0" layoutY="165.0" stroke="#230505" strokeType="INSIDE" width="444.0" />
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="293.0" layoutY="14.0" prefHeight="26.0" prefWidth="0.0" ripplerFill="#fff2d188" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="712.0" layoutY="2.0" stroke="WHITE" strokeType="INSIDE" width="285.0">
          <fill>
             <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
@@ -106,17 +110,17 @@
             <Font name="Yu Gothic Regular" size="28.0" />
          </font>
       </Text>
-      <TextField fx:id="txtUser" layoutX="455.0" layoutY="223.0" prefHeight="38.0" prefWidth="354.0" promptText="User Name">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color red="0.800000011920929" green="0.5882353186607361" blue="0.16470588743686676" />
-               </color>
-            </DropShadow>
-         </effect>
+      <TextField fx:id="txtUser" blendMode="MULTIPLY" layoutX="455.0" layoutY="223.0" prefHeight="38.0" prefWidth="354.0" promptText="User Name">
          <font>
             <Font size="14.0" />
          </font>
+         <effect>
+            <InnerShadow choke="0.46" radius="11.33" width="26.32">
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
       </TextField>
       <ImageView fitHeight="38.0" fitWidth="41.0" layoutX="460.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -142,9 +146,9 @@
             </InnerShadow>
          </effect>
       </ImageView>
-      <Button fx:id="btn" layoutX="564.0" layoutY="460.0" mnemonicParsing="false" onAction="#btnOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Log in">
+      <Button fx:id="btn" focusTraversable="false" layoutX="585.0" layoutY="463.0" mnemonicParsing="false" onAction="#btnOnAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #f7c142;" text="Log in">
          <font>
-            <Font size="17.0" />
+            <Font size="18.0" />
          </font>
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -179,17 +183,20 @@
                </color>
             </DropShadow>
          </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <PasswordField fx:id="txtPass" layoutX="453.0" layoutY="348.0" prefHeight="38.0" prefWidth="354.0" promptText="Password">
+      <PasswordField fx:id="txtPass" blendMode="MULTIPLY" layoutX="453.0" layoutY="348.0" prefHeight="38.0" prefWidth="354.0" promptText="Password">
          <font>
             <Font size="14.0" />
          </font>
          <effect>
-            <DropShadow>
+            <InnerShadow choke="0.48">
                <color>
-                  <Color red="0.800000011920929" green="0.5882353186607361" blue="0.16470588743686676" />
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
                </color>
-            </DropShadow>
+            </InnerShadow>
          </effect></PasswordField>
       <Text fill="#91670d" layoutX="502.0" layoutY="549.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New User?   " wrappingWidth="125.0">
          <font>
@@ -207,6 +214,9 @@
                </color>
             </DropShadow>
          </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Text>
       <Text fill="#91670d" layoutX="708.0" layoutY="550.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here." wrappingWidth="55.4000244140625">
          <font>
@@ -217,6 +227,9 @@
          <font>
             <Font name="Yu Gothic Regular" size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Text>
    </children>
    <effect>

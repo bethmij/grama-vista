@@ -60,7 +60,7 @@ public class DisableRegistrationFormController implements Initializable {
         try {
             id = CivilModel.loadCivilId();
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
         ObservableList<String> dataList = FXCollections.observableArrayList();
 
@@ -74,7 +74,6 @@ public class DisableRegistrationFormController implements Initializable {
         try {
             lblId.setText("DS00"+DisableModel.getNextId());
         } catch (SQLException e) {
-            e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }

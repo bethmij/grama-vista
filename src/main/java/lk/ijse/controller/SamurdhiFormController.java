@@ -108,7 +108,7 @@ public class SamurdhiFormController implements Initializable {
             JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport,null,jr);
             JasperViewer.viewReport(jasperPrint,false);
         } catch (JRException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
@@ -145,7 +145,7 @@ public class SamurdhiFormController implements Initializable {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 

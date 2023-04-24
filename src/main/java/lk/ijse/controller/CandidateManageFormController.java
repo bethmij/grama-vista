@@ -73,7 +73,7 @@ public class CandidateManageFormController implements Initializable {
             }
             cmbID.setItems(dataList);
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
     }
 
@@ -121,7 +121,7 @@ public class CandidateManageFormController implements Initializable {
         try {
              candidateDTO = CandidateModel.search((String) cmbID.getValue());
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
         Button btnView = new Button("View more");
         btnView.setCursor(Cursor.HAND);
@@ -146,7 +146,7 @@ public class CandidateManageFormController implements Initializable {
                 candidateDetail = new CandidateDTO(candidateDTO.getElection(),candidateDTO.getImage(),candidateDTO.getName(),candidateDTO.getNIC(),
                         candidateDTO.getDivision(),candidateDTO.getAddress(),candidateDTO.getContact(),candidateDTO.getPolitic());
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                new Alert(Alert.AlertType.ERROR,ex.getMessage()).show();
             }
             OpenView.openView("candidateViewForm");
 
@@ -160,7 +160,7 @@ public class CandidateManageFormController implements Initializable {
         try {
             lblDivision.setText(CandidateModel.getName((String) cmbID.getValue()));
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
     }
 

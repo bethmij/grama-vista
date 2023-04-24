@@ -53,7 +53,7 @@ public class LandManageFormController implements Initializable {
             }
             cbLand.setItems(dataList);
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 

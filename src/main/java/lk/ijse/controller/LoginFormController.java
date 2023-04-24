@@ -20,6 +20,7 @@ import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -40,16 +41,17 @@ public class LoginFormController {
     @FXML
     private AnchorPane root;
     public void btnOnAction(ActionEvent actionEvent) {
+
         /*List<UserDTO> userDTO = null;
         try {
             userDTO = UserModel.searchAll();
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
 
         boolean isTrue = false;
         for (int i = 0; i < userDTO.size(); i++) {
-            if (txtUser.getText().equals(userDTO.get(i).getUser()) && txtPass.getText().equals(userDTO.get(i).getPassword())) {
+            if (txtUser.getText().equals(userDTO.get(i).getUser()) && BCrypt.checkpw(txtPass.getText(), userDTO.get(i).getPassword())) {
                 isTrue =true;
             }
         }
@@ -80,7 +82,27 @@ public class LoginFormController {
 
 
     public void btnForgotOnAction(MouseEvent mouseEvent) {
-        user=txtUser.getText();
-        OpenView.openView("passwordForm");
+        List<UserDTO> userDTO = null;
+        try {
+            userDTO = UserModel.searchAll();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
+        int count = 0;
+        for (int i = 0; i < userDTO.size(); i++) {
+            if (txtUser.getText().equals(userDTO.get(i).getUser())) {
+                count++;
+            }
+        }
+        if (txtUser.getText().equals("")) {
+            new Alert(Alert.AlertType.ERROR, "Enter your username").show();
+        }else if(count==1){
+            user = txtUser.getText();
+            OpenView.openView("passwordForm");
+        }else if (count==0){
+            new Alert(Alert.AlertType.ERROR,"Invalid Username!").show();
+        }
+
+
     }
 }

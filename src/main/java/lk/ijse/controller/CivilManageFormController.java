@@ -63,7 +63,7 @@ public class CivilManageFormController implements Initializable {
         try {
             id = CivilModel.loadCivilId();
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
         ObservableList<String> dataList = FXCollections.observableArrayList();
 
@@ -159,7 +159,7 @@ public class CivilManageFormController implements Initializable {
                         civilDTOs.getWork(),civilDTOs.getSalary(),contact1,contact2);
 
             } catch (SQLException ex) {
-                ex.printStackTrace();
+               new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
             }
             OpenView.openView("civilViewForm");
 

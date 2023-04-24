@@ -1,6 +1,7 @@
 package lk.ijse.controller;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.db.DBConnection;
 import net.sf.jasperreports.engine.JRException;
@@ -21,7 +22,7 @@ public class PregReportFormController {
             JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport,null, DBConnection.getInstance().getConnection());
             JasperViewer.viewReport(jasperPrint,false);
         } catch (JRException | SQLException e ) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
@@ -31,7 +32,7 @@ public class PregReportFormController {
             JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport,null, DBConnection.getInstance().getConnection());
             JasperViewer.viewReport(jasperPrint,false);
         } catch (JRException | SQLException e ) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 }

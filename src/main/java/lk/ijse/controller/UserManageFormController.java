@@ -57,7 +57,7 @@ public class UserManageFormController implements Initializable {
             }
             cbEmployee.setItems(dataList);
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 

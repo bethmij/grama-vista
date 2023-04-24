@@ -1,6 +1,7 @@
 package lk.ijse.controller;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.db.DBConnection;
 import lk.ijse.util.OpenView;
@@ -26,7 +27,7 @@ public class VoteDashboadFormController {
             JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport,null, DBConnection.getInstance().getConnection());
             JasperViewer.viewReport(jasperPrint,false);
         } catch (JRException | SQLException e ) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 

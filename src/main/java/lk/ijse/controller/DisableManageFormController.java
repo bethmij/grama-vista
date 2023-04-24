@@ -51,7 +51,7 @@ public class DisableManageFormController implements Initializable {
         try {
             id = DisableModel.loadDisableId();
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
         ObservableList<String> dataList = FXCollections.observableArrayList();
 
@@ -197,7 +197,7 @@ public class DisableManageFormController implements Initializable {
             JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport,null,jr);
             JasperViewer.viewReport(jasperPrint,false);
         } catch (JRException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
     }

@@ -42,7 +42,7 @@ public class VoteLoginFormController implements Initializable {
         try {
             id = CivilModel.loadElectCivilId();
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
         ObservableList<String> dataList = FXCollections.observableArrayList();
 
@@ -69,7 +69,7 @@ public class VoteLoginFormController implements Initializable {
             JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport,null, DBConnection.getInstance().getConnection());
             JasperViewer.viewReport(jasperPrint,false);
         } catch (JRException | SQLException e ) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 

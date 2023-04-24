@@ -68,7 +68,7 @@ public class DivisionManageFormController implements Initializable {
             }
             cbDivision.setItems(dataList);
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
@@ -152,7 +152,7 @@ public class DivisionManageFormController implements Initializable {
         try {
             lblName.setText(DivisionModel.getName((String) cbDivision.getValue()));
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 

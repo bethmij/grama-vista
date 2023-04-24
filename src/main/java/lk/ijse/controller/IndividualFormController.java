@@ -100,7 +100,7 @@ public class IndividualFormController implements Initializable {
             }
             cbResidence.setItems(dataList);
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
@@ -109,8 +109,7 @@ public class IndividualFormController implements Initializable {
         try {
             lblCivil.setText("C00"+CivilModel.getNextId());
         } catch (SQLException e) {
-            e.printStackTrace();
-            new Alert(Alert.AlertType.ERROR, "SQL Error!").show();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 

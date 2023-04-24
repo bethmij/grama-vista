@@ -36,8 +36,7 @@ public class DivisionRegistrationFormController implements Initializable {
 
             if ((!(DivisionManageFormController.division == null))){setDivController();}
         } catch (SQLException e) {
-            e.printStackTrace();
-            new Alert(Alert.AlertType.ERROR, "SQL Error!").show();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
 

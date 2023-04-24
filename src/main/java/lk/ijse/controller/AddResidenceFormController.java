@@ -46,7 +46,7 @@ public class AddResidenceFormController implements Initializable {
             }
             cbResidence.setItems(dataList);
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
     }
 

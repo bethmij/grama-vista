@@ -83,7 +83,7 @@ public class CandidateFormController implements Initializable {
             }
             cbDivision.setItems(dataList);
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
     }
 
