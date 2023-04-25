@@ -48,6 +48,8 @@ public class IndividualFormController implements Initializable {
     public ChoiceBox cbResidence;
     public TextField txtEmail;
     public Label lblEmal;
+    public Label lblRelation;
+    public Label lblName;
     private Integer reg_id;
     public static Civil1 civil1 = null;
     public static List<MultiResidence> residenceList;
@@ -79,9 +81,12 @@ public class IndividualFormController implements Initializable {
          txtAddress.setText(civil.getAddress());
          txtRelation.setText(civil.getRelation());
          lblCivil.setText("C00"+ civil.getId());
-         cbGender.setValue(civil.getGender());
-         cbMarriage.setValue(civil.getMarriage());
-         dtpDOB.setValue(civil.getDob());
+         if(civil.getGender()!=null)
+            cbGender.setValue(civil.getGender());
+         if(civil.getMarriage()!=null)
+            cbMarriage.setValue(civil.getMarriage());
+         if(civil.getDob()!=null)
+            dtpDOB.setValue(civil.getDob());
          txtNIC.setText(civil.getNic());
          txtEmail.setText(civil.getEmail());
          if(null != multiResidenceList.get(0)) {
@@ -134,16 +139,27 @@ public class IndividualFormController implements Initializable {
     }
 
     public void btnNextOnAction(ActionEvent actionEvent) {
-        civil_id=lblCivil.getText();
-        OpenView.openView("individualForm2", indiroot1);
+        if (!(cbResidence.getValue() == null) && !txtName.getText().equals("")
+                && !txtNIC.getText().equals("") && !txtAddress.getText().equals("")
+                && !txtRelation.getText().equals("") && dtpDOB.getValue()!=null) {
+            civil_id = lblCivil.getText();
+            OpenView.openView("individualForm2", indiroot1);
 
-        String id =  lblCivil.getText();
-        String[] strings = id.split("C00");
+            String id = lblCivil.getText();
+            String[] strings = id.split("C00");
 
-        civil1 = new Civil1(strings[1],txtName.getText(),txtNIC.getText(),txtAddress.getText(),
-                dtpDOB.getValue(),(String) cbGender.getValue(),(String) cbMarriage.getValue(),
-                txtRelation.getText(),(String)cbResidence.getValue(),txtEmail.getText());
-
+            civil1 = new Civil1(strings[1], txtName.getText(), txtNIC.getText(), txtAddress.getText(),
+                    dtpDOB.getValue(), (String) cbGender.getValue(), (String) cbMarriage.getValue(),
+                    txtRelation.getText(), (String) cbResidence.getValue(), txtEmail.getText());
+        }else{
+            cbResidence.setStyle("-fx-border-color:  #ef0d20; ");
+            txtRelation.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            txtName.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            txtNIC.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            txtAddress.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            dtpDOB.setStyle("-fx-border-color:  #ef0d20; ");
+            new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
+        }
 
     }
 
@@ -230,6 +246,34 @@ public class IndividualFormController implements Initializable {
         if(txtEmail.getText().equals("")){
             txtEmail.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
             lblEmal.setText("");
+        }
+    }
+
+    public void txtNameOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtName.getText().matches("^[A-Za-z\\s]*$")) {
+            txtName.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblName.setText("This filed can not contain numeric values!");
+        }
+    }
+
+    public void txtNameOnKeyTyped(KeyEvent keyEvent) {
+        if (txtName.getText().matches("^[A-Za-z\\s]*$")) {
+            txtName.setStyle("-fx-border-color: null; -fx-font-size: 16px;");
+            lblName.setText("");
+        }
+    }
+
+    public void txtRelationOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtRelation.getText().matches("^[A-Za-z\\s]*$")) {
+            txtRelation.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblRelation.setText("This filed can not contain numeric values!");
+        }
+    }
+
+    public void txtRelationOnKeyTyped(KeyEvent keyEvent) {
+        if (txtRelation.getText().matches("^[A-Za-z\\s]*$")) {
+            txtRelation.setStyle("-fx-border-color: null; -fx-font-size: 16px;");
+            lblRelation.setText("");
         }
     }
 }

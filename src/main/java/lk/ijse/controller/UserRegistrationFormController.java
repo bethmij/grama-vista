@@ -17,6 +17,7 @@ import lk.ijse.model.DivisionModel;
 import lk.ijse.model.MaternityModel;
 import lk.ijse.model.UserModel;
 import lk.ijse.util.OpenView;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -39,12 +40,14 @@ public class UserRegistrationFormController implements Initializable {
     public TextField txtName;
     public DatePicker dtpEmployee;
     public TextField txtContact;
-    public TextField txtSalary;
     public Button btnBack;
     public Button btnSave;
     public ComboBox cbDivision;
     public Label lblContact;
     public Label lblPass;
+    public TextField txtEmail;
+    public Label lblEmail;
+    public Label lblName;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,15 +58,16 @@ public class UserRegistrationFormController implements Initializable {
     }
 
     private void setUserController() {
+        txtPass.setDisable(true);
         txtNIC.setText(user.getNic());
         dtpDOB.setValue(user.getDate());
         txtENum.setText(user.getEmployee_num());
-        txtPass.setText(user.getPassword());
         txtUser.setText(user.getUser());
         txtName.setText(user.getName());
         dtpEmployee.setValue(user.getEmployee_date());
-        txtContact.setText(String.valueOf(user.getContact()));
-        txtSalary.setText(String.valueOf(user.getSalary()));
+        txtEmail.setText(user.getEmail());
+        if(user.getContact()!=null)
+            txtContact.setText(String.valueOf(user.getContact()));
         btnSave.setText("Update");
         cbDivision.setValue(user.getDivision_id());
     }
@@ -86,42 +90,69 @@ public class UserRegistrationFormController implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent) {
 
         if(btnSave.getText().equals("Save")) {
-            try {
-                boolean isSaved = UserModel.save(new User((String) cbDivision.getValue(), txtENum.getText(), txtNIC.getText(), txtName.getText(),
-                                txtUser.getText(), txtPass.getText(), dtpDOB.getValue(), dtpEmployee.getValue(), Double.valueOf(txtSalary.getText()), Integer.valueOf(txtContact.getText())
-                        )
-                );
+            if (!(cbDivision.getValue() == null) && !txtName.getText().equals("") && !txtNIC.getText().equals("") && !txtENum.getText().equals("")
+                    && !txtUser.getText().equals("")  && !txtPass.getText().equals("")  && !txtEmail.getText().equals("") && dtpDOB.getValue()!=null && dtpEmployee.getValue()!=null) {
+                Integer contact = null;
+                if (!txtContact.getText().isEmpty())
+                    contact = Integer.valueOf(txtContact.getText());
+                try {
+                    boolean isSaved = UserModel.save(new User((String) cbDivision.getValue(), txtENum.getText(), txtNIC.getText(), txtName.getText(),
+                                    txtUser.getText(), txtPass.getText(), dtpDOB.getValue(), dtpEmployee.getValue(), txtEmail.getText(), contact));
 
-                if (isSaved)
-                    new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfuly !").show();
-                else
-                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                    if (isSaved)
+                        new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfuly !").show();
+                    else
+                        new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
 
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
+            }else{
+                cbDivision.setStyle("-fx-border-color:  #ef0d20; ");
+                txtENum.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtName.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtNIC.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtUser.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtPass.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtEmail.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                dtpDOB.setStyle("-fx-border-color:  #ef0d20; ");
+                dtpEmployee.setStyle("-fx-border-color:  #ef0d20; ");
+
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
             }
-
         } else if(btnSave.getText().equals("Update")){
+            if (!(cbDivision.getValue() == null) && !txtName.getText().equals("") && !txtNIC.getText().equals("") && !txtENum.getText().equals("")
+                    && !txtUser.getText().equals("")  && !txtPass.getText().equals("")  && !txtEmail.getText().equals("") && dtpDOB.getValue()!=null && dtpEmployee.getValue()!=null) {
+                Integer contact = null;
+                if (!txtContact.getText().isEmpty())
+                    contact = Integer.valueOf(txtContact.getText());
+                try {
+                    boolean isUpdated = UserModel.update(new User((String) cbDivision.getValue(), txtENum.getText(), txtNIC.getText(), txtName.getText(),
+                                    txtUser.getText(), txtPass.getText(), dtpDOB.getValue(), dtpEmployee.getValue(), txtEmail.getText(), contact));
 
-            try {
-                boolean isUpdated = UserModel.update(new User((String) cbDivision.getValue(), txtENum.getText(), txtNIC.getText(), txtName.getText(),
-                                txtUser.getText(), txtPass.getText(), dtpDOB.getValue(), dtpEmployee.getValue(), Double.valueOf(txtSalary.getText()), Integer.valueOf(txtContact.getText())
-                        )
-                );
-
-                if (isUpdated)
-                    new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfuly !").show();
-                else
-                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                    if (isUpdated)
+                        new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfuly !").show();
+                    else
+                        new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
 
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
+            }else{
+                cbDivision.setStyle("-fx-border-color:  #ef0d20; ");
+                txtENum.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtName.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtNIC.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtUser.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtPass.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtEmail.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                dtpDOB.setStyle("-fx-border-color:  #ef0d20; ");
+                dtpEmployee.setStyle("-fx-border-color:  #ef0d20; ");
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
             }
         }
-
-
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) {
@@ -174,10 +205,46 @@ public class UserRegistrationFormController implements Initializable {
         txtName.clear();
         dtpEmployee.setValue(null);
         txtContact.clear();
-        txtSalary.clear();
+        txtEmail.clear();
         cbDivision.setValue(null);
         lblContact.setText("");
         lblPass.setText("");
+    }
+
+    public void txtNameOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtName.getText().matches("^[A-Za-z\\s]*$")) {
+            txtName.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblName.setText("This filed can not contain numeric values!");
+        }
+    }
+
+    public void txtNameOnKeyTyped(KeyEvent keyEvent) {
+        if (txtName.getText().matches("^[A-Za-z\\s]*$")) {
+            txtName.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblName.setText("");
+        }
+    }
+
+    public void txtEmailOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtEmail.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+            txtEmail.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblEmail.setText("Invalid Email Format!");
+        }
+        if(txtEmail.getText().equals("")){
+            txtEmail.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblEmail.setText("");
+        }
+    }
+
+    public void txtEmailOnKeyTyped(KeyEvent keyEvent) {
+        if (txtEmail.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+            txtEmail.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblEmail.setText("");
+        }
+        if(txtEmail.getText().equals("")){
+            txtEmail.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblEmail.setText("");
+        }
     }
 }
 

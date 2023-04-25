@@ -16,7 +16,7 @@ public class CivilResidenceModel {
 
         Connection con = null;
         try {
-            System.out.println(1);
+
             con = DBConnection.getInstance().getConnection();
             con.setAutoCommit(false);
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -24,6 +25,7 @@
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
       </ImageView>
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="241.0" layoutY="14.0" prefHeight="24.0" prefWidth="6.0" ripplerFill="#fff4d9ad" />
       <Text layoutX="470.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Residence Registration">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -55,7 +57,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="txtCount" blendMode="MULTIPLY" layoutX="395.0" layoutY="386.0" prefHeight="38.0" prefWidth="386.0" promptText="Family Member Count">
+      <TextField fx:id="txtCount" blendMode="MULTIPLY" layoutX="395.0" layoutY="386.0" onKeyReleased="#txtFCountOnKeyReleased" onKeyTyped="#txtFCountOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Family Member Count*">
          <effect>
             <InnerShadow>
                <color>
@@ -67,7 +69,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtChildCount" blendMode="MULTIPLY" layoutX="395.0" layoutY="442.0" prefHeight="38.0" prefWidth="386.0" promptText="Count below age 18">
+      <TextField fx:id="txtChildCount" blendMode="MULTIPLY" layoutX="395.0" layoutY="450.0" onKeyReleased="#txtChildOnKeyReleased" onKeyTyped="#txtChildOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Count below age 18">
          <effect>
             <InnerShadow>
                <color>
@@ -79,7 +81,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="397.0" layoutY="274.0" prefHeight="38.0" prefWidth="386.0" promptText="House Holder">
+      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="397.0" layoutY="274.0" onKeyReleased="#txtNameOnKeyReleased" onKeyTyped="#txtNameOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="House Holderś Name*">
          <effect>
             <InnerShadow>
                <color>
@@ -126,7 +128,7 @@
             </InnerShadow>
          </effect>
       </ChoiceBox>
-      <TextField fx:id="txtHomeID" blendMode="MULTIPLY" layoutX="397.0" layoutY="158.0" prefHeight="38.0" prefWidth="386.0" promptText="Home ID">
+      <TextField fx:id="txtHomeID" blendMode="MULTIPLY" layoutX="397.0" layoutY="158.0" prefHeight="38.0" prefWidth="386.0" promptText="Home ID*">
          <effect>
             <InnerShadow>
                <color>
@@ -138,12 +140,12 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <CheckBox fx:id="ckbElectricity" layoutX="396.0" layoutY="513.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="142.0" text="Electricity" textFill="#4b2a0d">
+      <CheckBox fx:id="ckbElectricity" layoutX="395.0" layoutY="523.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="142.0" text="Electricity" textFill="#4b2a0d">
          <font>
             <Font size="14.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="ckbWater" layoutX="513.0" layoutY="513.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="142.0" text="Water Supply" textFill="#4b2a0d">
+      <CheckBox fx:id="ckbWater" layoutX="513.0" layoutY="523.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="142.0" text="Water Supply" textFill="#4b2a0d">
          <font>
             <Font size="14.0" />
          </font>
@@ -182,7 +184,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text layoutX="395.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Division ID" wrappingWidth="121.33673095703125">
+      <Text layoutX="395.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Division ID*" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -227,12 +229,8 @@
             </InnerShadow>
          </effect>
       </ChoiceBox>
-      <Label fx:id="lblName" layoutX="482.0" layoutY="258.0" prefHeight="32.0" prefWidth="298.0" textFill="#6e3108">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtAddress1" blendMode="MULTIPLY" layoutX="397.0" layoutY="218.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
+      <Label fx:id="lblName" layoutX="397.0" layoutY="309.0" prefHeight="20.0" prefWidth="386.0" textFill="#ff104c" />
+      <TextField fx:id="txtAddress1" blendMode="MULTIPLY" layoutX="397.0" layoutY="218.0" prefHeight="38.0" prefWidth="386.0" promptText="Address*">
          <effect>
             <InnerShadow>
                <color>
@@ -592,5 +590,7 @@
             </InnerShadow>
          </effect>
       </ImageView>
+      <Label fx:id="lblChildCount" layoutX="397.0" layoutY="487.0" prefHeight="20.0" prefWidth="386.0" textFill="#ff104c" />
+      <Label fx:id="lblFCount" layoutX="395.0" layoutY="426.0" prefHeight="20.0" prefWidth="386.0" textFill="#ff104c" />
    </children>
 </AnchorPane>

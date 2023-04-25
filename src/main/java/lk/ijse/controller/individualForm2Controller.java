@@ -59,12 +59,17 @@ public class individualForm2Controller implements Initializable {
     }
 
     private void setCivilController() {
-        txtSchool.setText(civil.getSchool());
-        txtSalary.setText(String.valueOf(civil.getSalary()));
-        txtWork.setText(civil.getWorking_address());
-        txtOccupation.setText(civil.getOccupation());
-        cbEdu.setValue(civil.getEdu_status());
-        if(contactList.get(0)!=null)
+        if(civil.getSchool()!=null)
+            txtSchool.setText(civil.getSchool());
+        if(civil.getSalary()!=null)
+            txtSalary.setText(String.valueOf(civil.getSalary()));
+        if(civil.getWorking_address()!=null)
+            txtWork.setText(civil.getWorking_address());
+        if(civil.getOccupation()!=null)
+            txtOccupation.setText(civil.getOccupation());
+        if(civil.getEdu_status()!=null)
+            cbEdu.setValue(civil.getEdu_status());
+        if(contactList.size()==1)
             txtContact2.setText(String.valueOf(contactList.get(0).getContact()));
 
         if(contactList.size()==2)
@@ -84,11 +89,8 @@ public class individualForm2Controller implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
         if (btn1.getText().equals("Save") ) {
 
-            Double salary;
+            Double salary = null;
             if (!txtSalary.getText().isEmpty()) salary = Double.valueOf(txtSalary.getText());
-            else salary = 0.0;
-
-
 
             Civil civil = new Civil(civil1.getId(), civil1.getName(), civil1.getNic(), civil1.getAddress(), civil1.getDob(),
                     civil1.getGender(), civil1.getMarriage(), civil1.getRelation(), (String) cbEdu.getValue(), txtSchool.getText(),
@@ -118,9 +120,8 @@ public class individualForm2Controller implements Initializable {
                 new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
         } else if (btn1.getText().equals("Update") ) {
 
-            Double salary;
+            Double salary = null;
             if (!txtSalary.getText().isEmpty()) salary = Double.valueOf(txtSalary.getText());
-            else salary = 0.0;
 
 
             Civil civil = new Civil(civil1.getId(), civil1.getName(), civil1.getNic(), civil1.getAddress(), civil1.getDob(),

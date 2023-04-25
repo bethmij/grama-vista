@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dto.Land;
@@ -32,6 +33,7 @@ public class LandFormController implements Initializable {
     public static String land_id;
     public Button save;
     public static Integer index;
+    public Label lblArea;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -70,40 +72,52 @@ public class LandFormController implements Initializable {
 
     public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
         if(save.getText().equals("Save")) {
-            String[] land_num = lblID.getText().split("L00");
-            Integer type_id = LandTypeModel.getTypeId((String) cbLType.getValue());
+            if (!txtPlan.getText().equals("") && !txtArea.getText().equals("")) {
+                String[] land_num = lblID.getText().split("L00");
+                Integer type_id = LandTypeModel.getTypeId((String) cbLType.getValue());
 
-            AddLandTypeFormController.landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1]), (String) cbLType.getValue()));
+                AddLandTypeFormController.landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1]), (String) cbLType.getValue()));
 
-            try {
-                boolean isSaved = LandModel.save(new Land(
-                        Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText())), AddLandTypeFormController.landDetailList, OwnershipFormController.ownerLists);
+                try {
+                    boolean isSaved = LandModel.save(new Land(
+                            Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText())), AddLandTypeFormController.landDetailList, OwnershipFormController.ownerLists);
 
-                if (isSaved)
-                    new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-                else
-                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                    if (isSaved)
+                        new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
+                    else
+                        new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
+            }else{
+                txtArea.setStyle("-fx-border-color:  #ef0d20; ");
+                txtPlan.setStyle("-fx-border-color:  #ef0d20; ");
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
             }
         }else if(save.getText().equals("Update")){
-            String[] land_num = lblID.getText().split("L00");
-            Integer type_id = LandTypeModel.getTypeId((String) cbLType.getValue());
+            if (!txtPlan.getText().equals("") && !txtArea.getText().equals("")) {
+                String[] land_num = lblID.getText().split("L00");
+                Integer type_id = LandTypeModel.getTypeId((String) cbLType.getValue());
 
-            AddLandTypeFormController.landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1]), (String) cbLType.getValue()));
+                AddLandTypeFormController.landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1]), (String) cbLType.getValue()));
 
-            try {
-                boolean isSaved = LandModel.update(new Land(
-                        Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText())), AddLandTypeFormController.landDetailList, OwnershipFormController.ownerLists);
+                try {
+                    boolean isSaved = LandModel.update(new Land(
+                            Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText())), AddLandTypeFormController.landDetailList, OwnershipFormController.ownerLists);
 
-                if (isSaved)
-                    new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
-                else
-                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                    if (isSaved)
+                        new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
+                    else
+                        new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
+            }else{
+                txtArea.setStyle("-fx-border-color:  #ef0d20; ");
+                txtPlan.setStyle("-fx-border-color:  #ef0d20; ");
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
             }
         }
 
@@ -168,5 +182,19 @@ public class LandFormController implements Initializable {
     @FXML
     void lblVoteOnAction(MouseEvent event) {
         OpenView.openView("aboutUsForm",landRoot);
+    }
+
+    public void txtAreaOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtArea.getText().matches("^[0-9.]*$")) {
+            txtArea.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblArea.setText("This filed can only contain numeric values!");
+        }
+    }
+
+    public void txtAreaOnKeyTyped(KeyEvent keyEvent) {
+        if (txtArea.getText().matches("^^[0-9.]*$")) {
+            txtArea.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblArea.setText("");
+        }
     }
 }

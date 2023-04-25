@@ -49,7 +49,8 @@ public class DisableRegistrationFormController implements Initializable {
         lblId.setText(disable.getID());
         txtDisability.setText(disable.getDisability());
         lblName.setText(disable.getName());
-        txtDescription.setText(disable.getDescription());
+        if(disable.getDescription()!=null)
+            txtDescription.setText(disable.getDescription());
         cmbCivil.setValue(disable.getCivil_ID());
         btn1.setText("Update");
     }
@@ -81,31 +82,42 @@ public class DisableRegistrationFormController implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent) {
 
         if(btn1.getText().equals("Save")) {
-            String[] id = lblId.getText().split("DS00");
-            String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
+            if (!(cmbCivil.getValue() == null) && !txtDisability.getText().equals("")) {
+                String[] id = lblId.getText().split("DS00");
+                String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
 
-            try {
-                boolean isSaved = DisableModel.save(new Disable(
-                        id[1], civil_id[1], lblName.getText(), txtDisability.getText(), txtDescription.getText()));
+                try {
+                    boolean isSaved = DisableModel.save(new Disable(
+                            id[1], civil_id[1], lblName.getText(), txtDisability.getText(), txtDescription.getText()));
 
-                if (isSaved)
-                    new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-                else
-                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                    if (isSaved)
+                        new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
+                    else
+                        new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
+            }else{
+                txtDisability.setStyle("-fx-border-color:  #ef0d20; ");
+                cmbCivil.setStyle("-fx-border-color:  #ef0d20; ");
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
             }
-        }else if(btn1.getText().equals("Update")){
-            try {
+        }else if(btn1.getText().equals("Update")) {
+            if (!(cmbCivil.getValue() == null) && !txtDisability.getText().equals("")) {
+                try {
+                    boolean isUpdate = DisableModel.update(new Disable(lblId.getText(), (String) cmbCivil.getValue(), lblName.getText(), txtDisability.getText(), txtDescription.getText()));
+                    if (isUpdate)
+                        new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
+                    else
+                        new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-                boolean isUpdate = DisableModel.update(new Disable(lblId.getText(), (String) cmbCivil.getValue(), lblName.getText(),txtDisability.getText(),txtDescription.getText()));
-                if (isUpdate)
-                    new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
-                else
-                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
-
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
+            }else{
+                txtDisability.setStyle("-fx-border-color:  #ef0d20; ");
+                cmbCivil.setStyle("-fx-border-color:  #ef0d20; ");
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
             }
         }
 

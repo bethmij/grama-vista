@@ -41,6 +41,7 @@ public class CivilManageFormController implements Initializable {
     public static List<Contact> contactList = new ArrayList<>();
     public static List<MultiResidence> multiResidenceList =new ArrayList<>();
     public static Civil2 civil2;
+    public static String id;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -144,6 +145,7 @@ public class CivilManageFormController implements Initializable {
         btnView.setOnAction((e) -> {
             try {
                 CivilDTO civilDTOs = CivilModel.search((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
+                id = (String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex());
                 List<Contact> contactLists = CivilModel.searchContact((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
                 List<MultiResidence> multiResidenceLists = CivilModel.searchResidence((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
 

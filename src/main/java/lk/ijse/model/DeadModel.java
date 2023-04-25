@@ -26,8 +26,6 @@ public class DeadModel {
 
 
     public static boolean save(Dead dead,String division_id) throws SQLException {
-        System.out.println(dead);
-        System.out.println(division_id);
         Connection con = null;
         try {
             con = DBConnection.getInstance().getConnection();

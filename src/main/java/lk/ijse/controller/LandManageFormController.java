@@ -169,7 +169,7 @@ public class LandManageFormController implements Initializable {
 
             if (result.orElse(no) == yes) {
                 try {
-                    boolean isDeleted = LandModel.delete(String.valueOf(cbLand.getValue()));
+                    boolean isDeleted = LandModel.delete((String) colID.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
 
                     if(isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();

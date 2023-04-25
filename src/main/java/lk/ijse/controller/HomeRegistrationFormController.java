@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
@@ -45,6 +46,8 @@ public class HomeRegistrationFormController implements Initializable {
     public Label lblName;
     public TextField txtAddress1;
     public Button Save;
+    public Label lblFCount;
+    public Label lblChildCount;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -58,11 +61,15 @@ public class HomeRegistrationFormController implements Initializable {
     private void setDisableController() {
         txtName.setText(residence.getHouse_holder_name());
         txtCount.setText(String.valueOf(residence.getMember_count()));
-        txtChildCount.setText(String.valueOf(residence.getCount_below_18()));
-        cbType.setValue(residence.getResidence_type());
+        if(residence.getCount_below_18()!=null)
+            txtChildCount.setText(String.valueOf(residence.getCount_below_18()));
+        if(residence.getResidence_type()!=null)
+            cbType.setValue(residence.getResidence_type());
         txtHomeID.setText(residence.getHome_id());
-        ckbElectricity.setSelected(residence.getElectricity().equals("Yes") ? true:false );
-        ckbWater.setSelected(residence.getWater_supply().equals("Yes") ? true:false);
+        if(!residence.getElectricity().equals(""))
+            ckbElectricity.setSelected(residence.getElectricity().equals("Yes") ? true:false );
+        if(!residence.getWater_supply().equals(""))
+            ckbWater.setSelected(residence.getWater_supply().equals("Yes") ? true:false);
         cbDivision.setValue(residence.getDivision_id());
         txtAddress1.setText(residence.getAddress());
         Save.setText("Update");
@@ -90,41 +97,68 @@ public class HomeRegistrationFormController implements Initializable {
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
+
+
         if(Save.getText().equals("Save")) {
-            String electricity = ckbElectricity.isSelected() ? "Yes" : "No";
-            String water_supply = ckbWater.isSelected() ? "Yes" : "No";
+            if (!(cbDivision.getValue() ==null) && !txtHomeID.getText().equals("")
+                    && !txtName.getText().equals("") && !txtCount.getText().equals("") && !txtAddress1.getText().equals("") ) {
 
-            try {
-                boolean isSaved = ResidenceModel.save(new Residence(
-                        txtHomeID.getText(), (String) cbDivision.getValue(), txtName.getText(), txtAddress1.getText(), Integer.valueOf(txtCount.getText()),
-                        Integer.valueOf(txtChildCount.getText()), (String) cbType.getValue(), electricity, water_supply));
+                String electricity = ckbElectricity.isSelected() ? "Yes" : "No";
+                String water_supply = ckbWater.isSelected() ? "Yes" : "No";
 
-                if (isSaved)
-                    new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-                else
-                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                Integer childCount = null;
+                if (!txtChildCount.getText().isEmpty()) childCount = Integer.valueOf(txtChildCount.getText());
 
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
 
+                try {
+                    boolean isSaved = ResidenceModel.save(new Residence(
+                            txtHomeID.getText(), (String) cbDivision.getValue(), txtName.getText(), txtAddress1.getText(), Integer.valueOf(txtCount.getText()),
+                            childCount, (String) cbType.getValue(), electricity, water_supply));
+
+                    if (isSaved)
+                        new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
+                    else
+                        new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+
+                }
+            }else{
+                cbDivision.setStyle("-fx-border-color:  #ef0d20; ");
+                txtHomeID.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtName.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtCount.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtAddress1.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
             }
-        }else if(Save.getText().equals("Update")){
-            String electricity = ckbElectricity.isSelected() ? "Yes" : "No";
-            String water_supply = ckbWater.isSelected() ? "Yes" : "No";
+        }else if(Save.getText().equals("Update")) {
+            if (!(cbDivision.getValue() == null) && !txtHomeID.getText().equals("")
+                    && !txtName.getText().equals("") && !txtCount.getText().equals("") && !txtAddress1.getText().equals("")) {
+                String electricity = ckbElectricity.isSelected() ? "Yes" : "No";
+                String water_supply = ckbWater.isSelected() ? "Yes" : "No";
 
-            try {
-                boolean isUpdated = ResidenceModel.update(new Residence(
-                        txtHomeID.getText(), (String) cbDivision.getValue(), txtName.getText(), txtAddress1.getText(), Integer.valueOf(txtCount.getText()),
-                        Integer.valueOf(txtChildCount.getText()), (String) cbType.getValue(), electricity, water_supply));
+                try {
+                    boolean isUpdated = ResidenceModel.update(new Residence(
+                            txtHomeID.getText(), (String) cbDivision.getValue(), txtName.getText(), txtAddress1.getText(), Integer.valueOf(txtCount.getText()),
+                            Integer.valueOf(txtChildCount.getText()), (String) cbType.getValue(), electricity, water_supply));
 
-                if (isUpdated)
-                    new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
-                else
-                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                    if (isUpdated)
+                        new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
+                    else
+                        new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
 
+                }
+            }else{
+                cbDivision.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtHomeID.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtName.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtCount.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtAddress1.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
             }
         }
 
@@ -177,5 +211,48 @@ public class HomeRegistrationFormController implements Initializable {
     @FXML
     void lblVoteOnAction(MouseEvent event) {
         OpenView.openView("aboutUsForm",HomePane);
+    }
+
+    public void txtFCountOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtCount.getText().matches("^[0-9]*$")) {
+            txtCount.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblFCount.setText("This filed can only contain numeric values!");
+        }
+    }
+
+    public void txtFCountOnKeyTyped(KeyEvent keyEvent) {
+        if (txtCount.getText().matches("^[0-9]*$")) {
+            txtCount.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblFCount.setText("");
+        }
+    }
+
+
+    public void txtChildOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtChildCount.getText().matches("^[0-9]*$")) {
+            txtChildCount.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblChildCount.setText("This filed can only contain numeric values!");
+        }
+    }
+
+    public void txtChildOnKeyTyped(KeyEvent keyEvent) {
+        if (txtChildCount.getText().matches("^[0-9]*$")) {
+            txtChildCount.setStyle("-fx-border-color: null; -fx-font-size: 16px;");
+            lblChildCount.setText("");
+        }
+    }
+
+    public void txtNameOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtName.getText().matches("^[A-Za-z\\s]*$")) {
+            txtName.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblName.setText("This filed can not contain numeric values!");
+        }
+    }
+
+    public void txtNameOnKeyTyped(KeyEvent keyEvent) {
+        if (txtName.getText().matches("^[A-Za-z\\s]*$")) {
+            txtName.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblName.setText("");
+        }
     }
 }

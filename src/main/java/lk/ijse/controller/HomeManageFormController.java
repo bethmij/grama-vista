@@ -129,8 +129,7 @@ public class HomeManageFormController implements Initializable {
 
             if (result.orElse(no) == yes) {
                 try {
-                    boolean isDeleted = ResidenceModel.delete((String) cbHome.getValue());
-
+                    boolean isDeleted = ResidenceModel.delete((String) colID.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
                     if(isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
                         obList.remove( tblDivision.getSelectionModel().getSelectedIndex());

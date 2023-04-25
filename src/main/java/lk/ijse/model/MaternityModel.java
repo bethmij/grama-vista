@@ -24,8 +24,8 @@ public class MaternityModel {
 
     public static boolean save(Maternity maternity) throws SQLException {
 
-        boolean isSaved = CrudUtil.execute("INSERT INTO grama_vista.maternity_people (id, reg_number, mid_wife, register_date) VALUES (?,?,?,?)",
-                maternity.getID(),maternity.getCivil_ID(),maternity.getMid_wife(), LocalDate.now());
+        boolean isSaved = CrudUtil.execute("INSERT INTO grama_vista.maternity_people (id, reg_number, mid_wife, register_date,months) VALUES (?,?,?,?,?)",
+                maternity.getID(),maternity.getCivil_ID(),maternity.getMid_wife(), LocalDate.now(),maternity.getMonths());
 
         return isSaved;
     }
@@ -70,8 +70,8 @@ public class MaternityModel {
 
     public static boolean update(Maternity maternity) throws SQLException {
 
-        return CrudUtil.execute("UPDATE grama_vista.maternity_people SET  reg_number=?,  mid_wife=?  WHERE id=?",
-                maternity.getCivil_ID(),maternity.getMid_wife(),maternity.getID());
+        return CrudUtil.execute("UPDATE grama_vista.maternity_people SET  reg_number=?,  mid_wife=? ,months=? WHERE id=?",
+                maternity.getCivil_ID(),maternity.getMid_wife(),maternity.getMonths(),maternity.getID());
 
     }
 }

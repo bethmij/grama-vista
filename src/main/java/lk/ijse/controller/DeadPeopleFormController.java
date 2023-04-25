@@ -81,35 +81,48 @@ public class DeadPeopleFormController implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
 
         if(btn1.getText().equals("Save")) {
-            String id = (String) cmbCivil.getValue();
-            String[] civil_id = id.split("C00");
-            String[] reg_id = lblID.getText().split("DD00");
-            String division_id = CivilModel.getDivisionId(Integer.valueOf(civil_id[1]));
+            if (!(cmbCivil.getValue() == null) && !(dtpDate.getValue() == null)) {
+                String id = (String) cmbCivil.getValue();
+                String[] civil_id = id.split("C00");
+                String[] reg_id = lblID.getText().split("DD00");
+                String division_id = CivilModel.getDivisionId(Integer.valueOf(civil_id[1]));
 
-            try {
-                boolean isSaved = DeadModel.save(new Dead(reg_id[1], civil_id[1], lblName.getText(), dtpDate.getValue()), division_id);
+                try {
+                    boolean isSaved = DeadModel.save(new Dead(reg_id[1], civil_id[1], lblName.getText(), dtpDate.getValue()), division_id);
 
-                if (isSaved)
-                    new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-                else
-                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                    if (isSaved)
+                        new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
+                    else
+                        new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
+            }else{
+                cmbCivil.setStyle("-fx-border-color:  #ef0d20; ");
+                dtpDate.setStyle("-fx-border-color:  #ef0d20; ");
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
             }
         }else if(btn1.getText().equals("Update")){
-            try {
-                //boolean isUpdate = DeadModel.update(new Dead(reg_id[1], civil_id[1], lblName.getText(), dtpDate.getValue()));
-                boolean isUpdate = DeadModel.update(new Dead(lblID.getText(), (String) cmbCivil.getValue(), lblName.getText(), dtpDate.getValue()));
-                if (isUpdate)
-                    new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
-                else
-                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+            if (!(cmbCivil.getValue() == null) && !(dtpDate.getValue() == null)) {
+                try {
 
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                    boolean isUpdate = DeadModel.update(new Dead(lblID.getText(), (String) cmbCivil.getValue(), lblName.getText(), dtpDate.getValue()));
+                    if (isUpdate)
+                        new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
+                    else
+                        new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
+            }else{
+                cmbCivil.setStyle("-fx-border-color:  #ef0d20; ");
+                dtpDate.setStyle("-fx-border-color:  #ef0d20; ");
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
             }
         }
+
 
     }
 

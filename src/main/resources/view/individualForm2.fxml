@@ -24,6 +24,7 @@
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
       </ImageView>
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="239.0" prefHeight="26.0" prefWidth="2.0" ripplerFill="#fff7edc2" />
       <TextField fx:id="txtSchool" blendMode="MULTIPLY" layoutX="411.0" layoutY="159.0" prefHeight="38.0" prefWidth="386.0" promptText="School/High-School">
          <effect>
             <InnerShadow>

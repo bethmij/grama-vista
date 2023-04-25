@@ -131,7 +131,7 @@ public class DisableManageFormController implements Initializable {
 
             if (result.orElse(no) == yes) {
                 try {
-                    boolean isDeleted = DisableModel.delete((String)cbReg.getValue());
+                    boolean isDeleted = DisableModel.delete((String) colID.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
 
                     if(isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();

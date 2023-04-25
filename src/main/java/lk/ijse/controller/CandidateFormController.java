@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import lk.ijse.dto.Candidate;
+import lk.ijse.dto.Contact;
 import lk.ijse.dto.Division;
 import lk.ijse.model.CandidateModel;
 import lk.ijse.model.DeadModel;
@@ -33,6 +34,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import static lk.ijse.controller.IndividualFormController.civil1;
 
 public class CandidateFormController implements Initializable {
 
@@ -51,6 +54,7 @@ public class CandidateFormController implements Initializable {
     public Label lblNIC;
     public JFXButton image;
     public Button btn1;
+    public Label lblName;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -100,42 +104,67 @@ public class CandidateFormController implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent) {
 
         if (btn1.getText().equals("Save") ) {
-            try {
-                boolean isSaved = CandidateModel.save(new Candidate(
-                        txtID.getText(),
-                        (String) cbDivision.getValue(),
-                        txtNIC.getText(),
-                        txtName.getText(),
-                        (String) cbPolitic.getValue(),
-                        txtAddress.getText(),
-                        Integer.valueOf(txtContact.getText())));
+            if (!(cbDivision.getValue() == null) && !txtID.getText().equals("")
+                    && !txtName.getText().equals("") && !txtNIC.getText().equals("") && !(cbPolitic.getValue() == null)) {
+                Integer contact = null;
+                if (!txtContact.getText().isEmpty())
+                    contact = Integer.valueOf(txtContact.getText());
+                try {
+                    boolean isSaved = CandidateModel.save(new Candidate(
+                            txtID.getText(),
+                            (String) cbDivision.getValue(),
+                            txtNIC.getText(),
+                            txtName.getText(),
+                            (String) cbPolitic.getValue(),
+                            txtAddress.getText(),
+                            contact));
 
-                if (isSaved)
-                    new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-                else
-                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                    if (isSaved)
+                        new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
+                    else
+                        new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
+            }else{
+                cbDivision.setStyle("-fx-border-color: #ef0d20;");
+                cbPolitic.setStyle("-fx-border-color:  #ef0d20; ");
+                txtName.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtNIC.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtID.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
             }
         }else if (btn1.getText().equals("Update") ) {
+            if (!(cbDivision.getValue() == null) && !txtID.getText().equals("")
+                    && !txtName.getText().equals("") && !txtNIC.getText().equals("") && !(cbPolitic.getValue() == null)) {
+                Integer contact = null;
+                if (!txtContact.getText().isEmpty())
+                    contact = Integer.valueOf(txtContact.getText());
+                try {
+                    boolean isSaved = CandidateModel.update(new Candidate(
+                            txtID.getText(),
+                            (String) cbDivision.getValue(),
+                            txtNIC.getText(),
+                            txtName.getText(),
+                            (String) cbPolitic.getValue(),
+                            txtAddress.getText(),
+                            contact));
 
-            try {
-                boolean isSaved = CandidateModel.update(new Candidate(
-                        txtID.getText(),
-                        (String) cbDivision.getValue(),
-                        txtNIC.getText(),
-                        txtName.getText(),
-                        (String) cbPolitic.getValue(),
-                        txtAddress.getText(),
-                        Integer.valueOf(txtContact.getText())));
-
-                if (isSaved) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully!").show();
-                } else
-                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                    if (isSaved) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully!").show();
+                    } else
+                        new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
+            }else{
+                cbDivision.setStyle("-fx-border-color: #ef0d20;");
+                cbPolitic.setStyle("-fx-border-color:  #ef0d20; ");
+                txtName.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtNIC.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                txtID.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
             }
         }
     }
@@ -237,5 +266,19 @@ public class CandidateFormController implements Initializable {
     @FXML
     void lblVoteOnAction(MouseEvent event) {
         OpenView.openView("aboutUsForm",CandidatePane);
+    }
+
+    public void txtNameOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtName.getText().matches("^[A-Za-z\\s]*$")) {
+            txtName.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblName.setText("This filed can not contain numeric values!");
+        }
+    }
+
+    public void txtNameOnKeyTyped(KeyEvent keyEvent) {
+        if (txtName.getText().matches("^[A-Za-z\\s]*$")) {
+            txtName.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblName.setText("");
+        }
     }
 }

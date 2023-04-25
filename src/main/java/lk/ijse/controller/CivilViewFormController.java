@@ -12,6 +12,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import lk.ijse.dto.Contact;
 import lk.ijse.model.CandidateModel;
+import lk.ijse.model.CivilModel;
 
 import javax.imageio.ImageIO;
 import java.io.FileInputStream;
@@ -92,7 +93,8 @@ public class CivilViewFormController implements Initializable {
 
         if (result.orElse(no) == yes) {
             try {
-                boolean isDeleted = CandidateModel.delete(lblCivil.getText());
+                System.out.println(id);
+                boolean isDeleted = CivilModel.delete(id);
 
                 if(isDeleted) {
                     new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();

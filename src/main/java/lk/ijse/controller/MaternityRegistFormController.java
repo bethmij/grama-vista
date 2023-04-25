@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dto.Dead;
@@ -35,6 +36,8 @@ public class MaternityRegistFormController implements Initializable {
     public DatePicker dtpDate;
     public Button btnSave;
     public TextField txtMonth;
+    public Label lblMidWife;
+    public Label lblMonth;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -47,9 +50,12 @@ public class MaternityRegistFormController implements Initializable {
 
     private void setMaternityController() {
         cmbCivil.setValue("C00"+maternity.getCivil_ID());
-        txtMidWife.setText(maternity.getMid_wife());
+        if(maternity.getMid_wife()!=null)
+            txtMidWife.setText(maternity.getMid_wife());
         lblID.setText("M00"+maternity.getID());
         lblName.setText(maternity.getName());
+        if(maternity.getMonths()!=null)
+            txtMonth.setText(String.valueOf(maternity.getMonths()));
         btnSave.setText("Update");
     }
 
@@ -86,37 +92,49 @@ public class MaternityRegistFormController implements Initializable {
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
         if(btnSave.getText().equals("Save")) {
-            String[] id = lblID.getText().split("M00");
-            String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
+            if (!(cmbCivil.getValue() == null) && !txtMonth.getText().equals("") ) {
+                String[] id = lblID.getText().split("M00");
+                String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
 
-            try {
-                boolean isSaved = MaternityModel.save(new Maternity(
-                        id[1],
-                        civil_id[1],
-                        lblName.getText(),
-                        Integer.valueOf(txtMonth.getText()),
-                        txtMidWife.getText()));
+                try {
+                    boolean isSaved = MaternityModel.save(new Maternity(
+                            id[1],
+                            civil_id[1],
+                            lblName.getText(),
+                            Integer.valueOf(txtMonth.getText()),
+                            txtMidWife.getText()));
 
-                if (isSaved)
-                    new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-                else
-                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                    if (isSaved)
+                        new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
+                    else
+                        new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
+            }else{
+                txtMonth.setStyle("-fx-border-color:  #ef0d20; ");
+                cmbCivil.setStyle("-fx-border-color:  #ef0d20; ");
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
             }
-        }else if(btnSave.getText().equals("Update")){
-            String[] id = lblID.getText().split("M00");
-            String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
+        }else if(btnSave.getText().equals("Update")) {
+            if (!(cmbCivil.getValue() == null) && !txtMonth.getText().equals("")) {
+                String[] id = lblID.getText().split("M00");
+                String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
 
-            try {
-                boolean isUpdated = MaternityModel.update(new Maternity(id[1], civil_id[1], lblName.getText(), Integer.valueOf(txtMonth.getText()),txtMidWife.getText()));
+                try {
+                    boolean isUpdated = MaternityModel.update(new Maternity(id[1], civil_id[1], lblName.getText(), Integer.valueOf(txtMonth.getText()), txtMidWife.getText()));
 
-                if (isUpdated)
-                    new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
-                else
-                    new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                    if (isUpdated)
+                        new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
+                    else
+                        new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
+            }else{
+                txtMonth.setStyle("-fx-border-color:  #ef0d20; ");
+                cmbCivil.setStyle("-fx-border-color:  #ef0d20; ");
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
             }
         }
     }
@@ -171,5 +189,33 @@ public class MaternityRegistFormController implements Initializable {
     @FXML
     void lblVoteOnAction(MouseEvent event) {
         OpenView.openView("aboutUsForm",maternityPane);
+    }
+
+    public void txtMonthOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtMonth.getText().matches("^[0-9]*$")) {
+            txtMonth.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblMonth.setText("This filed can only contain numeric values!");
+        }
+    }
+
+    public void txtMonthOnKeyTyped(KeyEvent keyEvent) {
+        if (!txtMonth.getText().matches("^[0-9]*$")) {
+            txtMonth.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblMonth.setText("");
+        }
+    }
+
+    public void txtMidWifeOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtMidWife.getText().matches("^[A-Za-z\\s]*$")) {
+            txtMidWife.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblMidWife.setText("This filed can not contain numeric values!");
+        }
+    }
+
+    public void txtMidWifeOnKeyTyped(KeyEvent keyEvent) {
+        if (!txtMidWife.getText().matches("^[A-Za-z\\s]*$")) {
+            txtMidWife.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblMidWife.setText("");
+        }
     }
 }

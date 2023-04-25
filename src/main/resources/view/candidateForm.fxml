@@ -24,6 +24,7 @@
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
       </ImageView>
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="239.0" layoutY="2.0" prefHeight="26.0" prefWidth="2.0" ripplerFill="#fff7edc2" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="714.0" stroke="WHITE" strokeType="INSIDE" width="239.0">
          <fill>
             <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
@@ -342,7 +343,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="txtID" blendMode="MULTIPLY" layoutX="417.0" layoutY="164.0" prefHeight="38.0" prefWidth="386.0" promptText="Election ID">
+      <TextField fx:id="txtID" blendMode="MULTIPLY" layoutX="417.0" layoutY="164.0" prefHeight="38.0" prefWidth="386.0" promptText="Election ID*">
          <effect>
             <InnerShadow>
                <color>
@@ -366,7 +367,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="417.0" layoutY="222.0" prefHeight="38.0" prefWidth="386.0" promptText="Name">
+      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="417.0" layoutY="222.0" onKeyReleased="#txtNameOnKeyReleased" onKeyTyped="#txtNameOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Name*">
          <effect>
             <InnerShadow>
                <color>
@@ -378,7 +379,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtNIC" blendMode="MULTIPLY" layoutX="417.0" layoutY="282.0" prefHeight="38.0" prefWidth="386.0" promptText="NIC">
+      <TextField fx:id="txtNIC" blendMode="MULTIPLY" layoutX="417.0" layoutY="287.0" prefHeight="38.0" prefWidth="386.0" promptText="NIC*">
          <effect>
             <InnerShadow>
                <color>
@@ -402,7 +403,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Text layoutX="415.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Division ID" wrappingWidth="121.33673095703125">
+      <Text layoutX="415.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Division ID*" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -447,7 +448,7 @@
             </InnerShadow>
          </effect>
       </ChoiceBox>
-      <Text layoutX="417.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Political Party" wrappingWidth="121.33673095703125">
+      <Text layoutX="413.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Political Party*" wrappingWidth="128.5367431640625">
          <font>
             <Font size="20.0" />
          </font>
@@ -483,7 +484,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox fx:id="cbPolitic" blendMode="MULTIPLY" layoutX="556.0" layoutY="423.0" prefHeight="26.0" prefWidth="242.0">
+      <ChoiceBox fx:id="cbPolitic" blendMode="MULTIPLY" layoutX="556.0" layoutY="416.0" prefHeight="26.0" prefWidth="242.0">
          <effect>
             <InnerShadow>
                <color>
@@ -622,5 +623,6 @@
             </InnerShadow>
          </effect>
       </ImageView>
+      <Label fx:id="lblName" layoutX="417.0" layoutY="262.0" prefHeight="18.0" prefWidth="386.0" textFill="#f2383a" />
    </children>
 </AnchorPane>

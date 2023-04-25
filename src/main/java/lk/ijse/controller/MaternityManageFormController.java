@@ -134,7 +134,7 @@ public class MaternityManageFormController implements Initializable {
 
             if (result.orElse(no) == yes) {
                 try {
-                    boolean isDeleted = MaternityModel.dead((String) cbReg.getValue());
+                    boolean isDeleted = MaternityModel.dead((String) colReg.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
 
                     if(isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();

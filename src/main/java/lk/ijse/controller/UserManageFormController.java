@@ -81,11 +81,11 @@ public class UserManageFormController implements Initializable {
             List<UserDTO> userDTOS  =UserModel.searchAll();
 
             for (UserDTO datalist : userDTOS) {
-                Button btnView = new Button("View more");
-                btnView.setCursor(Cursor.HAND);
-                setViewBtnOnAction(btnView);
+                Button btnDelete = new Button("Delete");
+                btnDelete.setCursor(Cursor.HAND);
+                setDeleteBtnOnAction(btnDelete);
 
-                UserTM userTM = new UserTM(datalist.getEmployee(), datalist.getDivision(), datalist.getName(), datalist.getNic(), datalist.getUser(), btnView);
+                UserTM userTM = new UserTM(datalist.getEmployee(), datalist.getDivision(), datalist.getName(), datalist.getNic(), datalist.getUser(), btnDelete);
                 obList.add(userTM);
                 tblDivision.setItems(obList);
             }
@@ -99,7 +99,7 @@ public class UserManageFormController implements Initializable {
         try {
             UserDTO userDTO = UserModel.search((String)cbEmployee.getValue());
             user= new User(userDTO.getDivision(), userDTO.getEmployee(), userDTO.getNic(), userDTO.getName(), userDTO.getUser(), userDTO.getPassword(),
-                    userDTO.getDob(),userDTO.getEmDate(),userDTO.getSalary(),userDTO.getContact());
+                    userDTO.getDob(),userDTO.getEmDate(),userDTO.getEmail(),userDTO.getContact());
 
             OpenView.openView("userRegistrationForm");
         } catch (SQLException e) {
@@ -116,18 +116,37 @@ public class UserManageFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
-        Button btnView = new Button("View more");
-        btnView.setCursor(Cursor.HAND);
-        setViewBtnOnAction(btnView);
+        Button btnDelete = new Button("Delete");
+        btnDelete.setCursor(Cursor.HAND);
+        setDeleteBtnOnAction(btnDelete);
 
-        UserTM userTM = new UserTM(userDTO.getEmployee(), userDTO.getDivision(), userDTO.getName(), userDTO.getNic(), userDTO.getUser(), btnView);
+        UserTM userTM = new UserTM(userDTO.getEmployee(), userDTO.getDivision(), userDTO.getName(), userDTO.getNic(), userDTO.getUser(), btnDelete);
         obList.add(userTM);
         tblDivision.setItems(obList);
     }
 
-    private void setViewBtnOnAction(Button btnView) {
-        btnView.setOnAction((e) -> {
-            OpenView.openView("candidateViewForm");
+    private void setDeleteBtnOnAction(Button btnDelete) {
+        btnDelete.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to delete?", yes, no).showAndWait();
+
+            if (result.orElse(no) == yes) {
+                try {
+                    boolean isDeleted = UserModel.dead((String) colEmployee.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
+
+                    if(isDeleted) {
+                        new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
+                        obList.remove(tblDivision.getSelectionModel().getSelectedIndex());
+                        tblDivision.refresh();
+                    }
+                } catch (SQLException ex) {
+                    new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
+                }
+
+            }
+
         });
     }
 

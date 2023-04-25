@@ -96,7 +96,7 @@ public class CandidateViewFormController implements Initializable {
 
         if (result.orElse(no) == yes) {
             try {
-                boolean isDeleted = CandidateModel.delete(lblElection.getText());
+                boolean isDeleted = CandidateModel.delete(id);
 
                 if(isDeleted) {
                     new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();

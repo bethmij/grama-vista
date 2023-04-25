@@ -8,6 +8,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.dto.CivilDTO;
+import lk.ijse.dto.UserDTO;
 import lk.ijse.model.CivilModel;
 import lk.ijse.model.DivisionModel;
 import lk.ijse.model.LandModel;
@@ -22,10 +24,7 @@ import javax.mail.internet.MimeMultipart;
 import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Properties;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class AboutUsFormController implements Initializable {
     public AnchorPane tblDivPane;
@@ -77,21 +76,16 @@ public class AboutUsFormController implements Initializable {
 
     public void btnRenewOnAction(ActionEvent actionEvent) {
         try {
-            Map<Integer, Integer> dateDiff = CivilModel.getDateDiff();
+            List<CivilDTO> userDTOList = CivilModel.searchAll();
 
-            for (Map.Entry m : dateDiff.entrySet()) {
-                Integer date = (Integer) m.getValue();
-                if (date >= 351) {
-                    Integer id = (Integer) m.getKey();
-                    String email  = CivilModel.getEmail(id);
-                    String name = CivilModel.getName(String.valueOf(id));
-
+            for (CivilDTO user : userDTOList) {
+                if(!user.getEmail().equals("")) {
                     System.out.println("preparing to send message ...");
-                    String message = "Civil ID  - C00"+m.getKey()+"\nName   - "+name;
+                    String message = "Civil ID  - C00" + user.getID() + "\nName   - " + user.getName();
                     String subject = "Grama Vista : civil data renewal";
-                    String to = email;
+                    String to = user.getEmail();
                     String from = "gramavista@gmail.com";
-                    sendAttach(message,subject,to,from);
+                    sendAttach(message, subject, to, from);
                 }
             }
         }catch (SQLException e) {

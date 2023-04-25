@@ -133,7 +133,7 @@ public class DivisionManageFormController implements Initializable {
 
             if (result.orElse(no) == yes) {
                 try {
-                    boolean isDeleted = DivisionModel.dead((String)cbDivision.getValue());
+                    boolean isDeleted = DivisionModel.dead((String) colID.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
                     if(isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
                         obList.remove( tblDivision.getSelectionModel().getSelectedIndex());

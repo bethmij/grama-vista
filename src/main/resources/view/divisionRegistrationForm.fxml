@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -22,6 +23,7 @@
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
       </ImageView>
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="239.0" layoutY="14.0" prefHeight="26.0" prefWidth="2.0" ripplerFill="#fff7edc2" />
       <Text layoutX="486.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GN Registration Registration">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -63,7 +65,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="421.0" layoutY="239.0" prefHeight="38.0" prefWidth="386.0" promptText="Name *">
+      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="421.0" layoutY="223.0" onKeyReleased="#txtNameOnKeyReleased" onKeyTyped="#txtNameOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Grama Division*">
          <effect>
             <InnerShadow>
                <color>
@@ -75,7 +77,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtSecret" blendMode="MULTIPLY" layoutX="421.0" layoutY="309.0" prefHeight="38.0" prefWidth="386.0" promptText="Div_Secretariat">
+      <TextField fx:id="txtSecret" blendMode="MULTIPLY" layoutX="421.0" layoutY="299.0" onKeyReleased="#txtSecOnKeyReleased" onKeyTyped="#txtSecOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Div_Secretariat*">
          <effect>
             <InnerShadow>
                <color>
@@ -87,7 +89,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtLand" blendMode="MULTIPLY" layoutX="421.0" layoutY="451.0" prefHeight="38.0" prefWidth="386.0" promptText="Land Area (km2)">
+      <TextField fx:id="txtLand" blendMode="MULTIPLY" layoutX="421.0" layoutY="451.0" onKeyReleased="#txtAreaOnKeyReleased" onKeyTyped="#txtAreaOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Land Area (km2)">
          <effect>
             <InnerShadow>
                <color>
@@ -99,7 +101,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtAdmin" blendMode="MULTIPLY" layoutX="421.0" layoutY="379.0" prefHeight="38.0" prefWidth="386.0" promptText="Admin_Officer *">
+      <TextField fx:id="txtAdmin" blendMode="MULTIPLY" layoutX="421.0" layoutY="374.0" onKeyReleased="#txtAdminOnKeyReleased" onKeyTyped="#txtAdminOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Admin_Officer ">
          <effect>
             <InnerShadow>
                <color>
@@ -553,5 +555,9 @@
             </InnerShadow>
          </effect>
       </ImageView>
+      <Label fx:id="lblName" layoutX="421.0" layoutY="263.0" prefHeight="18.0" prefWidth="386.0" textFill="#f2383a" />
+      <Label fx:id="lblSecretary" layoutX="421.0" layoutY="339.0" prefHeight="18.0" prefWidth="386.0" textFill="#f2383a" />
+      <Label fx:id="lblAdmin" layoutX="421.0" layoutY="414.0" prefHeight="18.0" prefWidth="386.0" textFill="#f2383a" />
+      <Label fx:id="lblArea" layoutX="421.0" layoutY="493.0" prefHeight="18.0" prefWidth="386.0" textFill="#f2383a" />
    </children>
 </AnchorPane>

@@ -45,7 +45,7 @@ public class CandidateManageFormController implements Initializable {
     public static Candidate candidate;
     public static CandidateTM candidateTM;
     public static CandidateDTO candidateDetail;
-    public static Integer index=0;
+    public static String id;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -143,6 +143,7 @@ public class CandidateManageFormController implements Initializable {
 
             try {
                 CandidateDTO candidateDTO = CandidateModel.search((String) colElection.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
+                id = (String) colElection.getCellData(tblDivision.getSelectionModel().getSelectedIndex());
                 candidateDetail = new CandidateDTO(candidateDTO.getElection(),candidateDTO.getImage(),candidateDTO.getName(),candidateDTO.getNIC(),
                         candidateDTO.getDivision(),candidateDTO.getAddress(),candidateDTO.getContact(),candidateDTO.getPolitic());
             } catch (SQLException ex) {

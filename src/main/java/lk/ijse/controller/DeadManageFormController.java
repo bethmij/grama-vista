@@ -117,7 +117,7 @@ public class DeadManageFormController implements Initializable {
 
             if (result.orElse(no) == yes) {
                 try {
-                    boolean isDeleted = DeadModel.dead(cbDead.getValue());
+                    boolean isDeleted = DeadModel.dead((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
 
                     if(isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();

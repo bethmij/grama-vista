@@ -24,6 +24,7 @@
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
       </ImageView>
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="245.0" layoutY="14.0" prefHeight="26.0" prefWidth="2.0" ripplerFill="#fff7edc2" />
       <Text layoutX="500.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Land Property Registration">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -55,7 +56,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="txtPlan" blendMode="MULTIPLY" layoutX="425.0" layoutY="219.0" prefHeight="38.0" prefWidth="386.0" promptText="Plan number">
+      <TextField fx:id="txtPlan" blendMode="MULTIPLY" layoutX="425.0" layoutY="219.0" prefHeight="38.0" prefWidth="386.0" promptText="Plan number*">
          <effect>
             <InnerShadow>
                <color>
@@ -67,7 +68,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtArea" blendMode="MULTIPLY" layoutX="425.0" layoutY="295.0" prefHeight="38.0" prefWidth="386.0" promptText="Land Area (km2)">
+      <TextField fx:id="txtArea" blendMode="MULTIPLY" layoutX="425.0" layoutY="295.0" onKeyReleased="#txtAreaOnKeyReleased" onKeyTyped="#txtAreaOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Land Area* (km2)">
          <effect>
             <InnerShadow>
                <color>
@@ -595,5 +596,6 @@
             </InnerShadow>
          </effect>
       </ImageView>
+      <Label fx:id="lblArea" layoutX="425.0" layoutY="335.0" prefHeight="18.0" prefWidth="386.0" textFill="#f2383a" />
    </children>
 </AnchorPane>

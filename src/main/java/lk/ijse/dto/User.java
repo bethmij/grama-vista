@@ -18,7 +18,7 @@ public class User {
     private String password;
     private LocalDate date;
     private LocalDate employee_date;
-    private Double salary;
+    private String email;
     private Integer contact;
 
 

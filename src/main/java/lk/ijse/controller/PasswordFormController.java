@@ -119,7 +119,6 @@ public class PasswordFormController implements Initializable {
         String to = userDTO.getEmail();
         String from = "gramavista@gmail.com";
         sendAttach(message,subject,to,from);
-        new Alert(Alert.AlertType.CONFIRMATION,"Please check your inbox for verification code we sent to you").show();
 
     }
 

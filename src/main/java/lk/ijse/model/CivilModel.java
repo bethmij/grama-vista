@@ -218,5 +218,21 @@ public class CivilModel {
         }
         return null;
     }
+
+    public static boolean delete(String id) throws SQLException {
+        return CrudUtil.execute("DELETE  FROM grama_vista.civil WHERE reg_number=?", id);
+    }
+
+    public static boolean updateEmail(Integer id, String to) throws SQLException {
+        return CrudUtil.execute("UPDATE grama_vista.civil SET isEmailSent=TRUE WHERE reg_number=?", id);
+    }
+
+    public static boolean isMailSent(Object id) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT isEmailSent FROM grama_vista.civil WHERE reg_number=?",id);
+        if(resultSet.next()){
+            return resultSet.getBoolean(1);
+        }
+        return false;
+    }
 }
 

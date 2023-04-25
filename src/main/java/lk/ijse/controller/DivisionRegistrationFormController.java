@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dto.Division;
@@ -23,6 +24,10 @@ public class DivisionRegistrationFormController implements Initializable {
     public TextField txtAdmin;
     public Label lblDivision;
     public Button btnSave;
+    public Label lblName;
+    public Label lblSecretary;
+    public Label lblAdmin;
+    public Label lblArea;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -38,13 +43,9 @@ public class DivisionRegistrationFormController implements Initializable {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-
-
     }
 
     private void setDivController() {
-
-
         lblDivision.setText(DivisionManageFormController.division.getDivision_id());
         txtName.setText(DivisionManageFormController.division.getName());
         txtSecret.setText(DivisionManageFormController.division.getDiv_Secretariat());
@@ -55,7 +56,7 @@ public class DivisionRegistrationFormController implements Initializable {
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
         if (btnSave.getText().equals( "Save")) {
-            if (!txtName.getText().equals("") && !txtAdmin.getText().equals("")) {
+            if ( !txtSecret.getText().equals("") && !txtSecret.getText().equals("") ) {
                 try {
                     boolean isSaved = DivisionModel.save(new Division(
                             lblDivision.getText(),
@@ -71,11 +72,14 @@ public class DivisionRegistrationFormController implements Initializable {
                 } catch (SQLException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
-            } else
-                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Fields * ").show();
+            }else{
+                txtName.setStyle("-fx-border-color:  #ef0d20; ");
+                txtSecret.setStyle("-fx-border-color:  #ef0d20; ");
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
+            }
         }else if (btnSave.getText().equals("Update") ) {
 
-            if (!txtName.getText().equals("") && !txtAdmin.getText().equals("")) {
+            if ( !txtSecret.getText().equals("") && !txtSecret.getText().equals("") ) {
                try {
                     boolean isSaved = DivisionModel.update(new Division(
                             lblDivision.getText(),
@@ -91,8 +95,11 @@ public class DivisionRegistrationFormController implements Initializable {
                 } catch (SQLException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
-            } else
-                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Fields * ").show();
+            } else{
+                txtName.setStyle("-fx-border-color:  #ef0d20; ");
+                txtSecret.setStyle("-fx-border-color:  #ef0d20; ");
+                new Alert(Alert.AlertType.ERROR, "Please Fill Compulsory Filed!").show();
+            }
         }
     }
 
@@ -138,5 +145,61 @@ public class DivisionRegistrationFormController implements Initializable {
     @FXML
     void lblVoteOnAction(MouseEvent event) {
         OpenView.openView("aboutUsForm",divisionPane);
+    }
+
+    public void txtNameOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtName.getText().matches("^[A-Za-z\\s]*$")) {
+            txtName.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblName.setText("This filed can not contain numeric values!");
+        }
+    }
+
+    public void txtNameOnKeyTyped(KeyEvent keyEvent) {
+        if (txtName.getText().matches("^[A-Za-z\\s]*$")) {
+            txtName.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblName.setText("");
+        }
+    }
+
+    public void txtSecOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtSecret.getText().matches("^[A-Za-z\\s]*$")) {
+            txtSecret.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblSecretary.setText("This filed can not contain numeric values!");
+        }
+    }
+
+    public void txtSecOnKeyTyped(KeyEvent keyEvent) {
+        if (txtSecret.getText().matches("^[A-Za-z\\s]*$")) {
+            txtSecret.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblSecretary.setText("");
+        }
+    }
+
+    public void txtAreaOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtLand.getText().matches("^[0-9.]*$")) {
+            txtLand.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblArea.setText("This filed can only contain numeric values!");
+        }
+    }
+
+    public void txtAreaOnKeyTyped(KeyEvent keyEvent) {
+        if (txtLand.getText().matches("^[0-9.]*$")) {
+            txtLand.setStyle("-fx-border-color: null; -fx-font-size: 16px;");
+            lblArea.setText("");
+        }
+    }
+
+    public void txtAdminOnKeyReleased(KeyEvent keyEvent) {
+        if (!txtAdmin.getText().matches("^[A-Za-z\\s]*$")) {
+            txtAdmin.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
+            lblAdmin.setText("This filed can not contain numeric values!");
+        }
+    }
+
+    public void txtAdminOnKeyTyped(KeyEvent keyEvent) {
+        if (txtAdmin.getText().matches("^[A-Za-z\\s]*$")) {
+            txtAdmin.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
+            lblAdmin.setText("");
+        }
     }
 }

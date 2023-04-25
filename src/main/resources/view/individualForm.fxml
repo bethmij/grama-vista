@@ -20,7 +20,7 @@
 
 <AnchorPane fx:id="indiroot1" prefHeight="714.0" prefWidth="1005.0" stylesheets="@css/Icon.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.IndividualFormController">
    <children>
-      <ImageView fitHeight="712.0" fitWidth="957.0" layoutX="61.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="712.0" fitWidth="957.0" layoutX="61.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
@@ -30,6 +30,7 @@
             <Image url="@../img/pngegg.png" />
          </image>
       </ImageView>
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="239.0" layoutY="14.0" prefHeight="26.0" prefWidth="2.0" ripplerFill="#fff7edc2" />
       <Text fill="#612803" layoutX="832.0" layoutY="684.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Home Affairs">
          <font>
             <Font size="14.0" />
@@ -66,7 +67,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="415.0" layoutY="144.0" prefHeight="38.0" prefWidth="386.0" promptText="Name">
+      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="415.0" layoutY="144.0" onKeyReleased="#txtNameOnKeyReleased" onKeyTyped="#txtNameOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Name*">
          <effect>
             <InnerShadow>
                <color>
@@ -78,7 +79,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtAddress" blendMode="MULTIPLY" layoutX="415.0" layoutY="302.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
+      <TextField fx:id="txtAddress" blendMode="MULTIPLY" layoutX="415.0" layoutY="317.0" prefHeight="38.0" prefWidth="386.0" promptText="Address*">
          <effect>
             <InnerShadow>
                <color>
@@ -90,7 +91,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtRelation" blendMode="MULTIPLY" layoutX="415.0" layoutY="485.0" prefHeight="38.0" prefWidth="386.0" promptText="Relation to house holder">
+      <TextField fx:id="txtRelation" blendMode="MULTIPLY" layoutX="415.0" layoutY="488.0" onKeyReleased="#txtRelationOnKeyReleased" onKeyTyped="#txtRelationOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Relation to house holder*">
          <effect>
             <InnerShadow>
                <color>
@@ -297,7 +298,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text layoutX="415.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOB" wrappingWidth="121.33673095703125">
+      <Text layoutX="415.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOB*" wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -341,7 +342,7 @@
                </color></InnerShadow>
          </effect>
       </DatePicker>
-      <TextField fx:id="txtNIC" blendMode="MULTIPLY" layoutX="415.0" layoutY="202.0" prefHeight="38.0" prefWidth="386.0" promptText="NIC">
+      <TextField fx:id="txtNIC" blendMode="MULTIPLY" layoutX="415.0" layoutY="210.0" prefHeight="38.0" prefWidth="386.0" promptText="NIC*">
          <effect>
             <InnerShadow>
                <color>
@@ -353,7 +354,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Text layoutX="415.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Residence " wrappingWidth="121.33673095703125">
+      <Text layoutX="415.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Residence* " wrappingWidth="121.33673095703125">
          <font>
             <Font size="20.0" />
          </font>
@@ -389,7 +390,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ChoiceBox fx:id="cbResidence" blendMode="MULTIPLY" layoutX="520.0" layoutY="259.0" prefWidth="150.0">
+      <ChoiceBox fx:id="cbResidence" blendMode="MULTIPLY" layoutX="520.0" layoutY="271.0" prefWidth="150.0">
          <effect>
             <InnerShadow>
                <color>
@@ -398,7 +399,7 @@
             </InnerShadow>
          </effect>
       </ChoiceBox>
-      <JFXButton fx:id="btnAdd" layoutX="762.0" layoutY="253.0" onAction="#btnAddOnAction" prefHeight="19.0" prefWidth="38.0" style="-fx-background-color: #f7c142;" text="+">
+      <JFXButton fx:id="btnAdd" layoutX="762.0" layoutY="265.0" onAction="#btnAddOnAction" prefHeight="19.0" prefWidth="38.0" style="-fx-background-color: #f7c142;" text="+">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -744,7 +745,7 @@
             </InnerShadow>
          </effect>
       </ImageView>
-      <TextField fx:id="txtEmail" blendMode="MULTIPLY" layoutX="415.0" layoutY="539.0" onKeyReleased="#txtEmailOnKeyReleased" onKeyTyped="#txtEmailKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Email">
+      <TextField fx:id="txtEmail" blendMode="MULTIPLY" layoutX="415.0" layoutY="554.0" onKeyReleased="#txtEmailOnKeyReleased" onKeyTyped="#txtEmailKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Email">
          <effect>
             <InnerShadow>
                <color>
@@ -756,6 +757,8 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Label fx:id="lblEmal" layoutX="415.0" layoutY="585.0" prefHeight="18.0" prefWidth="386.0" textFill="#f2383a" />
+      <Label fx:id="lblEmal" layoutX="415.0" layoutY="589.0" prefHeight="18.0" prefWidth="386.0" textFill="#f2383a" />
+      <Label fx:id="lblRelation" layoutX="415.0" layoutY="525.0" prefHeight="18.0" prefWidth="386.0" textFill="#f2383a" />
+      <Label fx:id="lblName" layoutX="415.0" layoutY="183.0" prefHeight="18.0" prefWidth="386.0" textFill="#f2383a" />
    </children>
 </AnchorPane>
