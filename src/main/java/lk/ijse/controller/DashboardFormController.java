@@ -139,4 +139,7 @@ public class DashboardFormController implements Initializable {
     }
 
 
+    public void btnActivityOnAction(ActionEvent actionEvent) {
+        OpenView.openView("DetailForm");
+    }
 }

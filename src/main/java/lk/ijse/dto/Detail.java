@@ -12,8 +12,7 @@ import java.time.LocalTime;
 public class Detail {
     private String function_name;
     private String user;
-    private String id;
-    private String name;
     private LocalTime time;
     private LocalDate date;
+    private String description;
 }

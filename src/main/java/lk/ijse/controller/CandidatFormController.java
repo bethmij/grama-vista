@@ -10,7 +10,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.dto.AddCandidate;
 import lk.ijse.dto.ElecCandidate;
 import lk.ijse.dto.tm.ElecCandidateTM;
-import lk.ijse.dto.tm.VoteTM;
 import lk.ijse.model.AddCandidateModel;
 import lk.ijse.model.CandidateModel;
 import lk.ijse.model.VoteModel;

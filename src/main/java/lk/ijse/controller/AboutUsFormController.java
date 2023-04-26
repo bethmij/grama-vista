@@ -54,7 +54,7 @@ public class AboutUsFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi",null,null, LocalTime.now(), LocalDate.now());
+            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
                 boolean isSaved = DetailModel.save(detail);
             } catch (SQLException e) {
