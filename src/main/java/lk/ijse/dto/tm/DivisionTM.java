@@ -9,11 +9,11 @@ import lombok.Data;
 @AllArgsConstructor
 
 public class DivisionTM {
-    public String ID;
-    public String Name;
-    public String Secretary;
-    public String Admin;
-    public Integer Population;
-    public Double Land;
+    private String ID;
+    private String Name;
+    private String Secretary;
+    private String Admin;
+    private Integer Population;
+    private Double Land;
     private Button Delete;
 }

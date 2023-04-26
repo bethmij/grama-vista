@@ -1,16 +1,20 @@
-package lk.ijse.dto;
+package lk.ijse.dto.tm;
 
+import javafx.scene.control.Button;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import javax.swing.*;
 import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 
-public class Vote {
+public class VoteTM {
     private String election_id;
     private String election_type;
-    private Integer candidate_count;
     private LocalDate date;
+    private Integer candidate_count;
+    private Button view;
+    private Button delete;
 }

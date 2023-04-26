@@ -12,8 +12,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.db.DBConnection;
 import lk.ijse.dto.Dead;
+import lk.ijse.dto.Detail;
 import lk.ijse.dto.UserDTO;
 import lk.ijse.model.CivilModel;
+import lk.ijse.model.DetailModel;
 import lk.ijse.model.UserModel;
 import lk.ijse.util.OpenView;
 import net.sf.jasperreports.engine.*;
@@ -31,6 +33,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 public class LoginFormController {
@@ -42,7 +45,7 @@ public class LoginFormController {
     private AnchorPane root;
     public void btnOnAction(ActionEvent actionEvent) {
 
-        /*List<UserDTO> userDTO = null;
+        List<UserDTO> userDTO = null;
         try {
             userDTO = UserModel.searchAll();
         } catch (SQLException e) {
@@ -57,6 +60,12 @@ public class LoginFormController {
         }
 
         if (isTrue) {
+            Detail detail = new Detail("Logged in", txtUser.getText(),null,null, LocalTime.now(),LocalDate.now());
+            try {
+                boolean isSaved = DetailModel.save(detail);
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            }
             OpenView.openView("dashboardForm", root);
 
         } else if (txtUser.getText().equals("") || txtPass.getText().equals("")) {
@@ -71,9 +80,9 @@ public class LoginFormController {
             new animatefx.animation.Shake(txtUser).play();
             new animatefx.animation.Shake(txtPass).play();
             new Alert(Alert.AlertType.ERROR, "Incorrect Username or Password").show();
-        }*/
+        }
 
-         OpenView.openView("dashboardForm",root);
+         //OpenView.openView("dashboardForm",root);
     }
 
     public void btnSignOnAction(MouseEvent actionEvent) {

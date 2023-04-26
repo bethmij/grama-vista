@@ -17,14 +17,227 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="CandidatePane" prefHeight="714.0" prefWidth="1005.0" stylesheets="@css/Text.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.CandidateFormController">
+<AnchorPane fx:id="CandidatePane" prefHeight="714.0" prefWidth="1005.0" stylesheets="@css/Icon.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.CandidateFormController">
    <children>
-      <ImageView fitHeight="712.0" fitWidth="957.0" layoutX="61.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="712.0" fitWidth="957.0" layoutX="61.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
       </ImageView>
-      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="239.0" layoutY="2.0" prefHeight="26.0" prefWidth="2.0" ripplerFill="#fff7edc2" />
+      <ImageView fitHeight="57.0" fitWidth="41.0" layoutX="781.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/pngegg.png" />
+         </image>
+      </ImageView>
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="239.0" layoutY="14.0" prefHeight="26.0" prefWidth="2.0" ripplerFill="#fff7edc2" />
+      <Text fill="#612803" layoutX="832.0" layoutY="684.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Home Affairs">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="490.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Candidate Registration">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4951219512195121">
+                     <color>
+                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9973082099596233">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="415.0" layoutY="222.0" onKeyReleased="#txtNameOnKeyReleased" onKeyTyped="#txtNameOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Name*">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtAddress" blendMode="MULTIPLY" layoutX="415.0" layoutY="351.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtID" blendMode="MULTIPLY" layoutX="415.0" layoutY="152.0" prefHeight="38.0" prefWidth="386.0" promptText="Election ID*">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Text layoutX="415.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Politic Party*" wrappingWidth="121.33673095703125">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5048780487804878">
+                     <color>
+                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9919246298788693">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <ChoiceBox fx:id="cbPolitic" blendMode="MULTIPLY" layoutX="551.0" layoutY="416.0" prefHeight="26.0" prefWidth="248.0">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </ChoiceBox>
+      <Text layoutX="415.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" wrappingWidth="150.3291015625">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5048780487804878">
+                     <color>
+                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9919246298788693">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <ChoiceBox fx:id="cbGender" blendMode="MULTIPLY" layoutX="551.0" layoutY="457.0" prefHeight="26.0" prefWidth="158.0">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </ChoiceBox>
+      <Button fx:id="btn1" layoutX="626.0" layoutY="621.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4951219512195121">
+                     <color>
+                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9973082099596233">
+                     <color>
+                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TextField fx:id="txtNIC" blendMode="MULTIPLY" layoutX="415.0" layoutY="287.0" prefHeight="38.0" prefWidth="386.0" promptText="NIC*">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="714.0" stroke="WHITE" strokeType="INSIDE" width="239.0">
          <fill>
             <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
@@ -53,7 +266,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Text layoutX="3.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grama Vista" wrappingWidth="232.10858154296875">
+      <Text layoutX="6.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grama Vista">
          <font>
             <Font name="Segoe Script" size="34.0" />
          </font>
@@ -84,7 +297,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Label layoutX="43.0" layoutY="559.0" onMouseClicked="#lblLogoutOnAction" styleClass="image-icon" text="Logout">
+      <Label layoutX="43.0" layoutY="559.0" onMouseClicked="#lblLogoutOnAction" styleClass="text-field-" text="Logout">
          <font>
             <Font size="20.0" />
          </font>
@@ -118,7 +331,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label layoutX="42.0" layoutY="292.0" onMouseClicked="#lblManageOnAction" prefHeight="30.0" prefWidth="170.0" styleClass="image-icon" text="Management">
+      <Label layoutX="42.0" layoutY="292.0" onMouseClicked="#lblManageOnAction" prefHeight="30.0" prefWidth="170.0" styleClass="text-field-" text="Management">
          <font>
             <Font size="20.0" />
          </font>
@@ -152,7 +365,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label layoutX="45.0" layoutY="382.0" onMouseClicked="#lblReportOnAction" styleClass="image-icon" text="Report Management">
+      <Label layoutX="45.0" layoutY="382.0" onMouseClicked="#lblReportOnAction" styleClass="text-field-" text="Report Management">
          <font>
             <Font size="20.0" />
          </font>
@@ -186,7 +399,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Label layoutX="45.0" layoutY="475.0" onMouseClicked="#lblVoteOnAction" styleClass="image-icon" text="About Us">
+      <Label layoutX="45.0" layoutY="475.0" onMouseClicked="#lblVoteOnAction" styleClass="text-field-" text="About Us">
          <font>
             <Font size="20.0" />
          </font>
@@ -263,7 +476,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Label layoutX="45.0" layoutY="192.0" onMouseClicked="#lblRegOnAction" prefHeight="30.0" prefWidth="170.0" styleClass="image-icon" text="Registration">
+      <Label layoutX="45.0" layoutY="192.0" onMouseClicked="#lblRegOnAction" prefHeight="30.0" prefWidth="170.0" styleClass="text-field-" text="Registration">
          <font>
             <Font size="20.0" />
          </font>
@@ -302,198 +515,15 @@
             <Image url="@../img/group_add_FILL0_wght400_GRAD0_opsz48.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="57.0" fitWidth="41.0" layoutX="753.0" layoutY="651.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/pngegg.png" />
-         </image>
-      </ImageView>
-      <Text fill="#612803" layoutX="808.0" layoutY="695.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Home Affairs">
+      <Button fx:id="btnReset" blendMode="HARD_LIGHT" layoutX="451.0" layoutY="620.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-border-color: #462900;" text="Reset" textFill="#462900">
          <font>
-            <Font size="14.0" />
+            <Font size="17.0" />
          </font>
-      </Text>
-      <Text layoutX="489.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Candidate Registration">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.4951219512195121">
-                     <color>
-                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9973082099596233">
-                     <color>
-                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <TextField fx:id="txtID" blendMode="MULTIPLY" layoutX="417.0" layoutY="164.0" prefHeight="38.0" prefWidth="386.0" promptText="Election ID*">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
-               </color>
-            </InnerShadow>
-         </effect>
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="txtAddress" blendMode="MULTIPLY" layoutX="417.0" layoutY="351.0" prefHeight="38.0" prefWidth="386.0" promptText="Address">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
-               </color>
-            </InnerShadow>
-         </effect>
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="txtName" blendMode="MULTIPLY" layoutX="417.0" layoutY="222.0" onKeyReleased="#txtNameOnKeyReleased" onKeyTyped="#txtNameOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Name*">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
-               </color>
-            </InnerShadow>
-         </effect>
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="txtNIC" blendMode="MULTIPLY" layoutX="417.0" layoutY="287.0" prefHeight="38.0" prefWidth="386.0" promptText="NIC*">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
-               </color>
-            </InnerShadow>
-         </effect>
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="txtContact" blendMode="MULTIPLY" layoutX="417.0" layoutY="467.0" onKeyReleased="#txtContactOnKeyReleased" onKeyTyped="#txtContactOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Contact">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
-               </color>
-            </InnerShadow>
-         </effect>
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <Text layoutX="415.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Division ID*" wrappingWidth="121.33673095703125">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5048780487804878">
-                     <color>
-                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9919246298788693">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Text>
-      <ChoiceBox fx:id="cbDivision" blendMode="MULTIPLY" layoutX="527.0" layoutY="107.0" prefWidth="150.0">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9882352948188782" green="0.8039215803146362" blue="0.364705890417099" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </ChoiceBox>
-      <Text layoutX="413.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Political Party*" wrappingWidth="128.5367431640625">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5048780487804878">
-                     <color>
-                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9919246298788693">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Text>
-      <ChoiceBox fx:id="cbPolitic" blendMode="MULTIPLY" layoutX="556.0" layoutY="416.0" prefHeight="26.0" prefWidth="242.0">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9882352948188782" green="0.8039215803146362" blue="0.364705890417099" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </ChoiceBox>
-      <Button fx:id="btn" contentDisplay="GRAPHIC_ONLY" layoutX="251.0" layoutY="29.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #ffc46d;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btn" contentDisplay="GRAPHIC_ONLY" layoutX="286.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #ffc46d;">
          <font>
             <Font size="17.0" />
          </font>
@@ -534,42 +564,78 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btn1" layoutX="638.0" layoutY="602.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #f7c142;" text="Save">
+      <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="2.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+         <image>
+            <Image url="@../img/information-about-us-icon-16.png" />
+         </image>
+         <effect>
+            <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
+               <color>
+                  <Color red="0.8947368264198303" green="0.6826510429382324" blue="0.2584795355796814" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </ImageView>
+      <TextField fx:id="txtContact" blendMode="MULTIPLY" layoutX="415.0" layoutY="498.0" onKeyReleased="#txtContactOnKeyReleased" onKeyTyped="#txtContactOnKeyTyped" prefHeight="38.0" prefWidth="386.0" promptText="Contact">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
          <font>
-            <Font size="17.0" />
+            <Font size="18.0" />
          </font>
-         <textFill>
+      </TextField>
+      <Label fx:id="lblName" layoutX="417.0" layoutY="262.0" prefHeight="18.0" prefWidth="386.0" textFill="#f2383a" />
+      <Label fx:id="lblContact" layoutX="415.0" layoutY="538.0" prefHeight="18.0" prefWidth="386.0" textFill="#f2383a" />
+      <Text layoutX="415.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Division*" wrappingWidth="121.33673095703125">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
                   <Stop>
                      <color>
-                        <Color red="0.4736842215061188" green="0.2549707591533661" blue="0.08771929889917374" />
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
                      </color>
                   </Stop>
-                  <Stop offset="0.4951219512195121">
+                  <Stop offset="0.006729475100942127">
                      <color>
-                        <Color red="0.5684210658073425" green="0.4453684091567993" blue="0.21684210002422333" />
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
                      </color>
                   </Stop>
-                  <Stop offset="0.9973082099596233">
+                  <Stop offset="0.5048780487804878">
                      <color>
-                        <Color red="0.5789473652839661" green="0.388323575258255" blue="0.034307993948459625" />
+                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9919246298788693">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="0.34736841917037964" green="0.2047758251428604" blue="0.005146198906004429" />
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
                      </color>
                   </Stop>
                </stops>
             </LinearGradient>
-         </textFill>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Label fx:id="lblContact" layoutX="417.0" layoutY="507.0" prefHeight="18.0" prefWidth="303.0" textFill="#ef0d20" />
-      <JFXButton fx:id="image" alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" layoutX="416.0" layoutY="539.0" onAction="#btnImageOnAction" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #c16c04;" text="Image">
+         </fill>
+      </Text>
+      <ChoiceBox fx:id="cbDivision" blendMode="MULTIPLY" layoutX="535.0" layoutY="103.0" prefWidth="150.0">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </ChoiceBox>
+      <JFXButton fx:id="image" alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" layoutX="414.0" layoutY="559.0" onAction="#btnImageOnAction" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #c16c04;" text="Image">
          <font>
             <Font size="18.0" />
          </font>
@@ -603,26 +669,5 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Button fx:id="btnReset" blendMode="HARD_LIGHT" layoutX="468.0" layoutY="602.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="32.0" prefWidth="135.0" style="-fx-border-color: #462900;" text="Reset" textFill="#462900">
-         <font>
-            <Font size="17.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="3.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
-         <image>
-            <Image url="@../img/information-about-us-icon-16.png" />
-         </image>
-         <effect>
-            <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
-               <color>
-                  <Color red="0.8947368264198303" green="0.6826510429382324" blue="0.2584795355796814" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </ImageView>
-      <Label fx:id="lblName" layoutX="417.0" layoutY="262.0" prefHeight="18.0" prefWidth="386.0" textFill="#f2383a" />
    </children>
 </AnchorPane>

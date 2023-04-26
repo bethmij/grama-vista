@@ -234,5 +234,17 @@ public class CivilModel {
         }
         return false;
     }
+
+    public static CivilDTO searchbyNIC(String nic) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT *,TIMESTAMPDIFF(year,dob,now()) AS Age FROM grama_vista.civil  WHERE nic=?", nic);
+        if (resultSet.next()) {
+
+            return new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2), resultSet.getString(4),
+                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(17),resultSet.getString(5),resultSet.getString(7), resultSet.getString(8),
+                    resultSet.getString(9),resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13),resultSet.getString(15));
+
+        }
+        return null;
+    }
 }
 

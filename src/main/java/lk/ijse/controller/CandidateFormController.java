@@ -18,9 +18,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import lk.ijse.dto.Candidate;
 import lk.ijse.dto.Contact;
+import lk.ijse.dto.Detail;
 import lk.ijse.dto.Division;
 import lk.ijse.model.CandidateModel;
 import lk.ijse.model.DeadModel;
+import lk.ijse.model.DetailModel;
 import lk.ijse.model.DivisionModel;
 import lk.ijse.util.OpenView;
 
@@ -31,6 +33,8 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -50,8 +54,6 @@ public class CandidateFormController implements Initializable {
     public ChoiceBox cbPolitic;
     public ChoiceBox cbGender;
     public Label lblContact;
-    public Label lblAge;
-    public Label lblNIC;
     public JFXButton image;
     public Button btn1;
     public Label lblName;
@@ -60,9 +62,16 @@ public class CandidateFormController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         loadDivisionID();
         loadPolitic();
+        loadGender();
         if ((!(CandidateManageFormController.candidate == null))) {
             setCandidateController();
         }
+    }
+
+    private void loadGender() {
+        String[] gender = new String[]{"Male","Female","Other"};
+        ObservableList<String> dataList = FXCollections.observableArrayList(gender);
+        cbGender.setItems(dataList);
     }
 
     private void setCandidateController() {
@@ -242,6 +251,12 @@ public class CandidateFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
+            Detail detail = new Detail("Logged out", "bethmi",null,null, LocalTime.now(), LocalDate.now());
+            try {
+                boolean isSaved = DetailModel.save(detail);
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            }
             OpenView.openView("loginForm",CandidatePane);
         }
 

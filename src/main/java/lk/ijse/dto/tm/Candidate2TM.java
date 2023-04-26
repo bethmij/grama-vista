@@ -11,10 +11,10 @@ import java.sql.Blob;
 
 public class Candidate2TM {
 
-    public String Election;
-    public String address;
-    public Integer Contact;
-    public String Politic;
+    private String Election;
+    private String address;
+    private Integer Contact;
+    private String Politic;
     private Button btn;
 
 

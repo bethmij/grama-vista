@@ -11,19 +11,19 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dto.Candidate;
-import lk.ijse.dto.CandidateDTO;
-import lk.ijse.dto.Division;
-import lk.ijse.dto.DivisionDTO;
+import lk.ijse.dto.*;
 import lk.ijse.dto.tm.Candidate2TM;
 import lk.ijse.dto.tm.CandidateTM;
 import lk.ijse.dto.tm.DivisionTM;
 import lk.ijse.model.CandidateModel;
+import lk.ijse.model.DetailModel;
 import lk.ijse.model.DivisionModel;
 import lk.ijse.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -175,6 +175,12 @@ public class CandidateManageFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
+            Detail detail = new Detail("Logged out", "bethmi",null,null, LocalTime.now(), LocalDate.now());
+            try {
+                boolean isSaved = DetailModel.save(detail);
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            }
             OpenView.openView("loginForm",tblDivPane);
         }
     }

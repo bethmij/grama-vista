@@ -14,8 +14,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dto.Civil;
 import lk.ijse.dto.Civil1;
+import lk.ijse.dto.Detail;
 import lk.ijse.dto.MultiResidence;
 import lk.ijse.model.CivilModel;
+import lk.ijse.model.DetailModel;
 import lk.ijse.model.DivisionModel;
 import lk.ijse.model.ResidenceModel;
 import lk.ijse.util.OpenView;
@@ -23,6 +25,8 @@ import lk.ijse.util.OpenView;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -203,6 +207,12 @@ public class IndividualFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
+            Detail detail = new Detail("Logged out", "bethmi",null,null, LocalTime.now(), LocalDate.now());
+            try {
+                boolean isSaved = DetailModel.save(detail);
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            }
             OpenView.openView("loginForm",indiroot1);
         }
     }

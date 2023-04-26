@@ -9,9 +9,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dto.CivilDTO;
+import lk.ijse.dto.Detail;
 import lk.ijse.dto.ResidenceDTO;
 import lk.ijse.dto.tm.SamurdhiTM;
 import lk.ijse.model.CivilModel;
+import lk.ijse.model.DetailModel;
 import lk.ijse.model.ResidenceModel;
 import lk.ijse.util.OpenView;
 import net.sf.jasperreports.engine.JRException;
@@ -24,6 +26,8 @@ import net.sf.jasperreports.view.JasperViewer;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -63,6 +67,12 @@ public class SamurdhiFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
+            Detail detail = new Detail("Logged out", "bethmi",null,null, LocalTime.now(), LocalDate.now());
+            try {
+                boolean isSaved = DetailModel.save(detail);
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            }
             OpenView.openView("loginForm",tblDivPane);
         }
     }

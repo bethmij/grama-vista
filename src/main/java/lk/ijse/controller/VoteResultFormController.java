@@ -10,8 +10,10 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.db.DBConnection;
+import lk.ijse.dto.Detail;
 import lk.ijse.model.CandidateModel;
 import lk.ijse.model.CivilModel;
+import lk.ijse.model.DetailModel;
 import lk.ijse.model.VoteModel;
 import lk.ijse.util.OpenView;
 import net.sf.jasperreports.engine.JRException;
@@ -23,6 +25,8 @@ import net.sf.jasperreports.view.JasperViewer;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -30,7 +34,6 @@ public class VoteResultFormController implements Initializable {
     public BarChart <String,Integer> chart;
     public AnchorPane Pane;
     public Label lblPosition;
-    public Label lblPopulation1;
     public Label lblCandidate;
     public Label lblVoters;
     public Label lblVoted;
@@ -42,7 +45,7 @@ public class VoteResultFormController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            //Integer Candidate_count = VoteModel.getVotefor1(1);
+
             lblCandidate.setText(String.valueOf(CandidateModel.getCount()));
             lblPosition.setText(String.valueOf(CandidateModel.getCount()-2));
             lblVoters.setText(String.valueOf(CivilModel.getCount()));
@@ -91,6 +94,12 @@ public class VoteResultFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
+            Detail detail = new Detail("Logged out", "bethmi",null,null, LocalTime.now(), LocalDate.now());
+            try {
+                boolean isSaved = DetailModel.save(detail);
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            }
             OpenView.openView("loginForm", Pane);
         }
     }
@@ -110,7 +119,14 @@ public class VoteResultFormController implements Initializable {
     }
 
     public void lblViewOnAction(MouseEvent mouseEvent) {
-        OpenView.openView("voteResultForm",Pane);
+        LocalTime start = LocalTime.parse("17:00");
+        LocalDate date = LocalDate.parse("2023-04-26");
+
+        if(date.compareTo(LocalDate.now())==0 && LocalTime.now().isAfter(start) ) {
+            OpenView.openView("voteResultForm",Pane);
+        }else{
+            new Alert(Alert.AlertType.ERROR, "This only eligible on "+date+" after "+start).show();
+        }
     }
 
     public void lblAddOnAction(MouseEvent mouseEvent) {
@@ -118,4 +134,7 @@ public class VoteResultFormController implements Initializable {
     }
 
 
+    public void lblEditOnAction(MouseEvent mouseEvent) {
+        OpenView.openView("VoteManageForm",Pane);
+    }
 }

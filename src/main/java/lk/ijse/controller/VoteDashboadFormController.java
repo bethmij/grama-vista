@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.db.DBConnection;
+import lk.ijse.dto.Vote;
+import lk.ijse.model.VoteModel;
 import lk.ijse.util.OpenView;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -13,6 +15,8 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class VoteDashboadFormController {
     public AnchorPane Pane;
@@ -36,6 +40,14 @@ public class VoteDashboadFormController {
     }
 
     public void btnResultOnAction(ActionEvent actionEvent) {
-        OpenView.openView("voteResultForm",Pane);
+        LocalTime start = LocalTime.parse("17:00");
+        LocalDate date = LocalDate.parse("2023-04-26");
+
+        if(date.compareTo(LocalDate.now())==0 && LocalTime.now().isAfter(start) ) {
+            OpenView.openView("voteResultForm",Pane);
+        }else{
+            new Alert(Alert.AlertType.ERROR, "This only eligible on "+date+" after "+start).show();
+        }
+
     }
 }

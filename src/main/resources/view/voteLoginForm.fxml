@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -21,7 +24,7 @@
             <Image url="@../img/Yahoo%20Image%20Search.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="OVERLAY" fill="#69655e" height="337.0" layoutX="346.0" layoutY="176.0" stroke="#230505" strokeType="INSIDE" width="559.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="OVERLAY" fill="#69655e" height="337.0" layoutX="346.0" layoutY="169.0" stroke="#230505" strokeType="INSIDE" width="559.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="714.0" stroke="WHITE" strokeType="INSIDE" width="239.0">
          <fill>
             <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
@@ -78,6 +81,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="247.0" layoutY="14.0" prefHeight="26.0" prefWidth="13.0" ripplerFill="#fff7ef" />
       <Text layoutX="8.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grama Vista" wrappingWidth="238.99999999999994">
          <font>
             <Font name="Segoe Script" size="32.0" />
@@ -330,11 +334,6 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Label fx:id="lblDivision" layoutX="596.0" layoutY="133.0" prefHeight="30.0" prefWidth="231.0" textFill="#753d12">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
       <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="2.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
          <image>
             <Image url="@../img/icons8-election-64%20(2).png" />
@@ -347,42 +346,6 @@
             </InnerShadow>
          </effect>
       </ImageView>
-      <Text layoutX="429.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Civil ID" wrappingWidth="135.20000000000005">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5048780487804878">
-                     <color>
-                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9919246298788693">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Text>
       <ComboBox fx:id="cmbElection" blendMode="MULTIPLY" layoutX="613.0" layoutY="392.0" onAction="#cmbElectionOnAction" prefHeight="26.0" prefWidth="162.0">
          <effect>
             <InnerShadow>
@@ -428,16 +391,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <ComboBox fx:id="cmbCivil" blendMode="MULTIPLY" layoutX="614.0" layoutY="223.0" onAction="#cmbCivilOnAction" prefHeight="26.0" prefWidth="161.0">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </ComboBox>
-      <Text layoutX="429.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="135.20000000000005">
+      <Text layoutX="428.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="135.20000000000005">
          <font>
             <Font size="20.0" />
          </font>
@@ -473,10 +427,78 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Label fx:id="lblName" layoutX="612.0" layoutY="307.0" prefHeight="18.0" prefWidth="326.0" textFill="#753d12">
+      <Label fx:id="lblName" layoutX="505.0" layoutY="322.0" prefHeight="18.0" prefWidth="326.0" textFill="#753d12">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
+      <TextField fx:id="txtNIC" blendMode="MULTIPLY" layoutX="428.0" layoutY="206.0" onAction="#txtNICOnAction" prefHeight="40.0" prefWidth="405.0" promptText="NIC ">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9254902005195618" green="0.7411764860153198" blue="0.47843137383461" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </TextField>
+      <Text layoutX="428.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Civil ID" wrappingWidth="135.20000000000005">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5048780487804878">
+                     <color>
+                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9919246298788693">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <Label fx:id="lblCivil" layoutX="505.0" layoutY="273.0" prefHeight="18.0" prefWidth="326.0" textFill="#753d12">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="368.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/manage_search_FILL0_wght400_GRAD0_opsz48.png" />
+         </image>
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.7052631378173828" green="0.42198246717453003" blue="0.07575048506259918" />
+               </color>
+               <input>
+                  <Glow level="0.11" />
+               </input>
+            </InnerShadow>
+         </effect>
+      </ImageView>
    </children>
 </AnchorPane>

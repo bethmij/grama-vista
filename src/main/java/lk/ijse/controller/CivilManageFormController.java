@@ -16,12 +16,14 @@ import lk.ijse.dto.tm.CandidateTM;
 import lk.ijse.dto.tm.CivilTM;
 import lk.ijse.model.CandidateModel;
 import lk.ijse.model.CivilModel;
+import lk.ijse.model.DetailModel;
 import lk.ijse.util.OpenView;
 
 import java.net.URL;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 public class CivilManageFormController implements Initializable {
@@ -185,6 +187,12 @@ public class CivilManageFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
+            Detail detail = new Detail("Logged out", "bethmi",null,null, LocalTime.now(), LocalDate.now());
+            try {
+                boolean isSaved = DetailModel.save(detail);
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            }
             OpenView.openView("loginForm",tblDivPane);
         }
     }

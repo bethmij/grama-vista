@@ -14,10 +14,10 @@ import java.sql.Blob;
 
 public class CandidateTM {
 
-    public String Election;
-    public String Name;
-    public String NIC;
-    public String Division;
+    private String Election;
+    private String Name;
+    private String NIC;
+    private String Division;
     private Button btn;
 
 

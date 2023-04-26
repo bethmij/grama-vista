@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="512.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.CandidatFormController">
+   <children>
+      <ImageView blendMode="MULTIPLY" fitHeight="567.0" fitWidth="686.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Yahoo%20Image%20Search.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tbl2" blendMode="MULTIPLY" layoutX="38.0" layoutY="157.0" prefHeight="332.0" prefWidth="609.0">
+        <columns>
+          <TableColumn fx:id="colElection" prefWidth="89.5999755859375" text="Election_id" />
+            <TableColumn fx:id="colCandidate" prefWidth="102.40000915527344" text="Candidate_id" />
+            <TableColumn fx:id="colName" prefWidth="156.0" text="Name" />
+          <TableColumn fx:id="colPolitic" prefWidth="169.5999755859375" text="Political Party" />
+            <TableColumn fx:id="colAction" minWidth="0.0" prefWidth="92.79998779296875" text="Action" />
+        </columns>
+      </TableView>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="206.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/manage_search_FILL0_wght400_GRAD0_opsz48.png" />
+         </image>
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.7052631378173828" green="0.42198246717453003" blue="0.07575048506259918" />
+               </color>
+               <input>
+                  <Glow level="0.11" />
+               </input>
+            </InnerShadow>
+         </effect>
+      </ImageView>
+      <Text layoutX="256.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Candidate" wrappingWidth="121.33673095703125">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5048780487804878">
+                     <color>
+                        <Color red="0.4000000059604645" green="0.23545679450035095" blue="0.10962963104248047" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9919246298788693">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4588235318660736" green="0.239215686917305" blue="0.07058823853731155" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <ComboBox fx:id="cbCandidat" blendMode="MULTIPLY" layoutX="386.0" layoutY="56.0" onAction="#cbCandidateOnAction" prefWidth="150.0">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.9882352948188782" green="0.8039215803146362" blue="0.364705890417099" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </ComboBox>
+   </children>
+</AnchorPane>

@@ -10,17 +10,17 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dto.Civil;
-import lk.ijse.dto.CivilDTO;
-import lk.ijse.dto.Dead;
-import lk.ijse.dto.DeadDTO;
+import lk.ijse.dto.*;
 import lk.ijse.dto.tm.DeadTM;
 import lk.ijse.model.CivilModel;
 import lk.ijse.model.DeadModel;
+import lk.ijse.model.DetailModel;
 import lk.ijse.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -174,6 +174,12 @@ public class DeadManageFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
+            Detail detail = new Detail("Logged out", "bethmi",null,null, LocalTime.now(), LocalDate.now());
+            try {
+                boolean isSaved = DetailModel.save(detail);
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            }
             OpenView.openView("loginForm",tblDivPane);
         }
     }

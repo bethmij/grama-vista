@@ -10,9 +10,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.dto.Detail;
 import lk.ijse.dto.Disable;
 import lk.ijse.dto.DisableDTO;
 import lk.ijse.dto.tm.DisableTM;
+import lk.ijse.model.DetailModel;
 import lk.ijse.model.DisableModel;
 import lk.ijse.util.OpenView;
 import net.sf.jasperreports.engine.JRException;
@@ -25,6 +27,8 @@ import net.sf.jasperreports.view.JasperViewer;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 public class DisableManageFormController implements Initializable {
@@ -156,6 +160,12 @@ public class DisableManageFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
+            Detail detail = new Detail("Logged out", "bethmi",null,null, LocalTime.now(), LocalDate.now());
+            try {
+                boolean isSaved = DetailModel.save(detail);
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            }
             OpenView.openView("loginForm",tblDivPane);
         }
     }

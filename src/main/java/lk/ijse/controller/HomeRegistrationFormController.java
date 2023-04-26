@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import lk.ijse.dto.Candidate;
 import lk.ijse.dto.Dead;
+import lk.ijse.dto.Detail;
 import lk.ijse.dto.Residence;
 import lk.ijse.model.*;
 import lk.ijse.util.OpenView;
@@ -25,6 +26,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.EventObject;
 import java.util.List;
 import java.util.Optional;
@@ -189,6 +192,12 @@ public class HomeRegistrationFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
+            Detail detail = new Detail("Logged out", "bethmi",null,null, LocalTime.now(), LocalDate.now());
+            try {
+                boolean isSaved = DetailModel.save(detail);
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            }
             OpenView.openView("loginForm",HomePane);
         }
     }

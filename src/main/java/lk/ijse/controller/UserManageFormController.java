@@ -10,18 +10,18 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dto.Maternity;
-import lk.ijse.dto.MaternityDTO;
-import lk.ijse.dto.User;
-import lk.ijse.dto.UserDTO;
+import lk.ijse.dto.*;
 import lk.ijse.dto.tm.MaternityTM;
 import lk.ijse.dto.tm.UserTM;
+import lk.ijse.model.DetailModel;
 import lk.ijse.model.MaternityModel;
 import lk.ijse.model.UserModel;
 import lk.ijse.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -159,6 +159,12 @@ public class UserManageFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
+            Detail detail = new Detail("Logged out", "bethmi",null,null, LocalTime.now(), LocalDate.now());
+            try {
+                boolean isSaved = DetailModel.save(detail);
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            }
             OpenView.openView("loginForm", tblDivPane);
         }
     }
