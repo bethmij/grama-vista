@@ -89,15 +89,15 @@ public class CivilViewFormController implements Initializable {
         ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
         ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-        Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to delete?", yes, no).showAndWait();
+        Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
             try {
-                System.out.println(id);
+
                 boolean isDeleted = CivilModel.delete(id);
 
                 if(isDeleted) {
-                    new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
+                    new Alert(Alert.AlertType.CONFIRMATION," Removed Successfully !" ).show();
                 }
             } catch (SQLException ex) {
                 new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();

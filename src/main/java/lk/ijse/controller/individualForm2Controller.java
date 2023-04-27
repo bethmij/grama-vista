@@ -125,7 +125,7 @@ public class individualForm2Controller implements Initializable {
                 }
                 new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
             }else
-                new Alert(Alert.AlertType.ERROR, "Already added!").show();
+                new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
         } else if (btn1.getText().equals("Update") ) {
 
             Double salary = null;

@@ -32,15 +32,19 @@ public class CivilResidenceModel {
                 con.commit();
                 return true;
                 */
-
+            System.out.println(1);
             boolean isCivilSaved = CivilModel.save(civil);
             if (isCivilSaved) {
+                System.out.println(2);
                 boolean isContactSaved = ContactModel.save(contact);
                 if (isContactSaved) {
+                    System.out.println(3);
                     boolean isResidenceSaved = MultiResidenceModel.save(multiResidence);
                     if (isResidenceSaved) {
+                        System.out.println(4);
                         boolean isPopulationUpdate = DivisionModel.UpdatePopulation(division_id);
                         if(isPopulationUpdate) {
+                            System.out.println(5);
                             con.commit();
                             return true;
                         }

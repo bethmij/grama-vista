@@ -45,7 +45,7 @@ public class LoginFormController {
     private AnchorPane root;
     public void btnOnAction(ActionEvent actionEvent) {
 
-        List<UserDTO> userDTO = null;
+        /*List<UserDTO> userDTO = null;
         try {
             userDTO = UserModel.searchAll();
         } catch (SQLException e) {
@@ -81,8 +81,8 @@ public class LoginFormController {
             new animatefx.animation.Shake(txtPass).play();
             new Alert(Alert.AlertType.ERROR, "Incorrect Username or Password").show();
         }
-
-         //OpenView.openView("dashboardForm",root);
+*/
+         OpenView.openView("dashboardForm",root);
     }
 
     public void btnSignOnAction(MouseEvent actionEvent) {
