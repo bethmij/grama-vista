@@ -113,13 +113,19 @@ public class individualForm2Controller implements Initializable {
             try {
                 isSaved = CivilResidenceModel.save(civil, contactList, residenceList, division_id);
             } catch (SQLException e) {
-                System.out.println(e);
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
 
-            if (isSaved)
+            if (isSaved) {
+                Detail detail = new Detail("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering civil id - "+civil1.getId()+" \nname - "+civil1.getName());
+                try {
+                    DetailModel.save(detail);
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
                 new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-            else
-                new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
+            }else
+                new Alert(Alert.AlertType.ERROR, "Already added!").show();
         } else if (btn1.getText().equals("Update") ) {
 
             Double salary = null;
@@ -142,6 +148,12 @@ public class individualForm2Controller implements Initializable {
 
             boolean isUpdated = false;
             try {
+                Detail detail = new Detail("Updation", "bethmi", LocalTime.now(), LocalDate.now(), "Updating civil id - "+civil1.getId()+" \nname - "+civil1.getName());
+                try {
+                    DetailModel.save(detail);
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
                 isUpdated = CivilResidenceModel.update(civil, contactList, residenceList);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

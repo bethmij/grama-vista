@@ -4,6 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -713,5 +714,32 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="348.0" layoutY="615.0" onAction="#btnActivityOnAction" prefHeight="51.0" prefWidth="56.0" ripplerFill="#faf8ed00" styleClass="image-icon">
+         <graphic>
+            <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+               <image>
+                  <Image url="@../img/history_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+               <effect>
+                  <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
+                     <color>
+                        <Color red="0.7372549176216125" green="0.545098066329956" blue="0.1568627506494522" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Text fill="#7e5a06" layoutX="408.0" layoutY="654.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Activity" wrappingWidth="82.39999999999998">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

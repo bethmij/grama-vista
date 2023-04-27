@@ -67,7 +67,7 @@ public class DeadModel {
 
     public static List<DeadDTO> searchAll() throws SQLException {
         List<DeadDTO> datalist = new ArrayList<>();
-        ResultSet resultSet = CrudUtil.execute("SELECT dead_people.*,TIMESTAMPDIFF(year,dead_date,now()) AS Age, civil.name FROM grama_vista.dead_people JOIN grama_vista.civil  on civil.reg_number = dead_people.reg_number ");
+        ResultSet resultSet = CrudUtil.execute("SELECT dead_people.*,TIMESTAMPDIFF(year,civil.dob,dead_date) AS Age, civil.name FROM grama_vista.dead_people JOIN grama_vista.civil  on civil.reg_number = dead_people.reg_number ");
         while (resultSet.next()) {
 
             datalist.add ( new DeadDTO(resultSet.getString(1),resultSet.getString(2),resultSet.getString(5),
@@ -78,7 +78,7 @@ public class DeadModel {
     }
 
     public static DeadDTO search(String id) throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT dead_people.*,TIMESTAMPDIFF(year,dead_date,now()) AS Age, civil.name FROM grama_vista.dead_people JOIN grama_vista.civil  on civil.reg_number = dead_people.reg_number WHERE dead_people.id=?", id);
+        ResultSet resultSet = CrudUtil.execute("SELECT dead_people.*,TIMESTAMPDIFF(year,civil.dob,dead_date) AS Age, civil.name FROM grama_vista.dead_people JOIN grama_vista.civil  on civil.reg_number = dead_people.reg_number WHERE dead_people.id=?", id);
         if (resultSet.next()) {
 
             return new DeadDTO(resultSet.getString(1),resultSet.getString(2),resultSet.getString(5),

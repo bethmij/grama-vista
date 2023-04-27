@@ -70,6 +70,12 @@ public class DivisionRegistrationFormController implements Initializable {
                             Double.parseDouble(txtLand.getText())));
 
                     if (isSaved) {
+                        Detail detail = new Detail("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering division id - " + lblDivision.getText() + " \nname - " + txtName.getText());
+                        try {
+                            DetailModel.save(detail);
+                        } catch (SQLException e) {
+                            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                        }
                         new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully!").show();
                     } else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();

@@ -314,25 +314,25 @@
          </font>
       </Label>
       <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="247.0" layoutY="14.0" prefHeight="4.0" prefWidth="2.0" ripplerFill="#fffbe5" />
-      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="301.0" layoutY="48.0" onAction="#btnSamuOnAction" ripplerFill="#fffbe500" styleClass="image-icon">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="353.0" layoutY="105.0" onAction="#btnSamuOnAction" ripplerFill="#fffbe500" styleClass="image-icon">
          <graphic>
-            <ImageView fitHeight="161.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+            <ImageView fitHeight="108.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                <image>
                   <Image url="@../img/volunteer_activism_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
                <effect>
                   <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
                      <color>
-                        <Color red="0.9882352948188782" green="0.7960784435272217" blue="0.21176470816135406" />
+                        <Color red="0.7372549176216125" green="0.545098066329956" blue="0.1568627506494522" />
                      </color>
                   </InnerShadow>
                </effect>
             </ImageView>
          </graphic>
       </JFXButton>
-      <Text layoutX="340.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Samurdhi " wrappingWidth="123.462890625">
+      <Text layoutX="370.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Samurdhi " wrappingWidth="123.462890625">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -361,9 +361,9 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="606.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Election Voters" wrappingWidth="123.462890625">
+      <Text layoutX="590.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Election Voters" wrappingWidth="123.462890625">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -392,9 +392,9 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="590.0" layoutY="536.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pregnant / Breastfeeding" wrappingWidth="123.462890625">
+      <Text layoutX="604.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pregnant / Breastfeeding" wrappingWidth="123.462890625">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -423,9 +423,9 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="837.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elders" wrappingWidth="123.462890625">
+      <Text layoutX="824.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elders" wrappingWidth="123.462890625">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -454,9 +454,9 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="353.0" layoutY="549.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Children" wrappingWidth="123.462890625">
+      <Text layoutX="381.0" layoutY="492.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Children" wrappingWidth="123.462890625">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -485,9 +485,9 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="837.0" layoutY="562.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disable " wrappingWidth="123.462890625">
+      <Text layoutX="837.0" layoutY="491.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disable " wrappingWidth="123.462890625">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -516,80 +516,80 @@
             </LinearGradient>
          </fill>
       </Text>
-      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="564.0" layoutY="52.0" onAction="#btnElectionOnAction" ripplerFill="#fffbe50d" styleClass="image-icon">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="591.0" layoutY="106.0" onAction="#btnElectionOnAction" ripplerFill="#fffbe50d" styleClass="image-icon">
          <graphic>
-            <ImageView fitHeight="144.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="101.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/how_to_vote_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
                <effect>
                   <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
                      <color>
-                        <Color red="0.9882352948188782" green="0.7960784435272217" blue="0.21176470816135406" />
+                        <Color red="0.7372549176216125" green="0.545098066329956" blue="0.1568627506494522" />
                      </color>
                   </InnerShadow>
                </effect>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="310.0" layoutY="374.0" onAction="#btnChildOnAction" ripplerFill="#fffbe589" styleClass="image-icon">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="355.0" layoutY="356.0" onAction="#btnChildOnAction" ripplerFill="#fffbe589" styleClass="image-icon">
          <graphic>
-            <ImageView fitHeight="142.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="113.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/child_care_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
                <effect>
                   <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
                      <color>
-                        <Color red="0.9882352948188782" green="0.7960784435272217" blue="0.21176470816135406" />
+                        <Color red="0.7372549176216125" green="0.545098066329956" blue="0.1568627506494522" />
                      </color>
                   </InnerShadow>
                </effect>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="578.0" layoutY="361.0" onAction="#btnPregOnAction" ripplerFill="#fffbe58a" styleClass="image-icon">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="592.0" layoutY="356.0" onAction="#btnPregOnAction" ripplerFill="#fffbe58a" styleClass="image-icon">
          <graphic>
-            <ImageView fitHeight="132.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
+            <ImageView fitHeight="104.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true" styleClass="image-icon">
                <image>
                   <Image url="@../img/breastfeeding_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
                <effect>
                   <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
                      <color>
-                        <Color red="0.9882352948188782" green="0.7960784435272217" blue="0.21176470816135406" />
+                        <Color red="0.7372549176216125" green="0.545098066329956" blue="0.1568627506494522" />
                      </color>
                   </InnerShadow>
                </effect>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="787.0" layoutY="356.0" onAction="#btnDisableOnAction" ripplerFill="#fffbe5a3" styleClass="image-icon">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="794.0" layoutY="350.0" onAction="#btnDisableOnAction" ripplerFill="#fffbe5a3" styleClass="image-icon">
          <graphic>
-            <ImageView fitHeight="142.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="108.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/accessible_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
                <effect>
                   <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
                      <color>
-                        <Color red="0.9882352948188782" green="0.7960784435272217" blue="0.21176470816135406" />
+                        <Color red="0.7372549176216125" green="0.545098066329956" blue="0.1568627506494522" />
                      </color>
                   </InnerShadow>
                </effect>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="798.0" layoutY="59.0" onAction="#btnElderOnAction" ripplerFill="#fffbe500" styleClass="image-icon">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="801.0" layoutY="109.0" onAction="#btnElderOnAction" ripplerFill="#fffbe500" styleClass="image-icon">
          <graphic>
-            <ImageView fitHeight="122.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="105.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/elderly_woman_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
                <effect>
                   <InnerShadow blurType="TWO_PASS_BOX" choke="1.0" height="255.0" radius="127.0" width="255.0">
                      <color>
-                        <Color red="0.9882352948188782" green="0.7960784435272217" blue="0.21176470816135406" />
+                        <Color red="0.7372549176216125" green="0.545098066329956" blue="0.1568627506494522" />
                      </color>
                   </InnerShadow>
                </effect>

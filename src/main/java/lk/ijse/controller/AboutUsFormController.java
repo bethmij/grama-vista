@@ -154,4 +154,7 @@ public class AboutUsFormController implements Initializable {
     }
 
 
+    public void btnActivityOnAction(ActionEvent actionEvent) {
+        OpenView.openView("DetailForm");
+    }
 }

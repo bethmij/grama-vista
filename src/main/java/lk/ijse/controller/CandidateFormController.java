@@ -128,9 +128,15 @@ public class CandidateFormController implements Initializable {
                             txtAddress.getText(),
                             contact));
 
-                    if (isSaved)
+                    if (isSaved) {
+                        Detail detail = new Detail("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering candidate id - " + txtID.getText() + " \nname - " + txtName.getText());
+                        try {
+                            DetailModel.save(detail);
+                        } catch (SQLException e) {
+                            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                        }
                         new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-                    else
+                    }else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
                 } catch (SQLException e) {

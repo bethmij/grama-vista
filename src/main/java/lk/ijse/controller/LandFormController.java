@@ -25,6 +25,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static lk.ijse.controller.CivilManageFormController.multiResidenceList;
+import static lk.ijse.controller.IndividualFormController.civil1;
 import static lk.ijse.controller.LandManageFormController.*;
 import static lk.ijse.controller.MaternityManageFormController.maternity;
 
@@ -86,9 +87,15 @@ public class LandFormController implements Initializable {
                     boolean isSaved = LandModel.save(new Land(
                             Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText())), AddLandTypeFormController.landDetailList, OwnershipFormController.ownerLists);
 
-                    if (isSaved)
+                    if (isSaved) {
+                        Detail detail = new Detail("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering land id - "+lblID.getText());
+                        try {
+                            DetailModel.save(detail);
+                        } catch (SQLException e) {
+                            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                        }
                         new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-                    else
+                    }else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
                 } catch (SQLException e) {

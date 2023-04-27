@@ -25,6 +25,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import static lk.ijse.controller.IndividualFormController.civil1;
+
 public class DeadManageFormController implements Initializable {
     public AnchorPane tblDivPane;
     public ChoiceBox<String> cbDead;
@@ -120,6 +122,12 @@ public class DeadManageFormController implements Initializable {
                     boolean isDeleted = DeadModel.dead((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
 
                     if(isDeleted) {
+                        Detail detail = new Detail("Deletion", "bethmi", LocalTime.now(), LocalDate.now(), "Deleting dead_people id - "+colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
+                        try {
+                            DetailModel.save(detail);
+                        } catch (SQLException ex) {
+                            new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
+                        }
                         new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
                         obList.remove( tbl.getSelectionModel().getSelectedIndex());
                         tbl.refresh();

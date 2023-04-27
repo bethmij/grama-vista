@@ -90,9 +90,15 @@ public class DisableRegistrationFormController implements Initializable {
                     boolean isSaved = DisableModel.save(new Disable(
                             id[1], civil_id[1], lblName.getText(), txtDisability.getText(), txtDescription.getText()));
 
-                    if (isSaved)
+                    if (isSaved) {
+                        Detail detail = new Detail("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering disable_people id - " + lblId.getText() + " \nname - " + lblName.getText());
+                        try {
+                            DetailModel.save(detail);
+                        } catch (SQLException e) {
+                            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                        }
                         new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-                    else
+                    }else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
                 } catch (SQLException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

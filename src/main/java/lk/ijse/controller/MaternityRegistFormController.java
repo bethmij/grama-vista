@@ -104,9 +104,15 @@ public class MaternityRegistFormController implements Initializable {
                             Integer.valueOf(txtMonth.getText()),
                             txtMidWife.getText()));
 
-                    if (isSaved)
+                    if (isSaved) {
+                        Detail detail = new Detail("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering maternity  id - " + lblID.getText() + " \nname - " + lblName.getText());
+                        try {
+                            DetailModel.save(detail);
+                        } catch (SQLException e) {
+                            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                        }
                         new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-                    else
+                    }else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
                 } catch (SQLException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

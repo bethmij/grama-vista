@@ -24,6 +24,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static lk.ijse.controller.DeadManageFormController.dead;
+import static lk.ijse.controller.IndividualFormController.civil1;
 
 public class DeadPeopleFormController implements Initializable {
     public AnchorPane deadPane;
@@ -90,9 +91,15 @@ public class DeadPeopleFormController implements Initializable {
                 try {
                     boolean isSaved = DeadModel.save(new Dead(reg_id[1], civil_id[1], lblName.getText(), dtpDate.getValue()), division_id);
 
-                    if (isSaved)
+                    if (isSaved) {
+                        Detail detail = new Detail("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering dead_people id - " + lblID.getText() + " \nname - " + lblName.getText());
+                        try {
+                            DetailModel.save(detail);
+                        } catch (SQLException e) {
+                            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                        }
                         new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
-                    else
+                    }else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
                 } catch (SQLException e) {

@@ -100,9 +100,9 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="473.0" layoutY="94.0" onAction="#btnAddOnAction" prefHeight="120.0" prefWidth="131.0" ripplerFill="#f5f4f000" styleClass="image-icon">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="501.0" layoutY="107.0" onAction="#btnAddOnAction" prefHeight="101.0" prefWidth="109.0" ripplerFill="#f5f4f000" styleClass="image-icon">
          <graphic>
-            <ImageView fitHeight="130.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="104.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons8-election-64%20(1).png" />
                </image>
@@ -119,9 +119,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="751.0" layoutY="103.0" onAction="#btnVListOnAction" prefHeight="120.0" prefWidth="131.0" ripplerFill="#f5f4f000" styleClass="image-icon">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="743.0" layoutY="111.0" onAction="#btnVListOnAction" prefHeight="96.0" prefWidth="99.0" ripplerFill="#f5f4f000" styleClass="image-icon">
          <graphic>
-            <ImageView fitHeight="112.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="103.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/diversity_3_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
@@ -138,9 +138,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="495.0" layoutY="370.0" onAction="#btnVoteOnAction" prefHeight="120.0" prefWidth="131.0" ripplerFill="#f5f4f000" styleClass="image-icon">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="505.0" layoutY="358.0" onAction="#btnVoteOnAction" prefHeight="93.0" prefWidth="83.0" ripplerFill="#f5f4f000" styleClass="image-icon">
          <graphic>
-            <ImageView fitHeight="112.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="103.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons8-ballot-100.png" />
                </image>
@@ -157,9 +157,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="758.0" layoutY="370.0" onAction="#btnResultOnAction" prefHeight="120.0" prefWidth="131.0" ripplerFill="#f5f4f000" styleClass="image-icon">
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="751.0" layoutY="356.0" onAction="#btnResultOnAction" prefHeight="92.0" prefWidth="99.0" ripplerFill="#f5f4f000" styleClass="image-icon">
          <graphic>
-            <ImageView fitHeight="112.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="102.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icons8-election-64%20(2).png" />
                </image>
@@ -176,24 +176,24 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Text fill="#7e5a06" layoutX="483.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Election">
+      <Text fill="#7e5a06" layoutX="492.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Election">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
       </Text>
-      <Text fill="#7e5a06" layoutX="778.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voters List">
+      <Text fill="#7e5a06" layoutX="760.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voters List">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
       </Text>
-      <Text fill="#7e5a06" layoutX="536.0" layoutY="525.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voting">
+      <Text fill="#7e5a06" layoutX="536.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voting">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
       </Text>
-      <Text fill="#7e5a06" layoutX="772.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Results">
+      <Text fill="#7e5a06" layoutX="761.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Results">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
       </Text>
       <ImageView fitHeight="235.0" fitWidth="417.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
