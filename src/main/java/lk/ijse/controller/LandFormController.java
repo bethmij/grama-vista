@@ -24,10 +24,12 @@ import java.time.LocalTime;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import static lk.ijse.controller.AddLandTypeFormController.landDetailList;
 import static lk.ijse.controller.CivilManageFormController.multiResidenceList;
 import static lk.ijse.controller.IndividualFormController.civil1;
 import static lk.ijse.controller.LandManageFormController.*;
 import static lk.ijse.controller.MaternityManageFormController.maternity;
+import static lk.ijse.controller.OwnershipFormController.ownerLists;
 
 public class LandFormController implements Initializable {
     public AnchorPane landRoot;
@@ -81,11 +83,11 @@ public class LandFormController implements Initializable {
                 String[] land_num = lblID.getText().split("L00");
                 Integer type_id = LandTypeModel.getTypeId((String) cbLType.getValue());
 
-                AddLandTypeFormController.landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1]), (String) cbLType.getValue()));
+                landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1]), (String) cbLType.getValue()));
 
                 try {
                     boolean isSaved = LandModel.save(new Land(
-                            Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText())), AddLandTypeFormController.landDetailList, OwnershipFormController.ownerLists);
+                            Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText())), landDetailList, ownerLists);
 
                     if (isSaved) {
                         Detail detail = new Detail("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering land id - "+lblID.getText());
@@ -108,14 +110,12 @@ public class LandFormController implements Initializable {
             }
         }else if(save.getText().equals("Update")){
             if (!txtPlan.getText().equals("") && !txtArea.getText().equals("")) {
-                String[] land_num = lblID.getText().split("L00");
                 Integer type_id = LandTypeModel.getTypeId((String) cbLType.getValue());
 
-                AddLandTypeFormController.landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1]), (String) cbLType.getValue()));
-
+                landDetailList.add(new LandDetail(type_id, land.getLand_id(), (String) cbLType.getValue()));
                 try {
                     boolean isSaved = LandModel.update(new Land(
-                            Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText())), AddLandTypeFormController.landDetailList, OwnershipFormController.ownerLists);
+                            land.getLand_id(), txtPlan.getText(), Double.valueOf(txtArea.getText())), landDetailList, ownerLists);
 
                     if (isSaved)
                         new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
@@ -138,12 +138,12 @@ public class LandFormController implements Initializable {
         land_id=lblID.getText();
         OpenView.openView("ownershipForm");
 
-        if(ownerList!=null) {
+        /*if(ownerList!=null) {
             for (int i = 0; i < ownerList.size(); i++) {
                 index = i;
                 OpenView.openView("ownershipForm");
             }
-        }
+        }*/
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) {

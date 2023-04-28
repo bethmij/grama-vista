@@ -48,7 +48,7 @@ public class CivilModel {
     }
 
     public static List<String> loadCivilId () throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT reg_number FROM grama_vista.civil WHERE isArchieved!=TRUE");
+        ResultSet resultSet = CrudUtil.execute("SELECT reg_number FROM grama_vista.civil WHERE isArchieved=FALSE ORDER BY reg_number ASC ");
         List<String> id = new ArrayList<>();
 
         while (resultSet.next()){
@@ -97,9 +97,8 @@ public class CivilModel {
     public static CivilDTO search(String reg_id) throws SQLException {
         ResultSet resultSet = CrudUtil.execute("SELECT *,TIMESTAMPDIFF(year,dob,now()) AS Age FROM grama_vista.civil  WHERE reg_number=?", reg_id);
         if (resultSet.next()) {
-
             return new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2), resultSet.getString(4),
-                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(17),resultSet.getString(5),resultSet.getString(7), resultSet.getString(8),
+                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(19),resultSet.getString(5),resultSet.getString(7), resultSet.getString(8),
                     resultSet.getString(9),resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13),resultSet.getString(15));
 
         }
@@ -127,11 +126,11 @@ public class CivilModel {
     public static List<CivilDTO> searchAll() throws SQLException {
 
         List<CivilDTO> datalist = new ArrayList<>();
-        ResultSet resultSet = CrudUtil.execute("SELECT *,TIMESTAMPDIFF(year,dob,now()) AS Age FROM grama_vista.civil WHERE isArchieved!=TRUE");
+        ResultSet resultSet = CrudUtil.execute("SELECT *,TIMESTAMPDIFF(year,dob,now()) AS Age FROM grama_vista.civil WHERE isArchieved=FALSE ");
         while (resultSet.next()) {
 
             datalist.add (new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2), resultSet.getString(4),
-                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(17), resultSet.getString(5), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9),
+                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(19), resultSet.getString(5), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9),
                     resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13),resultSet.getString(15)));
 
         }
@@ -148,18 +147,16 @@ public class CivilModel {
 
     }
 
-    public static boolean dead(Object id) throws SQLException {
-        return CrudUtil.execute("DELETE  FROM grama_vista.civil WHERE reg_number=?", id);
-    }
+
 
 
     public static List<CivilDTO> getCivil(String home_id) throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT DISTINCT c.* , TIMESTAMPDIFF(year,c.dob,now()) AS Age FROM grama_vista.civil c JOIN grama_vista.multi_residence m on c.reg_number = m.reg_number WHERE m.home_id=?",home_id);
+        ResultSet resultSet = CrudUtil.execute("SELECT DISTINCT c.* , TIMESTAMPDIFF(year,c.dob,now()) AS Age FROM grama_vista.civil c JOIN grama_vista.multi_residence m on c.reg_number = m.reg_number WHERE m.home_id=? AND c.isArchieved=FALSE",home_id);
         List<CivilDTO> datalist = new ArrayList<>();
         while (resultSet.next()) {
 
             datalist.add( new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2), resultSet.getString(4),
-                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(17),resultSet.getString(5),resultSet.getString(7), resultSet.getString(8),
+                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(19),resultSet.getString(5),resultSet.getString(7), resultSet.getString(8),
                     resultSet.getString(9),resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13),resultSet.getString(15)));
 
         }
@@ -168,7 +165,7 @@ public class CivilModel {
 
 
     public static Map<Integer,Integer> getDateDiff() throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT reg_number,TIMESTAMPDIFF(day,register_date,now()) AS date FROM grama_vista.civil WHERE isArchieved!=TRUE ");
+        ResultSet resultSet = CrudUtil.execute("SELECT reg_number,TIMESTAMPDIFF(day,register_date,now()) AS date FROM grama_vista.civil WHERE isArchieved=FALSE ");
         Map<Integer,Integer> datalist = new HashMap<>();
         while (resultSet.next()) {
             datalist.put(resultSet.getInt(1),resultSet.getInt(2));
@@ -185,7 +182,7 @@ public class CivilModel {
     }
 
     public static Integer getMale() throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT COUNT(reg_number) FROM grama_vista.civil WHERE gender='Male' ");
+        ResultSet resultSet = CrudUtil.execute("SELECT COUNT(reg_number) FROM grama_vista.civil WHERE gender='Male' AND isArchieved=FALSE");
         if(resultSet.next()){
             return resultSet.getInt(1);
         }
@@ -193,7 +190,7 @@ public class CivilModel {
     }
 
     public static Integer getFemale() throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT COUNT(reg_number) FROM grama_vista.civil WHERE gender='Female' ");
+        ResultSet resultSet = CrudUtil.execute("SELECT COUNT(reg_number) FROM grama_vista.civil WHERE gender='Female' AND isArchieved=FALSE");
         if(resultSet.next()){
             return resultSet.getInt(1);
         }
@@ -212,7 +209,7 @@ public class CivilModel {
     }
 
     public static Integer getCount() throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT COUNT(reg_number) FROM grama_vista.civil WHERE TIMESTAMPDIFF(year,dob,now()) >=18 AND isArchieved!=TRUE");
+        ResultSet resultSet = CrudUtil.execute("SELECT COUNT(reg_number) FROM grama_vista.civil WHERE TIMESTAMPDIFF(year,dob,now()) >=18");
         if(resultSet.next()){
             return resultSet.getInt(1);
         }
@@ -236,13 +233,21 @@ public class CivilModel {
     }
 
     public static CivilDTO searchbyNIC(String nic) throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT *,TIMESTAMPDIFF(year,dob,now()) AS Age FROM grama_vista.civil  WHERE nic=? AND isArchieved!=TRUE", nic);
+        ResultSet resultSet = CrudUtil.execute("SELECT *,TIMESTAMPDIFF(year,dob,now()) AS Age FROM grama_vista.civil  WHERE nic=?", nic);
         if (resultSet.next()) {
 
             return new CivilDTO(resultSet.getString(1), resultSet.getBlob(14),resultSet.getString(3),resultSet.getString(2), resultSet.getString(4),
-                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(17),resultSet.getString(5),resultSet.getString(7), resultSet.getString(8),
+                    resultSet.getDate(6).toLocalDate(), resultSet.getInt(19),resultSet.getString(5),resultSet.getString(7), resultSet.getString(8),
                     resultSet.getString(9),resultSet.getString(10), resultSet.getString(11),resultSet.getString(12),resultSet.getDouble(13),resultSet.getString(15));
 
+        }
+        return null;
+    }
+
+    public static Integer getID(String nic) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT reg_number FROM grama_vista.civil WHERE nic=?",nic);
+        if(resultSet.next()){
+            return resultSet.getInt(1);
         }
         return null;
     }

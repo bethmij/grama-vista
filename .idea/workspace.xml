@@ -6,12 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="d341e9b4-b3d1-4480-b66a-cc3b86d294fa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CivilViewFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CivilViewFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/AddLandTypeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/AddLandTypeFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CandidateManageFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CandidateManageFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandManageFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandManageFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/OwnershipFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/OwnershipFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/individualForm2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/individualForm2Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/CivilModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/CivilModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/CivilResidenceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/CivilResidenceModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/civilViewForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/civilViewForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/DeadModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/DeadModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/LandModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/LandModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/MultiResidenceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/MultiResidenceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/OwnerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/OwnerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/report/ChildReport.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/report/ChildReport.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/report/DisableReport.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/report/DisableReport.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/report/ElderReprt.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/report/ElderReprt.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/report/ElectionReport.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/report/ElectionReport.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/report/FeedReport.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/report/FeedReport.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/report/PregReport.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/report/PregReport.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/report/SamurdhiReport.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/report/SamurdhiReport.jasper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/css/Icon.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/css/Icon.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +76,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect" value="MySQL" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/view" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/report" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -75,8 +89,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\grama-vista\src\main\resources\view" />
       <recent name="D:\grama-vista\src\main\resources\report" />
+      <recent name="D:\grama-vista\src\main\resources\view" />
       <recent name="D:\grama-vista\src\main\resources\img\icon" />
       <recent name="D:\grama-vista\src\main\java\lib" />
     </key>
@@ -94,6 +108,19 @@
       <option name="MAIN_CLASS_NAME" value="AppInitializer" />
       <module name="grama-vista" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-19.0.2.1\lib&quot; --add-modules javafx.controls,javafx.fxml --add-exports javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lk.ijse.controller.Main" />
+      <module name="grama-vista" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lk.ijse.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -133,6 +160,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.SendMail" />
         <item itemvalue="Application.delete" />
         <item itemvalue="Application.main" />
@@ -206,7 +234,10 @@
       <workItem from="1682491723739" duration="10729000" />
       <workItem from="1682513536379" duration="21891000" />
       <workItem from="1682572537956" duration="7226000" />
-      <workItem from="1682580058621" duration="5051000" />
+      <workItem from="1682580058621" duration="7065000" />
+      <workItem from="1682618017887" duration="147000" />
+      <workItem from="1682618266265" duration="7837000" />
+      <workItem from="1682668499930" duration="12142000" />
     </task>
     <task id="LOCAL-00001" summary="grama vista 1">
       <created>1679592345340</created>
@@ -418,7 +449,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682580971173</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="grama vista Final 1">
+      <created>1682615783774</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1682615783774</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

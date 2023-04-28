@@ -2,7 +2,7 @@
 
 }
 .image-icon:hover{
-    -fx-effect: dropshadow(gaussian, #f0d55d, 10, 0.5, 0.0, 0.0);
+    -fx-effect: dropshadow(gaussian, #f0d55d, 10, 0.7, 0.0, 0.0);
 
 }
 

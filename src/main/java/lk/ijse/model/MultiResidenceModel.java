@@ -23,7 +23,6 @@ public class MultiResidenceModel {
     }
 
     private static boolean save( MultiResidence multiResidence ) throws SQLException {
-
         String sql = "INSERT INTO grama_vista.multi_residence (home_id, reg_number) " +
                 "VALUES (?,?)";
 

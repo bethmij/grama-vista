@@ -74,7 +74,10 @@ public class OwnershipFormController implements Initializable {
         String[] land_num = lblLand.getText().split("L00");
         String[] civil_id = String.valueOf(cbCivilID.getValue()).split("C00");
 
-        ownerLists.add(new Owner(Integer.valueOf(land_num[1]), civil_id[1], txtLotNum.getText(), Double.valueOf(txtPercentage.getText() )));
+        if ((!(land == null)))
+            ownerLists.add(new Owner(land.getLand_id(), civil_id[1], txtLotNum.getText(), Double.valueOf(txtPercentage.getText() )));
+        else
+            ownerLists.add(new Owner(Integer.valueOf(land_num[1]), civil_id[1], txtLotNum.getText(), Double.valueOf(txtPercentage.getText() )));
         if(ownerLists!=null)
             new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
 

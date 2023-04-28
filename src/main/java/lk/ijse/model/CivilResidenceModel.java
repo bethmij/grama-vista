@@ -32,19 +32,22 @@ public class CivilResidenceModel {
                 con.commit();
                 return true;
                 */
-            System.out.println(1);
+
             boolean isCivilSaved = CivilModel.save(civil);
+            Integer id = CivilModel.getID(civil.getNic());
             if (isCivilSaved) {
-                System.out.println(2);
+                for (int i=0; i< contact.size(); i++){
+                    contact.get(i).setCivil_id(String.valueOf(id));
+                }
                 boolean isContactSaved = ContactModel.save(contact);
                 if (isContactSaved) {
-                    System.out.println(3);
+                    for (int i=0; i< multiResidence.size(); i++){
+                        multiResidence.get(i).setCivil_id(String.valueOf(id));
+                    }
                     boolean isResidenceSaved = MultiResidenceModel.save(multiResidence);
                     if (isResidenceSaved) {
-                        System.out.println(4);
                         boolean isPopulationUpdate = DivisionModel.UpdatePopulation(division_id);
                         if(isPopulationUpdate) {
-                            System.out.println(5);
                             con.commit();
                             return true;
                         }
@@ -71,9 +74,16 @@ public class CivilResidenceModel {
             con.setAutoCommit(false);
 
             boolean isCivilSaved = CivilModel.update(civil);
+            Integer id = CivilModel.getID(civil.getNic());
             if (isCivilSaved) {
+                for (int i=0; i< contactList.size(); i++){
+                    contactList.get(i).setCivil_id(String.valueOf(id));
+                }
                 boolean isContactSaved = ContactModel.update(contactList);
                 if (isContactSaved) {
+                    for (int i=0; i< residenceList.size(); i++){
+                        residenceList.get(i).setCivil_id(String.valueOf(id));
+                    }
                     boolean isResidenceSaved = MultiResidenceModel.save(residenceList);
                     if (isResidenceSaved) {
                         con.commit();

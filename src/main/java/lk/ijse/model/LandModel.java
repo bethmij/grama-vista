@@ -30,9 +30,18 @@ public class LandModel {
 
             boolean isLandSaved = CrudUtil.execute("INSERT INTO grama_vista.land (land_num, plan_num, land_area) VALUES (?,?,?)",
                     land.getLand_id(), land.getPlan_num(), land.getL_area());
+            Integer id = getLandNum(land.getPlan_num());
             if (isLandSaved) {
+
+                for(int i=0; i<ownerList.size(); i++){
+                    ownerList.get(i).setLand_id(id);
+                }
                 boolean isOwnerSaved = OwnerModel.save(ownerList);
                 if (isOwnerSaved) {
+
+                    for(int i=0; i<landDetailList.size(); i++){
+                        landDetailList.get(i).setLand_num(id);
+                    }
                     boolean isDetailSaved = LandTypeModel.saveDetail(landDetailList);
                     if (isDetailSaved) {
                         con.commit();
@@ -53,8 +62,16 @@ public class LandModel {
 
     }
 
+    private static Integer getLandNum(String plan_num) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT land_num FROM grama_vista.land WHERE plan_num=? ",plan_num);
+        if(resultSet.next()){
+            return resultSet.getInt(1);
+        }
+        return null;
+    }
+
     public static List<String> loadLandID() throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT land_num FROM grama_vista.land ");
+        ResultSet resultSet = CrudUtil.execute("SELECT land_num FROM grama_vista.land WHERE isArchieved=FALSE");
         List<String> id = new ArrayList<>();
 
         while (resultSet.next()){
@@ -77,7 +94,7 @@ public class LandModel {
 
     public static List<Land> searchAll() throws SQLException {
         List<Land> landList = new ArrayList<>();
-        ResultSet resultSet = CrudUtil.execute("SELECT * FROM grama_vista.land ");
+        ResultSet resultSet = CrudUtil.execute("SELECT * FROM grama_vista.land WHERE isArchieved=FALSE");
 
         while (resultSet.next()) {
             landList.add(new Land(resultSet.getInt(1),resultSet.getString(2),resultSet.getDouble(3)));
@@ -93,10 +110,21 @@ public class LandModel {
 
             boolean isLandUpdated = CrudUtil.execute("UPDATE grama_vista.land SET plan_num=?, land_area=? WHERE land_num=? ",
                      land.getPlan_num(), land.getL_area(),land.getLand_id());
+            Integer id = getLandNum(land.getPlan_num());
             if (isLandUpdated) {
-                boolean isOwnerUpdated = OwnerModel.update(ownerLists);
+
+                for(int i=0; i<ownerLists.size(); i++){
+                    ownerLists.get(i).setLand_id(id);
+                }
+
+                boolean isOwnerUpdated = OwnerModel.save(ownerLists);
                 if (isOwnerUpdated) {
-                    boolean isDetailUpdated = LandTypeModel.updateDetail(landDetailList);
+
+                    for(int i=0; i<landDetailList.size(); i++){
+                        landDetailList.get(i).setLand_num(id);
+                    }
+
+                    boolean isDetailUpdated = LandTypeModel.saveDetail(landDetailList);
                     if (isDetailUpdated) {
                         con.commit();
                         return true;
@@ -124,6 +152,6 @@ public class LandModel {
     }
 
     public static boolean delete(String id) throws SQLException {
-        return CrudUtil.execute("DELETE FROM grama_vista.land WHERE land_num=?",id);
+        return CrudUtil.execute("UPDATE grama_vista.land SET isArchieved=TRUE WHERE land_num=?",id);
     }
 }

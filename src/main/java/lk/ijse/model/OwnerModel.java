@@ -53,9 +53,11 @@ public class OwnerModel {
     }
 
     private static boolean update(Owner owner) throws SQLException {
-
-        return CrudUtil.execute("UPDATE grama_vista.co_ownership SET reg_number=?, land_percentage=?,lot_num=?  WHERE land_num=?",
+        //System.out.println(owner);
+        boolean isSaved = CrudUtil.execute("UPDATE grama_vista.co_ownership SET reg_number=?, land_percentage=?,lot_num=?  WHERE land_num=?",
                 owner.getCivil_id(), owner.getPercentage(), owner.getLot_num(), owner.getLand_id());
+        System.out.println(isSaved);
+        return isSaved;
     }
 }
 

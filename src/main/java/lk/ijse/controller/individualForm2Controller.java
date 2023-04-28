@@ -186,8 +186,8 @@ public class individualForm2Controller implements Initializable {
             }
 
             try {
-                String[] strings = civil_id.split("C00");
-                boolean isUploaded = CivilModel.upload(strings[1], in);
+                Integer id = CivilModel.getID(civil1.getNic());
+                boolean isUploaded = CivilModel.upload(String.valueOf(id), in);
 
                 if (isUploaded)
                     new Alert(Alert.AlertType.CONFIRMATION, "Image Uploaded Successfully !").show();

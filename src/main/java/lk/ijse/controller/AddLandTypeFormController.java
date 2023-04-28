@@ -52,7 +52,12 @@ public class AddLandTypeFormController implements Initializable {
         String[] land_num = lblLand.getText().split("L00");
         Integer type_id = LandTypeModel.getTypeId((String) cbType.getValue());
 
-        landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1]),(String)cbType.getValue() ));
+        if ((!(land == null)))
+            landDetailList.add(new LandDetail(type_id,land.getLand_id(),(String)cbType.getValue() ));
+        else
+            landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1]),(String)cbType.getValue() ));
+
+
         if(landDetailList !=null)
             new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
     }

@@ -36,8 +36,10 @@ public class DeadModel {
             if (isDeadSaved) {
                 boolean isPopulationUpdate = DivisionModel.UpdateDeadPopulation(division_id);
                 if (isPopulationUpdate) {
-                    con.commit();
-                    return true;
+                    boolean isRemove = CivilModel.delete(dead.getCivil_ID());
+                    if(isRemove) {
+                        con.commit();
+                    }return true;
                 }
             }
 

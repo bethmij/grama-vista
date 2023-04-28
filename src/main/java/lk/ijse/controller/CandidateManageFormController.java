@@ -110,7 +110,7 @@ public class CandidateManageFormController implements Initializable {
             CandidateDTO candidateDTO = CandidateModel.search((String) cmbID.getValue());
             candidate = new Candidate(candidateDTO.getElection(), candidateDTO.getDivision(), candidateDTO.getNIC(),
                     candidateDTO.getName(),candidateDTO.getPolitic(),candidateDTO.getAddress(), candidateDTO.getContact());
-            OpenView.openView("candidateForm");
+            OpenView.openView("CandidateRegForm");
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }

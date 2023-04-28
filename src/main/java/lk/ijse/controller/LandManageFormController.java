@@ -80,7 +80,7 @@ public class LandManageFormController implements Initializable {
             List<Owner> ownerLists = OwnerModel.searchAllOwner();
 
             for (Land datalist : landList) {
-                Button btnDelete = new Button("Delete");
+                Button btnDelete = new Button("Remove");
                 btnDelete.setCursor(Cursor.HAND);
                 setDeleteBtnOnAction(btnDelete);
 
@@ -133,7 +133,7 @@ public class LandManageFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
-        Button btnDelete = new Button("Delete");
+        Button btnDelete = new Button("Remove");
         btnDelete.setCursor(Cursor.HAND);
         setDeleteBtnOnAction(btnDelete);
 
@@ -167,14 +167,14 @@ public class LandManageFormController implements Initializable {
             ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
             ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-            Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to delete?", yes, no).showAndWait();
+            Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
 
             if (result.orElse(no) == yes) {
                 try {
                     boolean isDeleted = LandModel.delete((String) colID.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
 
                     if(isDeleted) {
-                        new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
+                        new Alert(Alert.AlertType.CONFIRMATION,"Removed Successfully!" ).show();
                         obList.remove( tblDivision.getSelectionModel().getSelectedIndex());
                         tblDivision.refresh();
                     }
