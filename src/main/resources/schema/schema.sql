@@ -148,3 +148,38 @@ CREATE TABLE users (
 );
 
 DELETE FROM gn_division WHERE division_id = 'DN02';
+
+CREATE TABLE detail(
+                       detail_num INT AUTO_INCREMENT,
+                       function_name VARCHAR(50),
+                       user VARCHAR(50),
+                       id VARCHAR(10),
+                       name VARCHAR(50),
+                       time TIME,
+                       date DATE,
+                       CONSTRAINT PRIMARY KEY (detail_num)
+);
+
+CREATE TABLE vote(
+                     election_id VARCHAR(10),
+                     civil_id INT(10),
+                     candidate_id VARCHAR(10),
+                     CONSTRAINT FOREIGN KEY (election_id) REFERENCES voteReg(election_id) ON UPDATE CASCADE ON DELETE CASCADE,
+                     CONSTRAINT FOREIGN KEY (civil_id) REFERENCES civil(reg_number) ON UPDATE CASCADE ON DELETE CASCADE,
+                     CONSTRAINT FOREIGN KEY (candidate_id) REFERENCES candidate(elect_reg_num) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
+CREATE TABLE voteReg (
+                         election_id VARCHAR(10),
+                         election_type ENUM ('Local Authorities Election'),
+                         candidate_count INT(3),
+                         CONSTRAINT PRIMARY KEY (election_id)
+);
+
+CREATE TABLE add_candidate(
+                              election_id VARCHAR(10),
+                              candidate_id VARCHAR(10),
+                              CONSTRAINT FOREIGN KEY (election_id) REFERENCES voteReg(election_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+

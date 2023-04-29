@@ -6,26 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d341e9b4-b3d1-4480-b66a-cc3b86d294fa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/AddLandTypeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/AddLandTypeFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CandidateManageFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/CandidateManageFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandManageFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LandManageFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/OwnershipFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/OwnershipFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/individualForm2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/individualForm2Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/CivilModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/CivilModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/CivilResidenceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/CivilResidenceModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/DeadModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/DeadModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/LandModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/LandModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/MultiResidenceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/MultiResidenceModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/model/OwnerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/model/OwnerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/report/ChildReport.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/report/ChildReport.jasper" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/report/DisableReport.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/report/DisableReport.jasper" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/report/ElderReprt.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/report/ElderReprt.jasper" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/report/ElectionReport.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/report/ElectionReport.jasper" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/report/FeedReport.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/report/FeedReport.jasper" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/report/PregReport.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/report/PregReport.jasper" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/report/SamurdhiReport.jasper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/report/SamurdhiReport.jasper" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/css/Icon.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/css/Icon.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/schema/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema/schema.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +218,8 @@
       <workItem from="1682580058621" duration="7065000" />
       <workItem from="1682618017887" duration="147000" />
       <workItem from="1682618266265" duration="7837000" />
-      <workItem from="1682668499930" duration="12142000" />
+      <workItem from="1682668499930" duration="13142000" />
+      <workItem from="1682755124203" duration="6430000" />
     </task>
     <task id="LOCAL-00001" summary="grama vista 1">
       <created>1679592345340</created>
@@ -456,7 +438,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682615783774</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="grama vista Final 1.0">
+      <created>1682708467927</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1682708467927</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -476,7 +465,8 @@
     <MESSAGE value="grama vista 10" />
     <MESSAGE value="grama vista 11" />
     <MESSAGE value="grama vista Final 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="grama vista Final 1" />
+    <MESSAGE value="grama vista Final 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="grama vista Final 1.0" />
   </component>
   <component name="XPathView.XPathProjectComponent">
     <history />
