@@ -39,7 +39,8 @@ public class DeadModel {
                     boolean isRemove = CivilModel.delete(dead.getCivil_ID());
                     if(isRemove) {
                         con.commit();
-                    }return true;
+                        return true;
+                    }
                 }
             }
 

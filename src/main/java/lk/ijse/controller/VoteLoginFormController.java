@@ -74,7 +74,7 @@ public class VoteLoginFormController implements Initializable {
         //civilID = Integer.valueOf(ci);
 
         LocalTime start = LocalTime.parse("08:00");
-        LocalTime end = LocalTime.parse("22:00");
+        LocalTime end = LocalTime.parse("20:00");
 
 
         Vote vote = null;

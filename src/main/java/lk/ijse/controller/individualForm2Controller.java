@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -19,7 +20,10 @@ import javafx.stage.Window;
 import lk.ijse.dto.*;
 import lk.ijse.model.*;
 import lk.ijse.util.OpenView;
+import org.bytedeco.javacv.FrameGrabber;
+import org.bytedeco.javacv.Java2DFrameConverter;
 
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
@@ -51,6 +55,13 @@ public class individualForm2Controller implements Initializable {
     public Button btn1;
     public JFXButton image;
 
+    private Boolean isCameraEnabled = true;// for cam capture
+    public ImageView img;  //create image view to set camera capture
+    public JFXButton btnSave;  //button set on camera on takepicture
+    private volatile boolean isCapturing; //thread for button
+    private FrameGrabber grabber; //to capture video frames from a webcam:
+    private Java2DFrameConverter converter; //convert the video frames
+    private BufferedImage imageCap;//used for loading, storing, and manipulating images
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -291,5 +302,9 @@ public class individualForm2Controller implements Initializable {
         OpenView.openView("aboutUsForm",indiroot2);
     }
 
+    public void btnImageCapOnAction(ActionEvent actionEvent) {
+
+        OpenView.openView("camera");
+    }
 }
 

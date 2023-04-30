@@ -559,5 +559,39 @@
             </InnerShadow>
          </effect>
       </ImageView>
+      <JFXButton fx:id="imageCAp" alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" layoutX="543.0" layoutY="553.0" onAction="#btnImageCapOnAction" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #c16c04;" text="Get Image">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <textFill>
+            <LinearGradient cycleMethod="REFLECT" endX="0.9318181745933763" endY="0.8409090981338964">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6947368383407593" green="0.5602495074272156" blue="0.1904093623161316" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4960443817089584">
+                     <color>
+                        <Color red="0.8526315689086914" green="0.8526315689086914" blue="0.8526315689086914" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9684210419654846" green="0.9684210419654846" blue="0.9684210419654846" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>
