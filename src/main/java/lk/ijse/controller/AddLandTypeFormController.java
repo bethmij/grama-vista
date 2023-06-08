@@ -8,8 +8,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import lk.ijse.dto.LandDetail;
-import lk.ijse.model.LandTypeModel;
+import lk.ijse.dao.custom.LandTypeDAO;
+import lk.ijse.dto.LandDetailDTO;
+import lk.ijse.entity.LandDetail;
+import lk.ijse.dao.custom.impl.LandTypeDAOImpl;
 
 
 import java.net.URL;
@@ -19,15 +21,15 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import static lk.ijse.controller.LandManageFormController.land;
-import static lk.ijse.controller.LandManageFormController.landDetails;
 
 public class AddLandTypeFormController implements Initializable {
 
 
     public TextField txtLand;
     public ChoiceBox cbType;
-    public static List<LandDetail> landDetailList = new ArrayList<>();
+    public static List<LandDetailDTO> landDetailList = new ArrayList<>();
     public Label lblLand;
+    LandTypeDAO typeDAO = new LandTypeDAOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,12 +52,12 @@ public class AddLandTypeFormController implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
 
         String[] land_num = lblLand.getText().split("L00");
-        Integer type_id = LandTypeModel.getTypeId((String) cbType.getValue());
+        Integer type_id = typeDAO.getTypeId((String) cbType.getValue());
 
         if ((!(land == null)))
-            landDetailList.add(new LandDetail(type_id,land.getLand_id(),(String)cbType.getValue() ));
+            landDetailList.add(new LandDetailDTO(type_id,land.getLand_id(),(String)cbType.getValue() ));
         else
-            landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1]),(String)cbType.getValue() ));
+            landDetailList.add(new LandDetailDTO(type_id, Integer.valueOf(land_num[1]),(String)cbType.getValue() ));
 
 
         if(landDetailList !=null)

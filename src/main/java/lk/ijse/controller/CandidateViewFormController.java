@@ -11,18 +11,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import lk.ijse.model.CandidateModel;
-import lk.ijse.model.DeadModel;
-import lombok.SneakyThrows;
+import lk.ijse.bo.custom.CandidateViewBO;
+import lk.ijse.bo.custom.impl.CandidateViewBOImpl;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -55,6 +50,7 @@ public class CandidateViewFormController implements Initializable {
 
     @FXML
     private Label lblPolitic;
+    CandidateViewBO candidateViewBO = new CandidateViewBOImpl();
 
 
     @Override
@@ -96,12 +92,12 @@ public class CandidateViewFormController implements Initializable {
 
         if (result.orElse(no) == yes) {
             try {
-                boolean isDeleted = CandidateModel.delete(id);
+                boolean isDeleted = candidateViewBO.deleteCandidate(id);
 
                 if(isDeleted) {
                     new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
                 }
-            } catch (SQLException ex) {
+            } catch (SQLException | ClassNotFoundException ex) {
                 new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
             }
 

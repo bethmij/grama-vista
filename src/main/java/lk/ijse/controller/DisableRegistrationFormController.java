@@ -8,12 +8,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dto.Civil;
-import lk.ijse.dto.Dead;
-import lk.ijse.dto.Detail;
-import lk.ijse.dto.Disable;
-import lk.ijse.model.*;
-import lk.ijse.util.OpenView;
+import lk.ijse.bo.custom.DisableRegistrationBO;
+import lk.ijse.bo.custom.impl.DisableRegistrationBOImpl;
+import lk.ijse.dto.DetailDTO;
+import lk.ijse.dto.DisableDTO;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -24,7 +23,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static java.lang.Integer.valueOf;
-import static lk.ijse.controller.DeadManageFormController.dead;
 import static lk.ijse.controller.DisableManageFormController.disable;
 
 public class DisableRegistrationFormController implements Initializable {
@@ -35,6 +33,7 @@ public class DisableRegistrationFormController implements Initializable {
     public TextField txtDescription;
     public ComboBox cmbCivil;
     public Button btn1;
+    DisableRegistrationBO disableRegistrationBO = new DisableRegistrationBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -46,12 +45,12 @@ public class DisableRegistrationFormController implements Initializable {
     }
 
     private void setDisableController() {
-        lblId.setText(disable.getID());
-        txtDisability.setText(disable.getDisability());
+        lblId.setText(disable.getId());
+        txtDisability.setText(disable.getDisable());
         lblName.setText(disable.getName());
-        if(disable.getDescription()!=null)
-            txtDescription.setText(disable.getDescription());
-        cmbCivil.setValue(disable.getCivil_ID());
+        if(disable.getDesc()!=null)
+            txtDescription.setText(disable.getDesc());
+        cmbCivil.setValue(disable.getCivil());
         btn1.setText("Update");
     }
 
@@ -59,7 +58,7 @@ public class DisableRegistrationFormController implements Initializable {
     private void loadCivilId() {
         List<String> id = null;
         try {
-            id = CivilModel.loadCivilId();
+            id = disableRegistrationBO.loadCivilId();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -73,7 +72,7 @@ public class DisableRegistrationFormController implements Initializable {
 
     private void generateNextId() {
         try {
-            lblId.setText("DS00"+DisableModel.getNextId());
+            lblId.setText("DS00"+ disableRegistrationBO.getNextDisableId());
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -87,13 +86,13 @@ public class DisableRegistrationFormController implements Initializable {
                 String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
 
                 try {
-                    boolean isSaved = DisableModel.save(new Disable(
+                    boolean isSaved = disableRegistrationBO.saveDisable(new DisableDTO(
                             id[1], civil_id[1], lblName.getText(), txtDisability.getText(), txtDescription.getText()));
 
                     if (isSaved) {
-                        Detail detail = new Detail("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering disable_people id - " + lblId.getText() + " \nname - " + lblName.getText());
+                        DetailDTO detail = new DetailDTO("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering disable_people id - " + lblId.getText() + " \nname - " + lblName.getText());
                         try {
-                            DetailModel.save(detail);
+                            disableRegistrationBO. saveDetail(detail);
                         } catch (SQLException e) {
                             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                         }
@@ -111,7 +110,7 @@ public class DisableRegistrationFormController implements Initializable {
         }else if(btn1.getText().equals("Update")) {
             if (!(cmbCivil.getValue() == null) && !txtDisability.getText().equals("")) {
                 try {
-                    boolean isUpdate = DisableModel.update(new Disable(lblId.getText(), (String) cmbCivil.getValue(), lblName.getText(), txtDisability.getText(), txtDescription.getText()));
+                    boolean isUpdate = disableRegistrationBO.updateDisable(new DisableDTO(lblId.getText(), (String) cmbCivil.getValue(), lblName.getText(), txtDisability.getText(), txtDescription.getText()));
                     if (isUpdate)
                         new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
                     else
@@ -139,7 +138,7 @@ public class DisableRegistrationFormController implements Initializable {
         String[] strings = id.split("C00");
 
         try {
-            lblName.setText(CivilModel.searchById(strings[1]));
+            lblName.setText(disableRegistrationBO.searchCivilByID(strings[1]));
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -160,9 +159,9 @@ public class DisableRegistrationFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                disableRegistrationBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

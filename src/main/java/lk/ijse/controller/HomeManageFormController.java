@@ -10,14 +10,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.custom.HomeManageBO;
+import lk.ijse.bo.custom.impl.HomeManageBOImpl;
 import lk.ijse.dto.*;
-import lk.ijse.dto.tm.DisableTM;
 import lk.ijse.dto.tm.ResidenceTM;
-import lk.ijse.model.CivilModel;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.DisableModel;
-import lk.ijse.model.ResidenceModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.entity.Residence;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -36,8 +34,11 @@ public class HomeManageFormController implements Initializable {
     public TableColumn colAddress;
     public TableColumn colHolder;
     public TableColumn colAction;
+    public TableColumn colAction1;
     private ObservableList<ResidenceTM> obList = FXCollections.observableArrayList();
     public static Residence residence;
+    public static List<CivilDTO> civilDetail;
+    HomeManageBO homeManageBO = new HomeManageBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,11 +52,12 @@ public class HomeManageFormController implements Initializable {
         colAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
         colHolder.setCellValueFactory(new PropertyValueFactory<>("Holder"));
         colAction.setCellValueFactory(new PropertyValueFactory<>("btn"));
+        colAction1.setCellValueFactory(new PropertyValueFactory<>("btn1"));
     }
 
     private void loadResidenceID() {
         try {
-            List<String> id = ResidenceModel.loadResidenceID();
+            List<String> id = homeManageBO.loadResidenceId();
             ObservableList<String> dataList = FXCollections.observableArrayList();
 
             for (String ids : id) {
@@ -73,14 +75,18 @@ public class HomeManageFormController implements Initializable {
 
     public void btnGetAllOnAction(ActionEvent actionEvent) {
         try {
-            List<ResidenceDTO> residenceDTOS  = ResidenceModel.searchAll();
+            List<ResidenceDTO> residenceDTOS  = homeManageBO.searchAllResidence();
 
             for (ResidenceDTO datalist : residenceDTOS) {
                 Button btnDelete = new Button("Delete");
                 btnDelete.setCursor(Cursor.HAND);
                 setDeleteBtnOnAction(btnDelete);
 
-                ResidenceTM residenceTM = new ResidenceTM(datalist.getID(),datalist.getDivision(),datalist.getAddress(),datalist.getHolder(),btnDelete);
+                Button btnView = new Button("View more");
+                btnView.setCursor(Cursor.HAND);
+                setViewBtnOnAction(btnView);
+
+                ResidenceTM residenceTM = new ResidenceTM(datalist.getID(),datalist.getDivision(),datalist.getAddress(),datalist.getHolder(),btnDelete,btnView);
                 obList.add(residenceTM);
                 tblDivision.setItems(obList);
             }
@@ -92,12 +98,12 @@ public class HomeManageFormController implements Initializable {
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
-            ResidenceDTO residenceDTO = ResidenceModel.search((String) cbHome.getValue());
+            ResidenceDTO residenceDTO = homeManageBO.searchResidence((String) cbHome.getValue());
             residence= new Residence(residenceDTO.getID(),residenceDTO.getDivision(),residenceDTO.getHolder(),residenceDTO.getAddress(),residenceDTO.getMember(),
                     residenceDTO.getBelow(),residenceDTO.getType(),residenceDTO.getElec(),residenceDTO.getWater());
 
             OpenView.openView("homeRegistrationForm");
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
@@ -105,9 +111,9 @@ public class HomeManageFormController implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent) {
         ResidenceDTO residenceDTO = null;
         try {
-            residenceDTO = ResidenceModel.search((String) cbHome.getValue());
+            residenceDTO = homeManageBO.searchResidence((String) cbHome.getValue());
 
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
@@ -115,7 +121,11 @@ public class HomeManageFormController implements Initializable {
         btnDelete.setCursor(Cursor.HAND);
         setDeleteBtnOnAction(btnDelete);
 
-        ResidenceTM residenceTM = new ResidenceTM(residenceDTO.getID(),residenceDTO.getDivision(),residenceDTO.getAddress(),residenceDTO.getHolder(),btnDelete);
+        Button btnView = new Button("View more");
+        btnView.setCursor(Cursor.HAND);
+        setViewBtnOnAction(btnView);
+
+        ResidenceTM residenceTM = new ResidenceTM(residenceDTO.getID(),residenceDTO.getDivision(),residenceDTO.getAddress(),residenceDTO.getHolder(),btnDelete,btnView);
         obList.add(residenceTM);
         tblDivision.setItems(obList);
     }
@@ -129,13 +139,13 @@ public class HomeManageFormController implements Initializable {
 
             if (result.orElse(no) == yes) {
                 try {
-                    boolean isDeleted = ResidenceModel.delete((String) colID.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
+                    boolean isDeleted = homeManageBO.deleteResidence((String) colID.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
                     if(isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
                         obList.remove( tblDivision.getSelectionModel().getSelectedIndex());
                         tblDivision.refresh();
                     }
-                } catch (SQLException ex) {
+                } catch (SQLException | ClassNotFoundException ex) {
                     new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
                 }
 
@@ -144,6 +154,18 @@ public class HomeManageFormController implements Initializable {
         });
     }
 
+    private void setViewBtnOnAction(Button btnView) {
+        btnView.setOnAction((e) -> {
+            try {
+              civilDetail = homeManageBO. getCivilDetail((String) colID.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
+                System.out.println(civilDetail);
+            } catch (SQLException ex) {
+                new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
+            }
+            OpenView.openView("homecivil");
+
+        });
+    }
 
     @FXML
     void lblLogOnAction(MouseEvent event) {
@@ -154,9 +176,9 @@ public class HomeManageFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi",LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi",LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                homeManageBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

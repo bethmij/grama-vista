@@ -7,24 +7,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.custom.CandidateManageBO;
+import lk.ijse.bo.custom.impl.CandidateManageBOImpl;
 import lk.ijse.dto.*;
-import lk.ijse.dto.tm.Candidate2TM;
 import lk.ijse.dto.tm.CandidateTM;
-import lk.ijse.dto.tm.DivisionTM;
-import lk.ijse.model.CandidateModel;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.DivisionModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -42,10 +36,11 @@ public class CandidateManageFormController implements Initializable {
     public AnchorPane tblDivPane;
     public ComboBox cmbID;
     private ObservableList<CandidateTM> obList = FXCollections.observableArrayList();
-    public static Candidate candidate;
+    public static CandidateDTO candidate;
     public static CandidateTM candidateTM;
     public static CandidateDTO candidateDetail;
     public static String id;
+    CandidateManageBO candidateManageBO = new CandidateManageBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -65,7 +60,7 @@ public class CandidateManageFormController implements Initializable {
 
     private void loadDivisionID() {
         try {
-            List<String> id = CandidateModel.loadElectionID();
+            List<String> id = candidateManageBO.loadElectionId();
             ObservableList<String> dataList = FXCollections.observableArrayList();
 
             for (String ids : id) {
@@ -85,7 +80,7 @@ public class CandidateManageFormController implements Initializable {
         
 
         try {
-            List<CandidateDTO> candidateList  = CandidateModel.searchAll();
+            List<CandidateDTO> candidateList  = candidateManageBO.searchAllCandidate();
 
             for (CandidateDTO datalist : candidateList) {
                 Button btnView = new Button("View more");
@@ -107,19 +102,19 @@ public class CandidateManageFormController implements Initializable {
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
-            CandidateDTO candidateDTO = CandidateModel.search((String) cmbID.getValue());
-            candidate = new Candidate(candidateDTO.getElection(), candidateDTO.getDivision(), candidateDTO.getNIC(),
-                    candidateDTO.getName(),candidateDTO.getPolitic(),candidateDTO.getAddress(), candidateDTO.getContact());
+            CandidateDTO candidateDTO = candidateManageBO.searchCandidate((String) cmbID.getValue());
+            candidate = new CandidateDTO(candidateDTO.getElection(),candidateDTO.getImage(),candidateDTO.getName(), candidateDTO.getNIC(),
+                    candidateDTO.getDivision(),candidateDTO.getAddress(), candidateDTO.getContact(),candidateDTO.getPolitic());
             OpenView.openView("CandidateRegForm");
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
-    public void btnSaveOnAction(ActionEvent actionEvent) {
+    public void btnSaveOnAction(ActionEvent actionEvent) throws ClassNotFoundException {
         CandidateDTO candidateDTO = null;
         try {
-             candidateDTO = CandidateModel.search((String) cmbID.getValue());
+             candidateDTO = candidateManageBO.searchCandidate((String) cmbID.getValue());
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
@@ -142,11 +137,11 @@ public class CandidateManageFormController implements Initializable {
         btnView.setOnAction((e) -> {
 
             try {
-                CandidateDTO candidateDTO = CandidateModel.search((String) colElection.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
+                CandidateDTO candidateDTO = candidateManageBO.searchCandidate((String) colElection.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
                 id = (String) colElection.getCellData(tblDivision.getSelectionModel().getSelectedIndex());
                 candidateDetail = new CandidateDTO(candidateDTO.getElection(),candidateDTO.getImage(),candidateDTO.getName(),candidateDTO.getNIC(),
                         candidateDTO.getDivision(),candidateDTO.getAddress(),candidateDTO.getContact(),candidateDTO.getPolitic());
-            } catch (SQLException ex) {
+            } catch (SQLException | ClassNotFoundException ex) {
                 new Alert(Alert.AlertType.ERROR,ex.getMessage()).show();
             }
             OpenView.openView("candidateViewForm");
@@ -159,7 +154,7 @@ public class CandidateManageFormController implements Initializable {
 
     public void cmbIDOnAction(ActionEvent actionEvent) {
         try {
-            lblDivision.setText(CandidateModel.getName((String) cmbID.getValue()));
+            lblDivision.setText(candidateManageBO.getCandidateName((String) cmbID.getValue()));
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
@@ -175,9 +170,9 @@ public class CandidateManageFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                candidateManageBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

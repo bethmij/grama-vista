@@ -1,14 +1,12 @@
 package lk.ijse.controller;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import lk.ijse.model.CivilModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.bo.custom.DashboardBO;
+import lk.ijse.bo.custom.impl.DashboardBOImpl;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -25,6 +23,7 @@ import java.util.ResourceBundle;
 
 public class DashboardFormController implements Initializable {
     public AnchorPane dashboardpane;
+    DashboardBO dashboardBO = new DashboardBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,17 +53,17 @@ public class DashboardFormController implements Initializable {
 
     public void sendEmail() {
         try {
-            Map<Integer, Integer> dateDiff = CivilModel.getDateDiff();
+            Map<Integer, Integer> dateDiff = dashboardBO.getDateDiff();
 
             for (Map.Entry m : dateDiff.entrySet()) {
                 Integer date = (Integer) m.getValue();
-                boolean isMailSent = CivilModel.isMailSent(m.getKey());
+                boolean isMailSent = dashboardBO.sentMail((Integer) m.getKey());
 
                 if (date == 351 || date == 358) {
                     if (!isMailSent) {
                         Integer id = (Integer) m.getKey();
-                        String email = CivilModel.getEmail(id);
-                        String name = CivilModel.getName(String.valueOf(id));
+                        String email = dashboardBO.getEmail(id);
+                        String name = dashboardBO.getCivilName(String.valueOf(id));
 
                         System.out.println("preparing to send message ...");
                         String message = "Civil ID  - C00" + m.getKey() + "\nName   - " + name;
@@ -80,7 +79,7 @@ public class DashboardFormController implements Initializable {
         }
     }
 
-    private static void sendAttach(String message, String subject, String to, String from, Integer id) {
+    private  void sendAttach(String message, String subject, String to, String from, Integer id) {
 
         String host="smtp.gmail.com";
         Properties properties = System.getProperties();
@@ -132,7 +131,7 @@ public class DashboardFormController implements Initializable {
 
         System.out.println("Sent success...................");
         try {
-            CivilModel.updateEmail(id,to);
+            dashboardBO.updateEmail(id,to);
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }

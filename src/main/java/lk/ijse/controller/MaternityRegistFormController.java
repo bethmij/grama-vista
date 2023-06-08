@@ -9,12 +9,11 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dto.Dead;
-import lk.ijse.dto.Detail;
-import lk.ijse.dto.Disable;
-import lk.ijse.dto.Maternity;
-import lk.ijse.model.*;
-import lk.ijse.util.OpenView;
+import lk.ijse.bo.custom.MaternityRegistBO;
+import lk.ijse.bo.custom.impl.MaternityRegistBOImpl;
+import lk.ijse.dto.DetailDTO;
+import lk.ijse.dto.MaternityDTO;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -24,7 +23,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import static lk.ijse.controller.DeadManageFormController.dead;
 import static lk.ijse.controller.MaternityManageFormController.maternity;
 
 public class MaternityRegistFormController implements Initializable {
@@ -38,6 +36,7 @@ public class MaternityRegistFormController implements Initializable {
     public TextField txtMonth;
     public Label lblMidWife;
     public Label lblMonth;
+    MaternityRegistBO registBO = new MaternityRegistBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,20 +48,20 @@ public class MaternityRegistFormController implements Initializable {
     }
 
     private void setMaternityController() {
-        cmbCivil.setValue("C00"+maternity.getCivil_ID());
-        if(maternity.getMid_wife()!=null)
-            txtMidWife.setText(maternity.getMid_wife());
-        lblID.setText("M00"+maternity.getID());
+        cmbCivil.setValue("C00"+maternity.getCivil());
+        if(maternity.getMidWife()!=null)
+            txtMidWife.setText(maternity.getMidWife());
+        lblID.setText("M00"+maternity.getReg());
         lblName.setText(maternity.getName());
-        if(maternity.getMonths()!=null)
-            txtMonth.setText(String.valueOf(maternity.getMonths()));
+        if(maternity.getMonth()!=null)
+            txtMonth.setText(String.valueOf(maternity.getMonth()));
         btnSave.setText("Update");
     }
 
     private void loadCivilId() {
         List<String> id = null;
         try {
-            id = CivilModel.loadCivilId();
+            id = registBO.loadCivilId();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -77,7 +76,7 @@ public class MaternityRegistFormController implements Initializable {
 
     private void generateNextId() {
         try {
-            lblID.setText("M00"+ MaternityModel.getNextId());
+            lblID.setText("M00"+ registBO.getNextMaternityID());
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -97,7 +96,7 @@ public class MaternityRegistFormController implements Initializable {
                 String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
 
                 try {
-                    boolean isSaved = MaternityModel.save(new Maternity(
+                    boolean isSaved = registBO.saveMaternity(new MaternityDTO(
                             id[1],
                             civil_id[1],
                             lblName.getText(),
@@ -105,9 +104,9 @@ public class MaternityRegistFormController implements Initializable {
                             txtMidWife.getText()));
 
                     if (isSaved) {
-                        Detail detail = new Detail("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering maternity  id - " + lblID.getText() + " \nname - " + lblName.getText());
+                        DetailDTO detail = new DetailDTO("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering maternity  id - " + lblID.getText() + " \nname - " + lblName.getText());
                         try {
-                            DetailModel.save(detail);
+                            registBO.saveDetail(detail);
                         } catch (SQLException e) {
                             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                         }
@@ -128,7 +127,7 @@ public class MaternityRegistFormController implements Initializable {
                 String[] civil_id = String.valueOf(cmbCivil.getValue()).split("C00");
 
                 try {
-                    boolean isUpdated = MaternityModel.update(new Maternity(id[1], civil_id[1], lblName.getText(), Integer.valueOf(txtMonth.getText()), txtMidWife.getText()));
+                    boolean isUpdated = registBO.updateMaternity(new MaternityDTO(id[1], civil_id[1], lblName.getText(), Integer.valueOf(txtMonth.getText()), txtMidWife.getText()));
 
                     if (isUpdated)
                         new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
@@ -150,7 +149,7 @@ public class MaternityRegistFormController implements Initializable {
         String[] strings = id.split("C00");
 
         try {
-            lblName.setText(CivilModel.searchById(strings[1]));
+            lblName.setText(registBO.searchCivilByID(strings[1]));
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -173,9 +172,9 @@ public class MaternityRegistFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                registBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

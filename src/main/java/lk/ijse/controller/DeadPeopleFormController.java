@@ -8,23 +8,21 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dto.Candidate;
-import lk.ijse.dto.Dead;
-import lk.ijse.dto.Detail;
-import lk.ijse.model.*;
-import lk.ijse.util.OpenView;
+import lk.ijse.bo.custom.DeadPeopleBO;
+import lk.ijse.bo.custom.impl.DeadPeopleBOImpl;
+import lk.ijse.dto.DeadDTO;
+import lk.ijse.dto.DetailDTO;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static lk.ijse.controller.DeadManageFormController.dead;
-import static lk.ijse.controller.IndividualFormController.civil1;
 
 public class DeadPeopleFormController implements Initializable {
     public AnchorPane deadPane;
@@ -33,6 +31,7 @@ public class DeadPeopleFormController implements Initializable {
     public Label lblName;
     public Label lblID;
     public Button btn1;
+    DeadPeopleBO deadPeopleBO = new DeadPeopleBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,16 +43,16 @@ public class DeadPeopleFormController implements Initializable {
     }
 
     private void setDeadController() {
-        cmbCivil.setValue(dead.getCivil_ID());
+        cmbCivil.setValue(dead.getCivil_id());
         dtpDate.setValue(dead.getDate());
         lblName.setText(dead.getName());
-        lblID.setText(dead.getReg_id());
+        lblID.setText(dead.getDead_id());
         btn1.setText("Update");
     }
 
     private void generateNextId() {
         try {
-            lblID.setText("DD00"+ DeadModel.getNextId());
+            lblID.setText("DD00"+ deadPeopleBO.getNextDeadId());
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -63,7 +62,7 @@ public class DeadPeopleFormController implements Initializable {
     private void loadCivilId() {
         List<String> id = null;
         try {
-            id = CivilModel.loadCivilId();
+            id = deadPeopleBO.loadCivilId();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -86,15 +85,15 @@ public class DeadPeopleFormController implements Initializable {
                 String id = (String) cmbCivil.getValue();
                 String[] civil_id = id.split("C00");
                 String[] reg_id = lblID.getText().split("DD00");
-                String division_id = CivilModel.getDivisionId(Integer.valueOf(civil_id[1]));
+                String division_id = deadPeopleBO.getDivisionId(Integer.valueOf(civil_id[1]));
 
                 try {
-                    boolean isSaved = DeadModel.save(new Dead(reg_id[1], civil_id[1], lblName.getText(), dtpDate.getValue()), division_id);
+                    boolean isSaved = deadPeopleBO.saveDead(new DeadDTO(reg_id[1], civil_id[1], lblName.getText(), dtpDate.getValue(),null), division_id);
 
                     if (isSaved) {
-                        Detail detail = new Detail("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering dead_people id - " + lblID.getText() + " \nname - " + lblName.getText());
+                        DetailDTO detail = new DetailDTO("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering dead_people id - " + lblID.getText() + " \nname - " + lblName.getText());
                         try {
-                            DetailModel.save(detail);
+                            deadPeopleBO.saveDetail(detail);
                         } catch (SQLException e) {
                             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                         }
@@ -102,7 +101,7 @@ public class DeadPeopleFormController implements Initializable {
                     }else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
             }else{
@@ -114,13 +113,13 @@ public class DeadPeopleFormController implements Initializable {
             if (!(cmbCivil.getValue() == null) && !(dtpDate.getValue() == null)) {
                 try {
 
-                    boolean isUpdate = DeadModel.update(new Dead(lblID.getText(), (String) cmbCivil.getValue(), lblName.getText(), dtpDate.getValue()));
+                    boolean isUpdate = deadPeopleBO.updateDead(new DeadDTO(lblID.getText(), (String) cmbCivil.getValue(), lblName.getText(), dtpDate.getValue(),null));
                     if (isUpdate)
                         new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
                     else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
             }else{
@@ -140,7 +139,7 @@ public class DeadPeopleFormController implements Initializable {
 
         try {
 
-            lblName.setText(CivilModel.searchById(strings[1]));
+            lblName.setText(deadPeopleBO.searchCivilByID(strings[1]));
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -161,9 +160,9 @@ public class DeadPeopleFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                deadPeopleBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

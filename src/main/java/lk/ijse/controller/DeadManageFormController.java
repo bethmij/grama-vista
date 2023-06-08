@@ -10,12 +10,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.custom.DeadManageBO;
+import lk.ijse.bo.custom.impl.DeadManageBOImpl;
 import lk.ijse.dto.*;
 import lk.ijse.dto.tm.DeadTM;
-import lk.ijse.model.CivilModel;
-import lk.ijse.model.DeadModel;
-import lk.ijse.model.DetailModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -24,8 +23,6 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import static lk.ijse.controller.IndividualFormController.civil1;
 
 public class DeadManageFormController implements Initializable {
     public AnchorPane tblDivPane;
@@ -39,7 +36,8 @@ public class DeadManageFormController implements Initializable {
     public TableColumn colName;
     public TableColumn colDead;
     private ObservableList<DeadTM> obList = FXCollections.observableArrayList();
-    public static Dead dead;
+    public static DeadDTO dead;
+    DeadManageBO deadManageBO = new DeadManageBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -65,7 +63,7 @@ public class DeadManageFormController implements Initializable {
 
     public void btnGetAllOnAction(ActionEvent actionEvent) {
         try {
-            List<DeadDTO> deadDTOList  = DeadModel.searchAll();
+            List<DeadDTO> deadDTOList  = deadManageBO.searchAllDead();
 
             for (DeadDTO datalist : deadDTOList) {
                 Button btnDelete = new Button("Delete");
@@ -84,8 +82,8 @@ public class DeadManageFormController implements Initializable {
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
-            DeadDTO deadDTO = DeadModel.search(cbDead.getValue());
-            dead= new Dead(deadDTO.getDead_id(), deadDTO.getCivil_id(), deadDTO.getName(), deadDTO.getDate());
+            DeadDTO deadDTO = deadManageBO.searchDeath(cbDead.getValue());
+            dead= new DeadDTO(deadDTO.getDead_id(), deadDTO.getCivil_id(), deadDTO.getName(), deadDTO.getDate(),null);
 
             OpenView.openView("deadPeopleForm");
         } catch (SQLException e) {
@@ -96,7 +94,7 @@ public class DeadManageFormController implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent) {
         DeadDTO deadDTO = null;
         try {
-                deadDTO = DeadModel.search(cbDead.getValue());
+                deadDTO = deadManageBO.searchDeath(cbDead.getValue());
 
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -119,12 +117,12 @@ public class DeadManageFormController implements Initializable {
 
             if (result.orElse(no) == yes) {
                 try {
-                    boolean isDeleted = DeadModel.dead((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
+                    boolean isDeleted = deadManageBO.deleteDead((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
 
                     if(isDeleted) {
-                        Detail detail = new Detail("Deletion", "bethmi", LocalTime.now(), LocalDate.now(), "Deleting dead_people id - "+colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
+                        DetailDTO detail = new DetailDTO("Deletion", "bethmi", LocalTime.now(), LocalDate.now(), "Deleting dead_people id - "+colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
                         try {
-                            DetailModel.save(detail);
+                            deadManageBO.saveDetail(detail);
                         } catch (SQLException ex) {
                             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
                         }
@@ -132,7 +130,7 @@ public class DeadManageFormController implements Initializable {
                         obList.remove( tbl.getSelectionModel().getSelectedIndex());
                         tbl.refresh();
                     }
-                } catch (SQLException ex) {
+                } catch (SQLException | ClassNotFoundException ex) {
                     new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
                 }
 
@@ -146,7 +144,7 @@ public class DeadManageFormController implements Initializable {
     private void loadDeadId() {
         List<String> id = null;
         try {
-            id = DeadModel.loadDeadId();
+            id = deadManageBO.loadDeadId();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -182,9 +180,9 @@ public class DeadManageFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                deadManageBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

@@ -10,14 +10,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.custom.MaternityManageBO;
+import lk.ijse.bo.custom.impl.MaternityManageBOImpl;
 import lk.ijse.dto.*;
 import lk.ijse.dto.tm.MaternityTM;
-import lk.ijse.dto.tm.ResidenceTM;
-import lk.ijse.model.DeadModel;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.MaternityModel;
-import lk.ijse.model.ResidenceModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -39,7 +36,9 @@ public class MaternityManageFormController implements Initializable {
     public TableColumn colMidWife;
     public TableColumn colAction;
     private ObservableList<MaternityTM> obList = FXCollections.observableArrayList();
-    public static Maternity maternity;
+    public static MaternityDTO maternity;
+    MaternityManageBO maternitymanageBO = new MaternityManageBOImpl();
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,7 +48,7 @@ public class MaternityManageFormController implements Initializable {
 
     private void loadMaternityId() {
         try {
-            List<String> id = MaternityModel.loadMaternityID();
+            List<String> id = maternitymanageBO.loadMaternityID();
             ObservableList<String> dataList = FXCollections.observableArrayList();
 
             for (String ids : id) {
@@ -77,7 +76,7 @@ public class MaternityManageFormController implements Initializable {
 
     public void btnGetAllOnAction(ActionEvent actionEvent) {
         try {
-            List<MaternityDTO> maternityDTOS  = MaternityModel.searchAll();
+            List<MaternityDTO> maternityDTOS  = maternitymanageBO.searchAllMaternity();
 
             for (MaternityDTO datalist : maternityDTOS) {
                 Button btnDelete = new Button("Delete");
@@ -97,8 +96,8 @@ public class MaternityManageFormController implements Initializable {
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
-            MaternityDTO maternityDTO = MaternityModel.search((String)cbReg.getValue());
-            maternity= new Maternity(maternityDTO.getReg(), maternityDTO.getCivil(), maternityDTO.getName(),maternityDTO.getMonth(), maternityDTO.getMidWife());
+            MaternityDTO maternityDTO = maternitymanageBO.searchMaternity((String)cbReg.getValue());
+            maternity= new MaternityDTO(maternityDTO.getReg(), maternityDTO.getCivil(), maternityDTO.getName(),maternityDTO.getMonth(), maternityDTO.getMidWife());
 
             OpenView.openView("MaternityRegistForm");
         } catch (SQLException e) {
@@ -109,7 +108,7 @@ public class MaternityManageFormController implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent) {
         MaternityDTO maternityDTO = null;
         try {
-            maternityDTO =MaternityModel.search((String)cbReg.getValue());
+            maternityDTO = maternitymanageBO.searchMaternity((String)cbReg.getValue());
 
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -134,7 +133,7 @@ public class MaternityManageFormController implements Initializable {
 
             if (result.orElse(no) == yes) {
                 try {
-                    boolean isDeleted = MaternityModel.dead((String) colReg.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
+                    boolean isDeleted = maternitymanageBO.deleteMaternity((String) colReg.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
 
                     if(isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
@@ -159,9 +158,9 @@ public class MaternityManageFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                maternitymanageBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

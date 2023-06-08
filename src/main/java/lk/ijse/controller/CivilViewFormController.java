@@ -10,22 +10,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import lk.ijse.dto.Contact;
-import lk.ijse.model.CandidateModel;
-import lk.ijse.model.CivilModel;
+import lk.ijse.bo.custom.CivilViewBO;
+import lk.ijse.bo.custom.impl.CivilViewBOImpl;
 
-import javax.imageio.ImageIO;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import static lk.ijse.controller.CandidateManageFormController.candidateDetail;
 import static lk.ijse.controller.CivilManageFormController.*;
 
 public class CivilViewFormController implements Initializable {
@@ -44,16 +39,17 @@ public class CivilViewFormController implements Initializable {
     public Label lblSchool;
     public Label lblContact2;
     public Label lblWork;
+    CivilViewBO civilViewBO = new CivilViewBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
             InputStream is = null;
-            if(civil2.getImage()==null) {
+            if(civil2DTO.getImage()==null) {
                     is = new FileInputStream("D:\\grama-vista\\src\\main\\resources\\img\\no-profile-pic-icon-11.jpg");
 
                 }else{
-                    is = civil2.getImage().getBinaryStream();
+                    is = civil2DTO.getImage().getBinaryStream();
 
                 }
             Image image = new Image(is);
@@ -67,21 +63,21 @@ public class CivilViewFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
-        lblNic.setText(civil2.getNic());
-        lblAddress.setText(civil2.getAddress());
-        lblContact.setText(String.valueOf(civil2.getContact1()));
-        lblContact2.setText(String.valueOf(civil2.getContact2()));
-        lblAge.setText(String.valueOf(civil2.getAge()));
-        lblCivil.setText(civil2.getId());
-        lblName.setText(civil2.getName());
-        lblDOB.setText(String.valueOf(civil2.getDob()));
-        lblMarriage.setText(civil2.getMarriage());
-        lblEdu.setText(civil2.getEdu_status());
-        lblOccupation.setText(civil2.getOccupation());
-        if (!civil2.getSchool().isEmpty())
-            lblSchool.setText(civil2.getSchool());
-        else if (!civil2.getWorking_address().isEmpty())
-            lblWork.setText(civil2.getWorking_address());
+        lblNic.setText(civil2DTO.getNic());
+        lblAddress.setText(civil2DTO.getAddress());
+        lblContact.setText(String.valueOf(civil2DTO.getContact1()));
+        lblContact2.setText(String.valueOf(civil2DTO.getContact2()));
+        lblAge.setText(String.valueOf(civil2DTO.getAge()));
+        lblCivil.setText(civil2DTO.getId());
+        lblName.setText(civil2DTO.getName());
+        lblDOB.setText(String.valueOf(civil2DTO.getDob()));
+        lblMarriage.setText(civil2DTO.getMarriage());
+        lblEdu.setText(civil2DTO.getEdu_status());
+        lblOccupation.setText(civil2DTO.getOccupation());
+        if (!civil2DTO.getSchool().isEmpty())
+            lblSchool.setText(civil2DTO.getSchool());
+        else if (!civil2DTO.getWorking_address().isEmpty())
+            lblWork.setText(civil2DTO.getWorking_address());
 
     }
 
@@ -94,12 +90,12 @@ public class CivilViewFormController implements Initializable {
         if (result.orElse(no) == yes) {
             try {
 
-                boolean isDeleted = CivilModel.delete(id);
+                boolean isDeleted = civilViewBO.deleteCivil(id);
 
                 if(isDeleted) {
                     new Alert(Alert.AlertType.CONFIRMATION," Removed Successfully !" ).show();
                 }
-            } catch (SQLException ex) {
+            } catch (SQLException | ClassNotFoundException ex) {
                 new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
             }
 

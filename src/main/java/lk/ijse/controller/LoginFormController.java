@@ -2,35 +2,18 @@ package lk.ijse.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import lk.ijse.db.DBConnection;
-import lk.ijse.dto.Dead;
-import lk.ijse.dto.Detail;
+import lk.ijse.bo.custom.LoginBO;
+import lk.ijse.bo.custom.impl.LoginBOImpl;
+import lk.ijse.dto.DetailDTO;
 import lk.ijse.dto.UserDTO;
-import lk.ijse.model.CivilModel;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.UserModel;
-import lk.ijse.util.OpenView;
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
+import lk.ijse.dao.custom.impl.util.OpenView;
 import org.mindrot.jbcrypt.BCrypt;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-import java.io.File;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -43,11 +26,13 @@ public class LoginFormController {
     public static String user = null;
     @FXML
     private AnchorPane root;
+    LoginBO loginBO = new LoginBOImpl();
+
     public void btnOnAction(ActionEvent actionEvent) {
 
-       /* List<UserDTO> userDTO = null;
+        List<UserDTO> userDTO = null;
         try {
-            userDTO = UserModel.searchAll();
+            userDTO = loginBO.searchAllUser();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
@@ -60,9 +45,9 @@ public class LoginFormController {
         }
 
         if (isTrue) {
-            Detail detail = new Detail("Logged in", txtUser.getText(), LocalTime.now(),LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged in", txtUser.getText(), LocalTime.now(),LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                loginBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }
@@ -81,8 +66,8 @@ public class LoginFormController {
             new animatefx.animation.Shake(txtPass).play();
             new Alert(Alert.AlertType.ERROR, "Incorrect Username or Password").show();
         }
-*/
-         OpenView.openView("dashboardForm",root);
+
+         //OpenView.openView("dashboardForm",root);
     }
 
     public void btnSignOnAction(MouseEvent actionEvent) {
@@ -93,7 +78,7 @@ public class LoginFormController {
     public void btnForgotOnAction(MouseEvent mouseEvent) {
         List<UserDTO> userDTO = null;
         try {
-            userDTO = UserModel.searchAll();
+            userDTO = loginBO.searchAllUser();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }

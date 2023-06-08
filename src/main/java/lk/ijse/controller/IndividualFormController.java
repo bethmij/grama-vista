@@ -4,36 +4,27 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import lk.ijse.dto.Civil;
-import lk.ijse.dto.Civil1;
-import lk.ijse.dto.Detail;
-import lk.ijse.dto.MultiResidence;
-import lk.ijse.model.CivilModel;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.DivisionModel;
-import lk.ijse.model.ResidenceModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.bo.custom.IndividualBO;
+import lk.ijse.bo.custom.impl.IndividualBOImpl;
+import lk.ijse.dto.Civil1DTO;
+import lk.ijse.dto.DetailDTO;
+import lk.ijse.entity.MultiResidence;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import static lk.ijse.controller.CivilManageFormController.civil;
-import static lk.ijse.controller.CivilManageFormController.multiResidenceList;
+import static lk.ijse.controller.CivilManageFormController.*;
 
 public class IndividualFormController implements Initializable {
 
@@ -55,10 +46,10 @@ public class IndividualFormController implements Initializable {
     public Label lblRelation;
     public Label lblName;
     private Integer reg_id;
-    public static Civil1 civil1 = null;
+    public static Civil1DTO civil1DTO = null;
     public static List<MultiResidence> residenceList;
     public static String civil_id;
-
+    IndividualBO individualBO = new IndividualBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -66,7 +57,7 @@ public class IndividualFormController implements Initializable {
         loadGender();
         loadMarriage();
         loadResidenceID();
-        if ((!(civil1 == null))) {
+        if ((!(civil1DTO == null))) {
             try {
                 setIndivController();
             } catch (SQLException e) {
@@ -74,25 +65,25 @@ public class IndividualFormController implements Initializable {
             }
         }
 
-        if ((!(civil == null))) {
+        if ((!(civilDTO == null))) {
             setCivilController();
         }
 
     }
 
     private void setCivilController() {
-         txtName.setText(civil.getName());
-         txtAddress.setText(civil.getAddress());
-         txtRelation.setText(civil.getRelation());
-         lblCivil.setText("C00"+ civil.getId());
-         if(civil.getGender()!=null)
-            cbGender.setValue(civil.getGender());
-         if(civil.getMarriage()!=null)
-            cbMarriage.setValue(civil.getMarriage());
-         if(civil.getDob()!=null)
-            dtpDOB.setValue(civil.getDob());
-         txtNIC.setText(civil.getNic());
-         txtEmail.setText(civil.getEmail());
+         txtName.setText(civilDTO.getName());
+         txtAddress.setText(civilDTO.getAddress());
+         txtRelation.setText(civilDTO.getRelation());
+         lblCivil.setText("C00"+ civilDTO.getID());
+         if(civilDTO.getGender()!=null)
+            cbGender.setValue(civilDTO.getGender());
+         if(civilDTO.getMarriage()!=null)
+            cbMarriage.setValue(civilDTO.getMarriage());
+         if(civilDTO.getDob()!=null)
+            dtpDOB.setValue(civilDTO.getDob());
+         txtNIC.setText(civilDTO.getNic());
+         txtEmail.setText(civilDTO.getEmail());
          if(null != multiResidenceList.get(0)) {
              cbResidence.setValue(multiResidenceList.get(0).getResidence_id());
          }else
@@ -101,7 +92,7 @@ public class IndividualFormController implements Initializable {
 
     private void loadResidenceID() {
         try {
-            List<String> id = ResidenceModel.loadResidenceID();
+            List<String> id = individualBO.loadResidenceId();
             ObservableList<String> dataList = FXCollections.observableArrayList();
 
             for (String ids : id) {
@@ -116,7 +107,7 @@ public class IndividualFormController implements Initializable {
 
     private void generateNextId() {
         try {
-            lblCivil.setText("C00"+CivilModel.getNextId());
+            lblCivil.setText("C00"+ individualBO.getCivilNextId());
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -139,7 +130,7 @@ public class IndividualFormController implements Initializable {
     public void btnBackOnAction(ActionEvent actionEvent) {
 
         OpenView.openView("registrationForm", indiroot1);
-        civil1 = null;
+        civil1DTO = null;
     }
 
     public void btnNextOnAction(ActionEvent actionEvent) {
@@ -152,7 +143,7 @@ public class IndividualFormController implements Initializable {
             String id = lblCivil.getText();
             String[] strings = id.split("C00");
 
-            civil1 = new Civil1(strings[1], txtName.getText(), txtNIC.getText(), txtAddress.getText(),
+            civil1DTO = new Civil1DTO(strings[1], txtName.getText(), txtNIC.getText(), txtAddress.getText(),
                     dtpDOB.getValue(), (String) cbGender.getValue(), (String) cbMarriage.getValue(),
                     txtRelation.getText(), (String) cbResidence.getValue(), txtEmail.getText());
         }else{
@@ -169,15 +160,15 @@ public class IndividualFormController implements Initializable {
 
      private void setIndivController() throws SQLException {
         lblCivil.setText(civil_id);
-        txtName.setText(civil1.getName());
-        txtNIC.setText(civil1.getNic());
-        txtAddress.setText(civil1.getAddress());
-        dtpDOB.setValue(civil1.getDob());
-        cbGender.setValue(civil1.getGender());
-        cbMarriage.setValue(civil1.getMarriage());
-        txtRelation.setText(civil1.getRelation());
-        cbResidence.setValue(civil1.getResidence());
-        txtEmail.setText(civil1.getEmail());
+        txtName.setText(civil1DTO.getName());
+        txtNIC.setText(civil1DTO.getNic());
+        txtAddress.setText(civil1DTO.getAddress());
+        dtpDOB.setValue(civil1DTO.getDob());
+        cbGender.setValue(civil1DTO.getGender());
+        cbMarriage.setValue(civil1DTO.getMarriage());
+        txtRelation.setText(civil1DTO.getRelation());
+        cbResidence.setValue(civil1DTO.getResidence());
+        txtEmail.setText(civil1DTO.getEmail());
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) {
@@ -207,9 +198,9 @@ public class IndividualFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi",LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi",LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                individualBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

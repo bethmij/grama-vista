@@ -396,7 +396,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="Search" blendMode="COLOR_BURN" layoutX="571.0" layoutY="103.0" mnemonicParsing="false" onAction="#btnUploadOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Upload" textFill="#081501">
+      <Button fx:id="Search" blendMode="COLOR_BURN" layoutX="571.0" layoutY="103.0" mnemonicParsing="false" onAction="#btnUploadOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Sync" textFill="#081501">
          <font>
             <Font size="14.0" />
          </font>

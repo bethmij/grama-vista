@@ -14,4 +14,5 @@ public class ResidenceTM {
     String Address;
     String Holder;
     Button btn;
+    Button btn1;
 }

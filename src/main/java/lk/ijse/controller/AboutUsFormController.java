@@ -8,11 +8,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.custom.AboutUsBO;
+import lk.ijse.bo.custom.impl.AboutUsBOImpl;
 import lk.ijse.dto.CivilDTO;
-import lk.ijse.dto.Detail;
-import lk.ijse.dto.UserDTO;
-import lk.ijse.model.*;
-import lk.ijse.util.OpenView;
+import lk.ijse.dto.DetailDTO;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -33,15 +33,16 @@ public class AboutUsFormController implements Initializable {
     public Label lblFemale;
     public Label lblHome;
     public Label lblLand;
+    AboutUsBO aboutUsBO = new AboutUsBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            lblPopulation.setText(String.valueOf(DivisionModel.getPopulation()));
-            lblMale.setText(String.valueOf(CivilModel.getMale()));
-            lblFemale.setText(String.valueOf(CivilModel.getFemale()));
-            lblHome.setText(String.valueOf(ResidenceModel.getCount()));
-            lblLand.setText(String.valueOf(LandModel.getCount()));
+            lblPopulation.setText(String.valueOf(aboutUsBO.getPopulation()));
+            lblMale.setText(String.valueOf(aboutUsBO.getMale()));
+            lblFemale.setText(String.valueOf(aboutUsBO.getFemale()));
+            lblHome.setText(String.valueOf(aboutUsBO.getResidenceCount()));
+            lblLand.setText(String.valueOf(aboutUsBO.getLandCount()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -54,9 +55,9 @@ public class AboutUsFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                boolean isSaved = aboutUsBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }
@@ -82,7 +83,7 @@ public class AboutUsFormController implements Initializable {
 
     public void btnRenewOnAction(ActionEvent actionEvent) {
         try {
-            List<CivilDTO> userDTOList = CivilModel.searchAll();
+            List<CivilDTO> userDTOList = aboutUsBO.searchCivil();
 
             for (CivilDTO user : userDTOList) {
                 if(!user.getEmail().equals("")) {

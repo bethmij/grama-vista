@@ -7,12 +7,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import lk.ijse.dto.AddCandidate;
-import lk.ijse.dto.ElecCandidate;
+import lk.ijse.bo.custom.CandidatBO;
+import lk.ijse.bo.custom.impl.CandidatBOImpl;
+import lk.ijse.dto.AddCandidateDTO;
+import lk.ijse.dto.ElecCandidateDTO;
 import lk.ijse.dto.tm.ElecCandidateTM;
-import lk.ijse.model.AddCandidateModel;
-import lk.ijse.model.CandidateModel;
-import lk.ijse.model.VoteModel;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -22,7 +21,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static lk.ijse.controller.VoteManageFormController.candidate;
-import static lk.ijse.controller.VoteManageFormController.vote;
+import static lk.ijse.controller.VoteManageFormController.voteDTO;
 
 public class CandidatFormController implements Initializable {
     public TableView tbl2;
@@ -33,7 +32,8 @@ public class CandidatFormController implements Initializable {
     public TableColumn colAction;
     public ComboBox cbCandidat;
     private ObservableList<ElecCandidateTM> obList = FXCollections.observableArrayList();
-    public List<AddCandidate> addCandidateList = new ArrayList<>();
+    public List<AddCandidateDTO> addCandidateList = new ArrayList<>();
+    CandidatBO candidatBO = new CandidatBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -45,7 +45,7 @@ public class CandidatFormController implements Initializable {
 
     private void setTable() {
 
-        for (ElecCandidate candidate : candidate ) {
+        for (ElecCandidateDTO candidate : candidate ) {
 
             Button btnDelete = new Button("Delete");
             btnDelete.setCursor(Cursor.HAND);
@@ -67,14 +67,14 @@ public class CandidatFormController implements Initializable {
 
             if (result.orElse(no) == yes) {
                 try {
-                    boolean isDeleted = VoteModel.deleteCandidate((String) colElection.getCellData(tbl2.getSelectionModel().getSelectedIndex()));
+                    boolean isDeleted = candidatBO.deleteVote((String) colElection.getCellData(tbl2.getSelectionModel().getSelectedIndex()));
 
                     if(isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
                         obList.remove(tbl2.getSelectionModel().getSelectedIndex());
                         tbl2.refresh();
                     }
-                } catch (SQLException ex) {
+                } catch (SQLException | ClassNotFoundException ex) {
                     new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
                 }
             }
@@ -91,7 +91,7 @@ public class CandidatFormController implements Initializable {
 
     private void loadCandidate() {
         try {
-            List<String> id = CandidateModel.loadElectionID();
+            List<String> id = candidatBO.loadElectionId();
             ObservableList<String> dataList = FXCollections.observableArrayList();
 
             for (String ids : id) {
@@ -106,7 +106,7 @@ public class CandidatFormController implements Initializable {
     public void cbCandidateOnAction(ActionEvent actionEvent) throws SQLException {
         String name = null;
         try {
-            name = VoteModel.getName(Integer.valueOf(String.valueOf(cbCandidat.getValue())));
+            name = candidatBO.getCandidateName(Integer.valueOf(String.valueOf(cbCandidat.getValue())));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -125,9 +125,9 @@ public class CandidatFormController implements Initializable {
             }
 
             if(count== addCandidateList.size()) {
-                addCandidateList.add(new AddCandidate(vote.getElection_id(), String.valueOf(cbCandidat.getValue())));
-                boolean isAddCandidate = AddCandidateModel.save(addCandidateList);
-                boolean isUpdated = VoteModel.updateCount(vote.getElection_id());
+                addCandidateList.add(new AddCandidateDTO(voteDTO.getElection_id(), String.valueOf(cbCandidat.getValue())));
+                boolean isAddCandidate = candidatBO.saveCandidate(addCandidateList);
+                boolean isUpdated = candidatBO.updateVote(voteDTO.getElection_id());
                 if(isAddCandidate && isUpdated){
                     new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully").show();
                 }else

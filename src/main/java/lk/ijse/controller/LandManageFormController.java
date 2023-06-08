@@ -10,11 +10,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dto.*;
+import lk.ijse.bo.custom.LandManageBO;
+import lk.ijse.bo.custom.impl.LandManageBOImpl;
+import lk.ijse.dto.CoOwnerDTO;
+import lk.ijse.dto.DetailDTO;
+import lk.ijse.dto.LandDTO;
+import lk.ijse.dto.LandDetailDTO;
 import lk.ijse.dto.tm.LandTM;
-import lk.ijse.dto.tm.MaternityTM;
-import lk.ijse.model.*;
-import lk.ijse.util.OpenView;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -35,9 +38,10 @@ public class LandManageFormController implements Initializable {
     public TableColumn colCultivate;;
     public TableColumn colAction;
     private ObservableList<LandTM> obList = FXCollections.observableArrayList();
-    public static Land land = null;
-    public static List<LandDetail> landDetails =null;
-    public static List<Owner> ownerList = null;
+    public static LandDTO land = null;
+    public static List<LandDetailDTO> landDetails =null;
+    public static List<CoOwnerDTO> coOwnerList = null;
+    LandManageBO landManageBO = new LandManageBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -47,7 +51,7 @@ public class LandManageFormController implements Initializable {
 
     private void loadLandId() {
         try {
-            List<String> id = LandModel.loadLandID();
+            List<String> id = landManageBO.loadLandId();
             ObservableList<String> dataList = FXCollections.observableArrayList();
 
             for (String ids : id) {
@@ -75,11 +79,11 @@ public class LandManageFormController implements Initializable {
 
     public void btnGetAllOnAction(ActionEvent actionEvent) {
         try {
-            List<Land> landList =LandModel.searchAll();
-            List<LandDetail> landDetail = LandTypeModel.searchAllLandDetail();
-            List<Owner> ownerLists = OwnerModel.searchAllOwner();
+            List<LandDTO> landList = landManageBO.searchAllLand();
+            List<LandDetailDTO> landDetail = landManageBO.searchAllLandDetail() ;
+            List<CoOwnerDTO> coOwnerLists = landManageBO.searchAllOwners();
 
-            for (Land datalist : landList) {
+            for (LandDTO datalist : landList) {
                 Button btnDelete = new Button("Remove");
                 btnDelete.setCursor(Cursor.HAND);
                 setDeleteBtnOnAction(btnDelete);
@@ -111,13 +115,13 @@ public class LandManageFormController implements Initializable {
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
-            land =LandModel.search((String)cbLand.getValue());
-            landDetails = LandTypeModel.searchLandDetail((String) cbLand.getValue());
-            ownerList = OwnerModel.searchOwner((String) cbLand.getValue());
+            land = landManageBO.searchLand((String)cbLand.getValue());
+            landDetails = landManageBO.searchLandDetail((String) cbLand.getValue());
+            coOwnerList = landManageBO.searchOwners((String) cbLand.getValue());
 
             OpenView.openView("landForm");
 
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
@@ -126,10 +130,10 @@ public class LandManageFormController implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent) {
 
         try {
-            land =LandModel.search((String)cbLand.getValue());
-            landDetails = LandTypeModel.searchLandDetail((String) cbLand.getValue());
-            ownerList = OwnerModel.searchOwner((String) cbLand.getValue());
-        } catch (SQLException e) {
+            land = landManageBO.searchLand((String)cbLand.getValue());
+            landDetails = landManageBO.searchLandDetail((String) cbLand.getValue());
+            coOwnerList = landManageBO.searchOwners((String) cbLand.getValue());
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
@@ -171,7 +175,7 @@ public class LandManageFormController implements Initializable {
 
             if (result.orElse(no) == yes) {
                 try {
-                    boolean isDeleted = LandModel.delete((String) colID.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
+                    boolean isDeleted = landManageBO.deleteLand((String) colID.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
 
                     if(isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION,"Removed Successfully!" ).show();
@@ -196,9 +200,9 @@ public class LandManageFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                landManageBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

@@ -5,17 +5,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.db.DBConnection;
-import lk.ijse.dto.Detail;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.VoteModel;
-import lk.ijse.util.OpenView;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
+import lk.ijse.bo.custom.VoteeBO;
+import lk.ijse.bo.custom.impl.VoteeBOImpl;
+import lk.ijse.dto.DetailDTO;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -33,6 +26,7 @@ public class VoteeFormController implements Initializable {
     public CheckBox cb2;
     public CheckBox cb3;
     public Label lblElection;
+    VoteeBO voteeBO = new VoteeBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,9 +44,9 @@ public class VoteeFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                voteeBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }
@@ -102,7 +96,8 @@ public class VoteeFormController implements Initializable {
                 candidate_id = 3;
 
             try {
-                boolean isSaved = VoteModel.saveVote(lblElection.getText(), candidate_id ,civilID);
+                System.out.println(civilID);
+                boolean isSaved = voteeBO.saveVote(lblElection.getText(), candidate_id ,civilID);
                 if (isSaved){
                     new Alert(Alert.AlertType.CONFIRMATION,"Your vote has been recorded!").show();
                 }

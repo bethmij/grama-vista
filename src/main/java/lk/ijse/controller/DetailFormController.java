@@ -4,22 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import lk.ijse.dto.Detail;
-import lk.ijse.dto.ElecCandidate;
+import lk.ijse.bo.custom.DetailFormBO;
+import lk.ijse.bo.custom.impl.DetailFormBOImpl;
+import lk.ijse.dto.DetailDTO;
 import lk.ijse.dto.tm.DetailTM;
-import lk.ijse.dto.tm.ElecCandidateTM;
-import lk.ijse.model.DetailModel;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import static lk.ijse.controller.VoteManageFormController.candidate;
 
 public class DetailFormController implements Initializable {
 
@@ -34,6 +30,7 @@ public class DetailFormController implements Initializable {
     public ComboBox cdDuration;
     public TableColumn colDescription;
     private ObservableList<DetailTM> obList = FXCollections.observableArrayList();
+    DetailFormBO detailFormBO = new DetailFormBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -60,23 +57,23 @@ public class DetailFormController implements Initializable {
 
 
     public void cbDurationOnAction(ActionEvent actionEvent)  {
-        List<Detail> details = new ArrayList<>();
+        List<DetailDTO> details = new ArrayList<>();
         tbl2.getItems().clear();
 
             try {
                 if(cdDuration.getValue().equals("Today"))
-                    details = DetailModel.search(1);
+                    details = detailFormBO.getDetail(1);
                 else if (cdDuration.getValue().equals("Last 2 Days"))
-                    details = DetailModel.search(2);
+                    details = detailFormBO.getDetail(2);
                 else if(cdDuration.getValue().equals("Last Week"))
-                    details = DetailModel.search(7);
+                    details = detailFormBO.getDetail(7);
                 else if(cdDuration.getValue().equals("All Time"))
-                    details = DetailModel.searchAll();
+                    details = detailFormBO.searchAllDetail();
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
 
-        for (Detail detailList : details ) {
+        for (DetailDTO detailList : details ) {
 
             DetailTM detailTM = new DetailTM(detailList.getFunction_name(), detailList.getUser(),
                     detailList.getTime(), detailList.getDate(),detailList.getDescription());

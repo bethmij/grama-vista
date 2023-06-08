@@ -8,10 +8,11 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.custom.VoteBO;
+import lk.ijse.bo.custom.impl.VoteBOImpl;
 import lk.ijse.db.DBConnection;
 import lk.ijse.dto.*;
-import lk.ijse.model.*;
-import lk.ijse.util.OpenView;
+import lk.ijse.dao.custom.impl.util.OpenView;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -28,10 +29,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import static lk.ijse.controller.AddResidenceFormController.residenceList;
-import static lk.ijse.controller.IndividualFormController.civil1;
-import static lk.ijse.controller.MaternityManageFormController.maternity;
-import static lk.ijse.controller.VoteManageFormController.vote;
+import static lk.ijse.controller.VoteManageFormController.voteDTO;
 
 public class VoteFormController implements Initializable {
     public ComboBox cmbEType;
@@ -39,35 +37,36 @@ public class VoteFormController implements Initializable {
     public Button btnReset;
     public TextField txtElection;
     public AnchorPane Pane;
-    public List<AddCandidate> addCandidateList = new ArrayList<>();
+    public List<AddCandidateDTO> addCandidateList = new ArrayList<>();
     public DatePicker dpElection;
     public Label lblCandidate;
     public Button btn1;
     public ComboBox cbCandidate;
+    VoteBO voteBO = new VoteBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadElectionType();
         loadCandidate();
-        if ((!(vote == null))) {
+        if ((!(voteDTO == null))) {
             setVoteController();
         }
     }
 
     private void setVoteController() {
-        cmbEType.setValue(vote.getElection_type());
-        if(vote.getCandidate_count()!=null)
-            txtCandidateCount.setText(String.valueOf(vote.getCandidate_count()));
-        txtElection.setText(vote.getElection_id());
+        cmbEType.setValue(voteDTO.getElection_type());
+        if(voteDTO.getCandidate_count()!=null)
+            txtCandidateCount.setText(String.valueOf(voteDTO.getCandidate_count()));
+        txtElection.setText(voteDTO.getElection_id());
         cbCandidate.setDisable(true);
-        dpElection.setValue(vote.getDate());
+        dpElection.setValue(voteDTO.getDate());
         btn1.setText("Update");
 
     }
 
     private void loadCandidate() {
         try {
-            List<String> id = CandidateModel.loadElectionID();
+            List<String> id = voteBO.loadElectionID();
             ObservableList<String> dataList = FXCollections.observableArrayList();
 
             for (String ids : id) {
@@ -92,9 +91,9 @@ public class VoteFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                voteBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }
@@ -139,11 +138,11 @@ public class VoteFormController implements Initializable {
                 if (!txtCandidateCount.getText().equals(""))
                     candidateCount = Integer.valueOf(txtCandidateCount.getText());
 
-                Vote vote = new Vote(txtElection.getText(), String.valueOf(cmbEType.getValue()), candidateCount, dpElection.getValue());
+                VoteDTO voteDTO = new VoteDTO(txtElection.getText(), String.valueOf(cmbEType.getValue()), candidateCount, dpElection.getValue());
 
                 boolean isSaved = false;
                 try {
-                    isSaved = VoteModel.save(vote, addCandidateList);
+                    isSaved = voteBO.saveVote(voteDTO, addCandidateList);
                 } catch (SQLException e) {
                     System.out.println(e);
                 }
@@ -166,11 +165,11 @@ public class VoteFormController implements Initializable {
                 if (!txtCandidateCount.getText().equals(""))
                     candidateCount = Integer.valueOf(txtCandidateCount.getText());
 
-                Vote vote = new Vote(txtElection.getText(), String.valueOf(cmbEType.getValue()), candidateCount, dpElection.getValue());
+                VoteDTO voteDTO = new VoteDTO(txtElection.getText(), String.valueOf(cmbEType.getValue()), candidateCount, dpElection.getValue());
 
                 boolean isSaved = false;
                 try {
-                    isSaved = VoteModel.update(vote);
+                    isSaved = voteBO.updateVote(voteDTO);
                 } catch (SQLException e) {
                     System.out.println(e);
                 }
@@ -193,7 +192,7 @@ public class VoteFormController implements Initializable {
     public void cbCandidateOnAction(ActionEvent actionEvent) {
         String name = null;
         try {
-            name = VoteModel.getName(Integer.valueOf(String.valueOf(cbCandidate.getValue())));
+            name = voteBO.getCandidateName(Integer.valueOf(String.valueOf(cbCandidate.getValue())));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -212,7 +211,7 @@ public class VoteFormController implements Initializable {
             }
 
             if(count== addCandidateList.size()) {
-                addCandidateList.add(new AddCandidate(txtElection.getText(), String.valueOf(cbCandidate.getValue())));
+                addCandidateList.add(new AddCandidateDTO(txtElection.getText(), String.valueOf(cbCandidate.getValue())));
                 new Alert(Alert.AlertType.CONFIRMATION, "Saved Succesfully").show();
             }else
                 new Alert(Alert.AlertType.ERROR,"Already Added!").show();

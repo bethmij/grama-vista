@@ -3,31 +3,20 @@ package lk.ijse.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import lk.ijse.dto.Maternity;
-import lk.ijse.dto.User;
-import lk.ijse.model.DivisionModel;
-import lk.ijse.model.MaternityModel;
-import lk.ijse.model.UserModel;
-import lk.ijse.util.OpenView;
-import org.mindrot.jbcrypt.BCrypt;
+import lk.ijse.bo.custom.UserRegistrationBO;
+import lk.ijse.bo.custom.impl.UserRegistrationBOImpl;
+import lk.ijse.dto.UserDTO;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
-import java.io.IOException;
-import java.net.Socket;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static lk.ijse.controller.MaternityManageFormController.maternity;
 import static lk.ijse.controller.UserManageFormController.user;
 
 public class UserRegistrationFormController implements Initializable {
@@ -48,6 +37,7 @@ public class UserRegistrationFormController implements Initializable {
     public TextField txtEmail;
     public Label lblEmail;
     public Label lblName;
+    UserRegistrationBO userRegistrationBO = new UserRegistrationBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -60,21 +50,23 @@ public class UserRegistrationFormController implements Initializable {
     private void setUserController() {
         txtPass.setDisable(true);
         txtNIC.setText(user.getNic());
-        dtpDOB.setValue(user.getDate());
-        txtENum.setText(user.getEmployee_num());
+        dtpDOB.setValue(user.getDob());
+        txtENum.setText(user.getEmployee());
         txtUser.setText(user.getUser());
         txtName.setText(user.getName());
-        dtpEmployee.setValue(user.getEmployee_date());
+        dtpEmployee.setValue(user.getEmDate());
         txtEmail.setText(user.getEmail());
         if(user.getContact()!=null)
             txtContact.setText(String.valueOf(user.getContact()));
         btnSave.setText("Update");
-        cbDivision.setValue(user.getDivision_id());
+        cbDivision.setValue(user.getDivision());
     }
+
+
 
     private void loadDivisionID() {
         try {
-            List<String> id = DivisionModel.loadDivisionID();
+            List<String> id = userRegistrationBO.loadDivision();
             ObservableList<String> dataList = FXCollections.observableArrayList();
 
             for (String ids : id) {
@@ -96,8 +88,8 @@ public class UserRegistrationFormController implements Initializable {
                 if (!txtContact.getText().isEmpty())
                     contact = Integer.valueOf(txtContact.getText());
                 try {
-                    boolean isSaved = UserModel.save(new User((String) cbDivision.getValue(), txtENum.getText(), txtNIC.getText(), txtName.getText(),
-                                    txtUser.getText(), txtPass.getText(), dtpDOB.getValue(), dtpEmployee.getValue(), txtEmail.getText(), contact));
+                    boolean isSaved = userRegistrationBO.saveUser(new UserDTO(txtENum.getText(),(String) cbDivision.getValue(), txtName.getText(), txtNIC.getText(),
+                                    txtUser.getText(), txtPass.getText(), dtpDOB.getValue(),null,dtpEmployee.getValue(),contact ,txtEmail.getText() ));
 
                     if (isSaved)
                         new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfuly !").show();
@@ -105,7 +97,7 @@ public class UserRegistrationFormController implements Initializable {
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
 
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
             }else{
@@ -128,8 +120,8 @@ public class UserRegistrationFormController implements Initializable {
                 if (!txtContact.getText().isEmpty())
                     contact = Integer.valueOf(txtContact.getText());
                 try {
-                    boolean isUpdated = UserModel.update(new User((String) cbDivision.getValue(), txtENum.getText(), txtNIC.getText(), txtName.getText(),
-                                    txtUser.getText(), txtPass.getText(), dtpDOB.getValue(), dtpEmployee.getValue(), txtEmail.getText(), contact));
+                    boolean isUpdated = userRegistrationBO.updateUser(new UserDTO(txtENum.getText(),(String) cbDivision.getValue(), txtName.getText(), txtNIC.getText(),
+                            txtUser.getText(), txtPass.getText(), dtpDOB.getValue(),null,dtpEmployee.getValue(),contact ,txtEmail.getText()));
 
                     if (isUpdated)
                         new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfuly !").show();

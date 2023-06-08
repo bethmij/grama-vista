@@ -9,15 +9,16 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.VoteManageBO;
+import lk.ijse.bo.VoteManageBOImpl;
+import lk.ijse.dao.custom.DetailDAO;
 import lk.ijse.db.DBConnection;
 import lk.ijse.dto.*;
-import lk.ijse.dto.tm.MaternityTM;
 import lk.ijse.dto.tm.VoteTM;
-import lk.ijse.model.CivilModel;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.MaternityModel;
-import lk.ijse.model.VoteModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.dao.custom.impl.DetailDAOImpl;
+import lk.ijse.dao.custom.impl.VoteDAOImpl;
+import lk.ijse.entity.Detail;
+import lk.ijse.dao.custom.impl.util.OpenView;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -45,8 +46,9 @@ public class VoteManageFormController implements Initializable {
     public TableColumn colAction;
     public AnchorPane Pane;
     private ObservableList<VoteTM> obList = FXCollections.observableArrayList();
-    public static Vote vote;
-    public static List<ElecCandidate> candidate = new ArrayList<>();
+    public static VoteDTO voteDTO;
+    public static List<ElecCandidateDTO> candidate = new ArrayList<>();
+    VoteManageBO voteManageBO = new VoteManageBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -66,7 +68,7 @@ public class VoteManageFormController implements Initializable {
 
     private void loadElectionId() {
         try {
-            List<String> id = VoteModel.getElecID();
+            List<String> id = voteManageBO.getElectID();
             ObservableList<String> dataList = FXCollections.observableArrayList();
 
             for (String ids : id) {
@@ -80,9 +82,9 @@ public class VoteManageFormController implements Initializable {
 
     public void btnGetAllOnAction(ActionEvent actionEvent) {
         try {
-            List<Vote> voteList  = VoteModel.searchAll();
+            List<VoteDTO> voteDTOList = voteManageBO.searchAllVote();
 
-            for (Vote datalist : voteList) {
+            for (VoteDTO datalist : voteDTOList) {
 
                 Button btnDelete = new Button("Delete");
                 btnDelete.setCursor(Cursor.HAND);
@@ -105,10 +107,10 @@ public class VoteManageFormController implements Initializable {
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
-            vote = VoteModel.search((String)cbElection.getValue());
+            voteDTO = voteManageBO.searchVote((String)cbElection.getValue());
 
             OpenView.openView("voteRegForm");
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
@@ -116,9 +118,9 @@ public class VoteManageFormController implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent) {
 
         try {
-            vote = VoteModel.search((String)cbElection.getValue());
+            voteDTO = voteManageBO.searchVote((String)cbElection.getValue());
 
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
@@ -130,7 +132,7 @@ public class VoteManageFormController implements Initializable {
         btnView.setCursor(Cursor.HAND);
         setViewBtnOnAction(btnView);
 
-        VoteTM voteTM = new VoteTM(vote.getElection_id(), vote.getElection_type(),vote.getDate(), vote.getCandidate_count(),
+        VoteTM voteTM = new VoteTM(voteDTO.getElection_id(), voteDTO.getElection_type(), voteDTO.getDate(), voteDTO.getCandidate_count(),
                 btnView,btnDelete);
         obList.add(voteTM);
         tbl.setItems(obList);
@@ -139,7 +141,7 @@ public class VoteManageFormController implements Initializable {
     private void setViewBtnOnAction(Button btnView) {
         btnView.setOnAction((e) -> {
             try {
-                candidate = VoteModel.searchCandidate((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
+                candidate = voteManageBO.searchCandidate((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
 
             } catch (SQLException ex) {
                 new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
@@ -157,14 +159,14 @@ public class VoteManageFormController implements Initializable {
 
             if (result.orElse(no) == yes) {
                 try {
-                    boolean isDeleted = VoteModel.delete((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
+                    boolean isDeleted = voteManageBO.deleteVote((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
 
                     if(isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
                         obList.remove(tbl.getSelectionModel().getSelectedIndex());
                         tbl.refresh();
                     }
-                } catch (SQLException ex) {
+                } catch (SQLException | ClassNotFoundException ex) {
                     new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
                 }
 
@@ -180,9 +182,9 @@ public class VoteManageFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                voteManageBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

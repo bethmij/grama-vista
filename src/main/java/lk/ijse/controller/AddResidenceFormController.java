@@ -7,9 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import lk.ijse.dto.MultiResidence;
-import lk.ijse.model.ResidenceModel;
+import lk.ijse.bo.custom.AddResidenceBO;
+import lk.ijse.bo.custom.impl.AddResidenceBOImpl;
+import lk.ijse.dto.MultiResidenceDTO;
+import lk.ijse.entity.MultiResidence;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -17,20 +18,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static lk.ijse.controller.CivilManageFormController.civil;
+
+import static lk.ijse.controller.CivilManageFormController.civilDTO;
 
 public class AddResidenceFormController implements Initializable {
     public ChoiceBox cbResidence;
-    public static List<MultiResidence> residenceList = new ArrayList<>();
+    public static List<MultiResidenceDTO> residenceList = new ArrayList<>();
     public Label lblCivil;
+   AddResidenceBO addResidenceBO = new AddResidenceBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadResidenceID();
         lblCivil.setText(IndividualFormController.civil_id);
-        if ((!(civil == null))) {
+        if ((!(civilDTO == null))) {
             if ((!(CivilManageFormController.multiResidenceList.get(1) == null))) {
-                lblCivil.setText("C00" + CivilManageFormController.civil.getId());
+                lblCivil.setText("C00" + civilDTO.getID());
                 cbResidence.setValue(CivilManageFormController.multiResidenceList.get(1).getResidence_id());
             }
         }
@@ -38,7 +41,7 @@ public class AddResidenceFormController implements Initializable {
 
     private void loadResidenceID() {
         try {
-            List<String> id = ResidenceModel.loadResidenceID();
+            List<String> id = addResidenceBO.loadResidenceID();
             ObservableList<String> dataList = FXCollections.observableArrayList();
 
             for (String ids : id) {
@@ -54,7 +57,7 @@ public class AddResidenceFormController implements Initializable {
 
         String[] strings = lblCivil.getText().split("C00");
 
-        residenceList.add(new MultiResidence((String) cbResidence.getValue(),strings[1]));
+        residenceList.add(new MultiResidenceDTO((String) cbResidence.getValue(),strings[1]));
         if(residenceList!=null)
             new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
     }

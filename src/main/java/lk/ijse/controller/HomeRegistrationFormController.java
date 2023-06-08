@@ -4,36 +4,25 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import javafx.stage.Window;
-import lk.ijse.dto.Candidate;
-import lk.ijse.dto.Dead;
-import lk.ijse.dto.Detail;
-import lk.ijse.dto.Residence;
-import lk.ijse.model.*;
-import lk.ijse.util.OpenView;
+import lk.ijse.bo.custom.HomeRegistrationBO;
+import lk.ijse.bo.custom.impl.HomeRegistrationBOImpl;
+import lk.ijse.dto.DetailDTO;
+import lk.ijse.dto.ResidenceDTO;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.EventObject;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import static lk.ijse.controller.DisableManageFormController.disable;
 import static lk.ijse.controller.HomeManageFormController.residence;
 
 public class HomeRegistrationFormController implements Initializable {
@@ -51,6 +40,7 @@ public class HomeRegistrationFormController implements Initializable {
     public Button Save;
     public Label lblFCount;
     public Label lblChildCount;
+    HomeRegistrationBO homeRegistrationBO = new HomeRegistrationBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -87,7 +77,7 @@ public class HomeRegistrationFormController implements Initializable {
 
     private void loadDivisionID() {
         try {
-            List<String> id = DivisionModel.loadDivisionID();
+            List<String> id = homeRegistrationBO.loadDivisionId();
             ObservableList<String> dataList = FXCollections.observableArrayList();
 
             for (String ids : id) {
@@ -114,14 +104,14 @@ public class HomeRegistrationFormController implements Initializable {
 
 
                 try {
-                    boolean isSaved = ResidenceModel.save(new Residence(
+                    boolean isSaved = homeRegistrationBO.saveResidence(new ResidenceDTO(
                             txtHomeID.getText(), (String) cbDivision.getValue(), txtName.getText(), txtAddress1.getText(), Integer.valueOf(txtCount.getText()),
                             childCount, (String) cbType.getValue(), electricity, water_supply));
 
                     if (isSaved) {
-                        Detail detail = new Detail("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering home id - "+txtHomeID.getText()+"");
+                        DetailDTO detail = new DetailDTO("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering home id - "+txtHomeID.getText()+"");
                         try {
-                            DetailModel.save(detail);
+                            homeRegistrationBO.saveDetail(detail);
                         } catch (SQLException e) {
                             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                         }
@@ -148,7 +138,7 @@ public class HomeRegistrationFormController implements Initializable {
                 String water_supply = ckbWater.isSelected() ? "Yes" : "No";
 
                 try {
-                    boolean isUpdated = ResidenceModel.update(new Residence(
+                    boolean isUpdated = homeRegistrationBO.updateResidence(new ResidenceDTO(
                             txtHomeID.getText(), (String) cbDivision.getValue(), txtName.getText(), txtAddress1.getText(), Integer.valueOf(txtCount.getText()),
                             Integer.valueOf(txtChildCount.getText()), (String) cbType.getValue(), electricity, water_supply));
 
@@ -157,7 +147,7 @@ public class HomeRegistrationFormController implements Initializable {
                     else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
 
                 }
@@ -198,9 +188,9 @@ public class HomeRegistrationFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                homeRegistrationBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

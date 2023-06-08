@@ -160,7 +160,7 @@ CREATE TABLE detail(
                        CONSTRAINT PRIMARY KEY (detail_num)
 );
 
-CREATE TABLE vote(
+CREATE TABLE voteDTO(
                      election_id VARCHAR(10),
                      civil_id INT(10),
                      candidate_id VARCHAR(10),

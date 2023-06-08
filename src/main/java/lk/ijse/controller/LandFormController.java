@@ -9,13 +9,12 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dto.Detail;
-import lk.ijse.dto.Land;
-import lk.ijse.dto.LandDetail;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.LandModel;
-import lk.ijse.model.LandTypeModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.bo.custom.LandBO;
+import lk.ijse.bo.custom.impl.LandBOImpl;
+import lk.ijse.dto.DetailDTO;
+import lk.ijse.dto.LandDTO;
+import lk.ijse.dto.LandDetailDTO;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -25,11 +24,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static lk.ijse.controller.AddLandTypeFormController.landDetailList;
-import static lk.ijse.controller.CivilManageFormController.multiResidenceList;
-import static lk.ijse.controller.IndividualFormController.civil1;
 import static lk.ijse.controller.LandManageFormController.*;
-import static lk.ijse.controller.MaternityManageFormController.maternity;
-import static lk.ijse.controller.OwnershipFormController.ownerLists;
+import static lk.ijse.controller.OwnershipFormController.coOwnerLists;
 
 public class LandFormController implements Initializable {
     public AnchorPane landRoot;
@@ -41,6 +37,7 @@ public class LandFormController implements Initializable {
     public Button save;
     public static Integer index;
     public Label lblArea;
+    LandBO landBO =new LandBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -63,7 +60,7 @@ public class LandFormController implements Initializable {
 
     private void generateLandId() {
         try {
-            String id = "L00"+LandModel.getNextLandId();
+            String id = "L00"+ landBO.getNextLandID();
             lblID.setText(id);
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -81,18 +78,18 @@ public class LandFormController implements Initializable {
         if(save.getText().equals("Save")) {
             if (!txtPlan.getText().equals("") && !txtArea.getText().equals("")) {
                 String[] land_num = lblID.getText().split("L00");
-                Integer type_id = LandTypeModel.getTypeId((String) cbLType.getValue());
+                Integer type_id = landBO.getLandType((String) cbLType.getValue());
 
-                landDetailList.add(new LandDetail(type_id, Integer.valueOf(land_num[1]), (String) cbLType.getValue()));
+                landDetailList.add(new LandDetailDTO(type_id, Integer.valueOf(land_num[1]), (String) cbLType.getValue()));
 
                 try {
-                    boolean isSaved = LandModel.save(new Land(
-                            Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText())), landDetailList, ownerLists);
+                    boolean isSaved = landBO.saveLand(new LandDTO(
+                            Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText())), landDetailList, coOwnerLists);
 
                     if (isSaved) {
-                        Detail detail = new Detail("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering land id - "+lblID.getText());
+                        DetailDTO detail = new DetailDTO("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering land id - "+lblID.getText());
                         try {
-                            DetailModel.save(detail);
+                            landBO.saveDetail(detail);
                         } catch (SQLException e) {
                             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                         }
@@ -110,12 +107,12 @@ public class LandFormController implements Initializable {
             }
         }else if(save.getText().equals("Update")){
             if (!txtPlan.getText().equals("") && !txtArea.getText().equals("")) {
-                Integer type_id = LandTypeModel.getTypeId((String) cbLType.getValue());
+                Integer type_id = landBO.getLandType((String) cbLType.getValue());
 
-                landDetailList.add(new LandDetail(type_id, land.getLand_id(), (String) cbLType.getValue()));
+                landDetailList.add(new LandDetailDTO(type_id, land.getLand_id(), (String) cbLType.getValue()));
                 try {
-                    boolean isSaved = LandModel.update(new Land(
-                            land.getLand_id(), txtPlan.getText(), Double.valueOf(txtArea.getText())), landDetailList, ownerLists);
+                    boolean isSaved = landBO.updateLand(new LandDTO(
+                            land.getLand_id(), txtPlan.getText(), Double.valueOf(txtArea.getText())), landDetailList, coOwnerLists);
 
                     if (isSaved)
                         new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
@@ -171,9 +168,9 @@ public class LandFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                landBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

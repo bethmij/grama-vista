@@ -8,19 +8,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.custom.CivilManageBO;
+import lk.ijse.bo.custom.impl.CivilManageBOImpl;
 import lk.ijse.dto.*;
-import lk.ijse.dto.tm.CandidateTM;
 import lk.ijse.dto.tm.CivilTM;
-import lk.ijse.model.CandidateModel;
-import lk.ijse.model.CivilModel;
-import lk.ijse.model.DetailModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.net.URL;
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -38,12 +34,13 @@ public class CivilManageFormController implements Initializable {
     public ComboBox cmbID;
     public TableColumn colRelation;
     private ObservableList<CivilTM> obList = FXCollections.observableArrayList();
-    public static Civil civil;
+
     public static CivilDTO civilDTO;
-    public static List<Contact> contactList = new ArrayList<>();
-    public static List<MultiResidence> multiResidenceList =new ArrayList<>();
-    public static Civil2 civil2;
+    public static List<ContactDTO> contactList = new ArrayList<>();
+    public static List<MultiResidenceDTO> multiResidenceList =new ArrayList<>();
+    public static Civil2DTO civil2DTO;
     public static String id;
+    CivilManageBO civilManageBO = new CivilManageBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -64,7 +61,7 @@ public class CivilManageFormController implements Initializable {
     private void loadCivilId() {
         List<String> id = null;
         try {
-            id = CivilModel.loadCivilId();
+            id = civilManageBO.loadCivilId();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -84,7 +81,7 @@ public class CivilManageFormController implements Initializable {
     public void btnGetAllOnAction(ActionEvent actionEvent) {
 
         try {
-            List<CivilDTO> civilDTOList  = CivilModel.searchAll();
+            List<CivilDTO> civilDTOList  = civilManageBO.searchAllCivil();
 
             for (CivilDTO datalist : civilDTOList) {
                 Button btnView = new Button("View more");
@@ -106,17 +103,17 @@ public class CivilManageFormController implements Initializable {
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
-            CivilDTO civilDTO = CivilModel.search((String) cmbID.getValue());
-            civil= new Civil(civilDTO.getID(), civilDTO.getName(), civilDTO.getNic(), civilDTO.getAddress(),
-                    (civilDTO.getDob()), civilDTO.getGender(), civilDTO.getMarriage(),civilDTO.getRelation(),
+            CivilDTO civilDTO = civilManageBO.searchCivil((String) cmbID.getValue());
+            civilDTO= new CivilDTO(civilDTO.getID(),null, civilDTO.getName(), civilDTO.getNic(), civilDTO.getAddress(),
+                    (civilDTO.getDob()), null,civilDTO.getGender(), civilDTO.getMarriage(),civilDTO.getRelation(),
                     civilDTO.getEducation(),civilDTO.getSchool(),civilDTO.getOccupation(),
                     civilDTO.getWork(),civilDTO.getSalary(),civilDTO.getEmail());
 
-            contactList = CivilModel.searchContact((String) cmbID.getValue());
-            multiResidenceList = CivilModel.searchResidence((String) cmbID.getValue());
+            contactList = civilManageBO.searchContact((String) cmbID.getValue());
+            multiResidenceList = civilManageBO.searchResidence((String) cmbID.getValue());
 
             OpenView.openView("individualForm");
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
@@ -124,8 +121,8 @@ public class CivilManageFormController implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
 
         try {
-            civilDTO = CivilModel.search((String) cmbID.getValue());
-        } catch (SQLException e) {
+            civilDTO = civilManageBO.searchCivil((String) cmbID.getValue());
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
         Button btnView = new Button("View more");
@@ -134,8 +131,8 @@ public class CivilManageFormController implements Initializable {
 
         CivilTM civilTM = new CivilTM(civilDTO.getID(),civilDTO.getName(),
                             civilDTO.getNic(),civilDTO.getAddress(),civilDTO.getRelation(),btnView);
-        contactList = CivilModel.searchContact((String) cmbID.getValue());
-        multiResidenceList = CivilModel.searchResidence((String) cmbID.getValue());
+        contactList = civilManageBO.searchContact((String) cmbID.getValue());
+        multiResidenceList = civilManageBO.searchResidence((String) cmbID.getValue());
 
         obList.add(civilTM);
         tbl.setItems(obList);
@@ -146,10 +143,10 @@ public class CivilManageFormController implements Initializable {
     private void setViewBtnOnAction(Button btnView) {
         btnView.setOnAction((e) -> {
             try {
-                CivilDTO civilDTOs = CivilModel.search((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
+                CivilDTO civilDTOs = civilManageBO.searchCivil((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
                 id = (String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex());
-                List<Contact> contactLists = CivilModel.searchContact((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
-                List<MultiResidence> multiResidenceLists = CivilModel.searchResidence((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
+                List<ContactDTO> contactLists = civilManageBO.searchContact((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
+                List<MultiResidenceDTO> multiResidenceLists = civilManageBO.searchResidence((String) colID.getCellData(tbl.getSelectionModel().getSelectedIndex()));
 
                 Integer contact1 = null, contact2 = null;
                 if(contactLists.size()==1)
@@ -158,11 +155,11 @@ public class CivilManageFormController implements Initializable {
                 if(contactLists.size()==2)
                     contact2=contactLists.get(1).getContact();
 
-                civil2 = new Civil2(civilDTOs.getID(),civilDTOs.getName(),civilDTOs.getImage(),civilDTOs.getNic(),civilDTOs.getAge(),civilDTOs.getAddress(),civilDTOs.getDob(),
+                civil2DTO = new Civil2DTO(civilDTOs.getID(),civilDTOs.getName(),civilDTOs.getImage(),civilDTOs.getNic(),civilDTOs.getAge(),civilDTOs.getAddress(),civilDTOs.getDob(),
                         civilDTOs.getGender(),civilDTOs.getMarriage(), civilDTOs.getRelation(),civilDTOs.getEducation(),civilDTOs.getSchool(),civilDTOs.getOccupation(),
                         civilDTOs.getWork(),civilDTOs.getSalary(),contact1,contact2);
 
-            } catch (SQLException ex) {
+            } catch (SQLException | ClassNotFoundException ex) {
                new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
             }
             OpenView.openView("civilViewForm");
@@ -172,7 +169,7 @@ public class CivilManageFormController implements Initializable {
 
     public void cmbIDOnAction(ActionEvent actionEvent) {
         try {
-            lblName.setText(CivilModel.getName((String) cmbID.getValue()));
+            lblName.setText(civilManageBO.getCivilName((String) cmbID.getValue()));
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -187,9 +184,9 @@ public class CivilManageFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                civilManageBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

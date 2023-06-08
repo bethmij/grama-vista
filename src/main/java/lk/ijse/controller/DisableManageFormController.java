@@ -10,13 +10,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dto.Detail;
-import lk.ijse.dto.Disable;
+import lk.ijse.bo.custom.DisableManageBO;
+import lk.ijse.bo.custom.impl.DisableManageBOImpl;
+import lk.ijse.dto.DetailDTO;
 import lk.ijse.dto.DisableDTO;
 import lk.ijse.dto.tm.DisableTM;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.DisableModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.dao.custom.impl.util.OpenView;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -42,7 +41,8 @@ public class DisableManageFormController implements Initializable {
     public TableColumn colDesc;
     public TableColumn colAction;
     private ObservableList<DisableTM> obList = FXCollections.observableArrayList();
-    public static Disable disable;
+    public static DisableDTO disable;
+    DisableManageBO disableManageBO = new DisableManageBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -53,7 +53,7 @@ public class DisableManageFormController implements Initializable {
     private void loadDisableId() {
         List<String> id = null;
         try {
-            id = DisableModel.loadDisableId();
+            id = disableManageBO.loadDisableId();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -81,7 +81,7 @@ public class DisableManageFormController implements Initializable {
 
     public void btnGetAllOnAction(ActionEvent actionEvent) {
         try {
-            List<DisableDTO> disableDTO  = DisableModel.searchAll();
+            List<DisableDTO> disableDTO  = disableManageBO.searchAllDisable();
 
             for (DisableDTO datalist : disableDTO) {
                 Button btnDelete = new Button("Delete");
@@ -100,8 +100,8 @@ public class DisableManageFormController implements Initializable {
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
-            DisableDTO disableDTO = DisableModel.search((String) cbReg.getValue());
-            disable= new Disable(disableDTO.getId(),disableDTO.getCivil(), disableDTO.getName(), disableDTO.getDisable(), disableDTO.getDesc());
+            DisableDTO disableDTO = disableManageBO.searchDisable((String) cbReg.getValue());
+            disable= new DisableDTO(disableDTO.getId(),disableDTO.getCivil(), disableDTO.getName(), disableDTO.getDisable(), disableDTO.getDesc());
 
             OpenView.openView("disableRegistrationForm");
         } catch (SQLException e) {
@@ -112,7 +112,7 @@ public class DisableManageFormController implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent) {
         DisableDTO disableDTO = null;
         try {
-            disableDTO = DisableModel.search((String) cbReg.getValue());
+            disableDTO = disableManageBO.searchDisable((String) cbReg.getValue());
 
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -135,7 +135,7 @@ public class DisableManageFormController implements Initializable {
 
             if (result.orElse(no) == yes) {
                 try {
-                    boolean isDeleted = DisableModel.delete((String) colID.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
+                    boolean isDeleted = disableManageBO.deleteDisable((String) colID.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
 
                     if(isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
@@ -160,9 +160,9 @@ public class DisableManageFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                disableManageBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

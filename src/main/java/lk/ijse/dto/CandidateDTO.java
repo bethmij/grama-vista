@@ -13,11 +13,15 @@ import java.sql.Blob;
 
 public class CandidateDTO {
     public String Election;
-    public Blob Image;
+    public Blob image;
     public String Name;
     public String NIC;
     public String Division;
     public String address;
     public Integer Contact;
     public String Politic;
+
+
+
+
 }

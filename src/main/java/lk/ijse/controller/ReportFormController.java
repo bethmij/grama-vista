@@ -6,15 +6,15 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.custom.ReportBO;
+import lk.ijse.bo.custom.impl.ReportBOImpl;
 import lk.ijse.db.DBConnection;
-import lk.ijse.dto.Detail;
-import lk.ijse.model.DetailModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.dto.DetailDTO;
+import lk.ijse.dao.custom.impl.util.OpenView;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -25,6 +25,7 @@ import java.util.Optional;
 
 public class ReportFormController {
     public AnchorPane tblDivPane;
+    ReportBO reportBO = new ReportBOImpl();
 
     public void lblLogOnAction(MouseEvent mouseEvent) {
         ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
@@ -33,9 +34,9 @@ public class ReportFormController {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                reportBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

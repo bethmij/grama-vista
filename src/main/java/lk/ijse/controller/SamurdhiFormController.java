@@ -8,14 +8,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.custom.SamurdhiBO;
+import lk.ijse.bo.custom.impl.SamurdhiBOImpl;
 import lk.ijse.dto.CivilDTO;
-import lk.ijse.dto.Detail;
+import lk.ijse.dto.DetailDTO;
 import lk.ijse.dto.ResidenceDTO;
 import lk.ijse.dto.tm.SamurdhiTM;
-import lk.ijse.model.CivilModel;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.ResidenceModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.dao.custom.impl.util.OpenView;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -45,6 +44,7 @@ public class SamurdhiFormController implements Initializable {
     public AnchorPane tblDivPane;
     public TableColumn colCivil;
     private ObservableList<SamurdhiTM> obList = FXCollections.observableArrayList();
+    SamurdhiBO samurdhiBO = new SamurdhiBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -67,9 +67,9 @@ public class SamurdhiFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                samurdhiBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }
@@ -125,9 +125,9 @@ public class SamurdhiFormController implements Initializable {
     public void btnUploadOnAction(ActionEvent actionEvent) {
 
         try {
-            List<String> residenceDTO = ResidenceModel.loadResidenceID();
+            List<String> residenceDTO = samurdhiBO.loadResidenceId();
             for (int i = 0; i < residenceDTO.size(); i++) {
-                List<CivilDTO> civilDetail = CivilModel. getCivil(residenceDTO.get(i));
+                List<CivilDTO> civilDetail = samurdhiBO. getCivilDetail(residenceDTO.get(i));
                 int salary_count = 0; //to count salary count if it's below the rate
 
                 for (int j=0; j< civilDetail.size(); j++){
@@ -136,7 +136,7 @@ public class SamurdhiFormController implements Initializable {
                     }
                 }
                 if (salary_count == civilDetail.size()){
-                    ResidenceDTO residenceDetail = ResidenceModel.search(residenceDTO.get(i));
+                    ResidenceDTO residenceDetail = samurdhiBO.searchResidence(residenceDTO.get(i));
                     String civil_id = null;
                     String name = null;
                     String nic = null;
@@ -154,7 +154,7 @@ public class SamurdhiFormController implements Initializable {
                 }
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }

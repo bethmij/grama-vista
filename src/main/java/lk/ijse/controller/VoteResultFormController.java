@@ -9,13 +9,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.custom.VoteResultBO;
+import lk.ijse.bo.custom.impl.VoteResultBOImpl;
 import lk.ijse.db.DBConnection;
-import lk.ijse.dto.Detail;
-import lk.ijse.model.CandidateModel;
-import lk.ijse.model.CivilModel;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.VoteModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.dto.DetailDTO;
+import lk.ijse.dao.custom.impl.util.OpenView;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -41,18 +39,19 @@ public class VoteResultFormController implements Initializable {
     public Label lblVote2;
     public Label lblVote3;
     public Label lblWinner;
+    VoteResultBO voteResultBO = new VoteResultBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
 
-            lblCandidate.setText(String.valueOf(CandidateModel.getCount()));
-            lblPosition.setText(String.valueOf(CandidateModel.getCount()-2));
-            lblVoters.setText(String.valueOf(CivilModel.getCount()));
-            lblVoted.setText(String.valueOf(VoteModel.getCount()));
-            lblVote1.setText(String.valueOf(VoteModel.getVotefor1(1)));
-            lblVote2.setText(String.valueOf(VoteModel.getVotefor1(2)));
-            lblVote3.setText(String.valueOf(VoteModel.getVotefor1(3)));
+            lblCandidate.setText(String.valueOf(voteResultBO.getCandidateCount()));
+            lblPosition.setText(String.valueOf(voteResultBO.getCandidateCount()-2));
+            lblVoters.setText(String.valueOf(voteResultBO.getCivilCount() ));
+            lblVoted.setText(String.valueOf(voteResultBO.getVoteCount()));
+            lblVote1.setText(String.valueOf(voteResultBO.getVote(1)));
+            lblVote2.setText(String.valueOf(voteResultBO.getVote(2)));
+            lblVote3.setText(String.valueOf(voteResultBO.getVote(3)));
             getWinner();
             getChart();
 
@@ -74,10 +73,10 @@ public class VoteResultFormController implements Initializable {
 
     private void getWinner() {
         try {
-            Integer maxVote = Math. max(VoteModel.getVotefor1(1), Math. max(VoteModel.getVotefor1(2),VoteModel.getVotefor1(3)));
+            Integer maxVote = Math. max(voteResultBO.getVote(1), Math. max(voteResultBO.getVote(2), voteResultBO.getVote(3)));
             for (int i=0; i<3; i++){
-                if(maxVote==VoteModel.getVotefor1(i)){
-                    String name = VoteModel.getName(i);
+                if(maxVote== voteResultBO.getVote(i)){
+                    String name = voteResultBO.getWinnerName(i);
                     lblWinner.setText(name);
                 }
             }
@@ -94,9 +93,9 @@ public class VoteResultFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                voteResultBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

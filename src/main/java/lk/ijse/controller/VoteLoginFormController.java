@@ -7,25 +7,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.db.DBConnection;
+import lk.ijse.bo.custom.VoteLoginBO;
+import lk.ijse.bo.custom.impl.VoteLoginBOImpl;
 import lk.ijse.dto.CivilDTO;
-import lk.ijse.dto.Detail;
-import lk.ijse.dto.Vote;
-import lk.ijse.model.CivilModel;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.VoteModel;
-import lk.ijse.util.OpenView;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
+import lk.ijse.dto.DetailDTO;
+import lk.ijse.dto.VoteDTO;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
@@ -37,6 +28,7 @@ public class VoteLoginFormController implements Initializable {
     public static Integer civilID;
     public TextField txtNIC;
     public Label lblCivil;
+    VoteLoginBO voteLoginBO = new VoteLoginBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,9 +43,9 @@ public class VoteLoginFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                voteLoginBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }
@@ -71,24 +63,24 @@ public class VoteLoginFormController implements Initializable {
     public void cmbElectionOnAction(ActionEvent actionEvent) throws ParseException {
 
 
-        //civilID = Integer.valueOf(ci);
+        civilID = Integer.valueOf(lblCivil.getText());
 
         LocalTime start = LocalTime.parse("08:00");
         LocalTime end = LocalTime.parse("20:00");
 
 
-        Vote vote = null;
+        VoteDTO voteDTO = null;
         try {
-            vote = VoteModel.search((String) cmbElection.getValue());
-        } catch (SQLException e) {
+            voteDTO = voteLoginBO.searchVote((String) cmbElection.getValue());
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
         if(cmbElection.getValue().equals("E001")){
-            if(vote.getDate().compareTo(LocalDate.now())<0 && !LocalTime.now().isBefore(start) && !LocalTime.now().isAfter(end)) {
+            if(voteDTO.getDate().compareTo(LocalDate.now())==0 && !LocalTime.now().isBefore(start) && !LocalTime.now().isAfter(end)) {
                 OpenView.openView("voteForm", Pane);
             }else
-                new Alert(Alert.AlertType.ERROR, "This only eligible on "+vote.getDate()+" during "+start+"-"+end).show();
+                new Alert(Alert.AlertType.ERROR, "This only eligible on "+ voteDTO.getDate()+" during "+start+"-"+end).show();
         }
     }
 
@@ -101,12 +93,12 @@ public class VoteLoginFormController implements Initializable {
         List<String> election_id_list = new ArrayList<>();
 
         try {
-            CivilDTO civilDTO = CivilModel.searchbyNIC(txtNIC.getText());
+            CivilDTO civilDTO = voteLoginBO.searchByCivilNIC(txtNIC.getText());
             cmbElection.setDisable(false);
             lblCivil.setText(civilDTO.getID());
             lblName.setText(civilDTO.getName());
-            election_id = VoteModel.getElecID(civilDTO.getID());
-            election_id_list = VoteModel.getElecID();
+            election_id = voteLoginBO.getElectionIDbyID(civilDTO.getID());
+            election_id_list = voteLoginBO.getElectionID();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Invalid NIC!").show();
         }

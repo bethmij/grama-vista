@@ -10,13 +10,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.custom.UserManageBO;
+import lk.ijse.bo.custom.impl.UserManageBOImpl;
 import lk.ijse.dto.*;
-import lk.ijse.dto.tm.MaternityTM;
 import lk.ijse.dto.tm.UserTM;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.MaternityModel;
-import lk.ijse.model.UserModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -39,7 +37,8 @@ public class UserManageFormController implements Initializable {
     public TableColumn colLand;
     public TableColumn colAction;
     private ObservableList<UserTM> obList = FXCollections.observableArrayList();
-    public static User user;
+    public static UserDTO user;
+    UserManageBO userManageBO = new UserManageBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,7 +48,7 @@ public class UserManageFormController implements Initializable {
 
     private void loadEmployeeId() {
         try {
-            List<String> id = UserModel.loadUserID();
+            List<String> id = userManageBO.loadEmployeeId();
             ObservableList<String> dataList = FXCollections.observableArrayList();
 
             for (String ids : id) {
@@ -78,7 +77,7 @@ public class UserManageFormController implements Initializable {
 
     public void btnGetAllOnAction(ActionEvent actionEvent) {
         try {
-            List<UserDTO> userDTOS  =UserModel.searchAll();
+            List<UserDTO> userDTOS  = userManageBO.searchAllUser();
 
             for (UserDTO datalist : userDTOS) {
                 Button btnDelete = new Button("Delete");
@@ -97,12 +96,12 @@ public class UserManageFormController implements Initializable {
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
-            UserDTO userDTO = UserModel.search((String)cbEmployee.getValue());
-            user= new User(userDTO.getDivision(), userDTO.getEmployee(), userDTO.getNic(), userDTO.getName(), userDTO.getUser(), userDTO.getPassword(),
-                    userDTO.getDob(),userDTO.getEmDate(),userDTO.getEmail(),userDTO.getContact());
+            UserDTO userDTO = userManageBO.searchUser((String)cbEmployee.getValue());
+            user= new UserDTO(userDTO.getEmployee(),userDTO.getDivision(),userDTO.getName() , userDTO.getNic(), userDTO.getUser(), userDTO.getPassword(),
+                    userDTO.getDob(),userDTO.getAge(),userDTO.getEmDate(),userDTO.getContact(),userDTO.getEmail());
 
             OpenView.openView("userRegistrationForm");
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
@@ -110,9 +109,9 @@ public class UserManageFormController implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent) {
         UserDTO userDTO = null;
         try {
-           userDTO =UserModel.search((String)cbEmployee.getValue());
+           userDTO = userManageBO.searchUser((String)cbEmployee.getValue());
 
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
@@ -134,14 +133,14 @@ public class UserManageFormController implements Initializable {
 
             if (result.orElse(no) == yes) {
                 try {
-                    boolean isDeleted = UserModel.dead((String) colEmployee.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
+                    boolean isDeleted = userManageBO.deleteUser((String) colEmployee.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
 
                     if(isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
                         obList.remove(tblDivision.getSelectionModel().getSelectedIndex());
                         tblDivision.refresh();
                     }
-                } catch (SQLException ex) {
+                } catch (SQLException | ClassNotFoundException ex) {
                     new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
                 }
 
@@ -159,9 +158,9 @@ public class UserManageFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                userManageBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

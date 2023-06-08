@@ -9,11 +9,9 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dto.Owner;
-import lk.ijse.model.CivilModel;
-import lk.ijse.model.LandModel;
-import lk.ijse.model.OwnerModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.bo.custom.OwnershipBO;
+import lk.ijse.bo.custom.impl.OwnershipBOImpl;
+import lk.ijse.dto.CoOwnerDTO;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -21,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static lk.ijse.controller.LandFormController.index;
 import static lk.ijse.controller.LandManageFormController.*;
 
 public class OwnershipFormController implements Initializable {
@@ -29,8 +26,9 @@ public class OwnershipFormController implements Initializable {
     public TextField txtLotNum;
     public ChoiceBox cbCivilID;
     public TextField txtPercentage;
-    public static List<Owner> ownerLists = new ArrayList<>();
+    public static List<CoOwnerDTO> coOwnerLists = new ArrayList<>();
     public Label lblLand;
+    OwnershipBO ownershipBO = new OwnershipBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -56,7 +54,7 @@ public class OwnershipFormController implements Initializable {
     private void loadCivilId() {
         List<String> id = null;
         try {
-            id = CivilModel.loadCivilId();
+            id = ownershipBO.loadCivilId();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -75,10 +73,10 @@ public class OwnershipFormController implements Initializable {
         String[] civil_id = String.valueOf(cbCivilID.getValue()).split("C00");
 
         if ((!(land == null)))
-            ownerLists.add(new Owner(land.getLand_id(), civil_id[1], txtLotNum.getText(), Double.valueOf(txtPercentage.getText() )));
+            coOwnerLists.add(new CoOwnerDTO(land.getLand_id(), civil_id[1], txtLotNum.getText(), Double.valueOf(txtPercentage.getText() )));
         else
-            ownerLists.add(new Owner(Integer.valueOf(land_num[1]), civil_id[1], txtLotNum.getText(), Double.valueOf(txtPercentage.getText() )));
-        if(ownerLists!=null)
+            coOwnerLists.add(new CoOwnerDTO(Integer.valueOf(land_num[1]), civil_id[1], txtLotNum.getText(), Double.valueOf(txtPercentage.getText() )));
+        if(coOwnerLists !=null)
             new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
 
     }

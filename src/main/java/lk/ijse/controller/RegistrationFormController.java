@@ -8,9 +8,10 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dto.Detail;
-import lk.ijse.model.DetailModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.bo.custom.RegistrationBO;
+import lk.ijse.bo.custom.impl.RegistrationBOImpl;
+import lk.ijse.dto.DetailDTO;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -43,6 +44,7 @@ public class RegistrationFormController {
 
     public void btnDivisionOnAction(ActionEvent actionEvent) { OpenView.openView ("divisionRegistrationForm",CivilRPane);}
 
+    RegistrationBO registrationBO = new RegistrationBOImpl();
 
     @FXML
     void lblLogOnAction(MouseEvent event) {
@@ -53,9 +55,9 @@ public class RegistrationFormController {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                registrationBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

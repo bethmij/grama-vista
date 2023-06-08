@@ -7,11 +7,11 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dto.Detail;
-import lk.ijse.dto.Division;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.DivisionModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.bo.custom.DivisionRegistrationBO;
+import lk.ijse.bo.custom.impl.DivisionRegistrationBOImpl;
+import lk.ijse.dto.DetailDTO;
+import lk.ijse.dto.DivisionDTO;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -32,6 +32,7 @@ public class DivisionRegistrationFormController implements Initializable {
     public Label lblSecretary;
     public Label lblAdmin;
     public Label lblArea;
+    DivisionRegistrationBO dRegistrationBO = new DivisionRegistrationBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -40,7 +41,7 @@ public class DivisionRegistrationFormController implements Initializable {
 
     private void generateNextOrderId() {
         try {
-            String id = DivisionModel.getNextOrderId();
+            String id = dRegistrationBO.getNextDivisionID();
             lblDivision.setText(id);
 
             if ((!(DivisionManageFormController.division == null))){setDivController();}
@@ -62,17 +63,13 @@ public class DivisionRegistrationFormController implements Initializable {
         if (btnSave.getText().equals( "Save")) {
             if ( !txtSecret.getText().equals("") && !txtSecret.getText().equals("") ) {
                 try {
-                    boolean isSaved = DivisionModel.save(new Division(
-                            lblDivision.getText(),
-                            txtName.getText(),
-                            txtSecret.getText(),
-                            txtAdmin.getText(),
-                            Double.parseDouble(txtLand.getText())));
+                    boolean isSaved = dRegistrationBO.saveDivision(new DivisionDTO(lblDivision.getText(), txtName.getText(),
+                            txtSecret.getText(), txtAdmin.getText(),null, Double.parseDouble(txtLand.getText())));
 
                     if (isSaved) {
-                        Detail detail = new Detail("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering division id - " + lblDivision.getText() + " \nname - " + txtName.getText());
+                        DetailDTO detail = new DetailDTO("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering division id - " + lblDivision.getText() + " \nname - " + txtName.getText());
                         try {
-                            DetailModel.save(detail);
+                            dRegistrationBO.saveDetail(detail);
                         } catch (SQLException e) {
                             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                         }
@@ -91,12 +88,8 @@ public class DivisionRegistrationFormController implements Initializable {
 
             if ( !txtSecret.getText().equals("") && !txtSecret.getText().equals("") ) {
                try {
-                    boolean isSaved = DivisionModel.update(new Division(
-                            lblDivision.getText(),
-                            txtName.getText(),
-                            txtSecret.getText(),
-                            txtAdmin.getText(),
-                            Double.parseDouble(txtLand.getText())));
+                    boolean isSaved = dRegistrationBO.updateDivision(new DivisionDTO(lblDivision.getText(), txtName.getText(),
+                            txtSecret.getText(), txtAdmin.getText(),null, Double.parseDouble(txtLand.getText())));
 
                     if (isSaved) {
                         new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully!").show();
@@ -133,9 +126,9 @@ public class DivisionRegistrationFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi",LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi",LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                dRegistrationBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

@@ -5,11 +5,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.bo.custom.PasswordBO;
+import lk.ijse.bo.custom.impl.PasswordBOImpl;
 import lk.ijse.dto.UserDTO;
-import lk.ijse.model.UserModel;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.mail.*;
@@ -17,11 +17,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
-import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -37,6 +34,7 @@ public class PasswordFormController implements Initializable {
     public Integer code;
     public JFXButton btnSave1;
     public Label lblEmail;
+    PasswordBO passwordBO = new PasswordBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,7 +42,7 @@ public class PasswordFormController implements Initializable {
         txtPassword.setDisable(true);
         btnSave1.setDisable(true);
         try {
-            UserDTO userDTO = UserModel.searchbyUser(user);
+            UserDTO userDTO = passwordBO.searchByUser(user);
             char letter = userDTO.getEmail().charAt(0);
             lblEmail.setText(letter+"******@gmail.com");
 
@@ -105,7 +103,7 @@ public class PasswordFormController implements Initializable {
     public void sendEmail (){
         UserDTO userDTO = null;
         try {
-            userDTO = UserModel.searchbyUser(user);
+            userDTO = passwordBO.searchByUser(user);
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
@@ -140,7 +138,7 @@ public class PasswordFormController implements Initializable {
     public void btnSetPassOnAction(ActionEvent actionEvent) {
         try {
             String hashed = BCrypt.hashpw(txtPassword.getText(), BCrypt.gensalt());
-            boolean isSaved = UserModel.updatePass(hashed,user);
+            boolean isSaved = passwordBO.updatePassword(hashed,user);
             if (isSaved)
                 new Alert(Alert.AlertType.CONFIRMATION,"Password has been reset successfully!").show();
         } catch (SQLException e) {

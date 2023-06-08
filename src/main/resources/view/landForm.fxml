@@ -199,7 +199,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <JFXButton fx:id="owner" blendMode="HARD_LIGHT" graphicTextGap="2.0" layoutX="425.0" layoutY="429.0" onAction="#btnOwnerOnAction" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #c16c04;" text=" Ownership" textFill="#e7e1dd">
+      <JFXButton fx:id="coOwner" blendMode="HARD_LIGHT" graphicTextGap="2.0" layoutX="425.0" layoutY="429.0" onAction="#btnOwnerOnAction" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #c16c04;" text=" Ownership" textFill="#e7e1dd">
          <font>
             <Font size="20.0" />
          </font>

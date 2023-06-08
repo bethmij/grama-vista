@@ -16,17 +16,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
-import lk.ijse.dto.Candidate;
-import lk.ijse.dto.Contact;
-import lk.ijse.dto.Detail;
-import lk.ijse.dto.Division;
-import lk.ijse.model.CandidateModel;
-import lk.ijse.model.DeadModel;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.DivisionModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.bo.custom.CandidateBO;
+import lk.ijse.bo.custom.impl.CandidateBOImpl;
+import lk.ijse.dto.CandidateDTO;
+import lk.ijse.dto.DetailDTO;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -38,8 +33,6 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import static lk.ijse.controller.IndividualFormController.civil1;
 
 public class CandidateFormController implements Initializable {
 
@@ -57,6 +50,7 @@ public class CandidateFormController implements Initializable {
     public JFXButton image;
     public Button btn1;
     public Label lblName;
+    CandidateBO candidateBO = new CandidateBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -88,7 +82,7 @@ public class CandidateFormController implements Initializable {
 
     private void loadDivisionID() {
         try {
-            List<String> id = DivisionModel.loadDivisionID();
+            List<String> id = candidateBO.loadDivisionId();
             ObservableList<String> dataList = FXCollections.observableArrayList();
 
             for (String ids : id) {
@@ -119,19 +113,14 @@ public class CandidateFormController implements Initializable {
                 if (!txtContact.getText().isEmpty())
                     contact = Integer.valueOf(txtContact.getText());
                 try {
-                    boolean isSaved = CandidateModel.save(new Candidate(
-                            txtID.getText(),
-                            (String) cbDivision.getValue(),
-                            txtNIC.getText(),
-                            txtName.getText(),
-                            (String) cbPolitic.getValue(),
-                            txtAddress.getText(),
-                            contact));
+                    boolean isSaved = candidateBO.saveCandidate(new CandidateDTO(
+                            txtID.getText(),null,txtName.getText(),txtNIC.getText(), (String) cbDivision.getValue(),
+                            txtAddress.getText(),contact,(String) cbPolitic.getValue()));
 
                     if (isSaved) {
-                        Detail detail = new Detail("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering candidate id - " + txtID.getText() + " \nname - " + txtName.getText());
+                        DetailDTO detail = new DetailDTO("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering candidate id - " + txtID.getText() + " \nname - " + txtName.getText());
                         try {
-                            DetailModel.save(detail);
+                            candidateBO.saveDetail(detail);
                         } catch (SQLException e) {
                             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                         }
@@ -139,7 +128,7 @@ public class CandidateFormController implements Initializable {
                     }else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
             }else{
@@ -157,20 +146,15 @@ public class CandidateFormController implements Initializable {
                 if (!txtContact.getText().isEmpty())
                     contact = Integer.valueOf(txtContact.getText());
                 try {
-                    boolean isSaved = CandidateModel.update(new Candidate(
-                            txtID.getText(),
-                            (String) cbDivision.getValue(),
-                            txtNIC.getText(),
-                            txtName.getText(),
-                            (String) cbPolitic.getValue(),
-                            txtAddress.getText(),
-                            contact));
+                    boolean isSaved = candidateBO.updateCandidate(new CandidateDTO(
+                            txtID.getText(),null,txtName.getText(),txtNIC.getText(), (String) cbDivision.getValue(),
+                            txtAddress.getText(),contact,(String) cbPolitic.getValue()));
 
                     if (isSaved) {
                         new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully!").show();
                     } else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
             }else{
@@ -226,7 +210,7 @@ public class CandidateFormController implements Initializable {
         InputStream in = new FileInputStream(file);
 
         try {
-            boolean isUploaded = CandidateModel.upload(txtID.getText(),in);
+            boolean isUploaded = candidateBO.uploadCandidateImage(txtID.getText(),in);
 
             if (isUploaded)
                 new Alert(Alert.AlertType.CONFIRMATION, "Image Uploaded Successfully !").show();
@@ -257,9 +241,9 @@ public class CandidateFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detailDTO = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                candidateBO.saveDetail(detailDTO);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }

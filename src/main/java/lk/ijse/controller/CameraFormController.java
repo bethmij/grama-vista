@@ -7,7 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import lk.ijse.model.CivilModel;
+import lk.ijse.bo.custom.CameraBO;
+import lk.ijse.bo.custom.impl.CameraBOImpl;
 import org.bytedeco.javacv.Frame;
 import org.bytedeco.javacv.FrameGrabber;
 import org.bytedeco.javacv.Java2DFrameConverter;
@@ -20,8 +21,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import static lk.ijse.controller.CivilManageFormController.civil;
-import static lk.ijse.controller.IndividualFormController.civil1;
+import static lk.ijse.controller.IndividualFormController.civil1DTO;
 
 public class CameraFormController implements Runnable , Initializable {
 
@@ -33,10 +33,11 @@ public class CameraFormController implements Runnable , Initializable {
     private FrameGrabber grabber; //to capture video frames from a webcam:
     private Java2DFrameConverter converter; //convert the video frames
     private BufferedImage image;//used for loading, storing, and manipulating images
+    CameraBO cameraBO = new CameraBOImpl();
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
 
-        String imageName = civil1.getId() + ".png"; // Construct the file name
+        String imageName = civil1DTO.getId() + ".png"; // Construct the file name
         File outputFile = new File(imageName);
         try {
             ImageIO.write(image, "png", outputFile);
@@ -48,8 +49,8 @@ public class CameraFormController implements Runnable , Initializable {
             }
 
             try {
-                Integer id = CivilModel.getID(civil1.getNic());
-                boolean isUploaded = CivilModel.upload(String.valueOf(id), in);
+                Integer id = cameraBO.getCivilId(civil1DTO.getNic());
+                boolean isUploaded = cameraBO.uploadImage(String.valueOf(id), in);
 
                 if (isUploaded)
                     new Alert(Alert.AlertType.CONFIRMATION, "Image Uploaded Successfully !").show();

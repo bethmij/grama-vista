@@ -10,20 +10,17 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dto.Detail;
-import lk.ijse.dto.Division;
+import lk.ijse.bo.custom.DivisionManageBO;
+import lk.ijse.bo.custom.impl.DivisionManageBOImpl;
+import lk.ijse.dto.DetailDTO;
 import lk.ijse.dto.DivisionDTO;
 import lk.ijse.dto.tm.DivisionTM;
-import lk.ijse.model.DetailModel;
-import lk.ijse.model.DivisionModel;
-import lk.ijse.model.ResidenceModel;
-import lk.ijse.util.OpenView;
+import lk.ijse.dao.custom.impl.util.OpenView;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -42,8 +39,9 @@ public class DivisionManageFormController implements Initializable {
     public TableColumn colAction;
     public Label lblName;
     private ObservableList<DivisionTM> obList = FXCollections.observableArrayList();
-    public static Division division;
+    public static DivisionDTO division;
     public static String division_id;
+    DivisionManageBO divisionManageBO = new DivisionManageBOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -62,9 +60,9 @@ public class DivisionManageFormController implements Initializable {
 
     }
 
-    private void loadDivisionID() {
+    public void loadDivisionID() {
         try {
-            List<String> id = DivisionModel.loadDivisionID();
+            List<String> id = divisionManageBO.loadDivision();
             ObservableList<String> dataList = FXCollections.observableArrayList();
 
             for (String ids : id) {
@@ -83,7 +81,7 @@ public class DivisionManageFormController implements Initializable {
     public void btnGetAllOnAction(ActionEvent actionEvent) {
 
         try {
-            List<DivisionDTO> divisionList  = DivisionModel.searchAll();
+            List<DivisionDTO> divisionList  = divisionManageBO.searchAllDivision();
 
             for (DivisionDTO datalist : divisionList) {
                 Button btnDelete = new Button("Delete");
@@ -106,9 +104,9 @@ public class DivisionManageFormController implements Initializable {
     public void btnUpdateOnAction(ActionEvent actionEvent) {
 
         try {
-            DivisionDTO divisionDTO = DivisionModel.search((String) cbDivision.getValue());
-            division = new Division(divisionDTO.getDivision_id(),divisionDTO.getName(),divisionDTO.getDiv_Secretariat(),
-                                        divisionDTO.getAdmin_officer(),divisionDTO.getLand_area());
+            DivisionDTO divisionDTO = divisionManageBO.searchDivision((String) cbDivision.getValue());
+            division = new DivisionDTO(divisionDTO.getDivision_id(),divisionDTO.getName(),divisionDTO.getDiv_Secretariat(),
+                                        divisionDTO.getAdmin_officer(),divisionDTO.getPopulation(),divisionDTO.getLand_area());
             OpenView.openView("divisionRegistrationForm");
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -116,7 +114,7 @@ public class DivisionManageFormController implements Initializable {
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
-        DivisionDTO divisionDTO = DivisionModel.search((String) cbDivision.getValue());
+        DivisionDTO divisionDTO = divisionManageBO.searchDivision((String) cbDivision.getValue());
         Button btnDelete = new Button("Delete");
         btnDelete.setCursor(Cursor.HAND);
         setDeleteBtnOnAction(btnDelete);
@@ -137,7 +135,7 @@ public class DivisionManageFormController implements Initializable {
 
             if (result.orElse(no) == yes) {
                 try {
-                    boolean isDeleted = DivisionModel.dead((String) colID.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
+                    boolean isDeleted = divisionManageBO.deleteDivision((String) colID.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
                     if(isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION,"Deleted!" ).show();
                         obList.remove( tblDivision.getSelectionModel().getSelectedIndex());
@@ -154,7 +152,7 @@ public class DivisionManageFormController implements Initializable {
 
     public void cbDivisionOnAction(MouseEvent mouseEvent) {
         try {
-            lblName.setText(DivisionModel.getName((String) cbDivision.getValue()));
+            lblName.setText(divisionManageBO.getDivisionName((String) cbDivision.getValue()));
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -170,9 +168,9 @@ public class DivisionManageFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to Logout?", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            Detail detail = new Detail("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
+            DetailDTO detail = new DetailDTO("Logged out", "bethmi", LocalTime.now(), LocalDate.now(),"");
             try {
-                boolean isSaved = DetailModel.save(detail);
+                divisionManageBO.saveDetail(detail);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }
