@@ -32,9 +32,9 @@ public class AddResidenceFormController implements Initializable {
         loadResidenceID();
         lblCivil.setText(IndividualFormController.civil_id);
         if ((!(civilDTO == null))) {
-            if ((!(CivilManageFormController.multiResidenceList.get(1) == null))) {
+            if ((!(CivilManageFormController.multiResidenceList.get(0) == null))) {
                 lblCivil.setText("C00" + civilDTO.getID());
-                cbResidence.setValue(CivilManageFormController.multiResidenceList.get(1).getResidence_id());
+                cbResidence.setValue(CivilManageFormController.multiResidenceList.get(0).getResidence_id());
             }
         }
     }

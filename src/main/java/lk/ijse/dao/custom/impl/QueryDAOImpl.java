@@ -145,7 +145,7 @@ public class QueryDAOImpl implements QueryDAO {
 
     @Override
     public  String getDivisionId(Integer civil_id) throws SQLException {
-        String sql = "SELECT gn_division.division_id FROM grama_vista.residence JOIN grama_vista.multi_residence ON residence.home_id = multi_residence.home_id JOIN grama_vista.gn_division ON residence.division_id = gn_division.division_id WHERE multi_residence.reg_number=?";
+        String sql = "SELECT gn_division.division_id FROM grama_vista.residence JOIN grama_vista.multi_residence ON residence.home_id = multi_residence.home_id JOIN grama_vista.gn_division ON residence.division_id = gn_division.division_id WHERE multi_residence.reg_number=? LIMIT 1";
         ResultSet resultSet = CrudUtil.execute(sql,civil_id);
         if(resultSet.next()){
             return resultSet.getString(1);

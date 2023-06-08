@@ -138,6 +138,7 @@ public class CandidateManageFormController implements Initializable {
 
             try {
                 CandidateDTO candidateDTO = candidateManageBO.searchCandidate((String) colElection.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
+
                 id = (String) colElection.getCellData(tblDivision.getSelectionModel().getSelectedIndex());
                 candidateDetail = new CandidateDTO(candidateDTO.getElection(),candidateDTO.getImage(),candidateDTO.getName(),candidateDTO.getNIC(),
                         candidateDTO.getDivision(),candidateDTO.getAddress(),candidateDTO.getContact(),candidateDTO.getPolitic());

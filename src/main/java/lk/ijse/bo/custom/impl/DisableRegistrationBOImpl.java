@@ -29,7 +29,7 @@ public class DisableRegistrationBOImpl implements DisableRegistrationBO {
     }
 
     public boolean saveDisable(DisableDTO disableDTO) throws SQLException {
-        Disable disable = new Disable(disableDTO.getDisable(),disableDTO.getCivil(),disableDTO.getDisable(),disableDTO.getDesc());
+        Disable disable = new Disable(disableDTO.getId(),disableDTO.getCivil(),disableDTO.getDisable(),disableDTO.getDesc());
         return disableDAO.save(disable);
     }
 
@@ -39,7 +39,7 @@ public class DisableRegistrationBOImpl implements DisableRegistrationBO {
     }
 
     public boolean updateDisable(DisableDTO disableDTO) throws SQLException {
-        Disable disable = new Disable(disableDTO.getDisable(),disableDTO.getCivil(),disableDTO.getDisable(),disableDTO.getDesc());
+        Disable disable = new Disable(disableDTO.getId(),disableDTO.getCivil(),disableDTO.getDisable(),disableDTO.getDesc());
         return disableDAO.update(disable);
     }
 

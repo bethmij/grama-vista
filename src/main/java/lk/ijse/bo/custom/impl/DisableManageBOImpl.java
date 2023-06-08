@@ -29,7 +29,7 @@ public class DisableManageBOImpl implements DisableManageBO {
         List<DisableEntity> disable  = queryDAO.searchAllDisable();
         List<DisableDTO> disableDTOS = new ArrayList<>();
         for (DisableEntity disableEntity : disable) {
-            disableDTOS.add(new DisableDTO(disableEntity.getDisable(),disableEntity.getCivil(),disableEntity.getName()
+            disableDTOS.add(new DisableDTO(disableEntity.getId(),disableEntity.getCivil(),disableEntity.getName()
             ,disableEntity.getDisable(),disableEntity.getDesc()));
         }
         return disableDTOS;
@@ -37,7 +37,7 @@ public class DisableManageBOImpl implements DisableManageBO {
 
     public DisableDTO searchDisable(String id) throws SQLException {
         DisableEntity disable = queryDAO.searchDisable(id);
-        DisableDTO disableDTO = new DisableDTO(disable.getDisable(),disable.getCivil(),disable.getName()
+        DisableDTO disableDTO = new DisableDTO(disable.getId(),disable.getCivil(),disable.getName()
                 ,disable.getDisable(),disable.getDesc());
         return disableDTO;
     }

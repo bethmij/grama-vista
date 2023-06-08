@@ -119,7 +119,7 @@ public class VoteResultFormController implements Initializable {
 
     public void lblViewOnAction(MouseEvent mouseEvent) {
         LocalTime start = LocalTime.parse("10:00");
-        LocalDate date = LocalDate.parse("2023-04-30");
+        LocalDate date = LocalDate.parse("2023-06-08");
 
         if(date.compareTo(LocalDate.now())==0 && LocalTime.now().isAfter(start) ) {
             OpenView.openView("voteResultForm",Pane);

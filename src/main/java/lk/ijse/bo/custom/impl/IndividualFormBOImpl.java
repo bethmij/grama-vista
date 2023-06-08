@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lk.ijse.controller.IndividualFormController.civil1DTO;
+
 public class IndividualFormBOImpl implements IndividualFormBO {
     DetailDAO detailDAO = new DetailDAOImpl();
     QueryDAO queryDAO = new QueryDAOImpl();
@@ -27,10 +29,11 @@ public class IndividualFormBOImpl implements IndividualFormBO {
     }
 
     public String getDivisionId(Integer id) throws SQLException {
+        System.out.println(queryDAO.getDivisionId(id));
         return queryDAO.getDivisionId(id);
     }
 
-    public boolean saveCivil(CivilDTO civil, List<ContactDTO>contactList, List<MultiResidenceDTO>residenceList, String division_id) throws SQLException {
+    public boolean saveCivil(CivilDTO civil, List<ContactDTO>contactList, List<MultiResidenceDTO>residenceList) throws SQLException {
         Civil civil1 = new Civil(civil.getID(), civil.getImage(), civil.getName(), civil.getNic(), civil.getAddress(), civil.getDob()
                 , civil.getAge(), civil.getGender(), civil.getMarriage(), civil.getRelation(), civil.getEducation(), civil.getSchool(), civil.getOccupation()
                 , civil.getWork(), civil.getSalary(), civil.getEmail());
@@ -47,7 +50,6 @@ public class IndividualFormBOImpl implements IndividualFormBO {
 
         Connection con = null;
         try {
-
             con = DBConnection.getInstance().getConnection();
             con.setAutoCommit(false);
 
@@ -64,6 +66,7 @@ public class IndividualFormBOImpl implements IndividualFormBO {
                     }
                     boolean isResidenceSaved = multiResidenceDAO.save(residences);
                     if (isResidenceSaved) {
+                        String division_id = getDivisionId(id);
                         boolean isPopulationUpdate = divisionDAO.UpdatePopulation(division_id);
                         if(isPopulationUpdate) {
                             con.commit();
@@ -76,7 +79,7 @@ public class IndividualFormBOImpl implements IndividualFormBO {
 
             return false;
         } catch (SQLException | ClassNotFoundException er) {
-            //System.out.println(er);
+            System.out.println(er);
             con.rollback();
             return false;
         } finally {

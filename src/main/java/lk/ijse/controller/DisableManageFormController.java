@@ -100,9 +100,8 @@ public class DisableManageFormController implements Initializable {
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
-            DisableDTO disableDTO = disableManageBO.searchDisable((String) cbReg.getValue());
-            disable= new DisableDTO(disableDTO.getId(),disableDTO.getCivil(), disableDTO.getName(), disableDTO.getDisable(), disableDTO.getDesc());
-
+            disable = disableManageBO.searchDisable((String) cbReg.getValue());
+            
             OpenView.openView("disableRegistrationForm");
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

@@ -15,7 +15,7 @@ public interface IndividualFormBO {
 
     String getDivisionId(Integer id) throws SQLException;
 
-    boolean saveCivil(CivilDTO civil, List<ContactDTO> contactList, List<MultiResidenceDTO>residenceList, String division_id) throws SQLException;
+    boolean saveCivil(CivilDTO civil, List<ContactDTO> contactList, List<MultiResidenceDTO>residenceList) throws SQLException;
 
     boolean updateCivil(CivilDTO civil, List<ContactDTO>contactList, List<MultiResidenceDTO>residenceList) throws SQLException;
 

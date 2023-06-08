@@ -39,7 +39,7 @@ public class VoteDashboadFormController {
 
     public void btnResultOnAction(ActionEvent actionEvent) {
         LocalTime start = LocalTime.parse("10:00");
-        LocalDate date = LocalDate.parse("2023-05-01");
+        LocalDate date = LocalDate.parse("2023-06-08");
 
         if(date.compareTo(LocalDate.now())==0 && LocalTime.now().isAfter(start) ) {
             OpenView.openView("voteResultForm",Pane);

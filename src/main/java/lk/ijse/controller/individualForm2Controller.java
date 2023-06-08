@@ -118,11 +118,11 @@ public class individualForm2Controller implements Initializable {
 
             residenceList.add(new MultiResidenceDTO(civil1DTO.getResidence(), civil1DTO.getId()));
 
-            String division_id = individualFormBO.getDivisionId(Integer.valueOf(civil1DTO.getResidence()));
+
 
             boolean isSaved = false;
             try {
-                isSaved = individualFormBO.saveCivil(civil, contactList, residenceList, division_id);
+                isSaved = individualFormBO.saveCivil(civil, contactList, residenceList);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }

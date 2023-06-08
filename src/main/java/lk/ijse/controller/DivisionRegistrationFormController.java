@@ -199,14 +199,14 @@ public class DivisionRegistrationFormController implements Initializable {
     }
 
     public void txtAdminOnKeyReleased(KeyEvent keyEvent) {
-        if (!txtAdmin.getText().matches("^[A-Za-z\\s]*$")) {
+        if (txtAdmin.getText().matches("^[A-Za-z\\s]*$")) {
             txtAdmin.setStyle("-fx-border-color:  #ef0d20; -fx-font-size: 16px;");
             lblAdmin.setText("This filed can not contain numeric values!");
         }
     }
 
     public void txtAdminOnKeyTyped(KeyEvent keyEvent) {
-        if (txtAdmin.getText().matches("^[A-Za-z\\s]*$")) {
+        if (!txtAdmin.getText().matches("^[A-Za-z\\s]*$")) {
             txtAdmin.setStyle("-fx-border-color:  null; -fx-font-size: 16px;");
             lblAdmin.setText("");
         }

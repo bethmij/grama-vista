@@ -91,17 +91,24 @@ public class LandManageFormController implements Initializable {
                 String gov = null;
                 String cultivate = null;
 
-                for (int i =0; i<landDetail.size(); i++) {
 
-                    if (landDetail.get(i).getLand_type().equals("Government"))
-                        gov = "Government";
-                    else if (landDetail.get(i).getLand_type().equals("Non Government"))
-                        gov = "Non Government";
-                    else if (landDetail.get(i).getLand_type().equals("Cultivated"))
-                        cultivate = "Cultivated";
-                    else if (landDetail.get(i).getLand_type().equals("Uncultivated"))
-                        cultivate = "Uncultivated";
-                }
+                    for (LandDetailDTO landDetailDTO : landDetail) {
+                        if (datalist.getLand_id().equals(landDetailDTO.getLand_num())) {
+                            switch (landDetailDTO.getLand_type()) {
+                                case "Government":
+                                    gov = "Government";
+                                    break;
+                                case "Non Government":
+                                    gov = "Non Government";
+                                    break;
+                                case "Cultivated":
+                                    cultivate = "Cultivated";
+                                    break;
+                                case "Uncultivated":
+                                    cultivate = "Uncultivated";
+                            }
+                        }
+                    }
 
                 LandTM landTM = new LandTM(String.valueOf(datalist.getLand_id()),datalist.getPlan_num(), datalist.getL_area(),gov,cultivate,btnDelete);
                 obList.add(landTM);

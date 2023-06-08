@@ -103,11 +103,11 @@ public class CivilManageFormController implements Initializable {
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
-            CivilDTO civilDTO = civilManageBO.searchCivil((String) cmbID.getValue());
-            civilDTO= new CivilDTO(civilDTO.getID(),null, civilDTO.getName(), civilDTO.getNic(), civilDTO.getAddress(),
-                    (civilDTO.getDob()), null,civilDTO.getGender(), civilDTO.getMarriage(),civilDTO.getRelation(),
-                    civilDTO.getEducation(),civilDTO.getSchool(),civilDTO.getOccupation(),
-                    civilDTO.getWork(),civilDTO.getSalary(),civilDTO.getEmail());
+            CivilDTO civilDTOs = civilManageBO.searchCivil((String) cmbID.getValue());
+            civilDTO= new CivilDTO(civilDTOs.getID(),null, civilDTOs.getName(), civilDTOs.getNic(), civilDTOs.getAddress(),
+                    (civilDTOs.getDob()), null,civilDTOs.getGender(), civilDTOs.getMarriage(),civilDTOs.getRelation(),
+                    civilDTOs.getEducation(),civilDTOs.getSchool(),civilDTOs.getOccupation(),
+                    civilDTOs.getWork(),civilDTOs.getSalary(),civilDTOs.getEmail());
 
             contactList = civilManageBO.searchContact((String) cmbID.getValue());
             multiResidenceList = civilManageBO.searchResidence((String) cmbID.getValue());

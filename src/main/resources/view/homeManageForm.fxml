@@ -434,12 +434,11 @@
       <Separator layoutX="237.0" layoutY="242.0" prefHeight="3.0" prefWidth="774.0" />
       <TableView fx:id="tblDivision" blendMode="MULTIPLY" layoutX="256.0" layoutY="262.0" prefHeight="378.0" prefWidth="738.0">
         <columns>
-          <TableColumn fx:id="colID" prefWidth="104.00003051757812" text="Home ID" />
-          <TableColumn fx:id="colDivision" prefWidth="111.99993896484375" text="Division ID" />
-            <TableColumn fx:id="colAddress" minWidth="0.0" prefWidth="204.00003051757812" text="Address" />
-            <TableColumn fx:id="colHolder" minWidth="0.0" prefWidth="133.60009765625" text="House Holder" />
-            <TableColumn fx:id="colAction" prefWidth="87.199951171875" text="Action" />
-            <TableColumn fx:id="colAction1" prefWidth="94.4000244140625" text="Action" />
+          <TableColumn fx:id="colID" prefWidth="119.19998168945312" text="Home ID" />
+          <TableColumn fx:id="colDivision" prefWidth="119.20001220703125" text="Division ID" />
+            <TableColumn fx:id="colAddress" minWidth="0.0" prefWidth="197.60006713867188" text="Address" />
+            <TableColumn fx:id="colHolder" minWidth="0.0" prefWidth="202.39990234375" text="House Holder" />
+            <TableColumn fx:id="colAction" prefWidth="102.400146484375" text="Action" />
         </columns>
       </TableView>
       <Button fx:id="GetAll" blendMode="COLOR_BURN" layoutX="899.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnGetAllOnAction" prefHeight="32.0" prefWidth="86.0" style="-fx-border-color: #081501;" text="Get All" textFill="#081501">

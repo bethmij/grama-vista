@@ -41,7 +41,7 @@ public class CandidateDAOImpl implements CandidateDAO {
         if (resultSet.next()) {
 
             return new Candidate(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),resultSet.getString(4)
-                    , resultSet.getString(7),resultSet.getString(5), resultSet.getInt(6),resultSet.getBlob(9));
+                    , resultSet.getString(7),resultSet.getString(5), resultSet.getInt(6),resultSet.getBlob(8));
 
         }
         return null;
@@ -66,7 +66,7 @@ public class CandidateDAOImpl implements CandidateDAO {
         while (resultSet.next()) {
 
             datalist.add((new Candidate(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),resultSet.getString(4)
-                    , resultSet.getString(7),resultSet.getString(5), resultSet.getInt(6),resultSet.getBlob(9))));
+                    , resultSet.getString(7),resultSet.getString(5), resultSet.getInt(6),resultSet.getBlob(8))));
             ;
 
         }

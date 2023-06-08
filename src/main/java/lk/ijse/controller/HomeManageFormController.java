@@ -52,7 +52,6 @@ public class HomeManageFormController implements Initializable {
         colAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
         colHolder.setCellValueFactory(new PropertyValueFactory<>("Holder"));
         colAction.setCellValueFactory(new PropertyValueFactory<>("btn"));
-        colAction1.setCellValueFactory(new PropertyValueFactory<>("btn1"));
     }
 
     private void loadResidenceID() {
@@ -82,11 +81,8 @@ public class HomeManageFormController implements Initializable {
                 btnDelete.setCursor(Cursor.HAND);
                 setDeleteBtnOnAction(btnDelete);
 
-                Button btnView = new Button("View more");
-                btnView.setCursor(Cursor.HAND);
-                setViewBtnOnAction(btnView);
 
-                ResidenceTM residenceTM = new ResidenceTM(datalist.getID(),datalist.getDivision(),datalist.getAddress(),datalist.getHolder(),btnDelete,btnView);
+                ResidenceTM residenceTM = new ResidenceTM(datalist.getID(),datalist.getDivision(),datalist.getAddress(),datalist.getHolder(),btnDelete);
                 obList.add(residenceTM);
                 tblDivision.setItems(obList);
             }
@@ -121,11 +117,8 @@ public class HomeManageFormController implements Initializable {
         btnDelete.setCursor(Cursor.HAND);
         setDeleteBtnOnAction(btnDelete);
 
-        Button btnView = new Button("View more");
-        btnView.setCursor(Cursor.HAND);
-        setViewBtnOnAction(btnView);
 
-        ResidenceTM residenceTM = new ResidenceTM(residenceDTO.getID(),residenceDTO.getDivision(),residenceDTO.getAddress(),residenceDTO.getHolder(),btnDelete,btnView);
+        ResidenceTM residenceTM = new ResidenceTM(residenceDTO.getID(),residenceDTO.getDivision(),residenceDTO.getAddress(),residenceDTO.getHolder(),btnDelete);
         obList.add(residenceTM);
         tblDivision.setItems(obList);
     }
@@ -154,7 +147,7 @@ public class HomeManageFormController implements Initializable {
         });
     }
 
-    private void setViewBtnOnAction(Button btnView) {
+  /*  private void setViewBtnOnAction(Button btnView) {
         btnView.setOnAction((e) -> {
             try {
               civilDetail = homeManageBO. getCivilDetail((String) colID.getCellData(tblDivision.getSelectionModel().getSelectedIndex()));
@@ -165,7 +158,7 @@ public class HomeManageFormController implements Initializable {
             OpenView.openView("homecivil");
 
         });
-    }
+    }*/
 
     @FXML
     void lblLogOnAction(MouseEvent event) {
