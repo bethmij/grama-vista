@@ -10,5 +10,7 @@ public interface DetailDAO {
 
     List<Detail> search(Integer dayCount) throws SQLException;
 
+
+
     List<Detail> searchAll() throws SQLException;
 }

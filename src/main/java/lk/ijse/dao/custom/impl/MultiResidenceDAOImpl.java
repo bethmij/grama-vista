@@ -45,6 +45,21 @@ public class MultiResidenceDAOImpl implements MultiResidenceDAO {
     }
 
     @Override
+    public boolean delete(String s) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public MultiResidence search(String s) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public List<MultiResidence> searchAll() throws SQLException {
+        return null;
+    }
+
+    @Override
     public  List<MultiResidence> searchResidence(String reg_id) throws SQLException {
         ResultSet resultSet = CrudUtil.execute("SELECT * FROM grama_vista.multi_residence WHERE reg_number=?",reg_id);
         List<MultiResidence> residenceList = new ArrayList<>();

@@ -69,13 +69,13 @@ public class CandidateFormController implements Initializable {
     }
 
     private void setCandidateController() {
-        txtID.setText(CandidateManageFormController.candidate.getElection_id());
+        txtID.setText(CandidateManageFormController.candidate.getElection());
         txtAddress.setText(CandidateManageFormController.candidate.getAddress());
         txtName.setText(CandidateManageFormController.candidate.getName());
-        txtNIC.setText(CandidateManageFormController.candidate.getNic());
+        txtNIC.setText(CandidateManageFormController.candidate.getNIC());
         txtContact.setText(String.valueOf(CandidateManageFormController.candidate.getContact()));
-        cbPolitic.setValue(CandidateManageFormController.candidate.getPolitical_party());
-        cbDivision.setValue(CandidateManageFormController.candidate.getDivision_id());
+        cbPolitic.setValue(CandidateManageFormController.candidate.getPolitic());
+        cbDivision.setValue(CandidateManageFormController.candidate.getDivision());
         btn1.setText("Update");
 
     }
