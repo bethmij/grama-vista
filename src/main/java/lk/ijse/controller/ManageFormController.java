@@ -7,6 +7,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.ManageBO;
 import lk.ijse.bo.custom.impl.ManageBOImpl;
 import lk.ijse.dto.DetailDTO;
@@ -56,7 +57,7 @@ public class ManageFormController {
         OpenView.openView("userManageForm",ManagePane);
     }
 
-    ManageBO manageBO =new ManageBOImpl();
+    ManageBO manageBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.MANAGEBO);
 
     @FXML
     void lblLogOnAction(MouseEvent event) {

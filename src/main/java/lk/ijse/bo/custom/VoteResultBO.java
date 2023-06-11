@@ -1,10 +1,11 @@
 package lk.ijse.bo.custom;
 
+import lk.ijse.bo.SuperBO;
 import lk.ijse.dto.DetailDTO;
 
 import java.sql.SQLException;
 
-public interface VoteResultBO {
+public interface VoteResultBO extends SuperBO {
 
     Integer getCandidateCount() throws SQLException;
 

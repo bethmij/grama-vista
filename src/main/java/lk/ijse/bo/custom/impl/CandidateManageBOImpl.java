@@ -1,6 +1,7 @@
 package lk.ijse.bo.custom.impl;
 
 import lk.ijse.bo.custom.CandidateManageBO;
+import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.CandidateDAO;
 import lk.ijse.dao.custom.DetailDAO;
 import lk.ijse.dao.custom.impl.CandidateDAOImpl;
@@ -15,14 +16,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CandidateManageBOImpl implements CandidateManageBO {
-    CandidateDAO candidateDAO = new CandidateDAOImpl();
-    DetailDAO detailDAO = new DetailDAOImpl();
 
+    CandidateDAO candidateDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.CANDIDATEDAO);
+    DetailDAO detailDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.DETAILDAO);
     @Override
     public List<String> loadElectionId() throws SQLException {
         return candidateDAO.loadElectionID();
     }
 
+    @Override
     public List<CandidateDTO> searchAllCandidate() throws SQLException {
         List<Candidate> candidate = candidateDAO.searchAll();
         List<CandidateDTO> candidateDTO = new ArrayList<>();
@@ -34,6 +36,7 @@ public class CandidateManageBOImpl implements CandidateManageBO {
         return candidateDTO;
     }
 
+    @Override
     public CandidateDTO searchCandidate(String id) throws SQLException, ClassNotFoundException {
         Candidate candidate = candidateDAO.search(id);
         CandidateDTO candidateDTO = (new CandidateDTO(candidate.getElection_id(), candidate.getImage(), candidate.getName(), candidate.getNic(),candidate.getDivision_id(),
@@ -41,10 +44,12 @@ public class CandidateManageBOImpl implements CandidateManageBO {
         return candidateDTO;
     }
 
+    @Override
     public String getCandidateName(String id) throws SQLException {
         return candidateDAO.getName(id);
     }
 
+    @Override
     public void saveDetail(DetailDTO detail) throws SQLException {
         Detail detail1 = new Detail(detail.getFunction_name(),detail.getUser(),detail.getTime(),detail.getDate(),detail.getDescription());
         detailDAO.save(detail1);

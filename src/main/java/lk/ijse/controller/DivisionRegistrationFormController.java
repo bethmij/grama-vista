@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.DivisionRegistrationBO;
 import lk.ijse.bo.custom.impl.DivisionRegistrationBOImpl;
 import lk.ijse.dto.DetailDTO;
@@ -32,7 +33,7 @@ public class DivisionRegistrationFormController implements Initializable {
     public Label lblSecretary;
     public Label lblAdmin;
     public Label lblArea;
-    DivisionRegistrationBO dRegistrationBO = new DivisionRegistrationBOImpl();
+    DivisionRegistrationBO dRegistrationBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.DIVISIONREGISTRATIONBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -76,7 +77,7 @@ public class DivisionRegistrationFormController implements Initializable {
                         new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully!").show();
                     } else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
             }else{
@@ -95,7 +96,7 @@ public class DivisionRegistrationFormController implements Initializable {
                         new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully!").show();
                     } else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
             } else{

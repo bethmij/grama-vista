@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.UserManageBO;
 import lk.ijse.bo.custom.impl.UserManageBOImpl;
 import lk.ijse.dto.*;
@@ -38,7 +39,7 @@ public class UserManageFormController implements Initializable {
     public TableColumn colAction;
     private ObservableList<UserTM> obList = FXCollections.observableArrayList();
     public static UserDTO user;
-    UserManageBO userManageBO = new UserManageBOImpl();
+    UserManageBO userManageBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.USERMANAGEBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.DivisionManageBO;
 import lk.ijse.bo.custom.impl.DivisionManageBOImpl;
 import lk.ijse.dto.DetailDTO;
@@ -41,7 +42,7 @@ public class DivisionManageFormController implements Initializable {
     private ObservableList<DivisionTM> obList = FXCollections.observableArrayList();
     public static DivisionDTO division;
     public static String division_id;
-    DivisionManageBO divisionManageBO = new DivisionManageBOImpl();
+    DivisionManageBO divisionManageBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.DIVISIONMANAGEBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -108,12 +109,12 @@ public class DivisionManageFormController implements Initializable {
             division = new DivisionDTO(divisionDTO.getDivision_id(),divisionDTO.getName(),divisionDTO.getDiv_Secretariat(),
                                         divisionDTO.getAdmin_officer(),divisionDTO.getPopulation(),divisionDTO.getLand_area());
             OpenView.openView("divisionRegistrationForm");
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
-    public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
+    public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         DivisionDTO divisionDTO = divisionManageBO.searchDivision((String) cbDivision.getValue());
         Button btnDelete = new Button("Delete");
         btnDelete.setCursor(Cursor.HAND);
@@ -141,7 +142,7 @@ public class DivisionManageFormController implements Initializable {
                         obList.remove( tblDivision.getSelectionModel().getSelectedIndex());
                         tblDivision.refresh();
                     }
-                } catch (SQLException ex) {
+                } catch (SQLException | ClassNotFoundException ex) {
                     new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
                 }
             }

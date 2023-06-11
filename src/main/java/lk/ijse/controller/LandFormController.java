@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.LandBO;
 import lk.ijse.bo.custom.impl.LandBOImpl;
 import lk.ijse.dto.DetailDTO;
@@ -37,7 +38,7 @@ public class LandFormController implements Initializable {
     public Button save;
     public static Integer index;
     public Label lblArea;
-    LandBO landBO =new LandBOImpl();
+    LandBO landBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.LANDBO);;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -84,7 +85,7 @@ public class LandFormController implements Initializable {
 
                 try {
                     boolean isSaved = landBO.saveLand(new LandDTO(
-                            Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText())), landDetailList, coOwnerLists);
+                            Integer.valueOf(land_num[1]), txtPlan.getText(), Double.valueOf(txtArea.getText()), landDetailList, coOwnerLists));
 
                     if (isSaved) {
                         DetailDTO detail = new DetailDTO("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering land id - "+lblID.getText());
@@ -112,7 +113,7 @@ public class LandFormController implements Initializable {
                 landDetailList.add(new LandDetailDTO(type_id, land.getLand_id(), (String) cbLType.getValue()));
                 try {
                     boolean isSaved = landBO.updateLand(new LandDTO(
-                            land.getLand_id(), txtPlan.getText(), Double.valueOf(txtArea.getText())), landDetailList, coOwnerLists);
+                            land.getLand_id(), txtPlan.getText(), Double.valueOf(txtArea.getText()) ,landDetailList, coOwnerLists));
 
                     if (isSaved)
                         new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();

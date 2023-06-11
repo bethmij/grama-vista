@@ -1,6 +1,7 @@
 package lk.ijse.bo.custom.impl;
 
 import lk.ijse.bo.custom.CivilManageBO;
+import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.*;
 import lk.ijse.dao.custom.impl.*;
 import lk.ijse.dto.CivilDTO;
@@ -18,17 +19,17 @@ import java.util.List;
 
 public class CivilManageBOImpl implements CivilManageBO {
 
-    CivilDAO civilDAO = new CivilDAOImpl();
-    ContactDAO contactDAO = new ContactDAOImpl();
-    ResidenceDAO residenceDAO = new ResidenceDAOImpl();
-    MultiResidenceDAO multiResidenceDAO = new MultiResidenceDAOImpl();
-    DetailDAO detailDAO = new DetailDAOImpl();
+    CivilDAO civilDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.CIVILDAO);
+    ContactDAO contactDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.CONTACTDAO);
+    MultiResidenceDAO multiResidenceDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.MULTIRESIDENCEDAO);
+    DetailDAO detailDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.DETAILDAO);
 
     @Override
     public List<String> loadCivilId() throws SQLException {
         return civilDAO.loadCivilId();
     }
 
+    @Override
     public  List<CivilDTO>  searchAllCivil () throws SQLException {
         List<Civil> civilList  = civilDAO.searchAll();
         List<CivilDTO> civilDTOS = new ArrayList<>();
@@ -40,6 +41,7 @@ public class CivilManageBOImpl implements CivilManageBO {
         return civilDTOS;
     }
 
+    @Override
     public CivilDTO searchCivil(String id) throws SQLException, ClassNotFoundException {
         Civil civil = civilDAO.search(id);
 
@@ -48,6 +50,7 @@ public class CivilManageBOImpl implements CivilManageBO {
                 , civil.getWork(), civil.getSalary(), civil.getEmail());
     }
 
+    @Override
     public List<ContactDTO> searchContact(String id) throws SQLException {
         List<Contact> contactList = contactDAO.searchContact(id);
         List<ContactDTO> contactDTOS = new ArrayList<>();
@@ -57,6 +60,7 @@ public class CivilManageBOImpl implements CivilManageBO {
         return contactDTOS;
     }
 
+    @Override
     public List<MultiResidenceDTO> searchResidence(String id) throws SQLException {
         List<MultiResidence> multiResidences = multiResidenceDAO.searchResidence(id);
         List<MultiResidenceDTO> multiResidenceDTOS = new ArrayList<>();
@@ -66,10 +70,12 @@ public class CivilManageBOImpl implements CivilManageBO {
         return multiResidenceDTOS;
     }
 
+    @Override
     public String getCivilName(String id) throws SQLException {
        return   civilDAO.getName(id);
     }
 
+    @Override
     public void saveDetail(DetailDTO detail) throws SQLException {
         Detail detail1 = new Detail(detail.getFunction_name(),detail.getUser(),detail.getTime(),detail.getDate(),detail.getDescription());
         detailDAO.save(detail1);

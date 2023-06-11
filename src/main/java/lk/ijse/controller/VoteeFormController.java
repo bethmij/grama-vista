@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.VoteeBO;
 import lk.ijse.bo.custom.impl.VoteeBOImpl;
 import lk.ijse.dto.DetailDTO;
@@ -26,7 +27,7 @@ public class VoteeFormController implements Initializable {
     public CheckBox cb2;
     public CheckBox cb3;
     public Label lblElection;
-    VoteeBO voteeBO = new VoteeBOImpl();
+    VoteeBO voteeBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.VOTEEBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -96,7 +97,6 @@ public class VoteeFormController implements Initializable {
                 candidate_id = 3;
 
             try {
-                System.out.println(civilID);
                 boolean isSaved = voteeBO.saveVote(lblElection.getText(), candidate_id ,civilID);
                 if (isSaved){
                     new Alert(Alert.AlertType.CONFIRMATION,"Your vote has been recorded!").show();

@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.CivilManageBO;
 import lk.ijse.bo.custom.impl.CivilManageBOImpl;
 import lk.ijse.dto.*;
@@ -40,7 +41,7 @@ public class CivilManageFormController implements Initializable {
     public static List<MultiResidenceDTO> multiResidenceList =new ArrayList<>();
     public static Civil2DTO civil2DTO;
     public static String id;
-    CivilManageBO civilManageBO = new CivilManageBOImpl();
+    CivilManageBO civilManageBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.CIVILMANAGEBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.HomeRegistrationBO;
 import lk.ijse.bo.custom.impl.HomeRegistrationBOImpl;
 import lk.ijse.dto.DetailDTO;
@@ -40,7 +41,7 @@ public class HomeRegistrationFormController implements Initializable {
     public Button Save;
     public Label lblFCount;
     public Label lblChildCount;
-    HomeRegistrationBO homeRegistrationBO = new HomeRegistrationBOImpl();
+    HomeRegistrationBO homeRegistrationBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.HOMEREGISTRATIONBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -119,7 +120,7 @@ public class HomeRegistrationFormController implements Initializable {
                     }else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
 
                 }

@@ -13,10 +13,6 @@ import java.util.List;
 
 
 public class CandidateDAOImpl implements CandidateDAO {
-    @Override
-    public ArrayList<Candidate> getAll() throws SQLException, ClassNotFoundException {
-        throw new UnsupportedOperationException("This feature yet to be developed");
-    }
 
     @Override
     public  boolean save(Candidate candidate) throws SQLException {
@@ -96,11 +92,6 @@ public class CandidateDAOImpl implements CandidateDAO {
     @Override
     public  boolean delete(String id) throws SQLException {
         return CrudUtil.execute("DELETE  FROM grama_vista.candidate WHERE elect_reg_num=?", id);
-    }
-
-    @Override
-    public String generateNewID() throws SQLException, ClassNotFoundException {
-        throw new UnsupportedOperationException("This feature yet to be developed");
     }
 
     @Override

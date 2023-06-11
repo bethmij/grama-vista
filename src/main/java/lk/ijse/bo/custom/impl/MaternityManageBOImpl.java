@@ -1,6 +1,7 @@
 package lk.ijse.bo.custom.impl;
 
 import lk.ijse.bo.custom.MaternityManageBO;
+import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.DetailDAO;
 import lk.ijse.dao.custom.MaternityDAO;
 import lk.ijse.dao.custom.QueryDAO;
@@ -17,19 +18,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MaternityManageBOImpl implements MaternityManageBO {
-    DetailDAO detailDAO = new DetailDAOImpl();
-    MaternityDAO maternityDAO = new MaternityDAOImpl();
-    QueryDAO queryDAO = new QueryDAOImpl();
 
+    DetailDAO detailDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.DETAILDAO);
+    MaternityDAO maternityDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.MATERNITYDAO);
+    QueryDAO queryDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.QUERYDAO);
+
+    @Override
     public void saveDetail(DetailDTO detail) throws SQLException {
         Detail detail1 = new Detail(detail.getFunction_name(),detail.getUser(),detail.getTime(),detail.getDate(),detail.getDescription());
         detailDAO.save(detail1);
     }
 
+    @Override
     public List<String> loadMaternityID() throws SQLException {
         return maternityDAO.loadMaternityID();
     }
 
+    @Override
     public List<MaternityDTO> searchAllMaternity() throws SQLException {
         List<MaternityEntity> maternity  = queryDAO.searchAllMaternity();
         List<MaternityDTO> maternityDTOS = new ArrayList<>();
@@ -40,6 +45,7 @@ public class MaternityManageBOImpl implements MaternityManageBO {
         return maternityDTOS;
     }
 
+    @Override
     public MaternityDTO searchMaternity(String id) throws SQLException {
         MaternityEntity maternityEntity = queryDAO.searchMaternity(id);
         MaternityDTO maternityDTO = new MaternityDTO(maternityEntity.getReg(),maternityEntity.getCivil(),maternityEntity.getName(),
@@ -47,8 +53,9 @@ public class MaternityManageBOImpl implements MaternityManageBO {
         return maternityDTO;
     }
 
-    public boolean deleteMaternity(String id) throws SQLException {
-        return maternityDAO.dead(id);
+    @Override
+    public boolean deleteMaternity(String id) throws SQLException, ClassNotFoundException {
+        return maternityDAO.delete(id);
     }
 
 

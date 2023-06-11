@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.VoteLoginBO;
 import lk.ijse.bo.custom.impl.VoteLoginBOImpl;
 import lk.ijse.dto.CivilDTO;
@@ -28,7 +29,7 @@ public class VoteLoginFormController implements Initializable {
     public static Integer civilID;
     public TextField txtNIC;
     public Label lblCivil;
-    VoteLoginBO voteLoginBO = new VoteLoginBOImpl();
+    VoteLoginBO voteLoginBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.VOTELOGINBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -77,7 +78,7 @@ public class VoteLoginFormController implements Initializable {
         }
 
         if(cmbElection.getValue().equals("E001")){
-            if(voteDTO.getDate().compareTo(LocalDate.now())==0 && !LocalTime.now().isBefore(start) && !LocalTime.now().isAfter(end)) {
+            if(voteDTO.getDate().compareTo(LocalDate.now())<0 && !LocalTime.now().isBefore(start) && !LocalTime.now().isAfter(end)) {
                 OpenView.openView("voteForm", Pane);
             }else
                 new Alert(Alert.AlertType.ERROR, "This only eligible on "+ voteDTO.getDate()+" during "+start+"-"+end).show();

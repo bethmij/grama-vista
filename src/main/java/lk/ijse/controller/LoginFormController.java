@@ -7,6 +7,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.LoginBO;
 import lk.ijse.bo.custom.impl.LoginBOImpl;
 import lk.ijse.dto.DetailDTO;
@@ -26,11 +27,11 @@ public class LoginFormController {
     public static String user = null;
     @FXML
     private AnchorPane root;
-    LoginBO loginBO = new LoginBOImpl();
+    LoginBO loginBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.LOGINBO);
 
     public void btnOnAction(ActionEvent actionEvent) {
 
-        /*List<UserDTO> userDTO = null;
+        List<UserDTO> userDTO = null;
         try {
             userDTO = loginBO.searchAllUser();
         } catch (SQLException e) {
@@ -65,9 +66,9 @@ public class LoginFormController {
             new animatefx.animation.Shake(txtUser).play();
             new animatefx.animation.Shake(txtPass).play();
             new Alert(Alert.AlertType.ERROR, "Incorrect Username or Password").show();
-        }*/
+        }
 
-         OpenView.openView("dashboardForm",root);
+        // OpenView.openView("dashboardForm",root);
     }
 
     public void btnSignOnAction(MouseEvent actionEvent) {

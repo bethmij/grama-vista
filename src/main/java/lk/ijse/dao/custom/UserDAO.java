@@ -8,14 +8,7 @@ import java.util.List;
 
 public interface UserDAO extends CrudDAO<User,String> {
 
-
     List<String> loadUserID() throws SQLException;
-
-
-
-
-
-    boolean update(User user) throws SQLException;
 
     User searchbyUser(String user) throws SQLException;
 

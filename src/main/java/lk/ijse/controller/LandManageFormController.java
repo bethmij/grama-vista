@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.LandManageBO;
 import lk.ijse.bo.custom.impl.LandManageBOImpl;
 import lk.ijse.dto.CoOwnerDTO;
@@ -41,7 +42,7 @@ public class LandManageFormController implements Initializable {
     public static LandDTO land = null;
     public static List<LandDetailDTO> landDetails =null;
     public static List<CoOwnerDTO> coOwnerList = null;
-    LandManageBO landManageBO = new LandManageBOImpl();
+    LandManageBO landManageBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.LANDMANAGEBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -189,7 +190,7 @@ public class LandManageFormController implements Initializable {
                         obList.remove( tblDivision.getSelectionModel().getSelectedIndex());
                         tblDivision.refresh();
                     }
-                } catch (SQLException ex) {
+                } catch (SQLException | ClassNotFoundException ex) {
                     new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
                 }
 

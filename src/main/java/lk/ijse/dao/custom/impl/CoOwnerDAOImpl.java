@@ -39,7 +39,7 @@ public class CoOwnerDAOImpl implements CoOwnerDAO {
     }
 
     @Override
-    public  List<CoOwner> searchAllOwner() throws SQLException {
+    public  List<CoOwner> searchAll() throws SQLException {
         List<CoOwner> coOwnerLists = new ArrayList<>();
         ResultSet resultSet = CrudUtil.execute("SELECT * FROM grama_vista.co_ownership");
         while (resultSet.next()){
@@ -58,7 +58,9 @@ public class CoOwnerDAOImpl implements CoOwnerDAO {
         return true;
     }
 
-    public boolean update(CoOwner coOwner) throws SQLException {
+    @Override
+    public boolean update(CoOwner coOwner)  throws SQLException  {
+
         boolean isSaved = CrudUtil.execute("UPDATE grama_vista.co_ownership SET reg_number=?, land_percentage=?,lot_num=?  WHERE land_num=?",
                 coOwner.getCivil_id(), coOwner.getPercentage(), coOwner.getLot_num(), coOwner.getLand_id());
         System.out.println(isSaved);
@@ -67,18 +69,14 @@ public class CoOwnerDAOImpl implements CoOwnerDAO {
 
     @Override
     public boolean delete(String s) throws SQLException, ClassNotFoundException {
-        return false;
+        throw new UnsupportedOperationException("This feature yet to be developed");
     }
 
     @Override
     public CoOwner search(String s) throws SQLException, ClassNotFoundException {
-        return null;
+        throw new UnsupportedOperationException("This feature yet to be developed");
     }
 
-    @Override
-    public List<CoOwner> searchAll() throws SQLException {
-        return null;
-    }
 
 }
 

@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.CivilViewBO;
 import lk.ijse.bo.custom.impl.CivilViewBOImpl;
 
@@ -39,7 +40,7 @@ public class CivilViewFormController implements Initializable {
     public Label lblSchool;
     public Label lblContact2;
     public Label lblWork;
-    CivilViewBO civilViewBO = new CivilViewBOImpl();
+    CivilViewBO civilViewBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.CIVILVIEWBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

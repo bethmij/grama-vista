@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.CameraBO;
 import lk.ijse.bo.custom.impl.CameraBOImpl;
 import org.bytedeco.javacv.Frame;
@@ -33,7 +34,7 @@ public class CameraFormController implements Runnable , Initializable {
     private FrameGrabber grabber; //to capture video frames from a webcam:
     private Java2DFrameConverter converter; //convert the video frames
     private BufferedImage image;//used for loading, storing, and manipulating images
-    CameraBO cameraBO = new CameraBOImpl();
+    CameraBO cameraBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.CAMERABO);;
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
 

@@ -6,6 +6,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.ReportBO;
 import lk.ijse.bo.custom.impl.ReportBOImpl;
 import lk.ijse.db.DBConnection;
@@ -25,7 +26,7 @@ import java.util.Optional;
 
 public class ReportFormController {
     public AnchorPane tblDivPane;
-    ReportBO reportBO = new ReportBOImpl();
+    ReportBO reportBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.REPORTBO);
 
     public void lblLogOnAction(MouseEvent mouseEvent) {
         ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);

@@ -3,19 +3,26 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import lk.ijse.controller.AddResidenceFormController;
 
 import java.io.IOException;
 
-public class AppInitializer extends Application {
+/**
+ * @author : Sanu Vithanage
+ * @since : 0.1.0
+ **/
 
-    public static void main(String[] args) {launch(args);}
+public class AppInitializer extends Application {
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/loginForm.fxml"))));
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/loginForm.fxml"));
+        Scene mainScene = new Scene(root);
+        primaryStage.setScene(mainScene);
+        primaryStage.setTitle("Grama Vista - Login");
         primaryStage.centerOnScreen();
         primaryStage.show();
     }
-
 }

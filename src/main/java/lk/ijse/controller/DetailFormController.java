@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.DetailFormBO;
 import lk.ijse.bo.custom.impl.DetailFormBOImpl;
 import lk.ijse.dto.DetailDTO;
@@ -30,7 +31,7 @@ public class DetailFormController implements Initializable {
     public ComboBox cdDuration;
     public TableColumn colDescription;
     private ObservableList<DetailTM> obList = FXCollections.observableArrayList();
-    DetailFormBO detailFormBO = new DetailFormBOImpl();
+    DetailFormBO detailFormBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.DETAILFORMBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

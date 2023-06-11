@@ -1,12 +1,13 @@
 package lk.ijse.bo.custom;
 
+import lk.ijse.bo.SuperBO;
 import lk.ijse.dto.DetailDTO;
 import lk.ijse.dto.MaternityDTO;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public interface MaternityManageBO {
+public interface MaternityManageBO extends SuperBO {
 
     void saveDetail(DetailDTO detail) throws SQLException;
 
@@ -16,5 +17,5 @@ public interface MaternityManageBO {
 
     MaternityDTO searchMaternity(String id) throws SQLException;
 
-    boolean deleteMaternity(String id) throws SQLException;
+    boolean deleteMaternity(String id) throws SQLException, ClassNotFoundException;
 }

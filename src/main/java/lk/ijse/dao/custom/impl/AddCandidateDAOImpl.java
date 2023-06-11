@@ -26,9 +26,24 @@ public class AddCandidateDAOImpl implements AddCandidateDAO {
                 addCandidate.getElection_id(), addCandidate.getCandidate_id());
     }
 
+    @Override
+    public boolean update(AddCandidate dto) throws SQLException, ClassNotFoundException {
+        throw new UnsupportedOperationException("This feature yet to be developed");
+    }
 
     @Override
-    public  boolean deleteCandidate(String id) throws SQLException {
-        return CrudUtil.execute("DELETE  FROM grama_vista.add_candidate WHERE election_id=?", id);
+    public boolean delete(String s) throws SQLException, ClassNotFoundException {
+        throw new UnsupportedOperationException("This feature yet to be developed");
     }
+
+    @Override
+    public AddCandidate search(String s) throws SQLException, ClassNotFoundException {
+        throw new UnsupportedOperationException("This feature yet to be developed");
+    }
+
+    @Override
+    public List<AddCandidate> searchAll() throws SQLException {
+        throw new UnsupportedOperationException("This feature yet to be developed");
+    }
+
 }

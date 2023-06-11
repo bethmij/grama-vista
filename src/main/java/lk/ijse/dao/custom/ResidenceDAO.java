@@ -8,21 +8,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface ResidenceDAO extends CrudDAO<Residence,String> {
-    boolean save(Residence residence) throws SQLException;
 
     List<String> loadResidenceID() throws SQLException;
-
-
-
-
-
-
-
-
 
     Integer getCount() throws SQLException;
 
     String getDivisionId(String residence) throws SQLException;
-
-
 }

@@ -1,6 +1,7 @@
 package lk.ijse.bo.custom.impl;
 
 import lk.ijse.bo.custom.SamurdhiBO;
+import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.DetailDAO;
 import lk.ijse.dao.custom.QueryDAO;
 import lk.ijse.dao.custom.ResidenceDAO;
@@ -19,19 +20,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SamurdhiBOImpl implements SamurdhiBO {
-    DetailDAO detailDAO = new DetailDAOImpl();
-    ResidenceDAO residenceDAO = new ResidenceDAOImpl();
-    QueryDAO queryDAO = new QueryDAOImpl();
 
+    DetailDAO detailDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.DETAILDAO);
+    ResidenceDAO residenceDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.RESIDENCEDAO);
+    QueryDAO queryDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.QUERYDAO);
+
+    @Override
     public void saveDetail(DetailDTO detail) throws SQLException {
         Detail detail1 = new Detail(detail.getFunction_name(),detail.getUser(),detail.getTime(),detail.getDate(),detail.getDescription());
         detailDAO.save(detail1);
     }
 
+    @Override
     public List<String> loadResidenceId() throws SQLException {
         return residenceDAO.loadResidenceID();
     }
 
+    @Override
     public List<CivilDTO> getCivilDetail(String id) throws SQLException {
         List<Civil> civil = queryDAO. getCivil(id);
         List<CivilDTO> civilDTOS = new ArrayList<>();
@@ -44,6 +49,7 @@ public class SamurdhiBOImpl implements SamurdhiBO {
 
     }
 
+    @Override
     public ResidenceDTO searchResidence(String id) throws SQLException, ClassNotFoundException {
         Residence residence = residenceDAO.search(id);
         ResidenceDTO residenceDTO = new ResidenceDTO(residence.getHome_id(),residence.getDivision_id(),residence.getAddress(),residence.getHouse_holder_name(),

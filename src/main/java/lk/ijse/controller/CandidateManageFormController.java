@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.CandidateManageBO;
 import lk.ijse.bo.custom.impl.CandidateManageBOImpl;
 import lk.ijse.dto.*;
@@ -40,7 +41,7 @@ public class CandidateManageFormController implements Initializable {
     public static CandidateTM candidateTM;
     public static CandidateDTO candidateDetail;
     public static String id;
-    CandidateManageBO candidateManageBO = new CandidateManageBOImpl();
+    CandidateManageBO candidateManageBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.CANDIDATEMANAGEBO);;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.DisableRegistrationBO;
 import lk.ijse.bo.custom.impl.DisableRegistrationBOImpl;
 import lk.ijse.dto.DetailDTO;
@@ -33,7 +34,7 @@ public class DisableRegistrationFormController implements Initializable {
     public TextField txtDescription;
     public ComboBox cmbCivil;
     public Button btn1;
-    DisableRegistrationBO disableRegistrationBO = new DisableRegistrationBOImpl();
+    DisableRegistrationBO disableRegistrationBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.DISABLEREGISTRATIONBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -99,7 +100,7 @@ public class DisableRegistrationFormController implements Initializable {
                         new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
                     }else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
             }else{
@@ -116,7 +117,7 @@ public class DisableRegistrationFormController implements Initializable {
                     else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
             }else{

@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.IndividualBO;
 import lk.ijse.bo.custom.impl.IndividualBOImpl;
 import lk.ijse.dto.Civil1DTO;
@@ -49,7 +50,7 @@ public class IndividualFormController implements Initializable {
     public static Civil1DTO civil1DTO = null;
     public static List<MultiResidence> residenceList;
     public static String civil_id;
-    IndividualBO individualBO = new IndividualBOImpl();
+    IndividualBO individualBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.INDIVIDUALBO);;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

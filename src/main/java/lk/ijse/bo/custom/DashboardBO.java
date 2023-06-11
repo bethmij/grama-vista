@@ -1,9 +1,11 @@
 package lk.ijse.bo.custom;
 
+import lk.ijse.bo.SuperBO;
+
 import java.sql.SQLException;
 import java.util.Map;
 
-public interface DashboardBO {
+public interface DashboardBO extends SuperBO {
     Map<Integer, Integer> getDateDiff() throws SQLException;
 
     boolean sentMail(Integer key) throws SQLException;

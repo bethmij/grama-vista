@@ -11,16 +11,7 @@ import java.util.List;
 
 public interface VoteRegDAO extends CrudDAO<VoteReg,String> {
 
-
     List<String> getElecID() throws SQLException;
-
-
-
-
-
-
-
-    boolean update(VoteReg vote) throws SQLException;
 
     boolean updateCount(String election_id) throws SQLException;
 }

@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.VoteBO;
 import lk.ijse.bo.custom.impl.VoteBOImpl;
 import lk.ijse.db.DBConnection;
@@ -42,7 +43,7 @@ public class VoteFormController implements Initializable {
     public Label lblCandidate;
     public Button btn1;
     public ComboBox cbCandidate;
-    VoteBO voteBO = new VoteBOImpl();
+    VoteBO voteBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.VOTEBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -117,7 +118,7 @@ public class VoteFormController implements Initializable {
 
     public void lblViewOnAction(MouseEvent mouseEvent) {
         LocalTime start = LocalTime.parse("17:00");
-        LocalDate date = LocalDate.parse("2023-04-26");
+        LocalDate date = LocalDate.parse("2023-06-11");
 
         if(date.compareTo(LocalDate.now())==0 && LocalTime.now().isAfter(start) ) {
             OpenView.openView("voteResultForm",Pane);
@@ -170,7 +171,7 @@ public class VoteFormController implements Initializable {
                 boolean isSaved = false;
                 try {
                     isSaved = voteBO.updateVote(voteDTO);
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     System.out.println(e);
                 }
 

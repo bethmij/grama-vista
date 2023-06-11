@@ -1,5 +1,6 @@
 package lk.ijse.bo.custom;
 
+import lk.ijse.bo.SuperBO;
 import lk.ijse.dto.CivilDTO;
 import lk.ijse.dto.ContactDTO;
 import lk.ijse.dto.DetailDTO;
@@ -8,7 +9,7 @@ import lk.ijse.dto.MultiResidenceDTO;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface CivilManageBO {
+public interface CivilManageBO extends SuperBO {
     List<String> loadCivilId() throws SQLException;
 
     List<CivilDTO> searchAllCivil() throws SQLException;

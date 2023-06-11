@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.MaternityManageBO;
 import lk.ijse.bo.custom.impl.MaternityManageBOImpl;
 import lk.ijse.dto.*;
@@ -37,7 +38,7 @@ public class MaternityManageFormController implements Initializable {
     public TableColumn colAction;
     private ObservableList<MaternityTM> obList = FXCollections.observableArrayList();
     public static MaternityDTO maternity;
-    MaternityManageBO maternitymanageBO = new MaternityManageBOImpl();
+    MaternityManageBO maternitymanageBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.MATERNITYMANAGEBO);
 
 
     @Override
@@ -140,7 +141,7 @@ public class MaternityManageFormController implements Initializable {
                         obList.remove(tblDivision.getSelectionModel().getSelectedIndex());
                         tblDivision.refresh();
                     }
-                } catch (SQLException ex) {
+                } catch (SQLException | ClassNotFoundException ex) {
                     new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
                 }
 

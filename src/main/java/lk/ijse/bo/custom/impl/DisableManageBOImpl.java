@@ -1,6 +1,7 @@
 package lk.ijse.bo.custom.impl;
 
 import lk.ijse.bo.custom.DisableManageBO;
+import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.DetailDAO;
 import lk.ijse.dao.custom.DisableDAO;
 import lk.ijse.dao.custom.QueryDAO;
@@ -17,14 +18,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DisableManageBOImpl implements DisableManageBO {
-    DisableDAO disableDAO = new DisableDAOImpl();
-    QueryDAO queryDAO = new QueryDAOImpl();
-    DetailDAO detailDAO = new DetailDAOImpl();
 
+    DisableDAO disableDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.DISABLEDAO);
+    QueryDAO queryDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.QUERYDAO);
+    DetailDAO detailDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.DETAILDAO);
+
+    @Override
     public List<String> loadDisableId() throws SQLException {
          return disableDAO.loadDisableId();
     }
 
+    @Override
     public List<DisableDTO> searchAllDisable() throws SQLException {
         List<DisableEntity> disable  = queryDAO.searchAllDisable();
         List<DisableDTO> disableDTOS = new ArrayList<>();
@@ -35,6 +39,7 @@ public class DisableManageBOImpl implements DisableManageBO {
         return disableDTOS;
     }
 
+    @Override
     public DisableDTO searchDisable(String id) throws SQLException {
         DisableEntity disable = queryDAO.searchDisable(id);
         DisableDTO disableDTO = new DisableDTO(disable.getId(),disable.getCivil(),disable.getName()
@@ -42,10 +47,12 @@ public class DisableManageBOImpl implements DisableManageBO {
         return disableDTO;
     }
 
-    public boolean deleteDisable(String id) throws SQLException {
+    @Override
+    public boolean deleteDisable(String id) throws SQLException, ClassNotFoundException {
         return disableDAO.delete(id);
     }
 
+    @Override
     public void saveDetail(DetailDTO detail) throws SQLException {
         Detail detail1 = new Detail(detail.getFunction_name(),detail.getUser(),detail.getTime(),detail.getDate(),detail.getDescription());
         detailDAO.save(detail1);

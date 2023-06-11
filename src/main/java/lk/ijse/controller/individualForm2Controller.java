@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.IndividualFormBO;
 import lk.ijse.bo.custom.impl.IndividualFormBOImpl;
 import lk.ijse.dto.CivilDTO;
@@ -61,7 +62,7 @@ public class individualForm2Controller implements Initializable {
     private FrameGrabber grabber; //to capture video frames from a webcam:
     private Java2DFrameConverter converter; //convert the video frames
     private BufferedImage imageCap;//used for loading, storing, and manipulating images
-    IndividualFormBO individualFormBO = new IndividualFormBOImpl();
+    IndividualFormBO individualFormBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.INDIVIDUALFORMBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -105,10 +106,6 @@ public class individualForm2Controller implements Initializable {
             Double salary = null;
             if (!txtSalary.getText().isEmpty()) salary = Double.valueOf(txtSalary.getText());
 
-            CivilDTO civil = new CivilDTO(civil1DTO.getId(),null ,civil1DTO.getName(), civil1DTO.getNic(), civil1DTO.getAddress(), civil1DTO.getDob(),null,
-                    civil1DTO.getGender(), civil1DTO.getMarriage(), civil1DTO.getRelation(), (String) cbEdu.getValue(), txtSchool.getText(),
-                    txtOccupation.getText(), txtWork.getText(), salary, civil1DTO.getEmail());
-
             List<ContactDTO> contactList = new ArrayList<>();
 
             if (!txtContact1.getText().isEmpty())
@@ -118,11 +115,13 @@ public class individualForm2Controller implements Initializable {
 
             residenceList.add(new MultiResidenceDTO(civil1DTO.getResidence(), civil1DTO.getId()));
 
-
+            CivilDTO civil = new CivilDTO(civil1DTO.getId(),null ,civil1DTO.getName(), civil1DTO.getNic(), civil1DTO.getAddress(), civil1DTO.getDob(),null,
+                    civil1DTO.getGender(), civil1DTO.getMarriage(), civil1DTO.getRelation(), (String) cbEdu.getValue(), txtSchool.getText(),
+                    txtOccupation.getText(), txtWork.getText(), salary, civil1DTO.getEmail(),contactList,residenceList);
 
             boolean isSaved = false;
             try {
-                isSaved = individualFormBO.saveCivil(civil, contactList, residenceList);
+                isSaved = individualFormBO.saveCivil(civil);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
@@ -142,11 +141,6 @@ public class individualForm2Controller implements Initializable {
             Double salary = null;
             if (!txtSalary.getText().isEmpty()) salary = Double.valueOf(txtSalary.getText());
 
-
-            CivilDTO civil = new CivilDTO(civil1DTO.getId(), null,civil1DTO.getName(), civil1DTO.getNic(), civil1DTO.getAddress(), civil1DTO.getDob(),null,
-                    civil1DTO.getGender(), civil1DTO.getMarriage(), civil1DTO.getRelation(), (String) cbEdu.getValue(),
-                    txtSchool.getText(), txtOccupation.getText(), txtWork.getText(), salary, civil1DTO.getEmail());
-
             List<ContactDTO> contactList = new ArrayList<>();
 
             if (!txtContact1.getText().isEmpty())
@@ -156,21 +150,20 @@ public class individualForm2Controller implements Initializable {
 
             residenceList.add(new MultiResidenceDTO(civil1DTO.getResidence(), civil1DTO.getId()));
 
+            CivilDTO civil = new CivilDTO(civil1DTO.getId(),null ,civil1DTO.getName(), civil1DTO.getNic(), civil1DTO.getAddress(), civil1DTO.getDob(),null,
+                    civil1DTO.getGender(), civil1DTO.getMarriage(), civil1DTO.getRelation(), (String) cbEdu.getValue(), txtSchool.getText(),
+                    txtOccupation.getText(), txtWork.getText(), salary, civil1DTO.getEmail(),contactList,residenceList);
 
             boolean isUpdated = false;
             try {
-                DetailDTO detail = new DetailDTO("Updation", "bethmi", LocalTime.now(), LocalDate.now(), "Updating civil id - "+ civil1DTO.getId()+" \nname - "+ civil1DTO.getName());
-                try {
-                    individualFormBO.saveDetail(detail);
-                } catch (SQLException e) {
-                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-                }
-                isUpdated = individualFormBO.updateCivil(civil, contactList, residenceList);
+                isUpdated = individualFormBO.updateCivil(civil);
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
                 if (isUpdated) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully!").show();
+                    DetailDTO detail = new DetailDTO("Updation", "bethmi", LocalTime.now(), LocalDate.now(), "Updating civil id - "+ civil1DTO.getId()+" \nname - "+ civil1DTO.getName());
+                    individualFormBO.saveDetail(detail);
                 } else
                     new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
            

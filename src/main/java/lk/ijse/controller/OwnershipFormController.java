@@ -9,6 +9,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.OwnershipBO;
 import lk.ijse.bo.custom.impl.OwnershipBOImpl;
 import lk.ijse.dto.CoOwnerDTO;
@@ -28,7 +29,7 @@ public class OwnershipFormController implements Initializable {
     public TextField txtPercentage;
     public static List<CoOwnerDTO> coOwnerLists = new ArrayList<>();
     public Label lblLand;
-    OwnershipBO ownershipBO = new OwnershipBOImpl();
+    OwnershipBO ownershipBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.OWNERSHIPBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

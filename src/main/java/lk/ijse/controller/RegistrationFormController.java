@@ -8,6 +8,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.RegistrationBO;
 import lk.ijse.bo.custom.impl.RegistrationBOImpl;
 import lk.ijse.dto.DetailDTO;
@@ -44,7 +45,7 @@ public class RegistrationFormController {
 
     public void btnDivisionOnAction(ActionEvent actionEvent) { OpenView.openView ("divisionRegistrationForm",CivilRPane);}
 
-    RegistrationBO registrationBO = new RegistrationBOImpl();
+    RegistrationBO registrationBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.REGISTRATIONBO);
 
     @FXML
     void lblLogOnAction(MouseEvent event) {

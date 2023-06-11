@@ -1,6 +1,7 @@
 package lk.ijse.bo.custom.impl;
 
 import lk.ijse.bo.custom.DetailFormBO;
+import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.DetailDAO;
 import lk.ijse.dao.custom.impl.DetailDAOImpl;
 import lk.ijse.dto.DetailDTO;
@@ -11,8 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DetailFormBOImpl implements DetailFormBO {
-    DetailDAO detailDAO = new DetailDAOImpl();
 
+    DetailDAO detailDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.DETAILDAO);
+
+    @Override
     public List<DetailDTO> getDetail(Integer number) throws SQLException {
         List<Detail> details = detailDAO.search(number);
         List<DetailDTO> detailDTOS = new ArrayList<>();
@@ -22,6 +25,7 @@ public class DetailFormBOImpl implements DetailFormBO {
         return detailDTOS;
     }
 
+    @Override
     public List<DetailDTO> searchAllDetail() throws SQLException {
         List<Detail> details = detailDAO.searchAll();
         List<DetailDTO> detailDTOS = new ArrayList<>();

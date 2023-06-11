@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.SamurdhiBO;
 import lk.ijse.bo.custom.impl.SamurdhiBOImpl;
 import lk.ijse.dto.CivilDTO;
@@ -44,7 +45,7 @@ public class SamurdhiFormController implements Initializable {
     public AnchorPane tblDivPane;
     public TableColumn colCivil;
     private ObservableList<SamurdhiTM> obList = FXCollections.observableArrayList();
-    SamurdhiBO samurdhiBO = new SamurdhiBOImpl();
+    SamurdhiBO samurdhiBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.SAMURDHIBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -1,6 +1,7 @@
 package lk.ijse.bo.custom.impl;
 
 import lk.ijse.bo.custom.VoteeBO;
+import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.DetailDAO;
 import lk.ijse.dao.custom.VoteDAO;
 import lk.ijse.dao.custom.impl.DetailDAOImpl;
@@ -11,9 +12,9 @@ import lk.ijse.entity.Detail;
 import java.sql.SQLException;
 
 public class VoteeBOImpl implements VoteeBO {
-    DetailDAO detailDAO = new DetailDAOImpl();
-    VoteDAO voteDAO = new VoteDAOImpl();
 
+    DetailDAO detailDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.DETAILDAO);
+    VoteDAO voteDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.VOTEDAO);
 
     @Override
     public void saveDetail(DetailDTO detail) throws SQLException {
@@ -21,6 +22,7 @@ public class VoteeBOImpl implements VoteeBO {
         detailDAO.save(detail1);
     }
 
+    @Override
     public boolean saveVote(String election_id, Integer candidate_id , Integer civilID) throws SQLException {
         return voteDAO.saveVote(election_id, candidate_id ,civilID);
 

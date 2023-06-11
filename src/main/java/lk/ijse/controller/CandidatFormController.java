@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.CandidatBO;
 import lk.ijse.bo.custom.impl.CandidatBOImpl;
 import lk.ijse.dto.AddCandidateDTO;
@@ -33,7 +34,7 @@ public class CandidatFormController implements Initializable {
     public ComboBox cbCandidat;
     private ObservableList<ElecCandidateTM> obList = FXCollections.observableArrayList();
     public List<AddCandidateDTO> addCandidateList = new ArrayList<>();
-    CandidatBO candidatBO = new CandidatBOImpl();
+    CandidatBO candidatBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.CANDIDATBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

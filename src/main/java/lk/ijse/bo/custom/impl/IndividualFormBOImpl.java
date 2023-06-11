@@ -1,6 +1,7 @@
 package lk.ijse.bo.custom.impl;
 
 import lk.ijse.bo.custom.IndividualFormBO;
+import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.*;
 import lk.ijse.dao.custom.impl.*;
 import lk.ijse.db.DBConnection;
@@ -16,35 +17,38 @@ import java.util.List;
 import static lk.ijse.controller.IndividualFormController.civil1DTO;
 
 public class IndividualFormBOImpl implements IndividualFormBO {
-    DetailDAO detailDAO = new DetailDAOImpl();
-    QueryDAO queryDAO = new QueryDAOImpl();
-    CivilDAO civilDAO = new CivilDAOImpl();
-    ContactDAO contactDAO = new ContactDAOImpl();
-    MultiResidenceDAO multiResidenceDAO = new MultiResidenceDAOImpl();
-    DivisionDAO divisionDAO = new DivisionDAOImpl();
 
+    DetailDAO detailDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.DETAILDAO);
+    QueryDAO queryDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.QUERYDAO);
+    CivilDAO civilDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.CIVILDAO);
+    ContactDAO contactDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.CONTACTDAO);
+    MultiResidenceDAO multiResidenceDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.MULTIRESIDENCEDAO);
+    DivisionDAO divisionDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.DIVISIONDAO);
+
+    @Override
     public void saveDetail(DetailDTO detail) throws SQLException {
         Detail detail1 = new Detail(detail.getFunction_name(),detail.getUser(),detail.getTime(),detail.getDate(),detail.getDescription());
         detailDAO.save(detail1);
     }
 
+    @Override
     public String getDivisionId(Integer id) throws SQLException {
-        System.out.println(queryDAO.getDivisionId(id));
         return queryDAO.getDivisionId(id);
     }
 
-    public boolean saveCivil(CivilDTO civil, List<ContactDTO>contactList, List<MultiResidenceDTO>residenceList) throws SQLException {
+    @Override
+    public boolean saveCivil(CivilDTO civil) throws SQLException {
         Civil civil1 = new Civil(civil.getID(), civil.getImage(), civil.getName(), civil.getNic(), civil.getAddress(), civil.getDob()
                 , civil.getAge(), civil.getGender(), civil.getMarriage(), civil.getRelation(), civil.getEducation(), civil.getSchool(), civil.getOccupation()
                 , civil.getWork(), civil.getSalary(), civil.getEmail());
 
         List<Contact> contacts = new ArrayList<>();
-        for (ContactDTO contactDTO : contactList) {
+        for (ContactDTO contactDTO : civil.getContactLists()) {
             contacts.add(new Contact(contactDTO.getCivil_id(),contactDTO.getContact()));
         }
 
         List<MultiResidence> residences = new ArrayList<>();
-        for (MultiResidenceDTO  residenceDTO : residenceList) {
+        for (MultiResidenceDTO  residenceDTO : civil.getResidenceLists()) {
             residences.add(new MultiResidence(residenceDTO.getResidence_id(),residenceDTO.getCivil_id()));
         }
 
@@ -87,18 +91,19 @@ public class IndividualFormBOImpl implements IndividualFormBO {
         }
     }
 
-    public boolean updateCivil(CivilDTO civil, List<ContactDTO>contactList, List<MultiResidenceDTO>residenceList) throws SQLException {
+    @Override
+    public boolean updateCivil(CivilDTO civil) throws SQLException {
         Civil civil1 = new Civil(civil.getID(), civil.getImage(), civil.getName(), civil.getNic(), civil.getAddress(), civil.getDob()
                 , civil.getAge(), civil.getGender(), civil.getMarriage(), civil.getRelation(), civil.getEducation(), civil.getSchool(), civil.getOccupation()
                 , civil.getWork(), civil.getSalary(), civil.getEmail());
 
         List<Contact> contacts = new ArrayList<>();
-        for (ContactDTO contactDTO : contactList) {
+        for (ContactDTO contactDTO : civil.getContactLists()) {
             contacts.add(new Contact(contactDTO.getCivil_id(),contactDTO.getContact()));
         }
 
         List<MultiResidence> residences = new ArrayList<>();
-        for (MultiResidenceDTO  residenceDTO : residenceList) {
+        for (MultiResidenceDTO  residenceDTO : civil.getResidenceLists()) {
             residences.add(new MultiResidence(residenceDTO.getResidence_id(),residenceDTO.getCivil_id()));
         }
 
@@ -136,10 +141,12 @@ public class IndividualFormBOImpl implements IndividualFormBO {
 
     }
 
+    @Override
     public Integer getCivilId(String nic ) throws SQLException {
         return civilDAO.getID(nic);
     }
 
+    @Override
     public boolean uploadImage(String id, InputStream in) throws SQLException {
         return civilDAO.upload(id, in);
     }

@@ -41,13 +41,20 @@ public class DisableDAOImpl implements DisableDAO {
         return  id;
     }
 
-
-
     @Override
     public  boolean delete(String id) throws SQLException {
         return CrudUtil.execute("DELETE  FROM grama_vista.disable_people WHERE reg_number=?", id);
     }
 
+    @Override
+    public Disable search(String s) throws SQLException, ClassNotFoundException {
+        throw new UnsupportedOperationException("This feature yet to be developed");
+    }
+
+    @Override
+    public List<Disable> searchAll() throws SQLException {
+        throw new UnsupportedOperationException("This feature yet to be developed");
+    }
 
 
     @Override

@@ -4,8 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.DashboardBO;
-import lk.ijse.bo.custom.impl.DashboardBOImpl;
 import lk.ijse.dao.custom.impl.util.OpenView;
 
 import javax.mail.*;
@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 
 public class DashboardFormController implements Initializable {
     public AnchorPane dashboardpane;
-    DashboardBO dashboardBO = new DashboardBOImpl();
+    DashboardBO dashboardBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.DASHBOARDBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

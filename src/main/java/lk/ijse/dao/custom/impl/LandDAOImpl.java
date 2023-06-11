@@ -25,8 +25,6 @@ public class LandDAOImpl implements LandDAO {
         return 1;
     }
 
-
-
     @Override
     public  List<String> loadLandID() throws SQLException {
         ResultSet resultSet = CrudUtil.execute("SELECT land_num FROM grama_vista.land WHERE isArchieved=FALSE");
@@ -78,12 +76,12 @@ public class LandDAOImpl implements LandDAO {
         return CrudUtil.execute("UPDATE grama_vista.land SET isArchieved=TRUE WHERE land_num=?",id);
     }
 
-    public boolean saveLand (Land land) throws SQLException {
+    public boolean save (Land land) throws SQLException {
          return CrudUtil.execute("INSERT INTO grama_vista.land (land_num, plan_num, land_area) VALUES (?,?,?)",
                 land.getLand_id(), land.getPlan_num(), land.getL_area());
     }
 
-    public boolean updateLand (Land land) throws SQLException {
+    public boolean update (Land land) throws SQLException {
         return CrudUtil.execute("UPDATE grama_vista.land SET plan_num=?, land_area=? WHERE land_num=? ",
                 land.getPlan_num(), land.getL_area(),land.getLand_id());
     }

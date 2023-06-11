@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.HomeManageBO;
 import lk.ijse.bo.custom.impl.HomeManageBOImpl;
 import lk.ijse.dto.*;
@@ -38,7 +39,7 @@ public class HomeManageFormController implements Initializable {
     private ObservableList<ResidenceTM> obList = FXCollections.observableArrayList();
     public static Residence residence;
     public static List<CivilDTO> civilDetail;
-    HomeManageBO homeManageBO = new HomeManageBOImpl();
+    HomeManageBO homeManageBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.HOMEMANAGEBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

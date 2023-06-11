@@ -1,11 +1,13 @@
 package lk.ijse.dao.custom;
 
+import lk.ijse.dao.SuperDAO;
 import lk.ijse.entity.*;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public interface QueryDAO {
+public interface QueryDAO extends SuperDAO {
+
     List<DeadEntity> searchAllDead() throws SQLException;
 
     DeadEntity searchDead(String id) throws SQLException;

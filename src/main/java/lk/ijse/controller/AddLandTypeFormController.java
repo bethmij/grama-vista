@@ -8,6 +8,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import lk.ijse.bo.BoFactory;
+import lk.ijse.bo.custom.AddLandTypeBO;
+import lk.ijse.bo.custom.impl.AddLandTypeBOImpl;
 import lk.ijse.dao.custom.LandTypeDAO;
 import lk.ijse.dto.LandDetailDTO;
 import lk.ijse.entity.LandDetail;
@@ -29,7 +32,7 @@ public class AddLandTypeFormController implements Initializable {
     public ChoiceBox cbType;
     public static List<LandDetailDTO> landDetailList = new ArrayList<>();
     public Label lblLand;
-    LandTypeDAO typeDAO = new LandTypeDAOImpl();
+    AddLandTypeBO addLandTypeBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.ADDLANDTYPEBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -52,7 +55,7 @@ public class AddLandTypeFormController implements Initializable {
     public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException {
 
         String[] land_num = lblLand.getText().split("L00");
-        Integer type_id = typeDAO.getTypeId((String) cbType.getValue());
+        Integer type_id = addLandTypeBO.getLandTypeID((String) cbType.getValue());
 
         if ((!(land == null)))
             landDetailList.add(new LandDetailDTO(type_id,land.getLand_id(),(String)cbType.getValue() ));

@@ -9,6 +9,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.VoteResultBO;
 import lk.ijse.bo.custom.impl.VoteResultBOImpl;
 import lk.ijse.db.DBConnection;
@@ -39,7 +40,7 @@ public class VoteResultFormController implements Initializable {
     public Label lblVote2;
     public Label lblVote3;
     public Label lblWinner;
-    VoteResultBO voteResultBO = new VoteResultBOImpl();
+    VoteResultBO voteResultBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.VOTERESULTBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

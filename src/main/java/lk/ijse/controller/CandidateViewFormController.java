@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.CandidateViewBO;
 import lk.ijse.bo.custom.impl.CandidateViewBOImpl;
 
@@ -50,7 +51,7 @@ public class CandidateViewFormController implements Initializable {
 
     @FXML
     private Label lblPolitic;
-    CandidateViewBO candidateViewBO = new CandidateViewBOImpl();
+    CandidateViewBO candidateViewBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.CANDIDATEVIEWBO);;
 
 
     @Override

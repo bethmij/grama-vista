@@ -9,18 +9,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface ContactDAO  {
+public interface ContactDAO extends CrudDAO<Contact , String> {
+
     boolean save(List<Contact> contactList) throws SQLException;
-
-
-    boolean save(Contact contact) throws SQLException;
 
     boolean update(List<Contact> contactList) throws SQLException;
 
-    boolean update(Contact contact) throws SQLException;
-
     List<Contact>  searchContact(String reg_ig) throws SQLException;
-
-
 
 }

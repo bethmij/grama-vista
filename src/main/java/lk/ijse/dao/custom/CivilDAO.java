@@ -12,7 +12,6 @@ import java.util.Map;
 
 public interface CivilDAO extends CrudDAO<Civil,String> {
 
-
     String generateNewID() throws SQLException;
 
     boolean upload(String id, InputStream in) throws SQLException;
@@ -22,12 +21,6 @@ public interface CivilDAO extends CrudDAO<Civil,String> {
     String searchById(String id) throws SQLException;
 
     String getName(String reg_id) throws SQLException;
-
-
-
-
-
-
 
     Map<Integer, Integer> getDateDiff() throws SQLException;
 
@@ -40,8 +33,6 @@ public interface CivilDAO extends CrudDAO<Civil,String> {
     List<String> loadElectCivilId() throws SQLException;
 
     Integer getCount() throws SQLException;
-
-
 
     boolean updateEmail(Integer id, String to) throws SQLException;
 

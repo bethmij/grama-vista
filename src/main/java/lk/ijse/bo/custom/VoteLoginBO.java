@@ -1,5 +1,6 @@
 package lk.ijse.bo.custom;
 
+import lk.ijse.bo.SuperBO;
 import lk.ijse.dto.CivilDTO;
 import lk.ijse.dto.DetailDTO;
 import lk.ijse.dto.VoteDTO;
@@ -7,7 +8,7 @@ import lk.ijse.dto.VoteDTO;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface VoteLoginBO {
+public interface VoteLoginBO extends SuperBO {
 
     VoteDTO searchVote(String id) throws SQLException, ClassNotFoundException;
 

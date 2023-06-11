@@ -1,6 +1,7 @@
 package lk.ijse.bo.custom.impl;
 
 import lk.ijse.bo.custom.LoginBO;
+import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.DetailDAO;
 import lk.ijse.dao.custom.UserDAO;
 import lk.ijse.dao.custom.impl.DetailDAOImpl;
@@ -15,9 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginBOImpl implements LoginBO {
-    UserDAO userDAO = new UserDAOImpl();
-    DetailDAO detailDAO = new DetailDAOImpl();
 
+    UserDAO userDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.USERDAO);
+    DetailDAO detailDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.DETAILDAO);
+
+    @Override
     public List<UserDTO> searchAllUser() throws SQLException {
         List<User> users = userDAO.searchAll();
         List<UserDTO> userDTOS = new ArrayList<>();
@@ -28,6 +31,7 @@ public class LoginBOImpl implements LoginBO {
         return userDTOS;
     }
 
+    @Override
     public void saveDetail(DetailDTO detail) throws SQLException {
         Detail detail1 = new Detail(detail.getFunction_name(),detail.getUser(),detail.getTime(),detail.getDate(),detail.getDescription());
         detailDAO.save(detail1);

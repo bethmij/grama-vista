@@ -1,5 +1,6 @@
-package lk.ijse.bo;
+package lk.ijse.bo.custom;
 
+import lk.ijse.bo.SuperBO;
 import lk.ijse.dto.DetailDTO;
 import lk.ijse.dto.ElecCandidateDTO;
 import lk.ijse.dto.VoteDTO;
@@ -7,7 +8,7 @@ import lk.ijse.dto.VoteDTO;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface VoteManageBO {
+public interface VoteManageBO extends SuperBO {
 
     List<String> getElectID() throws SQLException;
 

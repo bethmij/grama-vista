@@ -16,9 +16,6 @@ public class DetailDAOImpl implements DetailDAO {
                 "VALUES (?,?,?,?,?)",details.getFunction_name(),details.getUser(),details.getTime(),details.getDate(),details.getDescription());
     }
 
-
-
-
     @Override
     public  List<Detail> search(Integer dayCount) throws SQLException {
         ResultSet resultSet = CrudUtil.execute("SELECT * , TIMESTAMPDIFF(day ,date,now()) AS days FROM grama_vista.detail HAVING days<?", dayCount);
@@ -29,7 +26,6 @@ public class DetailDAOImpl implements DetailDAO {
         }
         return details;
     }
-
 
     @Override
     public  List<Detail> searchAll() throws SQLException {

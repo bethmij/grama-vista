@@ -1,6 +1,7 @@
 package lk.ijse.bo.custom.impl;
 
 import lk.ijse.bo.custom.LandBO;
+import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.*;
 import lk.ijse.dao.custom.impl.*;
 import lk.ijse.db.DBConnection;
@@ -19,30 +20,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LandBOImpl implements LandBO {
-    LandDAO landDAO = new LandDAOImpl();
-    LandTypeDAO landTypeDAO = new LandTypeDAOImpl();
-    DetailDAO detailDAO = new DetailDAOImpl();
-    CoOwnerDAO coOwnerDAO = new CoOwnerDAOImpl();
-    LandDetailDAO landDetailDAO =new LandDetailDAOImpl();
 
+    LandDAO landDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.LANDDAO);
+    LandTypeDAO landTypeDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.LANDTYPEDAO);
+    DetailDAO detailDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.DETAILDAO);
+    CoOwnerDAO coOwnerDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.COOWNERDAO);
+    LandDetailDAO landDetailDAO =DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.LANDDETAILDAO);
+
+    @Override
     public Integer getNextLandID() throws SQLException {
         return landDAO.getNextLandId();
     }
 
+    @Override
     public Integer getLandType(String id) throws SQLException {
         return landTypeDAO.getTypeId(id);
     }
 
-    public boolean saveLand(LandDTO landDTO , List<LandDetailDTO> landDetailList, List<CoOwnerDTO> coOwnerLists) throws SQLException {
+    @Override
+    public boolean saveLand(LandDTO landDTO) throws SQLException {
         Land land = new Land(landDTO.getLand_id(),landDTO.getPlan_num(),landDTO.getL_area());
 
         List<LandDetail> landDetails = new ArrayList<>();
-        for (LandDetailDTO landDetailDTO : landDetailList) {
+        for (LandDetailDTO landDetailDTO : landDTO.getLandDetailList()) {
             landDetails.add(new LandDetail(landDetailDTO.getType_id(),landDetailDTO.getLand_num()));
         }
 
         List<CoOwner> coOwners = new ArrayList<>();
-        for (CoOwnerDTO coOwnerList : coOwnerLists) {
+        for (CoOwnerDTO coOwnerList : landDTO.getCoOwnerLists()) {
             coOwners.add(new CoOwner(coOwnerList.getLand_id(),coOwnerList.getCivil_id(),coOwnerList.getLot_num(),coOwnerList.getPercentage()));
         }
         Connection con = null;
@@ -50,7 +55,7 @@ public class LandBOImpl implements LandBO {
             con = DBConnection.getInstance().getConnection();
             con.setAutoCommit(false);
 
-            boolean isLandSaved = landDAO.saveLand (land);
+            boolean isLandSaved = landDAO.save (land);
             Integer id = landDAO.getLandNum(land.getPlan_num());
             if (isLandSaved) {
 
@@ -60,10 +65,10 @@ public class LandBOImpl implements LandBO {
                 boolean isOwnerSaved = coOwnerDAO.save(coOwners);
                 if (isOwnerSaved) {
 
-                    for(int i=0; i<landDetailList.size(); i++){
-                        landDetailList.get(i).setLand_num(id);
+                    for(int i=0; i<landDTO.getLandDetailList().size(); i++){
+                        landDTO.getLandDetailList().get(i).setLand_num(id);
                     }
-                    boolean isDetailSaved = landDetailDAO.saveDetail(landDetails);
+                    boolean isDetailSaved = landDetailDAO.save(landDetails);
                     if (isDetailSaved) {
                         con.commit();
                         return true;
@@ -72,7 +77,7 @@ public class LandBOImpl implements LandBO {
             }
 
             return false;
-        } catch (SQLException er) {
+        } catch (SQLException | ClassNotFoundException er) {
             System.out.println(er);
             con.rollback();
             return false;
@@ -82,21 +87,23 @@ public class LandBOImpl implements LandBO {
         }
     }
 
+    @Override
     public void saveDetail(DetailDTO detail) throws SQLException {
         Detail detail1 = new Detail(detail.getFunction_name(),detail.getUser(),detail.getTime(),detail.getDate(),detail.getDescription());
         detailDAO.save(detail1);
     }
 
-    public boolean updateLand(LandDTO landDTO , List<LandDetailDTO> landDetailList, List<CoOwnerDTO> coOwnerLists) throws SQLException {
+    @Override
+    public boolean updateLand(LandDTO landDTO ) throws SQLException {
         Land land = new Land(landDTO.getLand_id(),landDTO.getPlan_num(),landDTO.getL_area());
 
         List<LandDetail> landDetails = new ArrayList<>();
-        for (LandDetailDTO landDetailDTO : landDetailList) {
+        for (LandDetailDTO landDetailDTO : landDTO.getLandDetailList()) {
             landDetails.add(new LandDetail(landDetailDTO.getType_id(),landDetailDTO.getLand_num()));
         }
 
         List<CoOwner> coOwners = new ArrayList<>();
-        for (CoOwnerDTO coOwnerList : coOwnerLists) {
+        for (CoOwnerDTO coOwnerList : landDTO.getCoOwnerLists()) {
             coOwners.add(new CoOwner(coOwnerList.getLand_id(),coOwnerList.getCivil_id(),coOwnerList.getLot_num(),coOwnerList.getPercentage()));
         }
         Connection con = null;
@@ -104,22 +111,22 @@ public class LandBOImpl implements LandBO {
             con = DBConnection.getInstance().getConnection();
             con.setAutoCommit(false);
 
-            boolean isLandUpdated = landDAO.updateLand (land);
+            boolean isLandUpdated = landDAO.update (land);
             Integer id = landDAO.getLandNum(land.getPlan_num());
             if (isLandUpdated) {
 
-                for(int i = 0; i< coOwnerLists.size(); i++){
-                    coOwnerLists.get(i).setLand_id(id);
+                for(int i = 0; i< landDTO.getCoOwnerLists().size(); i++){
+                    landDTO.getCoOwnerLists().get(i).setLand_id(id);
                 }
 
                 boolean isOwnerUpdated = coOwnerDAO.save(coOwners);
                 if (isOwnerUpdated) {
 
-                    for(int i=0; i<landDetailList.size(); i++){
-                        landDetailList.get(i).setLand_num(id);
+                    for(int i=0; i<landDTO.getLandDetailList().size(); i++){
+                        landDTO.getLandDetailList().get(i).setLand_num(id);
                     }
 
-                    boolean isDetailUpdated = landDetailDAO.saveDetail(landDetails);
+                    boolean isDetailUpdated = landDetailDAO.save(landDetails);
                     if (isDetailUpdated) {
                         con.commit();
                         return true;
@@ -128,7 +135,7 @@ public class LandBOImpl implements LandBO {
             }
 
             return false;
-        } catch (SQLException er) {
+        } catch (SQLException | ClassNotFoundException er) {
             System.out.println(er);
             con.rollback();
             return false;

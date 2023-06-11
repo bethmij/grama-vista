@@ -8,9 +8,6 @@ import java.sql.SQLException;
 
 public class LandTypeDAOImpl implements LandTypeDAO {
 
-
-
-
     @Override
     public  Integer getTypeId(String landType) throws SQLException {
 

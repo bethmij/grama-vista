@@ -8,6 +8,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.AboutUsBO;
 import lk.ijse.bo.custom.impl.AboutUsBOImpl;
 import lk.ijse.dto.CivilDTO;
@@ -33,7 +34,7 @@ public class AboutUsFormController implements Initializable {
     public Label lblFemale;
     public Label lblHome;
     public Label lblLand;
-    AboutUsBO aboutUsBO = new AboutUsBOImpl();
+    AboutUsBO aboutUsBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.ABOUTUSBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

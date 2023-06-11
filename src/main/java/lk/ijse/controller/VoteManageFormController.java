@@ -9,15 +9,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.bo.VoteManageBO;
-import lk.ijse.bo.VoteManageBOImpl;
-import lk.ijse.dao.custom.DetailDAO;
+import lk.ijse.bo.BoFactory;
+import lk.ijse.bo.custom.VoteManageBO;
 import lk.ijse.db.DBConnection;
 import lk.ijse.dto.*;
 import lk.ijse.dto.tm.VoteTM;
-import lk.ijse.dao.custom.impl.DetailDAOImpl;
-import lk.ijse.dao.custom.impl.VoteDAOImpl;
-import lk.ijse.entity.Detail;
 import lk.ijse.dao.custom.impl.util.OpenView;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -48,7 +44,7 @@ public class VoteManageFormController implements Initializable {
     private ObservableList<VoteTM> obList = FXCollections.observableArrayList();
     public static VoteDTO voteDTO;
     public static List<ElecCandidateDTO> candidate = new ArrayList<>();
-    VoteManageBO voteManageBO = new VoteManageBOImpl();
+    VoteManageBO voteManageBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.VOTEMANAGEBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

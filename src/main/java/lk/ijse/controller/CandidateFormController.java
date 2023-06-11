@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.CandidateBO;
 import lk.ijse.bo.custom.impl.CandidateBOImpl;
 import lk.ijse.dto.CandidateDTO;
@@ -50,7 +51,7 @@ public class CandidateFormController implements Initializable {
     public JFXButton image;
     public Button btn1;
     public Label lblName;
-    CandidateBO candidateBO = new CandidateBOImpl();
+    CandidateBO candidateBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.CANDIDATEBO);;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

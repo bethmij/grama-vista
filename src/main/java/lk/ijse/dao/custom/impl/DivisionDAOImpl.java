@@ -14,7 +14,6 @@ public class DivisionDAOImpl implements DivisionDAO {
     @Override
     public  String getNextOrderId() throws SQLException {
 
-
         ResultSet resultSet = CrudUtil.execute("SELECT division_id FROM grama_vista.gn_division ORDER BY division_id DESC LIMIT 1");
 
         if (resultSet.next()) {
@@ -89,7 +88,7 @@ public class DivisionDAOImpl implements DivisionDAO {
     }
 
     @Override
-    public  boolean dead(String division_id) throws SQLException {
+    public  boolean delete(String division_id) throws SQLException {
         return CrudUtil.execute("DELETE  FROM grama_vista.gn_division WHERE division_id=?", division_id);
     }
 

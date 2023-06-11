@@ -46,17 +46,17 @@ public class MultiResidenceDAOImpl implements MultiResidenceDAO {
 
     @Override
     public boolean delete(String s) throws SQLException, ClassNotFoundException {
-        return false;
+        throw new UnsupportedOperationException("This feature yet to be developed");
     }
 
     @Override
     public MultiResidence search(String s) throws SQLException, ClassNotFoundException {
-        return null;
+        throw new UnsupportedOperationException("This feature yet to be developed");
     }
 
     @Override
     public List<MultiResidence> searchAll() throws SQLException {
-        return null;
+        throw new UnsupportedOperationException("This feature yet to be developed");
     }
 
     @Override

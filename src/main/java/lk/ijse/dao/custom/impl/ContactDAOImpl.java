@@ -48,6 +48,21 @@ public class ContactDAOImpl implements ContactDAO {
     }
 
     @Override
+    public boolean delete(String s) throws SQLException, ClassNotFoundException {
+        throw new UnsupportedOperationException("This feature yet to be developed");
+    }
+
+    @Override
+    public Contact search(String s) throws SQLException, ClassNotFoundException {
+        throw new UnsupportedOperationException("This feature yet to be developed");
+    }
+
+    @Override
+    public List<Contact> searchAll() throws SQLException {
+        throw new UnsupportedOperationException("This feature yet to be developed");
+    }
+
+    @Override
     public  List<Contact>  searchContact(String reg_ig) throws SQLException {
         ResultSet resultSet = CrudUtil.execute("SELECT * FROM grama_vista.contact WHERE reg_number=?",reg_ig);
         List<Contact> contactList = new ArrayList<>();

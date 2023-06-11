@@ -10,9 +10,9 @@ import java.util.List;
 public class LandDetailDAOImpl implements LandDetailDAO {
 
     @Override
-    public  boolean saveDetail(List<LandDetail> landDetailList) throws SQLException {
+    public  boolean save(List<LandDetail> landDetailList) throws SQLException {
         for(LandDetail list : landDetailList) {
-            if(!saveDetail(list)) {
+            if(!save(list)) {
                 return false;
             }
         }
@@ -20,7 +20,7 @@ public class LandDetailDAOImpl implements LandDetailDAO {
     }
 
     @Override
-    public boolean saveDetail(LandDetail landDetail) throws SQLException {
+    public boolean save(LandDetail landDetail) throws SQLException {
 
         String sql = "INSERT INTO grama_vista.land_detail ( type_id, land_num) VALUES (?,?)";
 
@@ -28,9 +28,9 @@ public class LandDetailDAOImpl implements LandDetailDAO {
     }
 
     @Override
-    public  boolean updateDetail(List<LandDetail> landDetailList) throws SQLException {
+    public  boolean update(List<LandDetail> landDetailList) throws SQLException {
         for (LandDetail list : landDetailList) {
-            if (!updateDetail(list)) {
+            if (!update(list)) {
                 return false;
             }
         }
@@ -38,9 +38,24 @@ public class LandDetailDAOImpl implements LandDetailDAO {
     }
 
     @Override
-    public boolean updateDetail(LandDetail landDetail) throws SQLException {
+    public boolean update(LandDetail landDetail) throws SQLException {
 
         return CrudUtil.execute("UPDATE grama_vista.land_detail SET land_num=? WHERE type_id=?",
                 landDetail.getLand_num(), landDetail.getType_id());
+    }
+
+    @Override
+    public boolean delete(String s) throws SQLException, ClassNotFoundException {
+        throw new UnsupportedOperationException("This feature yet to be developed");
+    }
+
+    @Override
+    public LandDetail search(String s) throws SQLException, ClassNotFoundException {
+        throw new UnsupportedOperationException("This feature yet to be developed");
+    }
+
+    @Override
+    public List<LandDetail> searchAll() throws SQLException {
+        throw new UnsupportedOperationException("This feature yet to be developed");
     }
 }

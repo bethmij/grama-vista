@@ -1,12 +1,13 @@
 package lk.ijse.bo.custom;
 
+import lk.ijse.bo.SuperBO;
 import lk.ijse.dto.CivilDTO;
 import lk.ijse.dto.DetailDTO;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public interface AboutUsBO {
+public interface AboutUsBO extends SuperBO {
     List<CivilDTO> searchCivil() throws SQLException;
 
     boolean saveDetail(DetailDTO detail) throws SQLException;

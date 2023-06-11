@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.AddResidenceBO;
 import lk.ijse.bo.custom.impl.AddResidenceBOImpl;
 import lk.ijse.dto.MultiResidenceDTO;
@@ -25,7 +26,7 @@ public class AddResidenceFormController implements Initializable {
     public ChoiceBox cbResidence;
     public static List<MultiResidenceDTO> residenceList = new ArrayList<>();
     public Label lblCivil;
-   AddResidenceBO addResidenceBO = new AddResidenceBOImpl();
+   AddResidenceBO addResidenceBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.ADDRESIDENCEBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

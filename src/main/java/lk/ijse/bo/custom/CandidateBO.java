@@ -1,5 +1,6 @@
 package lk.ijse.bo.custom;
 
+import lk.ijse.bo.SuperBO;
 import lk.ijse.dto.CandidateDTO;
 import lk.ijse.dto.DetailDTO;
 
@@ -7,7 +8,7 @@ import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface CandidateBO {
+public interface CandidateBO extends SuperBO {
     List<String> loadDivisionId() throws SQLException;
 
     boolean saveCandidate(CandidateDTO candidateDTO) throws SQLException, ClassNotFoundException;

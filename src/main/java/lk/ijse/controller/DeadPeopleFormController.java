@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.DeadPeopleBO;
 import lk.ijse.bo.custom.impl.DeadPeopleBOImpl;
 import lk.ijse.dto.DeadDTO;
@@ -31,7 +32,7 @@ public class DeadPeopleFormController implements Initializable {
     public Label lblName;
     public Label lblID;
     public Button btn1;
-    DeadPeopleBO deadPeopleBO = new DeadPeopleBOImpl();
+    DeadPeopleBO deadPeopleBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.DEADPEOPLEBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -88,7 +89,7 @@ public class DeadPeopleFormController implements Initializable {
                 String division_id = deadPeopleBO.getDivisionId(Integer.valueOf(civil_id[1]));
 
                 try {
-                    boolean isSaved = deadPeopleBO.saveDead(new DeadDTO(reg_id[1], civil_id[1], lblName.getText(), dtpDate.getValue(),null), division_id);
+                    boolean isSaved = deadPeopleBO.saveDead(new DeadDTO(reg_id[1], civil_id[1], lblName.getText(), dtpDate.getValue(),null,division_id));
 
                     if (isSaved) {
                         DetailDTO detail = new DetailDTO("Registration", "bethmi", LocalTime.now(), LocalDate.now(), "Registering dead_people id - " + lblID.getText() + " \nname - " + lblName.getText());

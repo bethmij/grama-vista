@@ -44,14 +44,20 @@ public class MaternityDAOImpl implements MaternityDAO {
         return  id;
     }
 
-
-
     @Override
-    public  boolean dead(String id) throws SQLException {
+    public  boolean delete(String id) throws SQLException {
         return CrudUtil.execute("DELETE  FROM grama_vista.maternity_people WHERE id=?", id);
     }
 
+    @Override
+    public Maternity search(String s) throws SQLException, ClassNotFoundException {
+        throw new UnsupportedOperationException("This feature yet to be developed");
+    }
 
+    @Override
+    public List<Maternity> searchAll() throws SQLException {
+        throw new UnsupportedOperationException("This feature yet to be developed");
+    }
 
     @Override
     public  boolean update(Maternity maternity) throws SQLException {

@@ -1,6 +1,7 @@
 package lk.ijse.bo.custom.impl;
 
 import lk.ijse.bo.custom.AboutUsBO;
+import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.*;
 import lk.ijse.dao.custom.impl.*;
 import lk.ijse.dto.CivilDTO;
@@ -13,11 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AboutUsBOImpl implements AboutUsBO {
-    DivisionDAO divisionDAO = new DivisionDAOImpl();
-    CivilDAO civilDAO = new CivilDAOImpl();
-    ResidenceDAO residenceDAO = new ResidenceDAOImpl();
-    LandDAO landDAO = new LandDAOImpl();
-    DetailDAO detailDAO = new DetailDAOImpl();
+
+    DivisionDAO divisionDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.DIVISIONDAO);
+    CivilDAO civilDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.CIVILDAO);
+    ResidenceDAO residenceDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.RESIDENCEDAO);
+    LandDAO landDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.LANDDAO);
+    DetailDAO detailDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.DETAILDAO);
 
     @Override
     public List<CivilDTO> searchCivil() throws SQLException {
@@ -31,27 +33,33 @@ public class AboutUsBOImpl implements AboutUsBO {
         return civilDTOList;
     }
 
+    @Override
     public boolean saveDetail(DetailDTO detail) throws SQLException {
         Detail detail1 = new Detail(detail.getFunction_name(),detail.getUser(),detail.getTime(),detail.getDate(),detail.getDescription());
         return detailDAO.save(detail1);
     }
 
+    @Override
     public Integer getPopulation() throws SQLException {
         return divisionDAO.getPopulation();
     }
 
+    @Override
     public Integer getMale() throws SQLException {
         return civilDAO.getMale();
     }
 
+    @Override
     public Integer getFemale() throws SQLException {
         return civilDAO.getFemale();
     }
 
+    @Override
     public Integer getResidenceCount() throws SQLException {
         return residenceDAO.getCount();
     }
 
+    @Override
     public Integer getLandCount() throws SQLException {
         return landDAO.getCount();
     }

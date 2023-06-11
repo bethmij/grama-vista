@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.UserRegistrationBO;
 import lk.ijse.bo.custom.impl.UserRegistrationBOImpl;
 import lk.ijse.dto.UserDTO;
@@ -37,7 +38,7 @@ public class UserRegistrationFormController implements Initializable {
     public TextField txtEmail;
     public Label lblEmail;
     public Label lblName;
-    UserRegistrationBO userRegistrationBO = new UserRegistrationBOImpl();
+    UserRegistrationBO userRegistrationBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.USERREGISTRATIONBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -115,7 +116,7 @@ public class UserRegistrationFormController implements Initializable {
             }
         } else if(btnSave.getText().equals("Update")){
             if (!(cbDivision.getValue() == null) && !txtName.getText().equals("") && !txtNIC.getText().equals("") && !txtENum.getText().equals("")
-                    && !txtUser.getText().equals("")  && !txtPass.getText().equals("")  && !txtEmail.getText().equals("") && dtpDOB.getValue()!=null && dtpEmployee.getValue()!=null) {
+                    && !txtUser.getText().equals("")  && !txtEmail.getText().equals("") && dtpDOB.getValue()!=null && dtpEmployee.getValue()!=null) {
                 Integer contact = null;
                 if (!txtContact.getText().isEmpty())
                     contact = Integer.valueOf(txtContact.getText());
@@ -129,7 +130,7 @@ public class UserRegistrationFormController implements Initializable {
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
 
 
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
             }else{

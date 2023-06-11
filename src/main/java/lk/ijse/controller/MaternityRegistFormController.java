@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.MaternityRegistBO;
 import lk.ijse.bo.custom.impl.MaternityRegistBOImpl;
 import lk.ijse.dto.DetailDTO;
@@ -36,7 +37,7 @@ public class MaternityRegistFormController implements Initializable {
     public TextField txtMonth;
     public Label lblMidWife;
     public Label lblMonth;
-    MaternityRegistBO registBO = new MaternityRegistBOImpl();
+    MaternityRegistBO registBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.MATERNITYREGISTBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -113,7 +114,7 @@ public class MaternityRegistFormController implements Initializable {
                         new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully !").show();
                     }else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
             }else{
@@ -133,7 +134,7 @@ public class MaternityRegistFormController implements Initializable {
                         new Alert(Alert.AlertType.CONFIRMATION, "Updated Successfully !").show();
                     else
                         new Alert(Alert.AlertType.ERROR, "Something Went Wrong!").show();
-                } catch (SQLException e) {
+                } catch (SQLException | ClassNotFoundException e) {
                     new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
             }else{

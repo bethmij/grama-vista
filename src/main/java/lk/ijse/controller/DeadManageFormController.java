@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.DeadManageBO;
 import lk.ijse.bo.custom.impl.DeadManageBOImpl;
 import lk.ijse.dto.*;
@@ -37,7 +38,7 @@ public class DeadManageFormController implements Initializable {
     public TableColumn colDead;
     private ObservableList<DeadTM> obList = FXCollections.observableArrayList();
     public static DeadDTO dead;
-    DeadManageBO deadManageBO = new DeadManageBOImpl();
+    DeadManageBO deadManageBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.DEADMANAGEBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

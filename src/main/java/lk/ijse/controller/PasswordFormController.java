@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.bo.BoFactory;
 import lk.ijse.bo.custom.PasswordBO;
 import lk.ijse.bo.custom.impl.PasswordBOImpl;
 import lk.ijse.dto.UserDTO;
@@ -34,7 +35,7 @@ public class PasswordFormController implements Initializable {
     public Integer code;
     public JFXButton btnSave1;
     public Label lblEmail;
-    PasswordBO passwordBO = new PasswordBOImpl();
+    PasswordBO passwordBO = BoFactory.getBoFactory().getBO(BoFactory.BOTypes.PASSWORDBO);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

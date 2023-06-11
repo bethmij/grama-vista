@@ -1,6 +1,7 @@
 package lk.ijse.bo.custom.impl;
 
 import lk.ijse.bo.custom.VoteBO;
+import lk.ijse.dao.DAOFactory;
 import lk.ijse.dao.custom.*;
 import lk.ijse.dao.custom.impl.*;
 import lk.ijse.dao.custom.impl.util.CrudUtil;
@@ -17,22 +18,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VoteBOImpl implements VoteBO {
-    CandidateDAO candidateDAO = new CandidateDAOImpl();
-    DetailDAO detailDAO = new DetailDAOImpl();
-    VoteRegDAO voteRegDAO = new VoteRegDAOImpl();
-    QueryDAO queryDAO = new QueryDAOImpl();
-    AddCandidateDAO addCandidateDAO = new AddCandidateDAOImpl();
+public class VoteBOImpl implements VoteBO
+{
+    CandidateDAO candidateDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.CANDIDATEDAO);
+    DetailDAO detailDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.DETAILDAO);
+    VoteRegDAO voteRegDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.VOTEREGDAO);
+    QueryDAO queryDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.QUERYDAO);
+    AddCandidateDAO addCandidateDAO = DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.ADDCANDIDATEDAO);
 
+    @Override
     public List<String> loadElectionID() throws SQLException {
        return candidateDAO.loadElectionID();
     }
 
+    @Override
     public void saveDetail(DetailDTO detail) throws SQLException {
         Detail detail1 = new Detail(detail.getFunction_name(),detail.getUser(),detail.getTime(),detail.getDate(),detail.getDescription());
         detailDAO.save(detail1);
     }
 
+    @Override
     public boolean saveVote(VoteDTO voteDTO, List<AddCandidateDTO> addCandidateList) throws SQLException {
         VoteReg voteReg = new VoteReg(voteDTO.getElection_id(),voteDTO.getElection_type(),voteDTO.getCandidate_count(),voteDTO.getDate());
 
@@ -65,12 +70,14 @@ public class VoteBOImpl implements VoteBO {
         }
     }
 
-    public boolean updateVote(VoteDTO voteDTO) throws SQLException {
+    @Override
+    public boolean updateVote(VoteDTO voteDTO) throws SQLException, ClassNotFoundException {
         VoteReg vote = new VoteReg(voteDTO.getElection_id(),voteDTO.getElection_type(),voteDTO.getCandidate_count(),voteDTO.getDate());
 
         return voteRegDAO.update(vote);
     }
 
+    @Override
     public String getCandidateName(Integer id) throws SQLException {
         return queryDAO.getCandidateName(id);
     }
