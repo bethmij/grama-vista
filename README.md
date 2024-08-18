@@ -38,22 +38,22 @@ Grama Vista is designed to assist Grama Niladhari officers in efficiently managi
     - Log in as a Grama Niladhari officer and explore the various features for managing village data and generating essential reports.
 
 - You got login, register and forgot password option where you will get verification code through email
-- <img src="./Screenshots/1.png" alt="img" width="800">
+<img src="./Screenshots/1.png" alt="img" width="800">
 
 - Dashboard represent main key features
--  <img src="./Screenshots/2.png" alt="img" width="800">
+<img src="./Screenshots/2.png" alt="img" width="800">
 
 - About us Page
--  <img src="./Screenshots/3.png" alt="img" width="800">
+<img src="./Screenshots/3.png" alt="img" width="800">
 
 - Register 8 entities here
--  <img src="./Screenshots/4.png" alt="img" width="800">
+<img src="./Screenshots/4.png" alt="img" width="800">
 
 - Demo Voting Page
--  <img src="./Screenshots/5.png" alt="img" width="800">
+<img src="./Screenshots/5.png" alt="img" width="800">
 
 - Here you can vote as you like
--  <img src="./Screenshots/6.png" alt="img" width="800">
+<img src="./Screenshots/6.png" alt="img" width="800">
 
 - Auto calculated voting results are only visible during specific time only
--  <img src="./Screenshots/7.png" alt="img" width="800">
+<img src="./Screenshots/7.png" alt="img" width="800">
